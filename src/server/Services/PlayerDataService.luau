@@ -28,6 +28,12 @@ function Service:Load(player)
  if self.Profiles[player.UserId]then return self.Profiles[player.UserId]end
  local profile,reason
  if self.SessionOnly then profile=Schema.Default()else profile,reason=self.Repository:Load(player.UserId)end
+ -- The departing server retains its lease until PlayerRemoving finishes saving.
+ -- Wait briefly for that handoff; never steal an active profile lease.
+ local handoffDeadline=os.clock()+20
+ while not profile and reason=="Profile is active on another server"and player.Parent==Players and os.clock()<handoffDeadline do
+  task.wait(2);profile,reason=self.Repository:Load(player.UserId)
+ end
  if not profile then player:Kick("Your saved neighborhood could not be opened safely. Please rejoin shortly.");warn("[PROFILE] Load rejected",player.UserId,reason);return nil end
  profile.JoinedAt=os.time();profile._SessionOnly=self.SessionOnly;profile._LastSaved=os.clock();profile._Restored=false
  profile._Recap=profile.LastSeen>0 and {LastSeen=profile.LastSeen,Message="Quiet while you were away. Your home was protected offline.",Incidents=Schema.Copy(profile.Incidents)} or nil
@@ -38,7 +44,7 @@ end
 function Service:Get(player)return self.Profiles[player.UserId]end
 function Service:CanAct(player)
  local profile=self:Get(player)
- return player.Parent==Players and profile~=nil and not self.Closing and not profile._Closing and not profile._Released
+ return player.Parent==Players and profile~=nil and not self.Closing and not profile._Closing and not profile._Released and not profile._Travel
 end
 function Service:BeginClose(player)local profile=self:Get(player);if profile then profile._Closing=true end end
 function Service:Snapshot(player)

@@ -47,6 +47,14 @@ remotes.Notification.OnClientEvent:Connect(function(data)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
     Screens.State=state
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Friends"or Screens.CurrentView=="InviteFriends")then
+        local scroll=Screens.List.CanvasPosition
+        local selection=game:GetService("GuiService").SelectedObject
+        local rowName=selection and selection.Parent and selection.Parent.Name
+        Screens:Open(Screens.CurrentView,Screens.CurrentDetail);Screens.List.CanvasPosition=scroll
+        local row=rowName and Screens.List:FindFirstChild(rowName)
+        if row then game:GetService("GuiService").SelectedObject=row:FindFirstChildWhichIsA("TextButton")end
+    end
     if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
     if state.Settings then player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")

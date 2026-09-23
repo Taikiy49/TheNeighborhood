@@ -102,8 +102,8 @@ The user requested all sections, including features originally labeled later or 
 | 96 | THUMBNAIL PHILOSOPHY | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 97 | GAME ICON | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 98 | DISCOVERY / ONBOARDING PRINCIPLE | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
-| 99 | FRIEND PLAY | Partial: entry permissions, roommate locks, social high-fives; platform friend/private-server flow remains. |
-| 100 | PRIVATE SERVERS | Open: private-server product configuration and testing remain. |
+| 99 | FRIEND PLAY | Implemented party invites, ready checks, group travel orchestration, paginated Roblox friend invites, saved-circle membership and stable home plots. Studio and live directory tests passed; published-client teleport/privacy testing remains. |
+| 100 | PRIVATE SERVERS | Implemented invite-only saved circles using reserved servers and server-side membership checks. Paid/VIP private-server configuration and published-client travel verification remain. |
 | 101 | SERVER SIZE | Verified eight actual clients with separate houses and correct initial profiles. |
 | 102 | THE WORLD MUST FEEL ALIVE | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 103 | ENVIRONMENTAL STORYTELLING | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |

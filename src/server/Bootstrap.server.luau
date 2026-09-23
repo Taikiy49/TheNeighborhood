@@ -22,6 +22,7 @@ local Events=require(script.Parent.Services.EventService)
 local Observation=require(script.Parent.Services.ObservationService)
 local Discovery=require(script.Parent.Services.DiscoveryService)
 local Weather=require(script.Parent.Services.WeatherService)
+local Friends=require(script.Parent.Services.FriendsService)
 local context={Data=Data,Houses=Houses,Interactions=Interactions,Items=Items,Economy=Economy,Evidence=Evidence,Robbery=Robbery}
 context.Notify=function(player,message,ok)
     if player.Parent==Players and message then remotes.Notification:FireClient(player,{Text=message,Success=ok}) end
@@ -33,7 +34,7 @@ context.Snapshot=function(player)
         table.insert(neighbors,{UserId=p.UserId,Name=p.DisplayName,HouseId=h and h.Model.Name,Address=h and h.Model:GetAttribute("Address") or "Moving in",HouseValue=Observation:HouseValue(p),KnownFor=(stats.Delivery or 0)>=5 and "Helpful neighbor" or (stats.Customize or 0)>0 and "Home decorator" or "Settling in"})
     end end
     local patrol={};for id,h in pairs(Houses.ById)do table.insert(patrol,{Id=id,Address=h.Model:GetAttribute("Address")})end;table.sort(patrol,function(a,b)return a.Id<b.Id end)
-    return {Currency=profile and profile.Currency or 0,Address=house and house.Model:GetAttribute("Address") or "Finding your home",HouseId=house and house.Model.Name,SessionOnly=Data.SessionOnly,Inventory=Items:Owned(player),Collection=profile and profile.Collection or {},Discoveries=Discovery:View(player),Weather=Weather:View(),Incidents=profile and profile.Incidents or {},Recap=profile and profile._Recap,Carrying=player:GetAttribute("Carrying"),Progress=Progression:View(player),Settings=profile and profile.Settings,Neighbors=neighbors,House=profile and profile.House,Feed=Community.Feed,Vehicles=profile and profile.Vehicles,Pets=profile and profile.Pets,CommunityEvent=Events:View(),Patrol=patrol}
+    return {Friends=Friends:View(player),Currency=profile and profile.Currency or 0,Address=house and house.Model:GetAttribute("Address") or "Finding your home",HouseId=house and house.Model.Name,SessionOnly=Data.SessionOnly,Inventory=Items:Owned(player),Collection=profile and profile.Collection or {},Discoveries=Discovery:View(player),Weather=Weather:View(),Incidents=profile and profile.Incidents or {},Recap=profile and profile._Recap,Carrying=player:GetAttribute("Carrying"),Progress=Progression:View(player),Settings=profile and profile.Settings,Neighbors=neighbors,House=profile and profile.House,Feed=Community.Feed,Vehicles=profile and profile.Vehicles,Pets=profile and profile.Pets,CommunityEvent=Events:View(),Patrol=patrol}
 end
 context.Sync=function(player) if player.Parent==Players then remotes.State:FireClient(player,context.Snapshot(player)) end end
 Progression:Init(context);Investigation:Init(context);Customization:Init(context)
@@ -46,6 +47,7 @@ Pets:Init(context)
 Evidence:Init(context);Robbery:Init(context)
 Delivery:Init(context)
 Data:Init(context)
+Friends:Init(context)
 context.Open=function(player,view,detail) remotes.View:FireClient(player,view,detail) end
 require(script.Parent.GuideCharacters).Init(context)
 Events:Init(context)
@@ -81,6 +83,7 @@ local function characterAdded(player,character)
     if rootPart and house then character:PivotTo(house.Model.Arrival.CFrame) end
 end
 local function added(player)
+    if not Friends:AuthorizeArrival(player)then return end
     local profile=Data:Load(player);if not profile then return end
     if player.Parent~=Players then Data:Release(player);return end
     local house=Houses:Assign(player)
@@ -92,9 +95,11 @@ local function added(player)
     player.CharacterAdded:Connect(function(c) characterAdded(player,c) end)
     if player.Character then task.spawn(characterAdded,player,player.Character) end
     context.Sync(player)
+    task.spawn(function()Friends:Refresh(player,true);context.Sync(player)end)
 end
 Players.PlayerAdded:Connect(added)
 Players.PlayerRemoving:Connect(function(player) Data:BeginClose(player);Robbery:Release(player);Data:Release(player);Items:Release(player);Houses:Release(player) end)
+Players.PlayerRemoving:Connect(function(player)Friends:Removed(player)end)
 for _,player in ipairs(Players:GetPlayers()) do task.spawn(added,player) end
 local lastSync={}
 remotes.Request.OnServerEvent:Connect(function(player,action,id,argument,requestId)
@@ -107,7 +112,8 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument,request
     if not Data:CanAct(player) then respond("Your profile is loading or closing. Please wait.",false);return end
     if type(id)~="string" or #id>80 then return end
     local ok,message=false,"Unavailable action."
-    if action=="Buy" then ok,message=Economy:Buy(player,id)
+    if action=="Friends"then ok,message=Friends:Action(player,id,argument)
+    elseif action=="Buy" then ok,message=Economy:Buy(player,id)
     elseif action=="Sell" then ok,message=Economy:Sell(player,id)
     elseif action=="Place" then ok,message=Items:Place(player,id,argument)
     elseif action=="Steal" then ok,message=Robbery:Begin(player,id)

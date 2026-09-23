@@ -10,9 +10,11 @@ end
 function Service:Assign(player)
     if self.ByPlayer[player.UserId] then return self.ByPlayer[player.UserId] end
     local ids = {}; for id in pairs(self.ById) do table.insert(ids,id) end; table.sort(ids)
+    local slot=player:GetAttribute("NeighborhoodSlot")
+    if slot then ids={string.format("House%02d",slot)}end
     for _, id in ipairs(ids) do
         local house = self.ById[id]
-        if not house.Owner then
+        if house and not house.Owner then
             house.Owner = player.UserId
             house.Model:SetAttribute("OwnerUserId", player.UserId)
             house.Model:SetAttribute("ProtectedUntil", os.time()+Config.NewPlayerProtection)

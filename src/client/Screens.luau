@@ -44,7 +44,7 @@ function Screens:Resolve(success,requestId)
  if requestId and self.Pending.RequestId~=requestId then return end
  local pending=self.Pending;self.Pending=nil
  if pending.Button.Parent then pending.Button.Text=pending.Text;pending.Button.Active=true end
- if success then self.Panel.Visible=false end
+ if success and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"then self.Panel.Visible=false end
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
@@ -53,11 +53,14 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Shop" then
+ if view=="Friends"or view=="InviteFriends"then
+  require(script.Parent.FriendsScreen).Render(self,view,detail)
+ elseif view=="Shop" then
   local ids={};for id,def in pairs(Defs) do if not def.DiscoverOnly then table.insert(ids,id)end end;table.sort(ids,function(a,b)return Defs[a].Value<Defs[b].Value end)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
   self.Title.Text="Your phone"
+  self:Row("Friends","Party up, move together and return to your saved neighborhood.","Open Friends",function()self:Open("Friends")end)
   for _,entry in ipairs({{"Progress","Settle in and earn achievements"},{"Home","Colors, flooring, security and permissions"},{"Garage","Your keys to Maple Street"},{"Pets","A companion with a nose for visitors"},{"Event","Community activities and rewards"},{"Journal","Five tiny notes. One very unusual gnome."},{"Weather","What's blowing through Maple Street"},{"Collection","Remember every possession you've acquired"},{"Neighbors","See who lives nearby"},{"Newspaper","Read real neighborhood stories"},{"Settings","Audio and motion preferences"},{"Cases","Review evidence and investigate"}})do self:Row(entry[1],entry[2],"Open",function()self:Open(entry[1])end)end
  elseif view=="Journal" then
   self.Title.Text="The gnome trail"
