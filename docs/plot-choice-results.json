@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "result": {
+    "NearestChoices": 56,
+    "Errors": [],
+    "LiveDirectory": {
+      "FixturesRemoved": true,
+      "Verified": [
+        "Live directory creation",
+        "Invitation visible through independent repository",
+        "Accepted membership and stable plots reload",
+        "Duplicate acceptance is idempotent",
+        "Decline clears invitation index",
+        "Chosen party and invitation plots persist across repository reload"
+      ],
+      "Backend": "Roblox DataStore; isolated GUID-prefixed fixtures",
+      "Passed": true
+    },
+    "Verified": [
+      "Nearby defaults follow the founder; own free-plot choice; occupied and malformed choices rejected; readiness reset",
+      "Chosen plots committed with the circle; retries and saved circles cannot silently relocate members",
+      "Reverse-order arrivals use selected plot numbers",
+      "Saved invitations support chosen or nearest plots, atomic conflict rejection, offline reservations and idempotent acceptance",
+      "All eight starting plots and 56 nearest-choice steps match actual map geometry"
+    ],
+    "Passed": true,
+    "Transport": "Injected adapter; no live cross-server teleport claim"
+  }
+}

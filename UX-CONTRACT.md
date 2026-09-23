@@ -21,6 +21,10 @@ Source: the user's September 23 request to implement friend parties, group trave
 
 An invitation is not consent. Party members accept and then ready up; changing party membership clears readiness. Joining a saved circle requires acceptance, and travel is a separate action. Only the founder may send saved-circle invitations, and recipients must be their Roblox friends. No editable public names or message fields are introduced.
 
+Plot selection is a move-in decision. Party members start on the nearest free plot to the founder and can select an unclaimed alternative before the circle is saved. Changing a plot clears everyone's readiness. Existing party selections cannot be displaced. Saved-circle invitations offer an explicit plot choice or nearest-available assignment; selection and acceptance commit atomically. Once saved, plots remain reserved even for offline members. There is no live relocation or unilateral swap flow. A lost race refreshes available options instead of silently substituting another address. The shared PlotLayout module matches authored house coordinates; tests detect map drift.
+
 Saved circles retain membership and plot assignments, not an offline simulation of every house. Profile possessions and finishes follow each player. Travel failures restore actions and offer retry; a failed save prevents departure. Access codes are server-only. Reserved-server arrivals must match directory membership, independent of client-supplied teleport data.
 
 Roblox GUI is the runtime; browser-only DOM/ARIA, CSS and URL routing rules do not apply. Friends uses the existing non-modal phone panel, Close/Escape/gamepad B, and shared TextButton selection behavior. Touch and keyboard checks must use Roblox, not a browser mockup.
+
+Friends subviews (plot selection and Roblox friend selection) use the fixed header Back button to return to Friends; the Friends root retains Close. Plot selection stays open after success so the chosen address is visible. The parent party roster updates from the server snapshot.

@@ -47,7 +47,7 @@ remotes.Notification.OnClientEvent:Connect(function(data)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
     Screens.State=state
-    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Friends"or Screens.CurrentView=="InviteFriends")then
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Friends"or Screens.CurrentView=="InviteFriends"or Screens.CurrentView=="ChoosePlot")then
         local scroll=Screens.List.CanvasPosition
         local selection=game:GetService("GuiService").SelectedObject
         local rowName=selection and selection.Parent and selection.Parent.Name

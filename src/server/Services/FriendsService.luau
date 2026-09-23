@@ -3,9 +3,19 @@ local Run=game:GetService('RunService')
 local Teleport=game:GetService('TeleportService')
 local Http=game:GetService('HttpService')
 local Repository=require(script.Parent.Parent.NeighborhoodRepository)
+local Plots=require(game.ReplicatedStorage.Neighborhood.Shared.PlotLayout)
 local Service={Parties={},ByPlayer={},Invites={},Views={},Busy={},Travel={},LastRefresh={},FriendPages={}}
 local function validId(id)return type(id)=='string'and #id>0 and #id<=64 and id:match('^[%w%-]+$')end
 local function memberIndex(party,uid)return table.find(party.Members,uid)end
+local function usedPlots(slots)local used={};for _,slot in pairs(slots)do used[slot]=true end;return used end
+function Service:PlotOptions(slots,uid)
+ local result={};local owners={};for owner,slot in pairs(slots)do owners[slot]=tonumber(owner)end
+ for slot=1,8 do
+  local house=self.Context.Houses.ById[string.format('House%02d',slot)]
+  table.insert(result,{Slot=slot,Address=house and house.Model:GetAttribute('Address')or 'Home '..slot,Side=Plots.Side(slot),Available=owners[slot]==nil,Yours=owners[slot]==uid})
+ end
+ return result
+end
 function Service:Init(context)
  self.Context=context
  local store=game:GetService('DataStoreService'):GetDataStore(Run:IsStudio()and 'NeighborhoodGroups_Development_v1'or 'NeighborhoodGroups_v1')
@@ -38,8 +48,8 @@ function Service:View(player)
  local pages=self.FriendPages[player.UserId];if pages then result.FriendsPage=pages.Index;result.MoreFriends=pages.Index<#pages.Pages or not pages.Cursor.IsFinished;result.PreviousFriends=pages.Index>1 end
  local party=self.Parties[self.ByPlayer[player.UserId]]
  if party then
-  result.Party={Leader=party.Leader,Members={},Busy=party.Busy==true}
-  for _,uid in ipairs(party.Members)do local p=Players:GetPlayerByUserId(uid);table.insert(result.Party.Members,{UserId=uid,Name=p and p.DisplayName or 'Neighbor',Ready=party.Ready[uid]==true})end
+  result.Party={Leader=party.Leader,Members={},Busy=party.Busy==true,Plots=self:PlotOptions(party.Plots,player.UserId),PlotsLocked=party.SavedId~=nil}
+  for _,uid in ipairs(party.Members)do local p=Players:GetPlayerByUserId(uid);local slot=party.Plots[tostring(uid)];local house=self.Context.Houses.ById[string.format('House%02d',slot)];table.insert(result.Party.Members,{UserId=uid,Name=p and p.DisplayName or 'Neighbor',Ready=party.Ready[uid]==true,Slot=slot,Address=house.Model:GetAttribute('Address')})end
  end
  result.Invites={}
  for id,expires in pairs(self.Invites[player.UserId]or {})do local p=self.Parties[id];if p and expires>os.time()then local leader=Players:GetPlayerByUserId(p.Leader);table.insert(result.Invites,{Id=id,Name=leader and leader.DisplayName or 'Neighbor'})end end
@@ -54,7 +64,8 @@ function Service:Refresh(player,force)
   for id in pairs(self.Repository:Index(player.UserId))do
    local r=self.Repository:Get(id)
    if r then local count=0;for _ in pairs(r.Members)do count+=1 end
-    local entry={Id=id,Title='Maple Circle '..id:sub(1,6),Count=count,Owner=r.Owner,Slot=r.Members[tostring(player.UserId)]}
+    local entry={Id=id,Title='Maple Circle '..id:sub(1,6),Count=count,Owner=r.Owner,Slot=r.Members[tostring(player.UserId)],Plots=self:PlotOptions(r.Members,player.UserId)}
+    if entry.Slot then entry.Address=entry.Plots[entry.Slot].Address end
     if entry.Slot then table.insert(saved,entry)elseif r.Pending[tostring(player.UserId)]then entry.Expired=r.Pending[tostring(player.UserId)]<=os.time();table.insert(incoming,entry)end
    end
   end
@@ -110,6 +121,7 @@ function Service:Leave(player,preserveDestination)
  if not party then return true,'You are not in a party.'end
  if party.Busy then return false,'Your party is preparing to travel.'end
  table.remove(party.Members,memberIndex(party,player.UserId));party.Ready[player.UserId]=nil;self.ByPlayer[player.UserId]=nil
+ party.Plots[tostring(player.UserId)]=nil
  if #party.Members==0 then self.Parties[id]=nil else
   party.Leader=party.Members[1]
   if not preserveDestination then party.Ready={};party.SavedId=nil;party.ReservedCode=nil end
@@ -130,7 +142,7 @@ function Service:Handle(player,action,arg)
  elseif action=='LoadFriends'or action=='NextFriends'or action=='PreviousFriends'then return self:LoadFriends(player,action)
  elseif action=='Create'then
   if party then return false,'You already have a party.'end
-  id=Http:GenerateGUID(false);self.Parties[id]={Leader=uid,Members={uid},Ready={}};self.ByPlayer[uid]=id;return true,'Party created. Invite neighbors below.'
+  id=Http:GenerateGUID(false);self.Parties[id]={Leader=uid,Members={uid},Ready={},Plots={[tostring(uid)]=1}};self.ByPlayer[uid]=id;return true,'Party created. Invite neighbors below.'
  elseif action=='Invite'then
   local target=type(arg)=='number'and Players:GetPlayerByUserId(arg)
   if not party or party.Leader~=uid or party.Busy or not target or target==player or self.ByPlayer[arg]or #party.Members>=8 then return false,'That neighbor cannot be invited right now.'end
@@ -140,9 +152,16 @@ function Service:Handle(player,action,arg)
   if party or not validId(arg)then return false,'Leave your current party first.'end
   local target=self.Parties[arg]
   if not target or target.Busy or #target.Members>=8 or ((self.Invites[uid]or {})[arg]or 0)<=os.time()then return false,'That party invite is no longer available.'end
-  table.insert(target.Members,uid);target.Ready={};target.SavedId=nil;self.ByPlayer[uid]=arg;self.Invites[uid]={};return true,'You joined the party. Ready up when you want to move.'
+  target.Plots[tostring(uid)]=assert(Plots.Nearest(usedPlots(target.Plots),target.Plots[tostring(target.Leader)]))
+  table.insert(target.Members,uid);target.Ready={};target.SavedId=nil;self.ByPlayer[uid]=arg;self.Invites[uid]={};return true,'You joined the party. A nearby home is picked; you can choose another before readying up.'
  elseif action=='DeclineParty'then if type(arg)=='string'and self.Invites[uid]then self.Invites[uid][arg]=nil end;return true,'Invitation dismissed.'
  elseif action=='Leave'then return self:Leave(player)
+ elseif action=='ChoosePlot'then
+  if not party or party.Busy or party.SavedId then return false,'Choose a plot before your neighborhood is created.'end
+  if not Plots.Valid(arg)then return false,'Choose one of the eight plots.'end
+  if party.Plots[tostring(uid)]==arg then return true,'That is already your chosen plot.'end
+  if usedPlots(party.Plots)[arg]then return false,'That plot belongs to another party member. Choose an available plot.'end
+  party.Plots[tostring(uid)]=arg;party.Ready={};return true,'Plot selected. Everyone must ready up again for the new arrangement.'
  elseif action=='Ready'then
   if not party or party.Busy then return false,'Join a party first.'end;party.Ready[uid]=not party.Ready[uid];return true,party.Ready[uid]and 'Ready to travel.'or 'You are no longer ready.'
  elseif action=='Launch'then
@@ -151,7 +170,7 @@ function Service:Handle(player,action,arg)
   party.Busy=true;self:Broadcast()
   local success,done,message=pcall(function()
    if not party.SavedId then local code,privateId=self.Reserve();party.SavedId=privateId;party.ReservedCode=code end
-   local record=self.Repository:Get(party.SavedId)or self.Repository:Create(party.SavedId,party.ReservedCode,uid,party.Members)
+   local record=self.Repository:Get(party.SavedId)or self.Repository:Create(party.SavedId,party.ReservedCode,uid,party.Members,party.Plots)
    for _,member in ipairs(party.Members)do self.Repository:Bookmark(member,record.Id)end
    for _,p in ipairs(travelers)do self:Refresh(p,true)end
    return self:TravelTo(travelers,record)
@@ -161,7 +180,12 @@ function Service:Handle(player,action,arg)
   return done,message
  elseif action=='AcceptSaved'or action=='DeclineSaved'or action=='Return'or action=='InviteSaved'then
   local groupId=type(arg)=='table'and arg.Id or arg;if not validId(groupId)then return false,'Choose a saved neighborhood.'end
-  if action=='AcceptSaved'then self.Repository:Accept(groupId,uid);self:Refresh(player,true);return true,'Neighborhood saved. You can visit whenever you like.'end
+  if action=='AcceptSaved'then
+   local preferred;if type(arg)=='table'then preferred=arg.Slot end
+   local accepted=pcall(function()self.Repository:Accept(groupId,uid,preferred)end)
+   self:Refresh(player,true)
+   return accepted,accepted and 'Your home plot is saved. You can visit whenever you like.'or 'That invitation or plot is no longer available. Refresh and choose again.'
+  end
   if action=='DeclineSaved'then local record=self.Repository:Get(groupId);if record and record.Members[tostring(uid)]then return false,'You already belong to this neighborhood.'end;self.Repository:Decline(groupId,uid);self:Refresh(player,true);return true,'Invitation declined.'end
   local record=self.Repository:Get(groupId);if not record or not record.Members[tostring(uid)]then return false,'You are not a member of that neighborhood.'end
   if action=='InviteSaved'then

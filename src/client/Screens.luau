@@ -9,7 +9,9 @@ function Screens:Init(gui,request)
  UI.New("UISizeConstraint",{MaxSize=Vector2.new(510,560)},self.Panel)
  self.Title=UI.Label(self.Panel,"",UDim2.new(1,-92,0,48),UDim2.fromOffset(16,8),UI.Theme.Title);self.Title.Font=UI.Theme.Display
  self.Title.TextScaled=true;UI.New("UITextSizeConstraint",{MinTextSize=14,MaxTextSize=24},self.Title)
- local close=UI.Button(self.Panel,"Close",UDim2.fromOffset(72,48),UDim2.new(1,-80,0,8),function() self:Close() end);close.Name="CloseButton"
+ local close=UI.Button(self.Panel,"Close",UDim2.fromOffset(72,48),UDim2.new(1,-80,0,8),function()
+  if self.CurrentView=="ChoosePlot"or self.CurrentView=="InviteFriends"then self:Open("Friends")else self:Close()end
+ end);close.Name="CloseButton"
  game:GetService("UserInputService").InputBegan:Connect(function(input,processed)
   if not processed and self.Panel.Visible and (input.KeyCode==Enum.KeyCode.Escape or input.KeyCode==Enum.KeyCode.ButtonB) then self:Close() end
  end)
@@ -44,16 +46,17 @@ function Screens:Resolve(success,requestId)
  if requestId and self.Pending.RequestId~=requestId then return end
  local pending=self.Pending;self.Pending=nil
  if pending.Button.Parent then pending.Button.Text=pending.Text;pending.Button.Active=true end
- if success and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"then self.Panel.Visible=false end
+ if success and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"then self.Panel.Visible=false end
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
  self.CurrentView=view;self.CurrentDetail=detail
+ self.Panel.CloseButton.Text=(view=="ChoosePlot"or view=="InviteFriends")and "Back"or "Close"
  self.RowIndex=0
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Friends"or view=="InviteFriends"then
+ if view=="Friends"or view=="InviteFriends"or view=="ChoosePlot"then
   require(script.Parent.FriendsScreen).Render(self,view,detail)
  elseif view=="Shop" then
   local ids={};for id,def in pairs(Defs) do if not def.DiscoverOnly then table.insert(ids,id)end end;table.sort(ids,function(a,b)return Defs[a].Value<Defs[b].Value end)

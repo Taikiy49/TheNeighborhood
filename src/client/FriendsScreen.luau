@@ -5,6 +5,29 @@ function Screen.Render(ui,view,detail)
  local state=ui.State.Friends or {Saved={},Incoming={},Friends={},Invites={}}
  local uid=Players.LocalPlayer.UserId
  local function action(verb,arg)ui.Request('Friends',verb,arg)end
+ if view=='ChoosePlot'then
+  ui.Title.Text='Choose your home'
+  local plots,locked
+  if detail then
+   for _,circle in ipairs(state.Saved or {})do if circle.Id==detail then
+    ui:Row('Your address is saved',circle.Address..'. It stays yours when you return.','Back to Friends',function()ui:Open('Friends')end);return
+   end end
+   for _,invite in ipairs(state.Incoming or {})do if invite.Id==detail and not invite.Expired then plots=invite.Plots end end
+   ui:Row('Move in near your friends','Choose an available address below, or let us pick the closest free plot to the founder. Your choice stays reserved while you are offline.',plots and 'Pick nearest & accept'or nil,function()action('AcceptSaved',detail)end)
+  else
+   local party=state.Party;plots=party and party.Plots;locked=party and (party.PlotsLocked or party.Busy)
+   ui:Row('Your place on Maple Street',locked and 'These addresses are already saved for your circle.'or 'Nearby homes are picked automatically. Choose a different free address if you prefer. Changing a plot resets the ready check.')
+  end
+  if not plots then ui:Row('No plots to choose','Join a party or refresh your neighborhood invitations.')end
+  for _,plot in ipairs(plots or {})do
+   local description=plot.Side..' · '..(plot.Yours and 'Your chosen address'or plot.Available and 'Available'or 'Reserved for another member')
+   ui:Row(plot.Address,description,plot.Available and not locked and ('Choose '..plot.Address)or nil,function()
+    if detail then action('AcceptSaved',{Id=detail,Slot=plot.Slot})else action('ChoosePlot',plot.Slot)end
+   end)
+  end
+  ui:Row('Your party and circles','Return to the ready check and saved neighborhoods.','Back to Friends',function()ui:Open('Friends')end)
+  return
+ end
  if view=='InviteFriends'then
   ui.Title.Text='Invite to your circle'
   ui:Row('Your Roblox friends','Invites last 24 hours. Friends can accept from any server. Eight members can share this neighborhood.','Load Roblox friends',function()action('LoadFriends')end)
@@ -26,12 +49,13 @@ function Screen.Render(ui,view,detail)
  local party=state.Party
  if party then
   local names={};local ready=0;local myReady=false
-  for _,p in ipairs(party.Members)do table.insert(names,(p.Ready and 'Ready · 'or 'Waiting · ')..p.Name..(p.UserId==party.Leader and ' (leader)'or ''));if p.Ready then ready+=1 end;if p.UserId==uid then myReady=p.Ready end end
+  for _,p in ipairs(party.Members)do table.insert(names,(p.Ready and 'Ready · 'or 'Waiting · ')..p.Name..(p.UserId==party.Leader and ' (leader)'or '')..'\n'..p.Address);if p.Ready then ready+=1 end;if p.UserId==uid then myReady=p.Ready end end
   ui:Row('Your party · '..#party.Members..' / 8',table.concat(names,'\n'))
   if party.Busy then ui:Row('Preparing your circle','Please wait while your neighborhood is saved.')else
+   ui:Row('Your home address',party.PlotsLocked and 'Your circle keeps the addresses you selected.'or 'Keep the nearby default, or pick an available plot before moving in.',party.PlotsLocked and 'View plots'or 'Choose home plot',function()ui:Open('ChoosePlot')end)
    ui:Row('Ready check',ready..' / '..#party.Members..' ready. Ready means you agree to join this saved circle and move together.',myReady and 'Not ready'or 'Ready to move',function()action('Ready')end)
    if party.Leader==uid then
-    ui:Row('A street of your own','Create a saved circle for this group. Everyone must be ready. You will get neighboring plots.','Move party together',function()action('Launch')end)
+    ui:Row('A street of your own','Create a saved circle with the home addresses shown above. Everyone must be ready.','Move party together',function()action('Launch')end)
     for _,neighbor in ipairs(ui.State.Neighbors or {})do
      local present=false;for _,p in ipairs(party.Members)do if p.UserId==neighbor.UserId then present=true end end
      if not present then ui:Row(neighbor.Name,'Invite this neighbor to your party.','Invite to party',function()action('Invite',neighbor.UserId)end)end
@@ -41,12 +65,12 @@ function Screen.Render(ui,view,detail)
   end
  else ui:Row('Start with your neighbors','Invite people here, ready up, then move together. You can also create a circle solo and invite Roblox friends from other servers.','Create party',function()action('Create')end)end
  for _,invite in ipairs(state.Incoming or {})do
-  ui:Row('Invitation · '..invite.Title,invite.Expired and 'This invitation expired. Decline it to clear your list.'or invite.Count..' / 8 members. Accept to save your own plot in this circle.',not invite.Expired and 'Accept neighborhood'or nil,function()action('AcceptSaved',invite.Id)end)
+  ui:Row('Invitation · '..invite.Title,invite.Expired and 'This invitation expired. Decline it to clear your list.'or invite.Count..' / 8 members. Pick a home next to your friends, then accept.',not invite.Expired and 'Choose home & accept'or nil,function()ui:Open('ChoosePlot',invite.Id)end)
   ui:Row('Pass on this circle','Decline the invitation.','Decline neighborhood',function()action('DeclineSaved',invite.Id)end)
  end
  for _,group in ipairs(state.Saved or {})do
   local here=state.Current==group.Id
-  ui:Row(group.Title,'Home '..group.Slot..' · '..group.Count..' / 8 members'..(here and ' · You are here'or ''),not here and 'Visit neighborhood'or nil,function()action('Return',group.Id)end)
+  ui:Row(group.Title,(group.Address or 'Home '..group.Slot)..' · '..group.Count..' / 8 members'..(here and ' · You are here'or ''),not here and 'Visit neighborhood'or nil,function()action('Return',group.Id)end)
   if group.Owner==uid and group.Count<8 then ui:Row('Bring your friends','Invite Roblox friends even when they are in another server.','Choose friends',function()ui:Open('InviteFriends',group.Id)end)end
  end
  if #(state.Saved or {})==0 then ui:Row('No saved circles yet','Create a party, ready up and move together, or accept a neighborhood invitation.')end

@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "result": {
+    "DirectoryRequests": 101,
+    "Errors": [],
+    "LiveDirectory": {
+      "Skipped": true,
+      "Reason": "Covered separately by live directory run"
+    },
+    "Verified": [
+      "Explicit invitations, party leadership, readiness, membership changes and leave checks",
+      "Saved group, adjacent slots, transport roster, credential privacy, mutation freeze and idempotent retry",
+      "Save failures abort departure; teleport failures recover; nonmembers rejected",
+      "Partial departure preserves destination and transfers party leadership for retry",
+      "Cross-repository invitations, durable member slots, duplicate accept, eight-member cap, expiry and decline",
+      "Reverse-order arrivals retain adjacent saved plots"
+    ],
+    "Passed": true,
+    "Transport": "Injected adapter; real Roblox teleports require published-client testing"
+  }
+}

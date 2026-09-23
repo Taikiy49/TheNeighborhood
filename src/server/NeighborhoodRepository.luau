@@ -1,5 +1,6 @@
 -- Server-only directory. Access codes never enter player profiles or remote payloads.
 local Repo={};Repo.__index=Repo
+local Plots=require(game.ReplicatedStorage.Neighborhood.Shared.PlotLayout)
 local function copy(v)if type(v)~='table'then return v end;local t={};for k,x in pairs(v)do t[k]=copy(x)end;return t end
 function Repo.new(store,clock,pause)return setmetatable({Store=store,Clock=clock or os.time,Pause=pause or task.wait},Repo)end
 function Repo:Call(fn)
@@ -16,12 +17,21 @@ function Repo:Bookmark(uid,id)
   t[id]=self.Clock();return t
  end)end)
 end
-function Repo:Create(id,code,owner,members)
+function Repo:Create(id,code,owner,members,choices)
  assert(#members>=1 and #members<=8,'A neighborhood holds eight members.')
  local result=self:Call(function()return self.Store:UpdateAsync('group:'..id,function(old)
   if old then assert(old.Owner==owner,'Neighborhood collision');return old end
   local r={Id=id,Code=code,Owner=owner,Created=self.Clock(),Members={},Pending={}}
-  for slot,uid in ipairs(members)do assert(not r.Members[tostring(uid)],'Duplicate member');r.Members[tostring(uid)]=slot end
+  local used={}
+  for _,uid in ipairs(members)do
+   local slot=choices and choices[tostring(uid)]
+   if slot~=nil then assert(Plots.Valid(slot)and not used[slot],'Invalid or duplicate plot');r.Members[tostring(uid)]=slot;used[slot]=true end
+  end
+  local seen={}
+  for _,uid in ipairs(members)do
+   local key=tostring(uid);assert(not seen[key],'Duplicate member');seen[key]=true
+   if not r.Members[key]then local slot=assert(Plots.Nearest(used,r.Members[tostring(owner)]));r.Members[key]=slot;used[slot]=true end
+  end
   return r
  end)end)
  for _,uid in ipairs(members)do self:Bookmark(uid,id)end
@@ -38,13 +48,15 @@ function Repo:Invite(id,owner,target)
  end)end)
  self:Bookmark(target,id);return result
 end
-function Repo:Accept(id,uid)
+function Repo:Accept(id,uid,preferred)
+ assert(preferred==nil or Plots.Valid(preferred),'Invalid plot choice.')
  local r=self:Call(function()return self.Store:UpdateAsync('group:'..id,function(old)
   assert(old,'Neighborhood missing.');local nextRecord=copy(old);local key=tostring(uid)
   if nextRecord.Members[key]then return nextRecord end
   assert((nextRecord.Pending[key]or 0)>self.Clock(),'Invitation expired or unavailable.')
   local used={};for _,slot in pairs(nextRecord.Members)do used[slot]=true end
-  local slot;for n=1,8 do if not used[n]then slot=n;break end end;assert(slot,'This neighborhood is now full.')
+  local slot=preferred or Plots.Nearest(used,nextRecord.Members[tostring(nextRecord.Owner)])
+  assert(slot and not used[slot],'That plot is reserved or the neighborhood is full.')
   nextRecord.Members[key]=slot;nextRecord.Pending[key]=nil;return nextRecord
  end)end)
  self:Bookmark(uid,id);return r

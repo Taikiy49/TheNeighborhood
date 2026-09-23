@@ -4,13 +4,15 @@ Entry point: **Phone → Friends**. This feature extends the current eight-playe
 
 ## Player flow
 
-1. Create a party and invite neighbors in the current server. Each neighbor accepts; all members explicitly ready up.
+1. Create a party and invite neighbors in the current server. Each gets the nearest free plot to the founder. **Choose home plot** lets each player select another unclaimed address before everyone explicitly readies up; changing the arrangement clears readiness.
 2. The leader moves the party into a reserved neighborhood. A solo player can also create a circle this way.
 3. Membership and plot numbers are saved. Returning players use **Visit neighborhood**, even when the founder is offline. Arrival order does not change their plots.
-4. The founder can choose Roblox friends from a paginated list and send a saved-circle invitation. Friends can accept it from any server through Phone → Friends → Refresh invitations. Invitations expire after 24 hours.
+4. The founder can choose Roblox friends from a paginated list and send a saved-circle invitation. Friends can accept it from any server through Phone → Friends → Refresh invitations. **Choose home & accept** offers a specific vacant address or **Pick nearest & accept**. Invitations expire after 24 hours.
 5. The Roblox invitation button opens the platform's permission-controlled game invite dialog. It does not automatically send messages or bypass privacy restrictions.
 
 Circles are generated names, contain up to eight members, and use the same map. Saved membership is distinct from Roblox's paid/VIP private-server product. Up to 32 saved or pending directory entries are retained per player; overflow is rejected without discarding existing circles. Expired invitations can be declined to clear their entries.
+
+The design combines automatic nearby assignment with move-in choice. It follows the familiar vacant-plot interaction described in [Brookhaven's housing guide](https://www.brookhavenrp.com/guides/houses), while keeping permanent circle addresses. Saved members are never relocated to accommodate another player's preference. Live relocation and house swaps are intentionally outside this flow; full circles retain all eight reserved addresses. A party member can deliberately choose a farther address, so proximity is a default rather than a guarantee after manual choices.
 
 The circle persists as membership and home assignments. Individual money, item identities, display slots, finishes, cars, pets and progression continue to use the existing profile system. It does not simulate or display absent members' furnished homes offline, preserve every transient weather/event state, or guarantee identical running server instances across Roblox cross-play pools.
 
@@ -33,6 +35,9 @@ Independent repository tests cover fabricated invitations, founder-only invitati
 Real-client release checks remain: native Roblox friend/privacy behavior, group TeleportAsync, partial network failure, cross-server profile handoff, and return while the founder is offline. These require publishing the updated place and using Roblox clients/accounts with experience access. Do not describe mocked transport as a successful live cross-server test.
 
 ### Recorded results
+
+- Plot-choice update: `plot-choice-results.json` passed with three clients, all eight starting locations and 56 nearest-choice steps checked against authored house coordinates. Tests include selected party layouts, invalid and occupied choices, ready-check reset, reverse arrivals, stale invitation conflicts, offline-member protection, duplicate acceptance and actual DataStore persistence of chosen plots. Live fixtures were removed. `plot-friends-regression.json` confirms the existing friends failure-path suite still passes.
+- Plot-picker UI was exercised with actual Studio mouse input: create party → choose home plot → select 102 Maple Street → Back. The chosen label and party roster updated to 102; Back remained fixed in the panel header. Screenshot: `assets/art/plot-picker.jpg`. The static UI audit is recorded in `plot-ui-audit.json`.
 
 - `friends-acceptance-results.json`: three actual clients, 101 injected directory requests and successful real DataStore directory tests; no application errors and all live fixtures removed.
 - `friends-final-results.json`: final failure-path rerun also includes a thrown save exception; actions recover and no transport is attempted. The previously verified live directory test is intentionally not repeated.
