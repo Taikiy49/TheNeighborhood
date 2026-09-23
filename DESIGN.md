@@ -21,9 +21,9 @@ spacing:
   control: '48px'
 components:
   button:
-    borderRadius: '10px'
+    rounded: '10px'
   panel:
-    borderRadius: '10px'
+    rounded: '10px'
 ---
 
 ## Overview

@@ -1,7 +1,7 @@
 local Players=game:GetService("Players")
 local Config=require(game.ReplicatedStorage.Neighborhood.Shared.Config)
 local Defs=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinitions)
-local Service={Sessions={},Preparing={},Cooldowns={}}
+local Service={Sessions={},Preparing={},Cooldowns={},Breaching={}}
 function Service:Init(context)
  self.Context=context
  task.spawn(function()
@@ -10,7 +10,8 @@ function Service:Init(context)
 end
 function Service:Eligible(player,item)
  if not item or item.State~="Displayed" or item.OwnerUserId==player.UserId then return false,"Choose a neighbor's displayed possession." end
- if self.Sessions[player.UserId] or self.Preparing[player.UserId] then return false,"Your hands are already full." end
+ if item.RecoveryProtected then return false,"Recovered property is protected for the rest of this playtest." end
+ if self.Sessions[player.UserId] or self.Preparing[player.UserId] or self.Breaching[player.UserId] then return false,"Finish your current action first." end
  local house=self.Context.Houses.ById[item.HouseId]
  if not house or house.Owner~=item.OwnerUserId then return false,"This property is unavailable." end
  if (house.Model:GetAttribute("ProtectedUntil") or 0)>os.time() then return false,"This neighbor has moving-in protection. Come back later." end
@@ -19,8 +20,28 @@ function Service:Eligible(player,item)
  if not model then return false,"This item has moved." end
  local valid,message=self.Context.Interactions:Validate(player,model.PrimaryPart)
  if not valid then return false,message end
- if house.Locked then return false,"The house is locked. Ask to visit or find an unlocked home." end
+ if house.Locked and (house.CompromisedUntil or 0)<os.clock() then return false,"The house is locked. The front door needs to be breached first." end
  return true,house
+end
+function Service:Breach(player,id)
+ local house=self.Context.Houses.ById[id]
+ if not house or not house.Owner or house.Owner==player.UserId or not house.Locked then return false,"Choose a neighbor's locked front door." end
+ if self.Sessions[player.UserId] or self.Preparing[player.UserId] or self.Breaching[player.UserId] then return false,"Finish your current action first." end
+ if (house.Model:GetAttribute("ProtectedUntil") or 0)>os.time() or (self.Cooldowns[house.Owner] or 0)>os.time() then return false,"This neighbor is currently protected." end
+ local valid,why=self.Context.Interactions:Validate(player,house.Door);if not valid then return false,why end
+ local pending={House=house,Owner=house.Owner,Origin=player.Character.HumanoidRootPart.Position}
+ self.Breaching[player.UserId]=pending
+ local owner=Players:GetPlayerByUserId(house.Owner);if owner then self.Context.Notify(owner,"Someone is tampering with your front door!",false) end
+ task.delay(4,function()
+  if self.Breaching[player.UserId]~=pending then return end
+  self.Breaching[player.UserId]=nil
+  local nearby=self.Context.Interactions:Validate(player,house.Door)
+  if player.Parent~=Players or not nearby or house.Owner~=pending.Owner or not house.Locked or (house.Model:GetAttribute("ProtectedUntil") or 0)>os.time() or (self.Cooldowns[house.Owner] or 0)>os.time() then self.Context.Notify(player,"Door tampering interrupted.",false);return end
+  house.CompromisedUntil=os.clock()+45;self.Context.Houses:SetDoor(house,true)
+  self.Context.Notify(player,"The lock gave way. You have 45 seconds before it resets.",true)
+  task.delay(45,function()if house.Owner==pending.Owner and house.Locked and (house.CompromisedUntil or 0)<=os.clock() then self.Context.Houses:SetDoor(house,false) end end)
+ end)
+ return true,"Working on the lock… stay beside the door for four seconds."
 end
 function Service:Begin(player,id)
  local item=self.Context.Items.Items[id]
@@ -73,7 +94,7 @@ function Service:Return(session,reason)
  session.Item.State="Displayed";session.Item.HolderUserId=nil
  self.Context.Items:Render(session.Item,session.OriginalCFrame)
  session.House.Model:SetAttribute("Alarm",false)
- if session.Incident then session.Incident.Status="Recovered" else self.Context.Evidence:Incident(session,"Recovered") end
+ if session.Incident then self.Context.Evidence:Transition(session.Incident,"Recovered","The possession was returned home.") else self.Context.Evidence:Incident(session,"Recovered") end
  self.Context.Notify(session.Player,reason or "The item was recovered.",false)
  self.Context.Sync(session.Player)
  local owner=Players:GetPlayerByUserId(session.Item.OwnerUserId);if owner then self.Context.Sync(owner) end
@@ -86,6 +107,10 @@ function Service:Recover(player,item)
 end
 function Service:Step()
  local now=os.clock()
+ for userId,pending in pairs(self.Breaching) do
+  local player=Players:GetPlayerByUserId(userId);local root=player and player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+  if not root or (root.Position-pending.Origin).Magnitude>4 then self.Breaching[userId]=nil;if player then self.Context.Notify(player,"Door tampering cancelled because you moved away.",false) end end
+ end
  for userId,pending in pairs(self.Preparing) do
   local player=Players:GetPlayerByUserId(userId);local root=player and player.Character and player.Character:FindFirstChild("HumanoidRootPart")
   if not root or (root.Position-pending.Origin).Magnitude>4 then self.Preparing[userId]=nil;if player then self.Context.Notify(player,"Lift cancelled. Stay beside the item.",false) end end
@@ -117,16 +142,27 @@ function Service:Fence(player)
  local buyer=self.Context.Data:Get(player)
  if not buyer then return false,"Your profile is unavailable." end
  -- One terminal state, one payout. No yields or client-supplied prices.
- self.Sessions[player.UserId]=nil;item.State="Sold";item.HolderUserId=nil;buyer.Currency+=payout
- local victim=self.Context.Data.Profiles[item.OwnerUserId]
- if victim then local at=table.find(victim.Inventory,item.Id);if at then table.remove(victim.Inventory,at) end end
- if session.Incident then session.Incident.Status="Fenced" end
+ self.Sessions[player.UserId]=nil;item.State="Fenced";item.HolderUserId=nil;buyer.Currency+=payout
+ if session.Incident then self.Context.Evidence:Transition(session.Incident,"Fenced","A matching possession appeared at the pawn counter.") end
  local model=self.Context.Items.Models[item.Id];if model then model:Destroy();self.Context.Items.Models[item.Id]=nil end
- self.Context.Items.Items[item.Id]=nil;self:RestoreMovement(session)
+ self:RestoreMovement(session)
+ local owner=Players:GetPlayerByUserId(item.OwnerUserId);if owner then self.Context.Notify(owner,"The pawn counter has a possession matching your case. Visit to reclaim it.",true);self.Context.Sync(owner) end
  return true,"Sold for $"..payout..". The paperwork is… somewhere."
+end
+function Service:Reclaim(player,id)
+ local item=self.Context.Items.Items[id]
+ if not item or item.OwnerUserId~=player.UserId or item.State~="Fenced" then return false,"No matching property is waiting for you." end
+ if not self.Context.Economy:Near(player,"PawnShop") then return false,"Visit the pawn counter to identify your property." end
+ local profile=self.Context.Data:Get(player)
+ if not profile then return false,"Your profile is unavailable." end
+ -- Preserve the original ID and prevent repeated fence/reclaim currency farming.
+ item.State="Stored";item.HouseId=nil;item.Slot=nil;item.RecoveryProtected=true
+ for _,incident in ipairs(profile.Incidents) do if incident.ItemId==id and incident.Status=="Fenced" then self.Context.Evidence:Transition(incident,"Recovered","The homeowner reclaimed the original possession at the pawn counter.") end end
+ return true,"Reclaimed. This item is protected from theft for the rest of the playtest."
 end
 function Service:Release(player)
  self.Preparing[player.UserId]=nil
+ self.Breaching[player.UserId]=nil
  local own=self.Sessions[player.UserId];if own then self:Return(own,"Carry ended on disconnect.") end
  for _,s in pairs(self.Sessions) do if s.Item.OwnerUserId==player.UserId then self:Return(s,"The owner left. The item returned safely.") end end
 end

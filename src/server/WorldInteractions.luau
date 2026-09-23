@@ -12,7 +12,7 @@ function World.Install()
  prompt(world.Shops.PawnShop.Counter,"Pawn","Sell items","Totally Legal Pawn Shop")
  for _,house in ipairs(world.Houses:GetChildren()) do
   for _,slot in ipairs(house.DisplaySlots:GetChildren()) do prompt(slot,"Place","Place furniture","Display spot "..slot:GetAttribute("Slot")) end
-  house.Arrival.CFrame=house.Arrival.CFrame*CFrame.Angles(0,math.pi,0)
+  house.Arrival.CFrame=house.Foundation.CFrame*CFrame.new(0,3.5,-24)*CFrame.Angles(0,math.pi,0)
  end
  local display=world.Shops.GeneralStore:FindFirstChild("CatalogDisplay")
  if not display then

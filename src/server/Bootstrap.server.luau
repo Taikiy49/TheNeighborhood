@@ -66,9 +66,10 @@ for _,player in ipairs(Players:GetPlayers()) do task.spawn(added,player) end
 local lastSync={}
 remotes.Request.OnServerEvent:Connect(function(player,action,id,argument)
     if type(action)~="string" or #action>24 then return end
-    local now=os.clock(); if now-(lastSync[player] or 0)<1 then return end
+    local now=os.clock(); if now-(lastSync[player] or 0)<0.3 then context.Notify(player,"Please wait a moment before another action.",false);return end
     lastSync[player]=now
     if action=="Sync" then context.Sync(player);return end
+    if not Data:Get(player) then return end
     if type(id)~="string" or #id>80 then return end
     local ok,message=false,"Unavailable action."
     if action=="Buy" then ok,message=Economy:Buy(player,id)
@@ -76,6 +77,8 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument)
     elseif action=="Place" then ok,message=Items:Place(player,id,argument)
     elseif action=="Steal" then ok,message=Robbery:Begin(player,id)
     elseif action=="Fence" then ok,message=Robbery:Fence(player)
+    elseif action=="Reclaim" then ok,message=Robbery:Reclaim(player,id)
+    elseif action=="Breach" then ok,message=Robbery:Breach(player,id)
     elseif action=="Recover" then
         local item=Items.Items[id];local model=Items.Models[id]
         if item and model then
@@ -83,7 +86,7 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument)
             if valid then ok,message=Robbery:Recover(player,item) else message=reason end
         end
     elseif action=="Case" then
-        for _,incident in ipairs(Data:Get(player).Incidents) do if incident.Id==id then incident.Status=incident.Status=="Missing" and "Investigating" or incident.Status;ok=true;message="Case marked for investigation.";break end end
+        for _,incident in ipairs(Data:Get(player).Incidents) do if incident.Id==id then if incident.Status=="Missing" then Evidence:Transition(incident,"Investigating","The homeowner opened an investigation.") end;ok=true;message="Case reviewed.";break end end
     elseif action=="Store" then
         local item=Items.Items[id];local model=Items.Models[id]
         if item and model then

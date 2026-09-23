@@ -9,7 +9,7 @@ function Polish.Install()
   local floor=house.Foundation;local base=floor.CFrame*CFrame.new(0,-0.5,0)
   local n=tonumber(house.Name:match("%d+"));local height=5+(n%3)
   for _,z in ipairs({-12.6,12.6})do for _,side in ipairs({-1,1})do
-   local wedge=Instance.new("WedgePart");wedge.Name="Gable";wedge.Size=Vector3.new(0.65,height,15);wedge.CFrame=base*CFrame.new(side*7.5,12+height/2,z)*CFrame.Angles(0,side*math.pi/2,0);wedge.Color=house.BackWall.Color;wedge.Anchored=true;wedge.Parent=house
+   local wedge=Instance.new("WedgePart");wedge.Name="Gable";wedge.Size=Vector3.new(0.65,height,15);wedge.CFrame=base*CFrame.new(side*7.5,12+height/2,z)*CFrame.Angles(0,-side*math.pi/2,0);wedge.Color=house.BackWall.Color;wedge.Anchored=true;wedge.Parent=house
   end end
   local camera=part(house,"SecurityCamera",Vector3.new(0.8,0.7,1.4),base*CFrame.new(10,9,10)*CFrame.Angles(0,0,0),Color3.fromRGB(53,64,64))
   camera.CFrame=CFrame.lookAt(camera.Position,(base*CFrame.new(0,2,-4)).Position)

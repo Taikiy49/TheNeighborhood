@@ -21,7 +21,7 @@ function Service:Render(item,cf)
  local model=Factory.Create(item.DefinitionId);model.Name=item.Id;model:SetAttribute("ItemId",item.Id);model:SetAttribute("DefinitionId",item.DefinitionId)
  model:PivotTo(cf);model.Parent=workspace.Neighborhood.Runtime;self.Models[item.Id]=model
  local root=model.PrimaryPart;root:SetAttribute("ItemId",item.Id);root:SetAttribute("Action","Item")
- local p=Instance.new("ProximityPrompt");p.ActionText="Inspect / interact";p.ObjectText=Defs[item.DefinitionId].Name;p.MaxActivationDistance=10;p.RequiresLineOfSight=false;p:SetAttribute("Action","Item");p.Parent=root
+ local p=Instance.new("ProximityPrompt");p.Style=Enum.ProximityPromptStyle.Custom;p.ActionText="Inspect / interact";p.ObjectText=Defs[item.DefinitionId].Name;p.MaxActivationDistance=10;p.RequiresLineOfSight=false;p:SetAttribute("Action","Item");p.Parent=root
  return model
 end
 function Service:Place(player,id,slotNumber)
@@ -30,8 +30,9 @@ function Service:Place(player,id,slotNumber)
  if not house or type(slotNumber)~="number" or slotNumber%1~=0 or slotNumber<1 or slotNumber>6 then return false,"Choose a display spot." end
  local slot=house.Model.DisplaySlots:FindFirstChild("Slot"..slotNumber)
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
- if not root or (root.Position-slot.Position).Magnitude>14 then return false,"Stand near that display spot." end
- for _,other in pairs(self.Items) do if other.HouseId==house.Model.Name and other.Slot==slotNumber and other.State=="Displayed" then return false,"That spot is occupied." end end
+ local humanoid=player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+ if not root or not humanoid or humanoid.Health<=0 or (root.Position-slot.Position).Magnitude>14 then return false,"Stand near that display spot." end
+ for _,other in pairs(self.Items) do if other.HouseId==house.Model.Name and other.Slot==slotNumber and (other.State=="Displayed" or other.State=="Carried" or other.State=="Escaped") then return false,"That spot is occupied or reserved for a missing possession." end end
  item.State="Displayed";item.HouseId=house.Model.Name;item.Slot=slotNumber
  self:Render(item,slot.CFrame*CFrame.new(0,0.15,0))
  return true,"Displayed "..Defs[item.DefinitionId].Name.."."

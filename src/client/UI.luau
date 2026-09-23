@@ -15,6 +15,7 @@ function UI.Label(parent,text,size,pos,fontSize,color)
 end
 function UI.Button(parent,text,size,pos,callback)
     local button=UI.New("TextButton",{Size=size,Position=pos,BackgroundColor3=Theme.Primary,TextColor3=Theme.Surface,Text=text,Font=Theme.Body,TextSize=Theme.BodySize,BorderSizePixel=0,AutoButtonColor=true,Selectable=true},parent)
+    button.Name=text:gsub("%W","").."Button"
     UI.New("UICorner",{CornerRadius=UDim.new(0,Theme.Radius)},button)
     button.Activated:Connect(callback); return button
 end

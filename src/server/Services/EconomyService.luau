@@ -4,7 +4,8 @@ local Service={}
 function Service:Init(context) self.Context=context end
 function Service:Near(player,shopName)
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
- return root and (root.Position-workspace.Neighborhood.Shops[shopName].Counter.Position).Magnitude<14
+ local humanoid=player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+ return root and humanoid and humanoid.Health>0 and (root.Position-workspace.Neighborhood.Shops[shopName].Counter.Position).Magnitude<14
 end
 function Service:Buy(player,id)
  local def=Defs[id];local data=self.Context.Data:Get(player)

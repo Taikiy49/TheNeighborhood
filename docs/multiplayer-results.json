@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "result": {
+    "Players": [
+      {
+        "House": "House01",
+        "Name": "Player1",
+        "UserId": -1
+      },
+      {
+        "House": "House02",
+        "Name": "Player2",
+        "UserId": -2
+      }
+    ],
+    "DataStoreAccess": {
+      "Allowed": false,
+      "Result": "502: API Services rejected request with error. Error code: 7 Reason: Studio access to APIs is not allowed."
+    },
+    "Errors": [
+      "DataStoreService: StudioAccessToApisNotAllowed: Studio access to APIs is not allowed. API: GetAsync, Data Store: TheNeighborhood_DevelopmentProbe_v1"
+    ],
+    "Verified": [
+      "Two real clients connected",
+      "Distinct houses assigned",
+      "Player1 opened their own door",
+      "Player2 opened their own door",
+      "Visitor lock mutation rejected",
+      "Malformed interaction rejected",
+      "Purchase, placement, storage and sale lifecycle",
+      "Invalid item, insufficient funds, foreign ownership and duplicate sale rejected",
+      "Timed lock breach; protection and movement cancellation; owner reset",
+      "Golden Toilet theft, physical weld, weight penalty and owner recovery",
+      "Beginner protection, concurrent theft and premature fence rejection",
+      "Structured incident evidence without culprit user ID",
+      "Heavy-item character walked through the door and escaped",
+      "Fence payout exactly $2900; duplicate fence rejected",
+      "Original item reclaimed; foreign, remote, duplicate and repeat-farming requests rejected; three incident transitions retained",
+      "Disconnect cleanup returns carried property and restores movement",
+      "Teleport during carry returns property with no payout",
+      "Actual client disconnect releases plot and returns carried possession"
+    ],
+    "Passed": true
+  }
+}

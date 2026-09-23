@@ -39,11 +39,12 @@ function Service:DoorAction(player, target, action)
     if action == "Lock" then
         if house.Owner ~= player.UserId then return false,"Only the homeowner can change this lock." end
         house.Locked = not house.Locked
+        house.CompromisedUntil=nil
         if house.Locked then self:SetDoor(house,false) end
         house.Model:SetAttribute("Locked",house.Locked)
         return true, house.Locked and "Front door locked." or "Front door unlocked."
     end
-    if house.Locked and house.Owner ~= player.UserId then return false,"Locked. Ring the doorbell to visit." end
+    if house.Locked and house.Owner ~= player.UserId and (house.CompromisedUntil or 0)<os.clock() then self.Context.Open(player,"Breach",house.Model.Name);return true end
     self:SetDoor(house,not house.Open)
     return true, house.Open and "Door opened." or "Door closed."
 end
@@ -51,6 +52,7 @@ function Service:Release(player)
     local house = self.ByPlayer[player.UserId]
     if not house then return end
     self:SetDoor(house,false); house.Owner=nil; house.Locked=false
+    house.CompromisedUntil=nil;house.Model:SetAttribute("ProtectedUntil",0)
     house.Model:SetAttribute("OwnerUserId",0); house.Model:SetAttribute("Locked",false)
     house.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text = house.Model:GetAttribute("Address") .. "\nAvailable"
     self.ByPlayer[player.UserId]=nil
