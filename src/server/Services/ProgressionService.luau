@@ -7,6 +7,8 @@ local achievements={
  {Id="Detective",Event="Solved",Count=1,Title="Case closed"},
  {Id="Recovery",Event="Recovery",Count=1,Title="Back where it belongs"},
  {Id="GoldenGetaway",Event="GoldenEscape",Count=1,Title="Royal relocation"},
+ {Id="GnomeTrail",Event="TrailComplete",Count=1,Title="Gnome where to look"},
+ {Id="CommunitySpirit",Event="CommunityEvent",Count=3,Title="Part of the neighborhood"},
 }
 function Service:Init(context)self.Context=context;game.Players.PlayerRemoving:Connect(function(p)self.Last[p.UserId]=nil end)end
 function Service:Record(player,event)

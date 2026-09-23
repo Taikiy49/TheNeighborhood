@@ -9,11 +9,14 @@ function Service:Init(context)
  end)
 end
 function Service:Eligible(player,item)
+ if player:GetAttribute("DeliveryAddress") then return false,"Deliver or cancel your parcel before lifting a possession."end
  if not item or item.State~="Displayed" or item.OwnerUserId==player.UserId then return false,"Choose a neighbor's displayed possession." end
  if item.RecoveryProtected then return false,"Recovered property is protected for the rest of this playtest." end
  if self.Sessions[player.UserId] or self.Preparing[player.UserId] or self.Breaching[player.UserId] then return false,"Finish your current action first." end
  local house=self.Context.Houses.ById[item.HouseId]
  if not house or house.Owner~=item.OwnerUserId then return false,"This property is unavailable." end
+ local owner=Players:GetPlayerByUserId(house.Owner)
+ if not owner or not self.Context.Data:CanAct(owner)then return false,"That neighbor is leaving; their home is protected."end
  if (house.Model:GetAttribute("ProtectedUntil") or 0)>os.time() then return false,"This neighbor has moving-in protection. Come back later." end
  if (self.Cooldowns[item.OwnerUserId] or 0)>os.time() then return false,"This neighbor is protected after a recent incident." end
  local model=self.Context.Items.Models[item.Id]
@@ -27,6 +30,8 @@ end
 function Service:Breach(player,id)
  local house=self.Context.Houses.ById[id]
  if not house or not house.Owner or house.Owner==player.UserId or not house.Locked then return false,"Choose a neighbor's locked front door." end
+ local activeOwner=Players:GetPlayerByUserId(house.Owner)
+ if not activeOwner or not self.Context.Data:CanAct(activeOwner)then return false,"That neighbor is leaving; their home is protected."end
  if self.Sessions[player.UserId] or self.Preparing[player.UserId] or self.Breaching[player.UserId] then return false,"Finish your current action first." end
  if (house.Model:GetAttribute("ProtectedUntil") or 0)>os.time() or (self.Cooldowns[house.Owner] or 0)>os.time() then return false,"This neighbor is currently protected." end
  local valid,why=self.Context.Interactions:Validate(player,house.Door);if not valid then return false,why end

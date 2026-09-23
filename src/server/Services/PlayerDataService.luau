@@ -36,6 +36,11 @@ function Service:Load(player)
  return profile
 end
 function Service:Get(player)return self.Profiles[player.UserId]end
+function Service:CanAct(player)
+ local profile=self:Get(player)
+ return player.Parent==Players and profile~=nil and not self.Closing and not profile._Closing and not profile._Released
+end
+function Service:BeginClose(player)local profile=self:Get(player);if profile then profile._Closing=true end end
 function Service:Snapshot(player)
  local profile=self:Get(player);if not profile then return nil end
  local data={};for key in pairs(Schema.Default())do if profile[key]~=nil then data[key]=Schema.Copy(profile[key])end end
@@ -62,7 +67,7 @@ function Service:Save(player,release)
  if not ran then reason=tostring(success);success=false end
  self.Saving[player.UserId]=nil;player:SetAttribute("SaveStatus",success and "Saved" or "Save failed")
  if success then
-  if durable then profile.Currency+=durable.Currency-snapshot.Currency;profile.CreditWatermarks=durable.CreditWatermarks end
+  if durable then profile.Currency+=durable.Currency-snapshot.Currency;profile.CreditWatermarks=durable.CreditWatermarks;profile.CreditTotals=durable.CreditTotals end
   profile._LastSaved=os.clock();if release then profile._Released=true end
   self:FlushOutbox(player);self.Context.Sync(player)
  end
@@ -92,5 +97,5 @@ function Service:Transfer(sourcePlayer,recipient,amount)
  if saved and target then self:Save(target,false)end
  return saved
 end
-function Service:Release(player)self:Save(player,true);self.Profiles[player.UserId]=nil end
+function Service:Release(player)self:BeginClose(player);self:Save(player,true);self.Profiles[player.UserId]=nil end
 return Service

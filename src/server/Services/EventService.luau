@@ -1,4 +1,5 @@
 local Players=game:GetService("Players")
+local Validation=require(game.ReplicatedStorage.Neighborhood.Shared.Validation)
 local Service={Current=nil,Participation={},Offers={}}
 local definitions={
  GarageSale={Title="Garage Sale Day",Description="Maple & Co. has 20% off every household item for the next two minutes."},
@@ -30,7 +31,7 @@ function Service:Start(kind)
  self:Finish();self.Current={Id=game:GetService("HttpService"):GenerateGUID(false),Kind=kind,EndsAt=os.time()+120};self.Participation={};self.Offers={}
  workspace.Neighborhood:SetAttribute("SaleMultiplier",kind=="GarageSale" and 0.8 or 1)
  workspace.Neighborhood:SetAttribute("PowerOutage",kind=="PowerOutage")
- for _,p in ipairs(Players:GetPlayers())do self.Context.Notify(p,definitions[kind].Title.." has started. Open Phone → Community.",true);self.Context.Sync(p)end
+ for _,p in ipairs(Players:GetPlayers())do self.Context.Notify(p,definitions[kind].Title.." has started. Open Phone → Event.",true);self.Context.Sync(p)end
 end
 function Service:Finish()
  self.Current=nil;self.Offers={}
@@ -59,7 +60,7 @@ function Service:Action(player,action,argument)
   if count>=3 and self:Reward(player,"patrol",90)then return true,"Patrol complete. You earned $90."end
   return true,"Mailbox checked. "..math.min(count,3).." / 3 homes visited."
  elseif action=="HighFive" and self.Current.Kind=="BlockParty"then
-  local target=type(argument)=="number" and Players:GetPlayerByUserId(argument)
+  local target=Validation.UserId(argument) and Players:GetPlayerByUserId(argument)
   local targetRoot=target and target.Character and target.Character:FindFirstChild("HumanoidRootPart")
   if not target or target==player or not targetRoot or (root.Position-targetRoot.Position).Magnitude>10 or Vector3.new(root.Position.X,0,root.Position.Z).Magnitude>30 then return false,"Meet that neighbor in Maple Green first."end
   local offered=self.Offers[target.UserId]
@@ -70,7 +71,7 @@ function Service:Action(player,action,argument)
    if paid or otherPaid then self.Context.Notify(target,"High-five! You each earned $20.",true);self.Context.Sync(target);return true,"High-five! You earned $20."end
    return false,"You already celebrated with this neighbor during this party."
   end
-  self.Offers[player.UserId]={Target=target.UserId,Time=os.clock()};self.Context.Notify(target,"A nearby neighbor offered a high-five. Open Phone → Community to return it.",true)
+  self.Offers[player.UserId]={Target=target.UserId,Time=os.clock()};self.Context.Notify(target,"A nearby neighbor offered a high-five. Open Phone → Event to return it.",true)
   return true,"High-five offered. They have 15 seconds to return it."
  end
  return false,"That activity is not part of the current event."

@@ -30,7 +30,7 @@ function Factory.Create(id)
   local tv=id=="Television";piece("Body",Vector3.new(tv and 5 or 3.8,tv and 3.3 or 2.3,tv and 0.6 or 2.5),Vector3.new(0,tv and 2.5 or 1.2,0))
   piece("Screen",Vector3.new(tv and 4.5 or 2.5,tv and 2.8 or 1.6,0.1),Vector3.new(tv and 0 or -0.4,tv and 2.5 or 1.2,tv and -0.36 or -1.3),dark)
   if tv then piece("Stand",Vector3.new(2,0.2,1.8),Vector3.new(0,0.1,0));piece("Stem",Vector3.new(0.5,1,0.5),Vector3.new(0,0.5,0)) end
- elseif id=="GardenGnome" then
+ elseif id=="GardenGnome" or id=="MoonGnome" then
   piece("Body",Vector3.new(1.8,2,1.6),Vector3.new(0,1.2,0),Color3.fromRGB(69,117,158),Enum.PartType.Ball)
   piece("Head",Vector3.new(1.5,1.5,1.5),Vector3.new(0,2.6,0),cream,Enum.PartType.Ball)
   piece("Nose",Vector3.new(0.45,0.45,0.5),Vector3.new(0,2.5,-0.8),cream,Enum.PartType.Ball)

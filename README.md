@@ -25,3 +25,8 @@ Small lifecycle bootstrap; shared configuration/types; server-only player, house
 
 ## Source control
 Local Git repository; no remote configured. Milestones are local checkpoints, not GitHub pushes. Master brief: user-provided roblox_codex.txt, read in full on 2026-09-22. Conversational artifacts are not requirements.
+
+## September 23 expansion
+Physical deliveries, the five-clue gnome trail, historical collections and shelter-aware weather are implemented. See docs/QA-SEPTEMBER23.md for executed tests, fixes and limitations. Additional StudioTestService names: ExplorationAcceptance (2 clients), NetworkAcceptance (2), LifecycleStress (2), DisconnectRaceAcceptance (2), CapacityAcceptance (8). These execute real server/client test sessions; storage fixtures remain isolated.
+
+To inspect parcel/rain/phone UI with a memory profile, enable both NeighborhoodVisualTest and VisualExploration Workspace attributes before normal Play. Clear both afterwards.

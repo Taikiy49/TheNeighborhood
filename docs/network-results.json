@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "result": {
+    "ClientErrors": [],
+    "ServerErrors": [],
+    "Verified": [
+      "Two real clients sent malformed and burst requests through production remotes",
+      "Money, inventory, preferences and permissions unchanged",
+      "Oversized and nonfinite user IDs safely rejected",
+      "Both clients rendered forty outdoor raindrops",
+      "Roofs suppressed rain on both clients",
+      "Reduced-motion suppressed rain on both clients",
+      "Clear weather hid rain without allocating extra drops",
+      "No server or client application errors"
+    ],
+    "Passed": true,
+    "ActualRemoteRequests": 328
+  }
+}

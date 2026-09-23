@@ -48,16 +48,27 @@ function Screens:Resolve(success,requestId)
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
+ self.CurrentView=view;self.CurrentDetail=detail
  self.RowIndex=0
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
  if view=="Shop" then
-  local ids={};for id in pairs(Defs) do table.insert(ids,id) end;table.sort(ids,function(a,b)return Defs[a].Value<Defs[b].Value end)
+  local ids={};for id,def in pairs(Defs) do if not def.DiscoverOnly then table.insert(ids,id)end end;table.sort(ids,function(a,b)return Defs[a].Value<Defs[b].Value end)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
   self.Title.Text="Your phone"
-  for _,entry in ipairs({{"Progress","Settle in and earn achievements"},{"Home","Colors, flooring, security and permissions"},{"Garage","Your keys to Maple Street"},{"Pets","A companion with a nose for visitors"},{"Event","Community activities and rewards"},{"Collection","Track the possessions you've acquired"},{"Neighbors","See who lives nearby"},{"Newspaper","Read real neighborhood stories"},{"Settings","Audio and motion preferences"},{"Cases","Review evidence and investigate"}})do self:Row(entry[1],entry[2],"Open",function()self:Open(entry[1])end)end
+  for _,entry in ipairs({{"Progress","Settle in and earn achievements"},{"Home","Colors, flooring, security and permissions"},{"Garage","Your keys to Maple Street"},{"Pets","A companion with a nose for visitors"},{"Event","Community activities and rewards"},{"Journal","Five tiny notes. One very unusual gnome."},{"Weather","What's blowing through Maple Street"},{"Collection","Remember every possession you've acquired"},{"Neighbors","See who lives nearby"},{"Newspaper","Read real neighborhood stories"},{"Settings","Audio and motion preferences"},{"Cases","Review evidence and investigate"}})do self:Row(entry[1],entry[2],"Open",function()self:Open(entry[1])end)end
+ elseif view=="Journal" then
+  self.Title.Text="The gnome trail"
+  local trail=self.State.Discoveries or {};local found=0
+  for _,clue in ipairs(trail.Entries or {})do if clue.Found then found+=1 end;self:Row(clue.Title,(clue.Found and "Found · " or "Clue · ")..clue.Hint)end
+  self:Row("Moonlight Gnome",trail.Claimed and "Reward claimed. Your collection remembers, even if you sell it." or found.." / 5 notes found. Your progress is saved.",not trail.Claimed and found==5 and "Claim collectible" or nil,function()self.Request("ClaimDiscovery","")end)
+ elseif view=="Weather" then
+  self.Title.Text="Maple forecast"
+  local weather=self.State.Weather or {Title="Looking outside…",Description="Forecast loading."}
+  self:Row(weather.Title,weather.Description)
+  self:Row("A roof over your head","Raindrops disappear under shelter. Reduced motion hides falling rain while keeping the change in lighting.")
  elseif view=="Event" then
   self.Title.Text="Community notice"
   local event=self.State.CommunityEvent or {Title="Quiet on Maple Street",Description="Watch this space."}
@@ -108,6 +119,8 @@ function Screens:Open(view,detail)
   if count==0 then self:Row("No neighbors connected","Permissions can be granted when another player joins.")end
  elseif view=="Progress" then
   self.Title.Text="Make yourself at home"
+  local delivery=game.Players.LocalPlayer:GetAttribute("DeliveryAddress")
+  if delivery then self:Row("Parcel for "..delivery,"Carry the box to the matching mailbox. Cancelling returns it to the depot without a reward.","Cancel delivery",function()self.Request("CancelDelivery","")end)end
   local progress=self.State.Progress or {}
   self:Row("Level "..(progress.Level or 1),(progress.XP or 0).." XP · Reputation "..(progress.Reputation or 0))
   for _,step in ipairs(progress.Checklist or {})do self:Row(step.Done and "Complete" or "Next to try",step.Text)end
@@ -116,7 +129,7 @@ function Screens:Open(view,detail)
   self.Title.Text="Collection book"
   local owned={};for _,item in ipairs(self.State.Inventory or {})do owned[item.DefinitionId]=true end
   local ids={};for id in pairs(Defs)do table.insert(ids,id)end;table.sort(ids)
-  for _,id in ipairs(ids)do local def=Defs[id];self:Row(def.Name,def.Rarity.." · "..(owned[id] and "Owned" or "Not currently owned").." · "..def.Description)end
+  for _,id in ipairs(ids)do local def=Defs[id];local collected=self.State.Collection and self.State.Collection[id]~=nil;self:Row(def.Name,def.Rarity.." · "..(owned[id] and "Owned" or collected and "Previously collected" or "Not discovered").." · "..def.Description)end
  elseif view=="Neighbors" or view=="Accuse" then
   self.Title.Text=view=="Accuse" and "Compare the evidence" or "Your neighbors"
   for _,neighbor in ipairs(self.State.Neighbors or {})do count+=1;self:Row(neighbor.Name,neighbor.Address.." · "..(neighbor.KnownFor or "Settling in").." · Display and security value $"..(neighbor.HouseValue or 0),view=="Accuse" and "Submit accusation" or nil,function()self.Request("Accuse",detail,neighbor.UserId)end)end

@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "result": {
+    "WorldInstancesAfter": 41,
+    "Errors": [],
+    "Passed": true,
+    "WorldInstancesBefore": 41,
+    "Definitions": 10,
+    "Cycles": 100,
+    "Verified": [
+      "One hundred complete acquire/display/store/sell cycles across two owners",
+      "All ten store collectibles rendered and exercised",
+      "Six hundred foreign/duplicate/invalid state transitions rejected",
+      "Original GUIDs unique across every acquisition",
+      "Currency and inventory invariants held after every cycle",
+      "No leaked item models or registry entries"
+    ],
+    "Seed": 941,
+    "InvalidTransitionsRejected": 600
+  }
+}

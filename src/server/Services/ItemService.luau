@@ -16,7 +16,8 @@ function Service:Create(player,definitionId)
  if not Defs[definitionId] then return nil end
  local id=Http:GenerateGUID(false)
  local item={Id=id,DefinitionId=definitionId,OwnerUserId=player.UserId,OriginalOwnerUserId=player.UserId,State="Stored",Provenance={{Kind="Acquired",Time=os.time()}}}
- self.Items[id]=item;table.insert(self.Context.Data:Get(player).Inventory,id);return item
+ local profile=self.Context.Data:Get(player)
+ self.Items[id]=item;table.insert(profile.Inventory,id);profile.Collection[definitionId]=profile.Collection[definitionId] or os.time();return item
 end
 function Service:Owned(player)
  local result={}

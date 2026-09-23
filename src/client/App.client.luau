@@ -47,6 +47,7 @@ remotes.Notification.OnClientEvent:Connect(function(data)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
     Screens.State=state
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
     if state.Settings then player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"
@@ -65,5 +66,6 @@ require(script.Parent.InteractionController).Init(gui)
 require(script.Parent.Feedback).Init()
 require(script.Parent.CarryPose).Init()
 require(script.Parent.VehicleControls)()
+require(script.Parent.WeatherView).Init()
 player:GetAttributeChangedSignal("DeliveryAddress"):Connect(updateHint)
 player:GetAttributeChangedSignal("Carrying"):Connect(updateHint)

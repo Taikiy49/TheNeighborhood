@@ -28,19 +28,19 @@ The user requested all sections, including features originally labeled later or 
 | 22 | DAILY NEIGHBORHOOD EVENTS | Partial: four rotating community events; consent, discount, patrol payout and outage lifecycle tested. |
 | 23 | VEHICLES | Partial: purchasable compact car, recall, paint, server driving and suspension tested; cargo/getaways and expanded vehicles remain. |
 | 24 | PETS | Partial: purchasable path-following dog, stay command and visitor alerts; richer pet animation/counterplay remain. |
-| 25 | COLLECTIBLES | Partial: ten authored collectibles implemented; expanded content and acquisition paths remain. |
+| 25 | COLLECTIBLES | Partial: ten shop collectibles plus exclusive discovery-earned Moonlight Gnome; expanded content remains. |
 | 26 | ITEM SERIAL NUMBERS | Partial: unique persistent GUIDs; player-facing numbered serial presentation remains. |
-| 27 | PROGRESSION | Partial: XP, levels, checklist and six achievements; complete long-term progression remains. |
+| 27 | PROGRESSION | Partial: XP, levels, checklist and eight achievements; complete long-term progression remains. |
 | 28 | MONETIZATION PHILOSOPHY | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 29 | VIRAL MOMENT DESIGN | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 30 | FIRST SESSION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 31 | RETENTION WITHOUT CHEAP MANIPULATION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 32 | THE MORNING NEWSPAPER | Partial: honest offline recap and current-server headlines; physical newspaper and persistent publication history remain. |
 | 33 | THE NEIGHBORHOOD FEED | Implemented current-server feed of real events; broader history remains. |
-| 34 | SECRETS | Open: discoverable secrets are not implemented. |
-| 35 | NEIGHBORHOOD LEGENDS | Open: neighborhood legends are not implemented. |
+| 34 | SECRETS | Partial: five physical gnome clues, saved discovery journal and replay-safe exclusive reward tested; broader secrets remain. |
+| 35 | NEIGHBORHOOD LEGENDS | Partial: authored gnome trail and Moonlight Gnome; evolving neighborhood legends remain. |
 | 36 | PRANK SYSTEM | Partial: physical flamingo prank, cleanup, cooldown, beginner protection and opt-out tested; other pranks remain. |
-| 37 | DELIVERY SYSTEM | Partial: server-validated delivery jobs and rewards; physical parcel/truck gameplay remains. |
+| 37 | DELIVERY SYSTEM | Partial: welded parcel/carry pose, physical walking delivery, cancellation, death and teleport checks tested; delivery trucks remain. |
 | 38 | NPC NEIGHBORS | Partial: three short authored guide NPCs; moving NPC neighbors and schedules remain. |
 | 39 | RUMOR SYSTEM | Open: dynamic rumor system is not implemented. |
 | 40 | NEIGHBORHOOD WATCH | Partial: three-mailbox patrol event tested; intervention/watch organization remains. |
@@ -52,11 +52,11 @@ The user requested all sections, including features originally labeled later or 
 | 46 | CAMERA | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 47 | AUDIO DIRECTION | Partial: feedback sounds and alarm effects; full ambience/audio production remains. |
 | 48 | ANIMATION DIRECTION | Partial: carry poses support Motor6D and AnimationConstraint; richer locomotion and interaction animation remain. |
-| 49 | PERFORMANCE | Partial: eight-client functional capacity test; expanded car/pet performance measurements in progress; mobile benchmark missing. |
+| 49 | PERFORMANCE | Partial: eight real Studio clients with cars, pets and rain; frame spikes remain. Production/mobile benchmarks missing (capacity-rain-results.json). |
 | 50 | SERVER AUTHORITY | Implemented server-owned action/state logic; ongoing exploit review required for every expansion. |
-| 51 | REMOTE SECURITY | Partial: malformed, remote, foreign, duplicate and NaN checks tested; exhaustive exploit resistance is not claimed. |
+| 51 | REMOTE SECURITY | Partial: 328 actual malformed/burst remote probes, including nonfinite and oversized IDs; no exhaustive security claim. |
 | 52 | DATA ARCHITECTURE | Implemented current schema, item identity, leases, development/production store separation and migrations. |
-| 53 | DATASTORE SAFETY | Verified baseline: ten injected storage groups, five actual DataStore groups, and normal shutdown/rejoin; see evidence files. |
+| 53 | DATASTORE SAFETY | Verified current paths: 12 injected storage groups, six actual DataStore groups, shutdown/rejoin and committed-save lost-acknowledgment recovery. |
 | 54 | PROJECT ARCHITECTURE | Implemented server services, shared definitions/config and reusable client modules. |
 | 55 | SERVICE DESIGN | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 56 | CONFIGURATION-DRIVEN CONTENT | Partial: definitions/config centralized; remaining hardcoded tuning values need consolidation. |
@@ -72,14 +72,14 @@ The user requested all sections, including features originally labeled later or 
 | 66 | 3D ASSET PHILOSOPHY | Implemented authored simple readable models; ongoing art review. |
 | 67 | LIGHTING | Partial: warm lighting, lamps and interiors; broader device/color grading review remains. |
 | 68 | DAY / NIGHT | Implemented day/night cycle; pacing/polish remains. |
-| 69 | WEATHER — LATER | Open: weather is not implemented. |
+| 69 | WEATHER — LATER | Partial: rotating clear/overcast/rain, shelter detection, reduced-motion option and forecast tested; broader weather polish remains. |
 | 70 | ACCESSIBILITY | Partial: reduced motion, audio toggle and scalable UI; complete accessibility/device review remains. |
 | 71 | PLAYER SAFETY / SOCIAL DESIGN | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 72 | GRIEFING PREVENTION | Partial: protection, cooldowns, opt-outs, private accusations and car/avatar collision separation tested. |
 | 73 | NEW PLAYER PROTECTION | Implemented and tested: moving-in protection denies theft, breach and pranks. |
 | 74 | TRADING | Open: durable consensual player trading is not implemented. |
 | 75 | ITEM PROVENANCE | Partial: persistent original identity and bounded lifecycle provenance; transfer/trading remains. |
-| 76 | COLLECTION BOOK | Partial: current-owned collection book; historical acquisition tracking remains. |
+| 76 | COLLECTION BOOK | Implemented current catalog historical acquisition tracking, including sold items and discovery reward; snapshot/reload verified. |
 | 77 | SEASONAL CONTENT | Open: seasonal content is not implemented. |
 | 78 | LIVE OPS | Open: live operations configuration and release workflow remain. |
 | 79 | CONTENT FACTORY | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
@@ -87,11 +87,11 @@ The user requested all sections, including features originally labeled later or 
 | 81 | DO NOT OVERENGINEER | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 82 | ERROR HANDLING | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 83 | DEVELOPMENT LOGGING | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
-| 84 | TESTING STRATEGY | Ongoing: real two/eight-client tests, storage fault injection, rejoin and keyboard/mouse checks; more edge cases remain. |
-| 85 | MULTIPLAYER TESTING | Verified baseline and expanded two-client gameplay plus eight-client housing; latest evidence files identify scope. |
-| 86 | DISCONNECT BEHAVIOR | Verified: real client departure returns carried property and releases house; shutdown saving tested. |
-| 87 | DUPLICATION PREVENTION | Verified tested paths: duplicate purchase/sale/fence/reclaim, concurrent theft, settlement replay and rejoin identity. |
-| 88 | EXPLOIT RESISTANCE | Partial: server guards and exploit probes implemented; new systems require continuing review. |
+| 84 | TESTING STRATEGY | Ongoing: two/eight-client suites, 100 lifecycle cycles, 600 rejected invalid transitions, 328 remote probes, storage faults, visual/input checks; real-device/human/soak coverage remains. |
+| 85 | MULTIPLAYER TESTING | Verified current two-client gameplay and eight-client cars/pets/rain capacity. Local frame spikes remain. |
+| 86 | DISCONNECT BEHAVIOR | Verified actual departure with four-second delayed save: closing home protected, carry restored, plot released and delayed callbacks cancelled; shutdown/rejoin tested. |
+| 87 | DUPLICATION PREVENTION | Verified tested paths: 100 full item lifecycles, 600 invalid transitions, discovery reward replay, fence/reclaim and credit replay/lost acknowledgments. |
+| 88 | EXPLOIT RESISTANCE | Partial: actual malformed remote probes and service/state fuzzing passed; bounded coverage, ongoing review required. |
 | 89 | UI ARCHITECTURE | Implemented reusable UI primitives, responsive automatic rows and matched request responses. |
 | 90 | HUD | Implemented address/currency, carry/drop and honest save status; device polish remains. |
 | 91 | THE PHONE | Partial: functional phone screens for existing systems; missing systems have no fake buttons. |

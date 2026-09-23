@@ -14,4 +14,11 @@ return table.freeze({
     MaxInventory = 40,
     MaxIncidents = 12,
     SessionOnly = false,
+    DeliveryReward = 180,
+    DeliveryMinimumSeconds = 8,
+    DeliveryCooldown = 20,
+    DeliveryTravelSpeed = 45,
+    DiscoveryCount = 5,
+    WeatherClearSeconds = 210,
+    WeatherRainSeconds = 75,
 })

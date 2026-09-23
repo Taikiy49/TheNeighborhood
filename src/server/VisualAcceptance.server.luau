@@ -9,6 +9,14 @@ local deadline=os.clock()+40
 repeat task.wait(0.2)until workspace:GetAttribute("NeighborhoodReady") and Players:GetPlayers()[1] and Houses.ByPlayer[Players:GetPlayers()[1].UserId] or os.clock()>deadline
 local player=assert(Players:GetPlayers()[1],"Visual fixture player unavailable")
 assert(Data.SessionOnly,"Visual fixture must never write persistent profiles")
+if workspace:GetAttribute("VisualExploration")==true then
+ repeat task.wait(0.2)until player.Character and player.Character:FindFirstChild("HumanoidRootPart") or os.clock()>deadline
+ require(script.Parent.Services.WeatherService):Set("Rain")
+ player.Character:PivotTo(workspace.Neighborhood.Map.CommunityBoard.CFrame*CFrame.new(0,-1,-5))
+ local ok,why=require(script.Parent.Services.DeliveryService):Start(player);assert(ok,why)
+ Data.Context.Sync(player)
+ return
+end
 Data:Get(player).Currency=10000
 assert(Vehicles:Action(player,"Buy"));assert(Pets:Action(player,"Adopt"))
 local car=assert(Vehicles.Cars[player.UserId])

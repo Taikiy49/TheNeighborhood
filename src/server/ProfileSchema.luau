@@ -3,7 +3,7 @@ local Definitions=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinit
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Currency=Config.StartingCurrency,Inventory={},Items={},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -26,13 +26,17 @@ function Schema.Migrate(raw,userId)
  assert(p.Pets.Dog==nil or type(p.Pets.Dog)=="boolean","Corrupt pet ownership")
  assert(p.Pets.Mode==nil or p.Pets.Mode=="Follow" or p.Pets.Mode=="Stay","Corrupt pet mode")
  assert(type(p.EventClaims)=="table" and #p.EventClaims<=32,"Corrupt event receipts")
+ assert(type(p.Collection)=="table" and type(p.Discoveries)=="table" and type(p.DiscoveryRewardClaimed)=="boolean","Corrupt collection progress")
+ for id,firstSeen in pairs(p.Collection)do assert(Definitions[id] and integer(firstSeen,0,100000000000),"Corrupt collected item")end
+ for id,found in pairs(p.Discoveries)do assert(type(id)=="string" and id:match("^Gnome[1-5]$") and found==true,"Corrupt discovery progress")end
  for _,receipt in ipairs(p.EventClaims)do assert(type(receipt)=="string" and #receipt<160,"Corrupt event receipt")end
  assert(integer(p.XP,0,1000000000) and integer(p.Reputation,-10000,10000),"Corrupt progression")
  assert(type(p.TutorialState)=="string" and #p.TutorialState<64,"Corrupt tutorial")
  assert(type(p.Statistics)=="table" and type(p.Achievements)=="table","Corrupt statistics")
  for key,value in pairs(p.Statistics)do assert(type(key)=="string" and integer(value,0,1000000000),"Corrupt statistic counter")end
  assert(type(p.CaseTruth)=="table","Corrupt case ledger")
- assert(type(p.Outbox)=="table" and type(p.CreditWatermarks)=="table" and integer(p.NextTransfer,0,1000000000),"Corrupt settlement ledger")
+ assert(type(p.Outbox)=="table" and type(p.CreditWatermarks)=="table" and type(p.CreditTotals)=="table" and integer(p.NextTransfer,0,1000000000),"Corrupt settlement ledger")
+ for source,total in pairs(p.CreditTotals)do assert(type(source)=="string" and integer(total,0,100000000000000),"Corrupt credit total")end
  for _,entry in ipairs(p.Outbox)do assert(type(entry)=="table" and integer(entry.Recipient,-100000000000,100000000000) and integer(entry.Sequence,1,p.NextTransfer) and integer(entry.Amount,1,1000000000),"Corrupt outgoing settlement")end
  for source,sequence in pairs(p.CreditWatermarks)do assert(type(source)=="string" and integer(sequence,1,1000000000),"Corrupt settlement receipt")end
  for key,value in pairs(p.CaseTruth)do assert(type(key)=="string" and integer(value,-100000000000,100000000000),"Corrupt case identity")end
@@ -45,6 +49,7 @@ function Schema.Migrate(raw,userId)
   assert(item.State=="Stored" or item.State=="Displayed" or item.State=="Fenced","Corrupt item state")
   if item.State=="Displayed"then assert(integer(item.Slot,1,6) and not slots[item.Slot],"Corrupt display placement");slots[item.Slot]=true end
   seen[item.Id]=true;table.insert(p.Inventory,item.Id)
+  p.Collection[item.DefinitionId]=p.Collection[item.DefinitionId] or 0
  end
  for _,incident in ipairs(p.Incidents)do assert(type(incident)=="table" and type(incident.Id)=="string" and type(incident.Evidence)=="table" and type(incident.Status)=="string","Corrupt incident")end
  p.Version=Schema.Version;return p

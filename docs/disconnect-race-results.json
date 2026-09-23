@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "result": {
+    "InjectedSaveDelaySeconds": 4,
+    "Verified": [
+      "Actual owner disconnected while another player carried their item",
+      "Carry returned and movement restored before delayed saving",
+      "Closing profile rejected interactions",
+      "New theft and breach rejected during the save window",
+      "Profile, plot and possession cleaned after save",
+      "Delayed callbacks did not resurrect the theft"
+    ],
+    "Passed": true
+  }
+}

@@ -18,6 +18,7 @@ function Service:Validate(player, target)
     return true
 end
 function Service:Request(player, target, action)
+    if not self.Context.Data:CanAct(player) then return false,"Your profile is loading or closing."end
     local now = os.clock()
     if now-(self.Last[player.UserId] or 0)<Config.ActionInterval then return false,"Slow down a moment." end
     self.Last[player.UserId] = now

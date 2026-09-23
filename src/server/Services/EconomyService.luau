@@ -10,6 +10,7 @@ end
 function Service:Buy(player,id)
  local def=Defs[id];local data=self.Context.Data:Get(player)
  if not def or not data then return false,"Unknown item." end
+ if def.DiscoverOnly then return false,"Follow the gnome trail in your journal to earn this collectible."end
  if not self:Near(player,"GeneralStore") then return false,"Visit Maple & Co. to buy this." end
  if #data.Inventory>=Config.MaxInventory then return false,"Your inventory is full." end
  local price=math.floor(def.Value*math.clamp(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1,0.5,1))

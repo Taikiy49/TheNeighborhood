@@ -31,17 +31,25 @@ local ok,result=pcall(function()
   assert(Vehicles.Cars[player.UserId],"Car could not spawn at capacity")
   assert(Pets:Action(player,"Adopt"));assert(Data:Get(player).Currency==0,"Expansion purchase debit incorrect")
   local house=Houses.ByPlayer[player.UserId]
-  player.Character:PivotTo(house.Model.Foundation.CFrame*CFrame.new(-4,3,-16))
+  player.Character:PivotTo(house.Model.Foundation.CFrame*CFrame.new(-12,3,-25))
  end
+ local probe=Instance.new("RemoteEvent");probe.Name="NetworkProbe";probe.Parent=game.ReplicatedStorage.Neighborhood
+ local reports={};probe.OnServerEvent:Connect(function(player,phase,payload)if phase=="capacity"then reports[player.UserId]=payload end end)
+ workspace:SetAttribute("AdversarialNetworkTest",true)
+ require(script.Parent.Services.WeatherService):Set("Rain")
  task.wait(6)
+ for _,player in ipairs(Players:GetPlayers())do probe:FireClient(player,"capacity")end
  local performance=sample(8)
  for _,player in ipairs(Players:GetPlayers())do
   local car=Vehicles.Cars[player.UserId];assert(car and car.Body.Position.Y>-2 and car.Body.Position.Y<10,"Parked car suspension unstable")
   assert(Pets.Pets[player.UserId] and Pets.Pets[player.UserId].Model.Parent,"Pet missing at capacity")
+  local report=reports[player.UserId];assert(report and report.RainParts==40 and report.Visible==40,"Client rain missing at capacity")
+  assert(#report.Errors==0,"Client errors at capacity: "..table.concat(report.Errors,"; "))
  end
  performance.Baseline=baseline;performance.Note="Warm local Studio server alongside eight client processes; not a mobile-device benchmark or a production performance pass."
  local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
  assert(#errors==0,"Application errors at capacity: "..table.concat(errors,"; "))
- return {Passed=true,Players=summary,Performance=performance,Verified={"Eight actual clients connected","Eight distinct owned houses","One starter kit per player","Correct independent currency balances","Eight purchased cars with stable parked suspension","Eight companion pets active","No server application errors"}}
+ probe:Destroy();workspace:SetAttribute("AdversarialNetworkTest",nil)
+ return {Passed=true,Players=summary,Performance=performance,Verified={"Eight actual clients connected","Eight distinct owned houses","One starter kit per player","Correct independent currency balances","Eight purchased cars with stable parked suspension","Eight companion pets active","Eight clients each rendered forty rain streaks","No server or client application errors"}}
 end)
 Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})

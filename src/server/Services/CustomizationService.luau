@@ -1,4 +1,5 @@
 local Service={}
+local Validation=require(game.ReplicatedStorage.Neighborhood.Shared.Validation)
 local colors={Mint=Color3.fromRGB(175,202,185),Peach=Color3.fromRGB(223,178,144),Blue=Color3.fromRGB(154,187,205),Butter=Color3.fromRGB(226,211,157)}
 local floors={Wood={Material=Enum.Material.WoodPlanks,Color=Color3.fromRGB(193,153,104),Price=0},Tile={Material=Enum.Material.Marble,Color=Color3.fromRGB(223,225,210),Price=250},Carpet={Material=Enum.Material.Fabric,Color=Color3.fromRGB(127,153,142),Price=200}}
 function Service:Init(context)self.Context=context end
@@ -31,7 +32,7 @@ function Service:Change(player,kind,id)
 end
 function Service:Permission(player,id,role)
  local target=tonumber(id);local profile=self.Context.Data:Get(player)
- if not profile or not target or target==player.UserId or not game.Players:GetPlayerByUserId(target)then return false,"Choose a connected neighbor."end
+ if not profile or not Validation.UserId(target) or target==player.UserId or not game.Players:GetPlayerByUserId(target)then return false,"Choose a connected neighbor."end
  if role~="Visitor" and role~="Friend" and role~="Roommate"then return false,"Unknown permission level."end
  self:Apply(player);profile.House.Permissions[tostring(target)]=role~="Visitor" and role or nil
  return true,role=="Visitor" and "Special access removed." or role.." access granted. Your possessions remain yours."

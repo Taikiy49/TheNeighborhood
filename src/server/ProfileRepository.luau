@@ -3,7 +3,7 @@ local Http=game:GetService("HttpService")
 local Repository={};Repository.__index=Repository
 local function consumeInbox(data,inbox)
  for source,credit in pairs(inbox or {})do
-  if credit.Sequence>(data.CreditWatermarks[source] or 0)then data.Currency+=credit.Amount;data.CreditWatermarks[source]=credit.Sequence end
+  if credit.Sequence>(data.CreditWatermarks[source] or 0)then data.Currency+=credit.Amount;data.CreditWatermarks[source]=credit.Sequence;data.CreditTotals[source]=(data.CreditTotals[source] or 0)+credit.Amount end
  end
 end
 function Repository.new(store,token,clock,pause)return setmetatable({Store=store,Token=token,Clock=clock or os.time,Pause=pause or task.wait,Lease=120},Repository)end
@@ -34,7 +34,14 @@ function Repository:Save(userId,snapshot,release)
   reason=nil
   if old and old.WriteId==writeId then return old end
   if not old or not old.Session or old.Session.Token~=self.Token or old.Session.Expires<=self.Clock()then reason="Profile session lock was lost";return nil end
-  local outgoing=Schema.Copy(data);consumeInbox(outgoing,old.Inbox)
+  local outgoing=Schema.Copy(data)
+  -- A previous save may have committed a credit even when every acknowledgement was lost.
+  -- Preserve that income while retaining legitimate local spending since the caller's snapshot.
+  for source,total in pairs(old.Data.CreditTotals or {})do
+   local unseen=total-(outgoing.CreditTotals[source] or 0)
+   if unseen>0 then outgoing.Currency+=unseen;outgoing.CreditTotals[source]=total;outgoing.CreditWatermarks[source]=math.max(outgoing.CreditWatermarks[source] or 0,old.Data.CreditWatermarks[source] or 0)end
+  end
+  consumeInbox(outgoing,old.Inbox)
   return {Data=outgoing,Inbox={},Revision=(old.Revision or 0)+1,WriteId=writeId,Session=not release and {Token=self.Token,Expires=self.Clock()+self.Lease} or nil}
  end)end)
  return ok and not reason and record~=nil and record.WriteId==writeId,reason or (not ok and tostring(record)) or nil,ok and record and record.Data or nil

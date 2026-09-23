@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "result": {
+    "Errors": [],
+    "MalformedRequests": 18,
+    "Verified": [
+      "Discovery rejects remote, malformed, forged and premature claims",
+      "Five physical markers yield exactly one original collectible; progress and receipt serialize",
+      "Exclusive collectible cannot be bought; historical collection survives sale",
+      "Full inventory defers trail reward without losing progress; claim succeeds once after freeing space",
+      "Weather lifecycle and replicated forecast agree; invalid weather rejected",
+      "Eighteen malformed service requests rejected without mutation or errors",
+      "Physical parcel carried over an actual path; exact reward, pose cleanup and duplicate rejection",
+      "Voluntary parcel cancellation removes prop without paying",
+      "Immediate teleport-to-mailbox request cancels parcel without paying",
+      "Character death cancels parcel and clears its address"
+    ],
+    "Passed": true,
+    "LiveStorageTests": {
+      "Passed": true,
+      "Verified": [
+        "Actual UpdateAsync profile creation",
+        "Cross-session lock rejection",
+        "Save/reload of currency, XP, original item ID, display slot and lock",
+        "Discovery progress, reward receipt and historical collection survive reload",
+        "Duplicate queued settlement pays once",
+        "Session release"
+      ],
+      "Backend": "Roblox DataStore: isolated GUID-prefixed fixtures",
+      "FixtureRemoved": true
+    }
+  }
+}

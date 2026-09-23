@@ -1,12 +1,13 @@
 local Schema=require(script.Parent.ProfileSchema)
 local Repository=require(script.Parent.ProfileRepository)
 return function()
- local records={};local failures=0;local afterCommit=false;local now=1000;local calls=0
+ local records={};local failures=0;local afterCommit=false;local lostResponses=0;local now=1000;local calls=0
  local store={}
  function store:UpdateAsync(key,callback)
   calls+=1;if failures>0 then failures-=1;error("Injected request failure")end
   local old=records[key] and Schema.Copy(records[key]);local nextValue=callback(old)
   if nextValue then records[key]=Schema.Copy(nextValue)end
+  if lostResponses>0 then lostResponses-=1;error("Injected repeated lost responses after durable commit")end
   if afterCommit then afterCommit=false;error("Injected lost response after commit")end
   return nextValue and Schema.Copy(nextValue) or nil
  end
@@ -42,5 +43,22 @@ return function()
  local saved,_,durable=a:Save(55,recipient,false);assert(saved and durable.Currency==4400,"Active profile did not consume new credit once")
  afterCommit=true;assert(a:EnqueueCredit(55,42,4,75));local savedAgain,_,after=a:Save(55,durable,true);assert(savedAgain and after.Currency==4475,"Lost queue response duplicated payment")
  table.insert(passed,"Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles")
+ local uncertain=assert(a:Load(55));assert(a:EnqueueCredit(55,42,5,125))
+ lostResponses=3;assert(not a:Save(55,uncertain,false),"Expected exhausted lost responses")
+ uncertain.Currency-=25 -- Legitimate local spending after the unacknowledged commit.
+ local retried,_,reconciled=a:Save(55,uncertain,true)
+ assert(retried and reconciled.Currency==4575,"Unacknowledged committed credit or later spending was overwritten")
+ table.insert(passed,"Committed credit survives all retry responses being lost and a later stale-memory save")
+ local random=Random.new(88217);local simulation=assert(a:Load(55));local expected=simulation.Currency
+ for sequence=6,55 do
+  local source=sequence%2==0 and 42 or 99;local amount=random:NextInteger(1,200)
+  assert(a:EnqueueCredit(55,source,sequence,amount));assert(a:EnqueueCredit(55,source,sequence,amount));expected+=amount
+  local spent=random:NextInteger(0,25);simulation.Currency-=spent;expected-=spent
+  if sequence%3==0 then lostResponses=3;assert(not a:Save(55,simulation,false))end
+  local saved,_,nextProfile=a:Save(55,simulation,false);assert(saved and nextProfile.Currency==expected,"Seeded settlement simulation lost money at "..sequence)
+  simulation=nextProfile
+ end
+ assert(a:Save(55,simulation,true));assert(b:Load(55).Currency==expected)
+ table.insert(passed,"Fifty seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements")
  return {Passed=true,Verified=passed,Requests=calls,Backend="Injected storage; not proof of Roblox API access"}
 end
