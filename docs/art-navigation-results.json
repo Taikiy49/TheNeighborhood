@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "result": {
+    "SuccessfulNavigationRoutes": 23,
+    "Errors": [],
+    "Verified": [
+      "All decorative geometry is anchored and excluded from gameplay raycasts, touch and collision",
+      "Eight delivery routes and eight front-door routes remain navigable",
+      "All five gnome clues and both stores remain reachable",
+      "Six item display slots retained in every house",
+      "Scene stays within the explicit decoration budget"
+    ],
+    "DecorativeParts": 694,
+    "Passed": true
+  }
+}

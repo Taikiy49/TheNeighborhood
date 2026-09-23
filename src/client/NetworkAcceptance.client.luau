@@ -27,7 +27,8 @@ local function begin()
    local rain=workspace.CurrentCamera:FindFirstChild("LocalRain");local visible=0;local total=0
    if rain then for _,part in ipairs(rain:GetChildren())do if part:IsA("BasePart")then total+=1;if part.Transparency<1 then visible+=1 end end end end
    local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
-   probe:FireServer(phase,{RainParts=total,Visible=visible,Errors=errors,Weather=workspace.Neighborhood:GetAttribute("Weather"),ReducedMotion=player:GetAttribute("ReducedMotion")})
+   local apps=0;for _,gui in ipairs(player.PlayerGui:GetChildren())do if gui.Name=="NeighborhoodApp"then apps+=1 end end
+   probe:FireServer(phase,{RainParts=total,Visible=visible,Errors=errors,Weather=workspace.Neighborhood:GetAttribute("Weather"),ReducedMotion=player:GetAttribute("ReducedMotion"),AppCount=apps})
   end
  end)
  probe:FireServer("ready",{})

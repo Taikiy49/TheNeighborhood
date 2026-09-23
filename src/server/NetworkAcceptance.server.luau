@@ -53,9 +53,25 @@ local function run()
   local r=reports[player.UserId].clear;assert(r.Visible==0 and r.RainParts==40 and r.Weather=="Clear","Rain did not reset cleanly")
   for _,message in ipairs(r.Errors)do table.insert(clientErrors,message)end
  end
+ Weather:Set("Rain")
+ for round=1,2 do
+  for index,player in ipairs(players)do
+   local originalProfile=Data:Get(player);local inventory=originalProfile.Inventory[1];local currency=originalProfile.Currency;local home=Houses.ByPlayer[player.UserId]
+   player:LoadCharacterAsync();task.wait(1)
+   assert(Data:Get(player)==originalProfile and originalProfile.Inventory[1]==inventory and originalProfile.Currency==currency and Houses.ByPlayer[player.UserId]==home,"Respawn changed possessions or home")
+   player.Character:PivotTo(CFrame.new(0,4,60+index*8));player.Character.HumanoidRootPart:SetNetworkOwner(nil)
+   probe:FireClient(player,"respawn"..round)
+  end
+  awaitPhase("respawn"..round,20)
+  for _,player in ipairs(players)do
+   local r=reports[player.UserId]["respawn"..round]
+   assert(r.Visible==40 and r.RainParts==40 and r.AppCount==1,"Respawn duplicated UI or lost weather: "..game:GetService("HttpService"):JSONEncode(r))
+   for _,message in ipairs(r.Errors)do table.insert(clientErrors,message)end
+  end
+ end
  local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
  assert(#errors==0 and #clientErrors==0,"Network/client errors: "..table.concat(errors,"; ")..table.concat(clientErrors,"; "))
  probe:Destroy();workspace:SetAttribute("AdversarialNetworkTest",nil)
- return {Passed=true,ActualRemoteRequests=sent,Verified={"Two real clients sent malformed and burst requests through production remotes","Money, inventory, preferences and permissions unchanged","Oversized and nonfinite user IDs safely rejected","Both clients rendered forty outdoor raindrops","Roofs suppressed rain on both clients","Reduced-motion suppressed rain on both clients","Clear weather hid rain without allocating extra drops","No server or client application errors"},ServerErrors=errors,ClientErrors=clientErrors}
+ return {Passed=true,ActualRemoteRequests=sent,CharacterReloads=4,Verified={"Two real clients sent malformed and burst requests through production remotes","Money, inventory, preferences and permissions unchanged","Oversized and nonfinite user IDs safely rejected","Both clients rendered forty outdoor raindrops","Roofs suppressed rain on both clients","Reduced-motion suppressed rain on both clients","Clear weather hid rain without allocating extra drops","Four real character reloads retained money, original inventory ID, home, forty rain parts and one HUD","No server or client application errors"},ServerErrors=errors,ClientErrors=clientErrors}
 end
 local ok,result=pcall(run);Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})

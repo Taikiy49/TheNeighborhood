@@ -1,38 +1,138 @@
 {
   "name": "The Neighborhood",
-  "servePlaceIds": [111572448337932],
+  "servePlaceIds": [
+    111572448337932
+  ],
   "tree": {
     "$className": "DataModel",
-    "Workspace": {"$ignoreUnknownInstances": true,"$properties":{"StreamingEnabled":true},"Neighborhood":{"$path":"assets/Neighborhood.model.json"}},
+    "Workspace": {
+      "$ignoreUnknownInstances": true,
+      "$properties": {
+        "StreamingEnabled": true
+      },
+      "Neighborhood": {
+        "$path": "assets/Neighborhood.model.json"
+      }
+    },
     "Lighting": {
-      "$properties":{"ClockTime":15.5,"Brightness":2.2,"Ambient":[0.5294,0.5608,0.5765],"OutdoorAmbient":[0.5686,0.5882,0.5490],"GlobalShadows":true},
-      "Atmosphere":{"$className":"Atmosphere","$properties":{"Density":0.22,"Color":[0.8588,0.9059,0.8863],"Decay":[0.7059,0.7765,0.8118],"Haze":0.8}},
-      "DepthOfField":{"$className":"DepthOfFieldEffect","$properties":{"Enabled":false}}
+      "$properties": {
+        "ClockTime": 16.3,
+        "Brightness": 2.1,
+        "Ambient": [
+          0.4862745,
+          0.5372549,
+          0.5411765
+        ],
+        "OutdoorAmbient": [
+          0.5803922,
+          0.6039216,
+          0.4980392
+        ],
+        "GlobalShadows": true
+      },
+      "Atmosphere": {
+        "$className": "Atmosphere",
+        "$properties": {
+          "Density": 0.22,
+          "Color": [
+            0.8588,
+            0.9059,
+            0.8863
+          ],
+          "Decay": [
+            0.7059,
+            0.7765,
+            0.8118
+          ],
+          "Haze": 0.8
+        }
+      },
+      "DepthOfField": {
+        "$className": "DepthOfFieldEffect",
+        "$properties": {
+          "Enabled": false
+        }
+      },
+      "NeighborhoodGrade": {
+        "$properties": {
+          "TintColor": [
+            1,
+            0.9568627,
+            0.8705882
+          ],
+          "Saturation": 0.06,
+          "Contrast": 0.07,
+          "Brightness": 0.01
+        },
+        "$className": "ColorCorrectionEffect"
+      },
+      "Bloom": {
+        "$properties": {
+          "Intensity": 0.13,
+          "Threshold": 1.4,
+          "Size": 18
+        },
+        "$className": "BloomEffect"
+      },
+      "SunRays": {
+        "$properties": {
+          "Spread": 0.8,
+          "Intensity": 0.045
+        },
+        "$className": "SunRaysEffect"
+      },
+      "Sky": {
+        "$properties": {
+          "SkyboxBk": "rbxassetid://6444884337",
+          "SkyboxRt": "rbxassetid://6444884337",
+          "SkyboxLf": "rbxassetid://6444884337",
+          "SkyboxUp": "rbxassetid://6412503613",
+          "SkyboxDn": "rbxassetid://6444884785",
+          "SkyboxFt": "rbxassetid://6444884337"
+        },
+        "$className": "Sky"
+      }
     },
     "ReplicatedStorage": {
       "$ignoreUnknownInstances": true,
       "Neighborhood": {
         "$className": "Folder",
-        "Shared": {"$path": "src/shared"},
+        "Shared": {
+          "$path": "src/shared"
+        },
         "Remotes": {
           "$className": "Folder",
-          "Request": {"$className": "RemoteEvent"},
-          "State": {"$className": "RemoteEvent"},
-          "Notification": {"$className": "RemoteEvent"},
-          "View": {"$className": "RemoteEvent"}
-          ,"Drive": {"$className": "RemoteEvent"}
+          "Request": {
+            "$className": "RemoteEvent"
+          },
+          "State": {
+            "$className": "RemoteEvent"
+          },
+          "Notification": {
+            "$className": "RemoteEvent"
+          },
+          "View": {
+            "$className": "RemoteEvent"
+          },
+          "Drive": {
+            "$className": "RemoteEvent"
+          }
         }
       }
     },
     "ServerScriptService": {
       "$ignoreUnknownInstances": true,
-      "Neighborhood": {"$path": "src/server"}
+      "Neighborhood": {
+        "$path": "src/server"
+      }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
         "$ignoreUnknownInstances": true,
-        "Neighborhood": {"$path": "src/client"}
+        "Neighborhood": {
+          "$path": "src/client"
+        }
       }
     }
   }
