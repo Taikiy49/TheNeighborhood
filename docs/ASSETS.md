@@ -38,3 +38,5 @@ The six story posts, noticeboard, three park improvements and three earned troph
 BuildingFactory constructs the garden room, loft, garage, workshop, stairs, window frames, crafting bench and four furniture recipes from native Roblox parts/materials. No new external asset or paid dependency was added.
 
 `assets/screenshots/home-expansion.jpg`, `home-loft.jpg` and `home-layouts.jpg` are unedited Roblox Studio captures from a temporary memory-only preview on September 23, 2026. Rooms, furniture and balance were staged; scenic views used a free camera. They are gameplay renders, not generated concept art or evidence of publication.
+
+Phone-notice-before.jpg and phone-notice-fixed.jpg in assets/screenshots are unedited iPhone 13 landscape Studio-emulation captures for the notification regression. The success text is a controlled UI fixture and does not certify a live save.

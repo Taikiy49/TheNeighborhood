@@ -15,10 +15,20 @@ function Screens:Init(gui,request)
  game:GetService("UserInputService").InputBegan:Connect(function(input,processed)
   if not processed and self.Panel.Visible and (input.KeyCode==Enum.KeyCode.Escape or input.KeyCode==Enum.KeyCode.ButtonB) then self:Close() end
  end)
+ self.Notice=UI.Panel(self.Panel,UDim2.new(1,-24,0,64),UDim2.fromOffset(12,64));self.Notice.Name="Notice";self.Notice.Visible=false
+ self.NoticeText=UI.Label(self.Notice,"",UDim2.new(1,-16,1,-12),UDim2.fromOffset(8,6),14)
  self.List=UI.New("ScrollingFrame",{Size=UDim2.new(1,-24,1,-76),Position=UDim2.fromOffset(12,64),BackgroundTransparency=1,BorderSizePixel=0,AutomaticCanvasSize=Enum.AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarThickness=6,ScrollBarImageColor3=UI.Theme.Primary},self.Panel)
  UI.New("UIListLayout",{Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.LayoutOrder},self.List)
 end
+function Screens:ShowNotice(text,success)
+ self.NoticeText.Text=text;self.NoticeText.TextColor3=success and UI.Theme.Text or UI.Theme.Danger
+ self.Notice.Visible=true;self.List.Position=UDim2.fromOffset(12,136);self.List.Size=UDim2.new(1,-24,1,-148)
+end
+function Screens:ClearNotice()
+ self.Notice.Visible=false;self.List.Position=UDim2.fromOffset(12,64);self.List.Size=UDim2.new(1,-24,1,-76)
+end
 function Screens:Close()
+ self:ClearNotice()
  self:Resolve(false);self.Panel.Visible=false
  local navigation=game:GetService("GuiService")
  if navigation.SelectedObject and navigation.SelectedObject:IsDescendantOf(self.Panel) then navigation.SelectedObject=nil end

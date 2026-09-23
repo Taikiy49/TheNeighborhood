@@ -13,9 +13,12 @@ local suites={
 local results={};local failed={}
 for _,suite in ipairs(suites)do
  local ok,result=pcall(function()return Test:ExecuteMultiplayerTestAsync(suite[2],{Name=suite[1]})end)
- results[suite[1]]=ok and result or {Passed=false,Error=tostring(result)}
+ local noResult=not ok or type(result)~="table"
+ results[suite[1]]=not noResult and result or {Passed=false,Error=ok and "Studio returned no result; inspect and end the test session before retrying."or tostring(result)}
  if not ok or type(result)~="table"or result.Passed~=true then table.insert(failed,suite[1])end
  print("[QA] "..suite[1]..": "..game:GetService("HttpService"):JSONEncode(results[suite[1]]))
+ if noResult then break end -- Do not stack new sessions on an abandoned server.
+ task.wait(4) -- Allow test clients and the server to finish shutting down.
 end
 print(game:GetService("HttpService"):JSONEncode({Passed=#failed==0,Failed=failed,Results=results}))
 return results

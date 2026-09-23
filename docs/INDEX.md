@@ -7,6 +7,7 @@ Start with the [project overview](../README.md), then use:
 - [TESTING](TESTING.md): commands, evidence and caveats.
 - [Full regression report](QA-FULL-REGRESSION.md): latest run, fixes, performance and remaining gaps.
 - [Home expansions](HOME-EXPANSIONS.md): rooms, crafting, arrangement and saved layouts.
+- [Latest regression retest](QA-EXPANSION-RETEST.md): mobile notification fix, expanded security/garage checks and unresolved platform failures.
 - [Home expansion QA](QA-HOME-EXPANSIONS.md): latest tests and online verification blockers.
 - [Maple Adventures](MAPLE-ADVENTURES.md): rumor trails, trophies and shared park projects.
 - [Adventure expansion QA](QA-ADVENTURES.md): newest expansion/regression evidence.

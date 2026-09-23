@@ -9,6 +9,7 @@ local function begin()
    local cases={};local values={false,{},0/0,math.huge,-math.huge,0.5,"invalid",string.rep("x",1000),9e18,-9e18}
    for _,value in ipairs(values)do
     table.insert(cases,table.pack("Buy",value,nil))
+    for _,action in ipairs({"Buy","Craft","Place","Pack","SaveLayout","LoadLayout"})do table.insert(cases,table.pack("Building",action,value))end
     table.insert(cases,table.pack("Boutique","Equip",value))
     table.insert(cases,table.pack("Friends","ChoosePlot",value))
     table.insert(cases,table.pack("Event","HighFive",value))
@@ -24,6 +25,10 @@ local function begin()
    for index=1,100 do request:FireServer("Buy","NotARealItem",nil,1100000+index);sent+=1 end
    for _,value in ipairs(values)do root.Remotes.Drive:FireServer(value,value);sent+=1 end
    task.wait(1);probe:FireServer("fuzz",{Sent=sent})
+  elseif phase=="building"then
+   request:FireServer("Building","Buy","GardenRoom",1200001);task.wait(.4)
+   for i=1,100 do request:FireServer("Building","Buy","GardenRoom",1200001+i)end
+   task.wait(1);probe:FireServer("building",{Sent=101})
   else
    task.wait(2)
    local rain=workspace.CurrentCamera:FindFirstChild("LocalRain");local visible=0;local total=0

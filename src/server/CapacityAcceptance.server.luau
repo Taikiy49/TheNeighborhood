@@ -40,16 +40,20 @@ local ok,result=pcall(function()
  task.wait(6)
  for _,player in ipairs(Players:GetPlayers())do probe:FireClient(player,"capacity")end
  local performance=sample(8)
+ local clientErrors={}
  for _,player in ipairs(Players:GetPlayers())do
   local car=Vehicles.Cars[player.UserId];assert(car and car.Body.Position.Y>-2 and car.Body.Position.Y<10,"Parked car suspension unstable")
   assert(Pets.Pets[player.UserId] and Pets.Pets[player.UserId].Model.Parent,"Pet missing at capacity")
   local report=reports[player.UserId];assert(report and report.RainParts==40 and report.Visible==40,"Client rain missing at capacity")
-  assert(#report.Errors==0,"Client errors at capacity: "..table.concat(report.Errors,"; "))
+  for _,message in ipairs(report.Errors)do table.insert(clientErrors,message)end
  end
  performance.Baseline=baseline;performance.Note="Warm local Studio server alongside eight client processes; not a mobile-device benchmark or a production performance pass."
  local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
- assert(#errors==0,"Application errors at capacity: "..table.concat(errors,"; "))
+ local applicationErrors,engineErrors={},{}
+ for _,list in ipairs({errors,clientErrors})do for _,message in ipairs(list)do
+  table.insert(message:find("[Roblox][CoreGui.",1,true)==1 and engineErrors or applicationErrors,message)
+ end end
  probe:Destroy();workspace:SetAttribute("AdversarialNetworkTest",nil)
- return {Passed=true,Players=summary,Performance=performance,Verified={"Eight actual clients connected","Eight distinct owned houses","One starter kit per player","Correct independent currency balances","Eight purchased cars with stable parked suspension","Eight companion pets active","Eight clients each rendered forty rain streaks","No server or client application errors"}}
+ return {Passed=#applicationErrors==0 and #engineErrors==0,GameplayPassed=#applicationErrors==0,ApplicationErrors=applicationErrors,RobloxCoreErrors=engineErrors,Players=summary,Performance=performance,Verified={"Eight actual clients connected","Eight distinct owned houses","One starter kit per player","Correct independent currency balances","Eight purchased cars with stable parked suspension","Eight companion pets active","Eight clients each rendered forty rain streaks","Server and client error logs retained separately; Passed still requires zero errors"}}
 end)
 Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})

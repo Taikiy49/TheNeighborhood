@@ -1,0 +1,115 @@
+{
+  "TopCompletedCpuScopes": [
+    {
+      "InclusiveCpuMs": 24266.797788346143,
+      "Name": "Sleep",
+      "Calls": 3816
+    },
+    {
+      "InclusiveCpuMs": 345.4626746689237,
+      "Name": "$Event",
+      "Calls": 299
+    },
+    {
+      "InclusiveCpuMs": 278.8815440543003,
+      "Name": "Thread (FG)",
+      "Calls": 3526
+    },
+    {
+      "InclusiveCpuMs": 211.7000912831881,
+      "Name": "TS::ArbiterStep",
+      "Calls": 1090
+    },
+    {
+      "InclusiveCpuMs": 196.66480512531365,
+      "Name": "TS::JobStep",
+      "Calls": 18081
+    },
+    {
+      "InclusiveCpuMs": 196.13505379229537,
+      "Name": "Perform",
+      "Calls": 128
+    },
+    {
+      "InclusiveCpuMs": 109.23108372590107,
+      "Name": "Present",
+      "Calls": 128
+    },
+    {
+      "InclusiveCpuMs": 80.95184957744834,
+      "Name": "Heartbeat(Heartbeat;Game)",
+      "Calls": 535
+    },
+    {
+      "InclusiveCpuMs": 80.12230435738616,
+      "Name": "Heartbeat",
+      "Calls": 535
+    },
+    {
+      "InclusiveCpuMs": 71.90600760201761,
+      "Name": "PrepareStandalone",
+      "Calls": 128
+    },
+    {
+      "InclusiveCpuMs": 64.48292116523092,
+      "Name": "Prepare2dWindow",
+      "Calls": 512
+    },
+    {
+      "InclusiveCpuMs": 59.946065341551815,
+      "Name": "PrepareBound",
+      "Calls": 128
+    },
+    {
+      "InclusiveCpuMs": 54.12523223355976,
+      "Name": "Simulation(Simulation;Game)",
+      "Calls": 512
+    },
+    {
+      "InclusiveCpuMs": 53.60751026858182,
+      "Name": "Simulation",
+      "Calls": 512
+    },
+    {
+      "InclusiveCpuMs": 48.475884828352065,
+      "Name": "Scene",
+      "Calls": 640
+    },
+    {
+      "InclusiveCpuMs": 46.67660908105205,
+      "Name": "RunService.Heartbeat",
+      "Calls": 512
+    },
+    {
+      "InclusiveCpuMs": 35.21463017295318,
+      "Name": "PreRender",
+      "Calls": 256
+    },
+    {
+      "InclusiveCpuMs": 29.45793432999821,
+      "Name": "gameStepped",
+      "Calls": 256
+    },
+    {
+      "InclusiveCpuMs": 27.61437848895781,
+      "Name": "CullJob",
+      "Calls": 299
+    },
+    {
+      "InclusiveCpuMs": 27.44136873235078,
+      "Name": "Prepare",
+      "Calls": 128
+    }
+  ],
+  "FrameP95Ms": 17.218580198818785,
+  "FirstFrame": {
+    "Id": 1,
+    "Absolute": 419321
+  },
+  "Scope": "Snapshot; inclusive completed CPU scope totals, not exclusive time or critical path. Boundary-crossing incomplete scopes excluded. One client, eight expanded houses.",
+  "Frames": 128,
+  "LastFrame": {
+    "Id": 128,
+    "Absolute": 419448
+  }
+}

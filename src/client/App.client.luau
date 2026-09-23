@@ -30,6 +30,12 @@ toast.ZIndex=30
 UI.New("UISizeConstraint",{MaxSize=Vector2.new(440,64)},toast)
 local toastText=UI.Label(toast,"",UDim2.new(1,-24,1,-12),UDim2.fromOffset(12,6),Theme.BodySize)
 local notificationVersion=0
+Screens.Panel:GetPropertyChangedSignal("Visible"):Connect(function()
+ hint.Visible=not Screens.Panel.Visible
+ if Screens.Panel.Visible and toast.Visible then
+  Screens:ShowNotice(toastText.Text,toastText.TextColor3==Theme.Text);toast.Visible=false
+ end
+end)
 local function updateHint()
  local destination=player:GetAttribute("DeliveryAddress")
  local carrying=player:GetAttribute("Carrying")
@@ -43,8 +49,12 @@ playtest.TextXAlignment=Enum.TextXAlignment.Center
 remotes.Notification.OnClientEvent:Connect(function(data)
     if data.RequestId then Screens:Resolve(data.Success,data.RequestId)end
     notificationVersion+=1; local version=notificationVersion
-    toastText.Text=data.Text; toastText.TextColor3=data.Success and Theme.Text or Theme.Danger; toast.Visible=true
-    task.delay(4,function() if version==notificationVersion then toast.Visible=false end end)
+    if Screens.Panel.Visible then
+        toast.Visible=false;Screens:ShowNotice(data.Text,data.Success)
+    else
+        toastText.Text=data.Text;toastText.TextColor3=data.Success and Theme.Text or Theme.Danger;toast.Visible=true
+    end
+    task.delay(4,function()if version==notificationVersion then toast.Visible=false;Screens:ClearNotice()end end)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
     Screens.State=state

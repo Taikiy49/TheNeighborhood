@@ -38,6 +38,17 @@ local function begin()
     screens:Close()
    end
   end
+  for _,width in ipairs({510,360})do for _,height in ipairs({480,220})do
+   screens.Panel.Size=UDim2.fromOffset(width,height);screens:Open("Building")
+   screens:ShowNotice("You need $900 in game cash. Your current balance has not changed.",false);task.wait(.15)
+   assert(screens.Notice.Visible and screens.NoticeText.TextFits,"Notice text does not fit")
+   assert(screens.Notice.AbsolutePosition.Y>=screens.Panel.CloseButton.AbsolutePosition.Y+screens.Panel.CloseButton.AbsoluteSize.Y,"Notice covers header controls")
+   assert(screens.List.AbsolutePosition.Y>=screens.Notice.AbsolutePosition.Y+screens.Notice.AbsoluteSize.Y,"Notice overlaps action list")
+   assert(screens.List.AbsoluteSize.Y>=64,"Notice leaves no usable scrolling area")
+   local before=screens.List.AbsoluteSize.Y;screens:ClearNotice();task.wait(.05)
+   assert(not screens.Notice.Visible and screens.List.AbsoluteSize.Y>before,"Notice did not release layout space")
+   table.insert(checks,{View="Building",Width=width,Height=height,NonOverlappingNotice=true});screens:Close()
+  end end
   screens.Panel.Size=oldSize
   local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
   assert(#errors==0,table.concat(errors,";"))

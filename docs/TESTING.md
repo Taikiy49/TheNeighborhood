@@ -28,14 +28,14 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 | LifecycleStress | 2 | Item lifecycle and invalid-transition stress |
 | DisconnectRaceAcceptance | 2 | Departing-player races |
 | BoutiqueRegression | 2 | Ownership outage/cancellation/race, 600 style equips, 800 invalid requests |
-| UIAcceptance | 2 | 24 main screens plus four detail states at two panel widths on both clients (112 checks) |
+| UIAcceptance | 2 | 24 main screens, four detail states and notice layout at wide/narrow and tall/short sizes (120 checks) |
 | StorageStress | 1 | 20 seeded storage simulations, 5,000 settlement/spending cycles |
 
 `FriendsAcceptance` accepts `SkipLiveDirectory=true` when the live-directory portion has already been verified separately. This skips that portion honestly; it does not count as a new live-storage pass.
 
 ## Latest expansion verification
 
-[Home expansion QA](QA-HOME-EXPANSIONS.md) records the latest building, capacity, UI and regression checks. The local unpublished build cannot verify live Roblox storage; those results explicitly report Skipped and Passed=false inside the live-storage subsection. A surrounding gameplay pass is not a live-storage pass.
+[Latest retest](QA-EXPANSION-RETEST.md) records the mobile feedback fix, 690 remote requests, physical garage exit tests and performance diagnostics. [Home expansion QA](QA-HOME-EXPANSIONS.md) records the preceding building/capacity checks. The local unpublished build cannot verify live Roblox storage; those results explicitly report Skipped and Passed=false inside the live-storage subsection. A surrounding gameplay pass is not a live-storage pass.
 
 [Maple Adventures QA](QA-ADVENTURES.md) retains the preceding story/project and real restart evidence.
 

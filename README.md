@@ -136,6 +136,6 @@ Private project repository. No open-source license has been selected. Generated 
 
 ## Latest verification
 
-[Home expansion QA](docs/QA-HOME-EXPANSIONS.md) records the latest building and regression checks, including online verification blockers. [Maple Adventures QA](docs/QA-ADVENTURES.md) records the preceding 13-suite regression and saved-story restart checks.
+[Latest regression retest](docs/QA-EXPANSION-RETEST.md) records the mobile notification fix, expanded remote/garage tests and remaining platform/performance failures. [Home expansion QA](docs/QA-HOME-EXPANSIONS.md) records the preceding building checks. [Maple Adventures QA](docs/QA-ADVENTURES.md) records the preceding 13-suite regression and saved-story restart checks.
 
 The preceding [full regression report](docs/QA-FULL-REGRESSION.md) records 12 passing named suites, isolated live save/rejoin, stress counts, fixes and remaining production/device checks. Studio functional passes do not mean the full master specification is complete.

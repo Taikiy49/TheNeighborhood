@@ -111,7 +111,17 @@ local function run()
  table.insert(verified,walked.." physical walking legs: cottage connection, loft up/down, garage and workshop")
  at(p,0,4,-20);profile.Vehicles={Compact=true,Color="Mint",Plate="BUILD-QA"};local ok,why=Vehicles:Spawn(p);assert(ok,why)
  assert((Vehicles.Cars[p.UserId].Body.Position-(h.Foundation.CFrame*CFrame.new(-20,3.5,-23)).Position).Magnitude<1)
- table.insert(verified,"Owned car recalls inside new garage")
+ local car=Vehicles.Cars[p.UserId];local human=p.Character.Humanoid
+ p.Character:PivotTo(car.Seat.CFrame*CFrame.new(0,2,0));car.Seat:Sit(human);task.wait(.5);car.Body:SetNetworkOwner(nil)
+ assert(car.Seat.Occupant==human,"Garage driver could not sit")
+ local drive=game:GetService("RunService").PreSimulation:Connect(function()car.Throttle=.5;car.Steer=0;car.LastInput=os.clock()end)
+ local driveDeadline=os.clock()+10
+ repeat task.wait(.1)until h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -38 or os.clock()>driveDeadline
+ drive:Disconnect();car.Throttle=0
+ assert(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -38,"Car could not drive through the garage entrance: "..tostring(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position)))
+ assert(car.Body.AssemblyLinearVelocity.Magnitude<45,"Garage exit exceeded bounded speed")
+ human.Sit=false;human.Jump=true;task.wait(.3);Vehicles:Remove(p)
+ table.insert(verified,"Owned car recalls inside garage; actual seated driver physically exits through its doorway")
  for _,zone in ipairs(D.Order)do local xyz=D.Rooms[zone].Displays[1];assert(B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Vector3.new(table.unpack(xyz)))),"New room is outside robbery boundary")end
  assert(not B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Vector3.new(0,3,-50))),"Street is inside expansion")
  local Robbery=require(script.Parent.Services.RobberyService)
