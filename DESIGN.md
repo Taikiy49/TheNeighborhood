@@ -52,3 +52,7 @@ Canonical runtime owner: src/shared/Theme.luau → src/client/UI.luau → HUD, p
 - Make ownership and risk readable in world space.
 - Never put implementation jargon in ordinary player UI.
 - Never imply unsaved data is persisted.
+
+## Home expansion language
+
+Garden rooms use glazed walls, cream structural trim, timber flooring and slate pitched roofs. A return staircase makes the upstairs a physical destination. The garage and backyard studio share the cottage's warm materials. Small furnishing rugs mark intentional placement areas while leaving circulation routes open. Phone building menus retain the canonical Theme → UI → Screens path and existing typography; no parallel control system or new HUD button wall is introduced.

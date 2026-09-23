@@ -48,6 +48,20 @@ Follow six neighborhood rumors, save their endings in a story album, replay walk
 
 These are actual Studio captures: the album uses an isolated restart fixture; park completion is staged in a memory-only preview.
 
+## Room to grow
+
+Build a glazed garden room, an upstairs loft with a real staircase, a carriage garage and a backyard workshop. Craft four kinds of furniture, arrange 15 furnishing spaces and save three layouts. Expanded homes have 14 collectible display spots. Upgrades use earned cash. This is bounded home expansion, not infinite land or unrestricted building.
+
+[Home expansion guide](docs/HOME-EXPANSIONS.md) · [Expansion QA and limitations](docs/QA-HOME-EXPANSIONS.md)
+
+![Expanded cottage with framed garden room, loft, garage and workshop](assets/screenshots/home-expansion.jpg)
+
+| Upstairs loft | Three saved layouts |
+|---|---|
+| ![Crafted furnishings and return staircase in the upstairs loft](assets/screenshots/home-loft.jpg) | ![Saved furniture layouts in the actual game interface](assets/screenshots/home-layouts.jpg) |
+
+Actual Studio captures of the expansion build. Rooms, furniture and cash were staged in a memory-only preview; scenic views use a free camera. These images do not claim online publication.
+
 ## Systems in this build
 
 - Eight furnished homes, two shops, gardens, a community park, deliveries and a five-clue collectible trail.
@@ -110,7 +124,7 @@ GitHub Actions validates repository files and builds a downloadable `.rbxl` with
 
 Target place: `111572448337932` · Universe: `10767699101`.
 
-The last verified published version was **37**. Later environment, friends and plot-selection revisions are in source/Studio and this build; they have not been published. Public availability was previously blocked by Roblox account eligibility and must be rechecked in Creator Dashboard. The full specification, device testing, public-client travel and unfamiliar-player playtests remain incomplete.
+The last verified published version was **37**. Later environment, friends and plot-selection revisions are in source/Studio and this build; they have not been published. The September 23 Creator Dashboard check shows the account age check complete and publishing eligibility for ages 16+ and trusted friends. The experience is still Private and Unrated, with its maturity/compliance questionnaire outstanding. Studio subsequently lost authentication; the home expansion is in the local build, not verified in the live place. The full specification, device testing, public-client travel and unfamiliar-player playtests remain incomplete.
 
 ## Ownership
 
@@ -122,6 +136,6 @@ Private project repository. No open-source license has been selected. Generated 
 
 ## Latest verification
 
-[Maple Adventures QA](docs/QA-ADVENTURES.md) records the newest 13-suite expansion regression and saved-story restart checks.
+[Home expansion QA](docs/QA-HOME-EXPANSIONS.md) records the latest building and regression checks, including online verification blockers. [Maple Adventures QA](docs/QA-ADVENTURES.md) records the preceding 13-suite regression and saved-story restart checks.
 
 The preceding [full regression report](docs/QA-FULL-REGRESSION.md) records 12 passing named suites, isolated live save/rejoin, stress counts, fixes and remaining production/device checks. Studio functional passes do not mean the full master specification is complete.

@@ -29,6 +29,7 @@ end
 function Service:SetDoor(house, open)
     house.Open = open
     house.Model:SetAttribute("DoorOpen",open)
+    if self.Context.Building then self.Context.Building:SetDoor(house,open)end
     house.Door.CanCollide = not open
     house.Door.CanQuery = not open
     local target = house.ClosedCFrame

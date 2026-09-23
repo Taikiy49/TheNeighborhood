@@ -28,3 +28,11 @@ Saved circles retain membership and plot assignments, not an offline simulation 
 Roblox GUI is the runtime; browser-only DOM/ARIA, CSS and URL routing rules do not apply. Friends uses the existing non-modal phone panel, Close/Escape/gamepad B, and shared TextButton selection behavior. Touch and keyboard checks must use Roblox, not a browser mockup.
 
 Friends subviews (plot selection and Roblox friend selection) use the fixed header Back button to return to Friends; the Friends root retains Close. Plot selection stays open after success so the chosen address is visible. The parent party roster updates from the server snapshot.
+
+## Home building
+
+Source: the user's request for home expansions and saved layouts; bounded domain rules are documented in [Home expansions](docs/HOME-EXPANSIONS.md), with authority in BuildingService and BuildingRules.
+
+BuildingScreen uses the existing Screens.Row, UI buttons, Theme, scrolling panel and App notifications. Purchases have a separate review screen with permanent consequence and exact in-game cash price. Success returns to plans; failures retain the review. Crafting, furnishing and layout screens stay open and preserve scroll during server refresh. No optimistic ownership, cash debit or saving claim is introduced.
+
+Rug selection replaces dragging: room → rug → quarter-turn rotation → piece → Place here. Every action is reachable through ordinary TextButtons on touch and controller. World rugs open the same canonical workflow. Packing is reversible and retains ownership. Three layout slots expose save/overwrite and load separately. Empty and locked states point to the relevant prerequisite. The collection cap and distinction between crafted furniture and collectible possessions are visible in crafting copy.

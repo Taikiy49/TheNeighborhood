@@ -9,11 +9,17 @@ Recorded September 23, 2026. This document distinguishes local/source milestones
 | Last verified published version | 37 |
 | Later environment redesign | In source, Studio edit state and included build; not published |
 | Friends and plot choices | In source, Studio edit state and included build; not published |
-| Public access | Previously blocked by account eligibility; current status must be checked in Creator Dashboard |
+| Public access | Age check Done; publishing eligibility Ages 16+ and trusted friends; experience Private and Unrated (September 23 dashboard check) |
 | Style boutique | Two real passes registered; off sale, code not published, live purchase test pending |
 | GitHub upload | Source delivery, not a Roblox publication |
 
 Earlier dashboard work saved an icon, Higgsfield cover, description, genre and eight-player limit. The recorded audience was Private. Camera age check, identity verification and two-factor requirements were reported by Roblox at that time; platform requirements/status may change. Do not infer current eligibility from this historical note.
+
+## Latest account and local build check
+
+The Creator Dashboard shows the age check complete. Identity verification and two-step verification still show Start. The experience remains Private and Unrated; its maturity/compliance questionnaire is outstanding. This does not mean the experience was published or made public.
+
+Studio then disconnected with Access Denied (RCC-273), with logs reporting 401 User is not authenticated. Home expansions are implemented and tested in an unpublished local Studio build. Their real DataStore restart, live synchronization and publication remain unverified until Studio is authenticated again. Older live persistence evidence does not establish that the new Building fields survive a real restart.
 
 ## Release sequence
 

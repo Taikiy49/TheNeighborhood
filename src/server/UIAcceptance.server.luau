@@ -6,6 +6,16 @@ local function run()
  local deadline=os.clock()+60
  repeat task.wait(.2)until #Players:GetPlayers()==2 and Data:Get(Players:GetPlayers()[2])or os.clock()>deadline
  assert(#Players:GetPlayers()==2 and Data.SessionOnly)
+ local Building=require(script.Parent.Services.BuildingService);local Houses=require(script.Parent.Services.HouseService)
+ for _,player in ipairs(Players:GetPlayers())do
+  repeat task.wait(.1)until Data:Get(player)and Data:Get(player)._Restored and player.Character and player.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline
+  Data:Get(player).Currency=20000;local home=Houses.ByPlayer[player.UserId].Model;player.Character:PivotTo(home.Arrival.CFrame)
+  for _,id in ipairs({"GardenRoom","Loft","Garage","Workshop"})do assert(Building:Action(player,"Buy",id))end
+  player.Character:PivotTo(home.Foundation.CFrame*CFrame.new(0,4,42))
+  for _,id in ipairs({"Bench","Bookcase","Planter","Desk"})do assert(Building:Action(player,"Craft",id))end
+  assert(Building:Action(player,"Place",{Zone="Loft",Cell=1,Kind="Bench",Rotation=2}));assert(Building:Action(player,"SaveLayout","1"));Data.Context.Sync(player)
+ end
+ deadline=os.clock()+60
  local probe=Instance.new("RemoteEvent");probe.Name="UIProbe";probe.Parent=game.ReplicatedStorage.Neighborhood
  local reports={};probe.OnServerEvent:Connect(function(player,result)reports[tostring(player.UserId)]=result end)
  workspace:SetAttribute("UIAcceptance",true)

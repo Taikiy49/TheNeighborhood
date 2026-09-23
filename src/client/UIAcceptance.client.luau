@@ -11,7 +11,7 @@ local function begin()
   local oldSize=screens.Panel.Size;local checks={}
   for _,width in ipairs({510,360})do
    screens.Panel.Size=UDim2.fromOffset(width,480)
-   for _,view in ipairs({"Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
+   for _,view in ipairs({"Building","Crafting","Furnish","Layouts","Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
     screens:Open(view);task.wait(.15)
     assert(screens.Panel.Visible and screens.Title.Text~="","Screen failed to open: "..view)
     local rows=0
@@ -22,6 +22,20 @@ local function begin()
     end end
     table.insert(checks,{View=view,Width=width,Rows=rows})
     screens:Close();assert(not screens.Panel.Visible,"Close failed")
+   end
+  end
+  for _,width in ipairs({510,360})do
+   screens.Panel.Size=UDim2.fromOffset(width,480)
+   for _,entry in ipairs({{"BuildReview","GardenRoom"},{"Furnish",{Zone="Loft"}},{"Furnish",{Zone="Loft",Cell=1}},{"Furnish",{Zone="Workshop",Cell=2,Rotation=3}}})do
+    screens:Open(entry[1],entry[2]);task.wait(.15)
+    for _,label in ipairs(screens.List:GetDescendants())do if label:IsA("TextLabel")then assert(label.TextFits,"Expansion text clips: "..label.Text)end end
+    local button=screens.List:FindFirstChildWhichIsA("TextButton",true)
+    assert(button and button.AbsoluteSize.Y>=48,"Missing accessible expansion action")
+    local before=button.AbsoluteSize;screens.Pending={Button=button,Text=button.Text,RequestId=918};button.Text="Working…";button.Active=false
+    screens:Resolve(true,917);assert(screens.Pending,"Unrelated response resolved pending action")
+    screens:Resolve(false,918);assert(not screens.Pending and screens.Panel.Visible and button.Active and button.AbsoluteSize==before,"Failure did not preserve usable screen")
+    table.insert(checks,{View=entry[1],Width=width,ExpansionDetail=true,PendingFailure=true})
+    screens:Close()
    end
   end
   screens.Panel.Size=oldSize

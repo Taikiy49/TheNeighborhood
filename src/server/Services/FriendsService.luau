@@ -18,10 +18,11 @@ function Service:PlotOptions(slots,uid)
 end
 function Service:Init(context)
  self.Context=context
- local store=game:GetService('DataStoreService'):GetDataStore(Run:IsStudio()and 'NeighborhoodGroups_Development_v1'or 'NeighborhoodGroups_v1')
+ local store
  if context.Data.SessionOnly then
   local memory={};store={GetAsync=function(_,k)return memory[k]end,UpdateAsync=function(_,k,fn)local v=fn(memory[k]);if v then memory[k]=v end;return v end}
  end
+ if not store then store=game:GetService('DataStoreService'):GetDataStore(Run:IsStudio()and 'NeighborhoodGroups_Development_v1'or 'NeighborhoodGroups_v1')end
  self.Repository=Repository.new(store)
  self.Reserve=function()assert(not Run:IsStudio(),'Travel is available in the published Roblox game.');return Teleport:ReserveServerAsync(game.PlaceId)end
  self.Send=function(players,code,token)

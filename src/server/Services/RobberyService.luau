@@ -168,7 +168,7 @@ function Service:Step()
     self:Return(session,"Carry interrupted by an invalid movement.")
    else
     session.LastPosition=root.Position;session.LastTime=now
-    if session.State=="Escaping" and now-session.Started>=Config.EscapeSeconds and (root.Position-session.House.Door.Position).Magnitude>=Config.EscapeDistance then
+    if session.State=="Escaping" and not (self.Context.Building and self.Context.Building:ContainsExpansion(session.House,root.Position)) and now-session.Started>=Config.EscapeSeconds and (root.Position-session.House.Door.Position).Magnitude>=Config.EscapeDistance then
      session.State="Escaped";session.Item.State="Escaped";session.House.Model:SetAttribute("Alarm",false)
      self.Cooldowns[session.Item.OwnerUserId]=os.time()+Config.VictimCooldown
      self.Context.Evidence:Incident(session,"Missing")

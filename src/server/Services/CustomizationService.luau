@@ -19,6 +19,7 @@ function Service:Apply(player)
  end end end
  local floor=floors[settings.Floor or "Wood"];house.Model.Floor.Material=floor.Material;house.Model.Floor.Color=floor.Color
  if self.Context.Boutique then self.Context.Boutique:Apply(player)end
+ if self.Context.Building then self.Context.Building:ApplyFinish(player)end
  house.Permissions=settings.Permissions;house.Model:SetAttribute("SecurityLevel",settings.SecurityLevel or 0)
 end
 function Service:Change(player,kind,id)

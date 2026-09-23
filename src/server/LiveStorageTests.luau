@@ -1,5 +1,8 @@
 local Repository=require(script.Parent.ProfileRepository)
 return function()
+ if game:GetService("RunService"):IsStudio() and game.PlaceId==0 then
+  return {Skipped=true,Passed=false,Reason="Unpublished local place: real Roblox DataStore verification requires an authenticated published place."}
+ end
  local api=game:GetService("DataStoreService"):GetDataStore("TheNeighborhood_AutomatedTests_v2")
  local prefix=game:GetService("HttpService"):GenerateGUID(false)..":"
  local store={}

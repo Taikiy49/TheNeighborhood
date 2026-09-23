@@ -37,8 +37,9 @@ end
 function Service:Place(player,id,slotNumber)
  local item=self.Items[id];local house=self.Context.Houses.ByPlayer[player.UserId]
  if not item or item.OwnerUserId~=player.UserId or item.State~="Stored" then return false,"Choose an item from your inventory." end
- if not house or type(slotNumber)~="number" or slotNumber%1~=0 or slotNumber<1 or slotNumber>6 then return false,"Choose a display spot." end
+ if not house or type(slotNumber)~="number" or slotNumber%1~=0 or slotNumber<1 or slotNumber>14 then return false,"Choose a display spot." end
  local slot=house.Model.DisplaySlots:FindFirstChild("Slot"..slotNumber)
+ if not slot then return false,"Build the room for that display spot first." end
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
  local humanoid=player.Character and player.Character:FindFirstChildOfClass("Humanoid")
  if not root or not humanoid or humanoid.Health<=0 or (root.Position-slot.Position).Magnitude>14 then return false,"Stand near that display spot." end

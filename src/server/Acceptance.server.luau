@@ -227,7 +227,7 @@ local function run()
         humanoid:MoveTo(destination)
         task.wait(2)
     until escaped.State=="Escaped" or not Robbery.Sessions[thief.UserId] or os.clock()>walkingDeadline
-    assert(Robbery.Sessions[thief.UserId] and escaped.State=="Escaped","Walking escape failed")
+    assert(Robbery.Sessions[thief.UserId] and escaped.State=="Escaped","Walking escape failed: state="..escaped.State..", localPosition="..tostring(a.Model.Foundation.CFrame:PointToObjectSpace(thief.Character.HumanoidRootPart.Position))..", doorOpen="..tostring(a.Open)..", speed="..humanoid.WalkSpeed)
     table.insert(verified,"Heavy-item character walked through the door and escaped")
     -- Travel to the pawn counter is bypassed only after the real escape was established.
     thief.Character:PivotTo(workspace.Neighborhood.Shops.PawnShop.Counter.CFrame*CFrame.new(0,3,-5))

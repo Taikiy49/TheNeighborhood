@@ -24,9 +24,12 @@ return function(options)
  failures=3;profile.Currency=800;assert(not a:Save(42,profile,false));assert(records["player:42"].Data.Currency==913)
  table.insert(passed,"Exhausted retries preserve previous durable snapshot")
  profile.Items={{Id="original-item",DefinitionId="GoldenToilet",OwnerUserId=42,OriginalOwnerUserId=42,State="Displayed",Slot=2,Provenance={{Kind="Acquired",Time=1000}}}}
+ profile.Building={Unlocked={GardenRoom=true,Loft=true,Workshop=true},Owned={Bench=1},Placed={["Loft:1"]={Zone="Loft",Cell=1,Kind="Bench",Rotation=2}},Layouts={}}
+ profile.Building.Layouts["1"]=Schema.Copy(profile.Building.Placed)
  profile.House.Locked=true;profile.TutorialState="Done";profile.XP=50
  profile.Adventures={Completed={Teaspoon=true},Runs={Teaspoon=4},BestMs={Teaspoon=43000},Rewards={TrailCompass=true},Contributions=12,Active={Id="Moon",Next=2}}
  assert(a:Save(42,profile,true));local rejoined=assert(b:Load(42))
+ assert(rejoined.Building.Unlocked.Workshop and rejoined.Building.Placed["Loft:1"].Rotation==2 and rejoined.Building.Layouts["1"]["Loft:1"].Kind=="Bench","Expansion data lost")
  assert(rejoined.Currency==800 and rejoined.Items[1].Id=="original-item" and rejoined.Items[1].Slot==2 and rejoined.House.Locked and rejoined.XP==50)
  assert(rejoined.Adventures.Active.Next==2 and rejoined.Adventures.Completed.Teaspoon and rejoined.Adventures.Rewards.TrailCompass and rejoined.Adventures.Contributions==12 and rejoined.Adventures.BestMs.Teaspoon==43000,"Adventure state lost on repository reload")
  table.insert(passed,"Release and rejoin retain money, original item identity, placement, lock, progression and adventure album")

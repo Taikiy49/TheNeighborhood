@@ -1,10 +1,12 @@
 local Config=require(game.ReplicatedStorage.Neighborhood.Shared.Config)
 local Definitions=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinitions)
 local Adventures=require(game.ReplicatedStorage.Neighborhood.Shared.AdventureDefinitions)
+local BuildingRules=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingRules)
+local BuildingDefs=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -28,6 +30,7 @@ function Schema.Migrate(raw,userId)
  assert(p.Pets.Dog==nil or type(p.Pets.Dog)=="boolean","Corrupt pet ownership")
  assert(p.Pets.Mode==nil or p.Pets.Mode=="Follow" or p.Pets.Mode=="Stay","Corrupt pet mode")
  assert(type(p.EventClaims)=="table" and #p.EventClaims<=32,"Corrupt event receipts")
+ assert(BuildingRules.Valid(p.Building),"Corrupt home expansion")
  local a=p.Adventures
  assert(type(a)=="table" and type(a.Completed)=="table" and type(a.Runs)=="table" and type(a.BestMs)=="table" and type(a.Rewards)=="table" and integer(a.Contributions,0,1000000),"Corrupt adventure album")
  for id,value in pairs(a.Completed)do assert(Adventures.Routes[id] and value==true,"Corrupt story stamp")end
@@ -57,7 +60,7 @@ function Schema.Migrate(raw,userId)
   assert(type(item)=="table" and type(item.Id)=="string" and #item.Id<=80 and not seen[item.Id],"Duplicate or corrupt item ID")
   assert(Definitions[item.DefinitionId] and item.OwnerUserId==userId,"Corrupt item ownership")
   assert(item.State=="Stored" or item.State=="Displayed" or item.State=="Fenced","Corrupt item state")
-  if item.State=="Displayed"then assert(integer(item.Slot,1,6) and not slots[item.Slot],"Corrupt display placement");slots[item.Slot]=true end
+  if item.State=="Displayed"then assert(integer(item.Slot,1,14) and (item.Slot<=6 or p.Building.Unlocked[BuildingDefs.SlotRoom(item.Slot)]) and not slots[item.Slot],"Corrupt display placement");slots[item.Slot]=true end
   seen[item.Id]=true;table.insert(p.Inventory,item.Id)
   p.Collection[item.DefinitionId]=p.Collection[item.DefinitionId] or 0
  end

@@ -46,7 +46,8 @@ function Screens:Resolve(success,requestId)
  if requestId and self.Pending.RequestId~=requestId then return end
  local pending=self.Pending;self.Pending=nil
  if pending.Button.Parent then pending.Button.Text=pending.Text;pending.Button.Active=true end
- if success and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"then self.Panel.Visible=false end
+ if success and self.CurrentView=="BuildReview"then self:Open("Building");return end
+ if success and self.CurrentView~="Building"and self.CurrentView~="Crafting"and self.CurrentView~="Furnish"and self.CurrentView~="Layouts"and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"then self.Panel.Visible=false end
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
@@ -56,7 +57,8 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Adventures" or view=="Projects"then require(script.Parent.AdventureScreen).Render(self,view)
+ if view=="Building"or view=="BuildReview"or view=="Crafting"or view=="Furnish"or view=="Layouts"then require(script.Parent.BuildingScreen).Render(self,view,detail)
+ elseif view=="Adventures" or view=="Projects"then require(script.Parent.AdventureScreen).Render(self,view)
  elseif view=="Boutique"then require(script.Parent.BoutiqueScreen).Render(self)
  elseif view=="Friends"or view=="InviteFriends"or view=="ChoosePlot"then
   require(script.Parent.FriendsScreen).Render(self,view,detail)
@@ -65,6 +67,7 @@ function Screens:Open(view,detail)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
   self.Title.Text="Your phone"
+  self:Row("Room to grow","Expand your cottage, craft furniture and save favorite layouts.","Plan your home",function()self:Open("Building")end)
   self:Row("Maple Adventures","Six rumors, a story album, earned trophies and shared park projects.","Follow a rumor",function()self:Open("Adventures")end)
   self:Row("Style Boutique","Optional permanent home-style packs for Robux.","Browse styles",function()self:Open("Boutique")end)
   self:Row("Friends","Party up, move together and return to your saved neighborhood.","Open Friends",function()self:Open("Friends")end)
@@ -114,6 +117,7 @@ function Screens:Open(view,detail)
   self:Row("Your next steps","Your phone keeps a checklist, collection book and case files.","Open progress",function()self:Open("Progress")end)
  elseif view=="Home" then
   self.Title.Text="Your home"
+  self:Row("Room to grow","Garden room, upstairs loft, garage and backyard workshop.","View expansion plans",function()self:Open("Building")end)
   local house=self.State.House or {}
   for _,color in ipairs({"Mint","Peach","Blue","Butter"})do local unlocked=house.UnlockedColors and house.UnlockedColors[color];self:Row(color.." exterior",house.Color==color and "Currently selected" or "A fresh look for your house",unlocked and "Apply paint" or "Unlock · $150",function()self.Request("Customize","Color",color)end)end
   for _,floor in ipairs({{"Wood",0},{"Tile",250},{"Carpet",200}})do local unlocked=house.UnlockedFloors and house.UnlockedFloors[floor[1]];self:Row(floor[1].." floor","Unlocked finishes can be reused.",unlocked and "Apply flooring" or "Unlock · $"..floor[2],function()self.Request("Customize","Floor",floor[1])end)end

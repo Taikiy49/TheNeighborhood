@@ -15,6 +15,8 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 
 | Test name | Clients | Scope |
 |---|---:|---|
+| BuildingAcceptance | 2 | Four expansions, crafting, 14 display spots, 15 furnishings, 22 physical walking legs, layouts and cleanup |
+| BuildingCapacity | 8 | Same building contracts with all eight homes expanded and furnished |
 | AdventureAcceptance | 2 | Six rumor trails, actual walks, checkpoint replays, shared park projects, trophies and saved album |
 | FoundationAcceptance | 2 | Purchases, possessions, locks, theft/recovery, activities, car/pet, persistence |
 | ArtAcceptance | 2 | Decoration constraints and 23 navigation routes |
@@ -26,18 +28,20 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 | LifecycleStress | 2 | Item lifecycle and invalid-transition stress |
 | DisconnectRaceAcceptance | 2 | Departing-player races |
 | BoutiqueRegression | 2 | Ownership outage/cancellation/race, 600 style equips, 800 invalid requests |
-| UIAcceptance | 2 | 18 screens at two panel widths on both clients |
+| UIAcceptance | 2 | 24 main screens plus four detail states at two panel widths on both clients (112 checks) |
 | StorageStress | 1 | 20 seeded storage simulations, 5,000 settlement/spending cycles |
 
 `FriendsAcceptance` accepts `SkipLiveDirectory=true` when the live-directory portion has already been verified separately. This skips that portion honestly; it does not count as a new live-storage pass.
 
 ## Latest expansion verification
 
-[Maple Adventures QA](QA-ADVENTURES.md) records the new story/project suite plus a fresh run of the 12 existing suites, expanded UI checks and a restart fixture.
+[Home expansion QA](QA-HOME-EXPANSIONS.md) records the latest building, capacity, UI and regression checks. The local unpublished build cannot verify live Roblox storage; those results explicitly report Skipped and Passed=false inside the live-storage subsection. A surrounding gameplay pass is not a live-storage pass.
+
+[Maple Adventures QA](QA-ADVENTURES.md) retains the preceding story/project and real restart evidence.
 
 ## Previous full regression
 
-See [full QA report](QA-FULL-REGRESSION.md) and [machine-readable results](qa/full-regression-results.json). Earlier records below remain historical evidence. `tools/run-studio-suites.luau` reproduces all 13 named suites sequentially; real stop/rejoin is a separate two-phase procedure.
+See [full QA report](QA-FULL-REGRESSION.md) and [machine-readable results](qa/full-regression-results.json). Earlier records below remain historical evidence. `tools/run-studio-suites.luau` reproduces all 15 named suites sequentially; real stop/rejoin is a separate two-phase procedure.
 
 ## Current evidence
 

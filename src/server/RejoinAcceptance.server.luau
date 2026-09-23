@@ -12,8 +12,15 @@ local ok,result=pcall(function()
   local item;for _,candidate in pairs(Items.Items)do if candidate.OwnerUserId==player.UserId and candidate.DefinitionId=="Lamp"then item=candidate;break end end
   assert(item,"Starter lamp missing")
   if item.State=="Displayed"then assert(Items:Store(player,item))end
-  local slotNumber=1
-  for slot=1,6 do local occupied=false;for _,candidate in pairs(Items.Items)do if candidate.HouseId==house.Model.Name and candidate.Slot==slot and candidate.State=="Displayed"then occupied=true end end;if not occupied then slotNumber=slot;break end end
+  local Building=require(script.Parent.Services.BuildingService)
+  profile.Currency=20000;player.Character:PivotTo(house.Model.Arrival.CFrame)
+  for _,id in ipairs({"GardenRoom","Loft","Garage","Workshop"})do assert(Building:Action(player,"Buy",id))end
+  player.Character:PivotTo(house.Model.Foundation.CFrame*CFrame.new(0,4,42))
+  assert(Building:Action(player,"Craft","Bench"))
+  assert(Building:Action(player,"Place",{Zone="Loft",Cell=1,Kind="Bench",Rotation=2}))
+  assert(Building:Action(player,"SaveLayout","1"))
+  local slotNumber=10
+  for slot=10,10 do local occupied=false;for _,candidate in pairs(Items.Items)do if candidate.HouseId==house.Model.Name and candidate.Slot==slot and candidate.State=="Displayed"then occupied=true end end;if not occupied then slotNumber=slot;break end end
   local slot=house.Model.DisplaySlots:FindFirstChild("Slot"..slotNumber);player.Character:PivotTo(slot.CFrame*CFrame.new(0,3,0));assert(Items:Place(player,item.Id,slotNumber))
   if not house.Locked then assert(Houses:DoorAction(player,house.Model.Lock,"Lock"))end
   profile.House.Boutique="Coastal:SeaGlass"
@@ -31,6 +38,7 @@ local ok,result=pcall(function()
  assert(house.Locked==expected.Locked,"Lock state did not restore")
  assert(profile.Statistics.ShutdownProbe==expected.ShutdownProbe,"Unsaved change was not flushed during shutdown")
  assert(profile.Adventures.Completed.Teaspoon and profile.Adventures.BestMs.Teaspoon==45000 and profile.Adventures.Rewards.TrailCompass and profile.Adventures.Contributions==12 and profile.Adventures.Active.Id=="Moon" and profile.Adventures.Active.Next==2,"Adventure progress did not survive shutdown/rejoin")
+ assert(profile.Building.Unlocked.Workshop and profile.Building.Unlocked.Loft and profile.Building.Owned.Bench==1 and profile.Building.Placed["Loft:1"].Rotation==2 and profile.Building.Layouts["1"]["Loft:1"].Kind=="Bench" and house.Model.HomeExpansion.Furnishings:FindFirstChild("Loft:1"),"Building or furniture did not survive restart")
  assert(profile._Recap and profile._Recap.LastSeen>0,"Honest recap missing")
  return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session","Boutique selection retained across actual server restart","Adventure album and unfinished chapter retained by shutdown save"}}
 end)

@@ -32,3 +32,9 @@ Assets loaded in the tested experience. Moving the project to another owner/univ
 ## Maple Adventures
 
 The six story posts, noticeboard, three park improvements and three earned trophies are built from native Roblox parts by AdventureService and ItemFactory. Their authored story text and positions live in AdventureDefinitions. No new external art, mesh or paid asset dependency was introduced.
+
+## Home expansion
+
+BuildingFactory constructs the garden room, loft, garage, workshop, stairs, window frames, crafting bench and four furniture recipes from native Roblox parts/materials. No new external asset or paid dependency was added.
+
+`assets/screenshots/home-expansion.jpg`, `home-loft.jpg` and `home-layouts.jpg` are unedited Roblox Studio captures from a temporary memory-only preview on September 23, 2026. Rooms, furniture and balance were staged; scenic views used a free camera. They are gameplay renders, not generated concept art or evidence of publication.

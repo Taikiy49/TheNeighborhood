@@ -6,16 +6,19 @@ local Repository=require(script.Parent.Parent.ProfileRepository)
 local Service={Profiles={},Saving={},Flushing={},Closing=false,SessionOnly=false}
 function Service:Init(context)
  self.Context=context
- local store=game:GetService("DataStoreService"):GetDataStore(Run:IsStudio() and "TheNeighborhood_Development_v2" or "TheNeighborhood_Profiles_v2")
- -- Explicit Studio-only restart fixtures never touch normal player profiles.
- local fixture=workspace:GetAttribute("PersistenceFixture")
- if Run:IsStudio()and type(fixture)=="string"then
-  assert(#fixture==36 and fixture:match("^[%x%-]+$"),"Invalid persistence fixture namespace")
-  store=game:GetService("DataStoreService"):GetDataStore("TheNeighborhood_RejoinFixtures_v1",fixture)
- end
- if Run:IsStudio()then
-  local args=game:GetService("StudioTestService"):GetTestArgs()
-  if type(args)=="table" and args.Name or workspace:GetAttribute("NeighborhoodVisualTest")==true then self.SessionOnly=true else
+ local store
+ local args=Run:IsStudio()and game:GetService("StudioTestService"):GetTestArgs()
+ self.SessionOnly=Run:IsStudio()and (game.PlaceId==0 or (type(args)=="table"and args.Name~=nil)or workspace:GetAttribute("NeighborhoodVisualTest")==true)or false
+ if self.SessionOnly then
+  local memory={};store={GetAsync=function(_,k)return memory[k]end,UpdateAsync=function(_,k,fn)local value=fn(memory[k]);if value then memory[k]=value end;return value end}
+ else
+  store=game:GetService("DataStoreService"):GetDataStore(Run:IsStudio()and "TheNeighborhood_Development_v2"or "TheNeighborhood_Profiles_v2")
+  local fixture=workspace:GetAttribute("PersistenceFixture")
+  if Run:IsStudio()and type(fixture)=="string"then
+   assert(#fixture==36 and fixture:match("^[%x%-]+$"),"Invalid persistence fixture namespace")
+   store=game:GetService("DataStoreService"):GetDataStore("TheNeighborhood_RejoinFixtures_v1",fixture)
+  end
+  if Run:IsStudio()then
    local ok=pcall(function()store:GetAsync("access-probe")end)
    if not ok then self.SessionOnly=true;warn("[NEIGHBORHOOD] Studio API unavailable: session-only playtest. No persistent defaults will be written.")end
   end

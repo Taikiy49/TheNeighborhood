@@ -13,7 +13,7 @@ function Service:Init(context)
  local folder=Instance.new("Folder");folder.Name="GnomeTrail";folder.Parent=workspace.Neighborhood.Runtime
  for _,clue in ipairs(clues)do
   local model=Factory.Create("GardenGnome");model.Name=clue.Id;model:ScaleTo(0.65)
-  local position=clue.Position or workspace.Neighborhood.Houses[clue.House].Foundation.CFrame:PointToWorldSpace(Vector3.new(-10,0.2,21))
+  local position=clue.Position or workspace.Neighborhood.Houses[clue.House].Foundation.CFrame:PointToWorldSpace(Vector3.new(-18,0.2,31))
   model:PivotTo(CFrame.new(position));model.Parent=folder
   local sign=Instance.new("Part");sign.Name="TrailTag";sign.Size=Vector3.new(1.2,0.8,0.2);sign.CFrame=CFrame.new(position+Vector3.new(0,1,-1.5));sign.Color=Color3.fromRGB(210,187,113);sign.Anchored=true;sign.CanCollide=false;sign:SetAttribute("Action","Discover");sign:SetAttribute("DiscoveryId",clue.Id);sign.Parent=model
   local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ActionText="Read tiny note";prompt.ObjectText="A suspiciously well-travelled gnome";prompt.MaxActivationDistance=8;prompt:SetAttribute("Action","Discover");prompt.Parent=sign
