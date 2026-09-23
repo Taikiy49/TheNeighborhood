@@ -1,0 +1,11516 @@
+
+keep going
+Finishing it. Continue directly from the cut-off at #111:
+
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+111. ACHIEVEMENTS — CONTINUED
+INSIDE JOB
+Successfully steal from someone on your friends list.
+
+NEIGHBORHOOD WATCH
+Stop a robbery in progress.
+
+NOT SUSPICIOUS AT ALL
+Walk through the neighborhood carrying an obviously stolen Legendary item.
+
+FINDERS KEEPERS
+Recover one of your stolen possessions.
+
+CRIME DOESN'T PAY
+Get caught before successfully fencing a stolen item.
+
+COLLECTOR
+Own ten Rare-or-better collectibles simultaneously.
+
+UNFORTUNATE COINCIDENCE
+Be falsely accused of a crime.
+
+RETURN TO SENDER
+Recover an item and return it to its original owner.
+
+Achievements should create funny goals rather than repetitive grinding.
+
+112. QUEST DESIGN
+Do not create generic quests like:
+
+"Open 20 doors."
+
+Prefer quests that encourage interaction.
+
+Examples:
+
+CURIOUS NEIGHBOR
+Visit three neighbors.
+
+SECURITY INSPECTION
+Inspect your home's entry points.
+
+RUMOR HAS IT
+Follow a neighborhood rumor.
+
+SOMETHING'S MISSING
+Investigate an incident.
+
+GARAGE SALE
+Sell an item to another player.
+
+QUESTIONABLE BUSINESS
+Visit the Totally Legal Pawn Shop.
+
+Quests should introduce systems naturally.
+
+113. TUTORIAL DESIGN
+Avoid a traditional 15-step tutorial.
+
+The first experience should be contextual.
+
+Player receives house.
+
+Prompt:
+
+This one's yours.
+
+Player approaches door.
+
+[OPEN]
+
+Inside:
+
+Looks empty.
+
+A starter furniture box appears.
+
+Player opens it.
+
+They place something.
+
+Later:
+
+Your neighbor has something interesting...
+
+The game gradually introduces mechanics.
+
+Players should feel like they're playing immediately.
+
+114. NPC GUIDE
+Consider one memorable NPC who introduces the neighborhood.
+
+Potential character:
+
+GARY
+Neighborhood association representative.
+
+Extremely enthusiastic.
+
+Slightly suspicious.
+
+Gary says things like:
+
+"Welcome to the neighborhood! Crime is extremely low."
+
+Pause.
+
+Alarm goes off behind him.
+
+"...usually."
+
+Do not make Gary talk for five minutes.
+
+Short interactions.
+
+Strong personality.
+
+115. WORLD INTRODUCTION
+On first join:
+
+Camera glides over neighborhood.
+
+Kids playing / NPC activity.
+
+Delivery truck.
+
+Beautiful houses.
+
+Someone waters lawn.
+
+Then in background:
+
+A player jumps a fence carrying a giant Golden Toilet.
+
+Alarm starts.
+
+Homeowner runs after them.
+
+Camera continues as if nothing happened.
+
+Title:
+
+THE NEIGHBORHOOD
+Then control goes to player.
+
+This communicates the entire fantasy without explaining it.
+
+If technically feasible and performant, build toward an intro like this eventually.
+
+For MVP, a simpler version is acceptable.
+
+116. CORE GAMEPLAY PILLARS
+Every proposed feature should support at least one pillar:
+
+LIVE
+Own and customize a home.
+
+COLLECT
+Acquire interesting possessions.
+
+SCHEME
+Prank, spy, steal, plan.
+
+PROTECT
+Secure your property.
+
+INVESTIGATE
+Understand what happened.
+
+SOCIALIZE
+Interact with neighbors.
+
+DISCOVER
+Find secrets and unusual events.
+
+If a feature supports none of these:
+
+Question why it exists.
+
+117. FEATURE PRIORITIZATION
+When deciding what to build next, use:
+
+IMPACT × FREQUENCY × DEVELOPMENT COST.
+
+Prioritize features that:
+
+happen frequently
+create social interaction
+produce stories
+strengthen the core loop
+are relatively cheap to iterate
+Do not prioritize something merely because it sounds technologically impressive.
+
+118. DO NOT BUILD TECH DEMOS
+I do not want:
+
+"Here is an advanced procedural neighborhood generator."
+
+if the actual game is boring.
+
+I would rather have:
+
+8 beautifully designed houses
+
+than:
+
+800 procedural houses nobody cares about.
+
+Gameplay first.
+
+119. NO FAKE COMPLETENESS
+Never hide unfinished functionality behind polished-looking buttons.
+
+If a feature isn't implemented:
+
+hide it
+clearly mark it development-only
+or omit it
+Do not create a UI containing 20 dead buttons.
+
+A smaller functioning game is better.
+
+120. PLACEHOLDER POLICY
+Placeholders are acceptable during development.
+
+But placeholders should be centralized and obvious.
+
+Do not leave random gray blocks everywhere indefinitely.
+
+Before calling a milestone polished:
+
+Replace important placeholders.
+
+121. SOURCE CONTROL
+Use Git/source control.
+
+Commit logically.
+
+Examples:
+
+feat: add plot assignment system
+
+feat: add item definitions and inventory
+
+feat: implement robbery sessions
+
+feat: add security camera evidence
+
+fix: prevent duplicated stolen items on disconnect
+
+ui: polish incident report
+
+Do not create giant commits containing unrelated work when avoidable.
+
+Never overwrite working systems casually.
+
+122. ROJO WORKFLOW
+If Rojo is configured, use it as the primary source-code workflow where appropriate.
+
+Keep scripts in the repository.
+
+Sync them into Studio.
+
+Do not create conflicting copies of scripts in both places without understanding which is authoritative.
+
+Before restructuring the project:
+
+Inspect the existing Rojo configuration.
+
+Do not break it.
+
+123. ROBLOX STUDIO MCP
+Use Roblox Studio MCP actively.
+
+Do not treat it as a last resort.
+
+Use it to:
+
+inspect hierarchy
+inspect instances
+create instances
+modify properties
+inspect scripts
+run Luau where appropriate
+enter Play mode
+test behavior
+inspect output/errors
+verify changes
+When a change can be verified in Studio:
+
+VERIFY IT.
+
+Do not merely say:
+
+"This should work."
+
+124. NEVER GUESS PROJECT STATE
+Before changing an existing system:
+
+Inspect it.
+
+Before creating a duplicate system:
+
+Search for an existing one.
+
+Before assuming an object exists:
+
+Verify it.
+
+Before changing an API:
+
+Find its consumers.
+
+Do not hallucinate project structure.
+
+125. EXTERNAL DOCUMENTATION
+When uncertain about current Roblox APIs:
+
+Use official Roblox documentation when available.
+
+Prefer:
+
+Roblox Creator Hub
+Roblox API documentation
+Roblox official examples
+over random outdated tutorials.
+
+Do not use deprecated APIs merely because they appear in old code examples.
+
+126. ASSET SAFETY
+Do not insert arbitrary free models with unknown scripts.
+
+If a Creator Store asset is used:
+
+Inspect it.
+
+Remove unnecessary scripts.
+
+Verify licensing/usage where relevant.
+
+Prefer building simple important gameplay assets ourselves rather than importing suspicious packages.
+
+127. BUILD PHASE 0 — INSPECTION
+Before implementing anything:
+
+Inspect the current repository.
+Inspect Roblox Studio hierarchy.
+Determine whether Rojo is configured.
+Determine existing dependencies.
+Determine existing architecture.
+Determine whether any systems already exist.
+Run the current game.
+Record existing errors.
+Take/inspect screenshots if possible.
+Establish a baseline.
+Then create a concise implementation plan.
+
+DO NOT spend hours writing a giant design document.
+
+This prompt already IS the design document.
+
+128. BUILD PHASE 1 — FOUNDATION
+Build:
+
+project structure
+shared types
+configuration
+networking layer
+service lifecycle if needed
+basic player data
+basic UI framework
+interaction framework
+plot assignment
+Acceptance criteria:
+
+Two players can join.
+
+Each receives a different house.
+
+Both can interact with their own house.
+
+Server state remains authoritative.
+
+No major errors.
+
+129. BUILD PHASE 2 — WORLD
+Create the first neighborhood.
+
+Target:
+
+8 houses.
+
+Central social area.
+
+Pawn shop.
+
+Basic store.
+
+Short streets.
+
+Backyards.
+
+Several shortcuts.
+
+Lighting.
+
+Basic environmental ambience.
+
+The map should already feel pleasant to walk around.
+
+Do not build the entire final city.
+
+130. BUILD PHASE 3 — ITEMS
+Implement:
+
+ItemDefinitions.
+
+ItemInstance representation.
+
+Inventory.
+
+World item representation.
+
+Pickup/drop where appropriate.
+
+Display placement.
+
+Rarity.
+
+Value.
+
+Weight.
+
+Ownership.
+
+Create initial items:
+
+Basic Chair
+Lamp
+Television
+Garden Gnome
+Lawn Flamingo
+Microwave
+Fancy Vase
+Suspicious Painting
+Golden Trash Can
+Golden Toilet
+The Golden Toilet must be visually distinctive.
+
+131. BUILD PHASE 4 — ECONOMY
+Implement:
+
+starting currency
+store purchases
+inventory ownership
+pawn-shop sales
+transaction validation
+Do not build complex dynamic pricing yet.
+
+Prices can be configuration-driven.
+
+Test all transactions server-side.
+
+132. BUILD PHASE 5 — THEFT
+Implement the first theft loop.
+
+Player B enters eligible robbery state.
+
+Player B interacts with stealable item.
+
+Server validates action.
+
+Item becomes carried.
+
+Ownership enters appropriate stolen state.
+
+Player movement changes according to item weight.
+
+Player can escape.
+
+Successful escape resolves robbery state.
+
+Do not build fifteen burglary tools yet.
+
+One polished theft flow.
+
+133. BUILD PHASE 6 — GOLDEN TOILET
+Now specifically make the Golden Toilet scenario excellent.
+
+Requirements:
+
+Golden Toilet is large.
+
+Golden Toilet is funny.
+
+Golden Toilet is obviously valuable.
+
+Golden Toilet is difficult to carry.
+
+Golden Toilet is visible when carried.
+
+Movement becomes noticeably slower.
+
+Other players immediately understand what is happening.
+
+Add appropriate animation/audio feedback.
+
+Playtest with at least two simulated players.
+
+If this isn't fun:
+
+ITERATE.
+
+134. BUILD PHASE 7 — SECURITY
+Implement:
+
+basic house lock
+one security camera
+alarm state
+security event recording
+Camera detects suspicious activity within reasonable conditions.
+
+Do NOT implement literal continuous video recording.
+
+Generate structured evidence.
+
+135. BUILD PHASE 8 — EVIDENCE
+Create EvidenceRecord.
+
+Potential MVP evidence:
+
+CameraObservation
+
+Footprint
+
+AlarmLog
+
+For MVP, keep deduction simple.
+
+Evidence should include useful but not necessarily perfect information.
+
+Example:
+
+CAMERA OBSERVATION
+
+Time:
+10:42 PM
+
+Clothing:
+Red
+
+Carrying:
+Large Object
+
+Image Quality:
+Poor
+
+Do not directly expose the culprit's user ID to the victim UI.
+
+136. BUILD PHASE 9 — INCIDENTS
+Create IncidentRecord.
+
+When robbery resolves:
+
+Victim receives incident.
+
+Incident contains:
+
+timestamp
+property
+missing items
+evidence references
+status
+Create polished Incident UI.
+
+Example:
+
+BREAK-IN
+Last night • 10:42 PM
+
+MISSING
+
+Golden Toilet
+
+EVIDENCE
+
+Camera Observation
+Alarm Log
+
+[OPEN CASE]
+
+This is a major visual moment.
+
+Polish it.
+
+137. BUILD PHASE 10 — INVESTIGATION
+Create simple case interface.
+
+Player can:
+
+inspect evidence
+view stolen item
+see incident timeline
+mark case active
+eventually accuse a suspect
+For MVP, accusation can remain simple.
+
+The goal is to prove:
+
+Robbery produces a second gameplay loop for the victim.
+
+138. BUILD PHASE 11 — PERSISTENCE
+Persist:
+
+currency
+owned items
+house customization required for MVP
+relevant progression
+unresolved incidents
+item ownership
+Test:
+
+leave
+
+rejoin
+
+verify.
+
+Test server shutdown behavior.
+
+Test failed saves where possible.
+
+Do not call persistence finished because one save succeeded once.
+
+139. BUILD PHASE 12 — OFFLINE RECAP
+Create:
+
+WHILE YOU WERE AWAY
+Summarize relevant persisted events.
+
+Examples:
+
+Someone attempted to enter your house.
+
+Your security camera recorded activity.
+
+An item was stolen.
+
+An item was recovered.
+
+No activity?
+
+Do not fabricate drama.
+
+Maybe simply say:
+
+"Quiet night in the neighborhood."
+
+The recap should create curiosity without lying.
+
+140. BUILD PHASE 13 — UI POLISH
+Now perform a dedicated UI pass.
+
+Inspect every screen.
+
+Standardize:
+
+spacing
+typography
+corner radius
+icon scale
+shadows
+animation
+button states
+modal behavior
+Delete redundant UI.
+
+Test mobile.
+
+Test controller navigation where relevant.
+
+141. BUILD PHASE 14 — WORLD POLISH
+Dedicated environmental pass.
+
+Improve:
+
+lighting
+landscaping
+street composition
+house variation
+props
+storefronts
+signage
+ambient animation
+night appearance
+Do not hide weak gameplay behind decoration.
+
+This phase happens after the loop works.
+
+142. BUILD PHASE 15 — AUDIO / ANIMATION
+Add audio feedback.
+
+Add key animations.
+
+Focus on:
+
+item pickup
+carrying
+doors
+robbery
+alarm
+evidence discovery
+notifications
+Golden Toilet chase
+Avoid spending a week animating irrelevant NPCs.
+
+143. BUILD PHASE 16 — PLAYTEST
+Run multiplayer playtests.
+
+Do NOT explain everything to testers.
+
+Observe.
+
+Can they figure out:
+
+Where is my house?
+
+How do I earn/buy something?
+
+What belongs to me?
+
+How do I interact?
+
+How do I steal something?
+
+What happens when I'm robbed?
+
+Where do I investigate?
+
+If you have to verbally explain the game constantly:
+
+The UX is failing.
+
+144. BUILD PHASE 17 — FIX THE BORING PARTS
+Identify:
+
+Where do players stand around?
+
+Where are they confused?
+
+Where do they stop caring?
+
+What takes too long?
+
+What interaction feels tedious?
+
+What UI gets ignored?
+
+Fix those before adding more systems.
+
+145. MVP DEFINITION OF DONE
+The MVP is NOT done because:
+
+"all planned scripts exist."
+
+The MVP is done when:
+
+game loads reliably
+neighborhood looks coherent
+houses assign correctly
+core UI looks polished
+players can own items
+items persist
+Golden Toilet exists
+another player can steal it
+carrying it changes gameplay
+owner can discover theft
+evidence is generated
+incident appears
+victim can investigate
+thief can fence item
+economy updates correctly
+multiplayer state remains synchronized
+leaving/rejoining does not duplicate items
+mobile experience is usable
+no obvious remote exploits exist
+no major output errors exist
+AND MOST IMPORTANTLY:
+
+The Golden Toilet scenario is actually fun.
+
+146. FAILURE CONDITION
+If the core loop is not fun:
+
+DO NOT solve it by adding:
+
+pets
+cars
+twenty shops
+battle passes
+100 collectibles
+another currency
+another neighborhood
+
+Fix:
+
+interaction
+risk
+chase
+social consequences
+feedback
+pacing
+
+Content cannot rescue a weak loop.
+
+147. POST-MVP EXPANSION ORDER
+Only after MVP proves itself, consider expanding roughly in this order:
+
+more collectibles
+house customization
+more security options
+more burglary approaches
+pranks
+trading
+neighborhood events
+reputation
+collection book
+vehicles
+pets
+bounties
+advanced investigation
+planted evidence
+additional neighborhoods
+seasonal content
+deeper social systems
+Change this order based on actual player behavior.
+
+Data beats this document.
+
+148. CREATIVE FREEDOM
+You are allowed to improve ideas in this specification.
+
+If you discover:
+
+a mechanic is not fun
+something is technically impractical
+another implementation would be cleaner
+a feature harms performance
+a simpler mechanic produces better gameplay
+say so.
+
+Then propose the better solution.
+
+Do not blindly follow a bad implementation merely because this prompt suggested it.
+
+Preserve the underlying design goals.
+
+149. DO NOT DELETE WORKING SYSTEMS WITHOUT REASON
+When iterating:
+
+Preserve functioning behavior.
+
+Refactor deliberately.
+
+Before deleting/replacing something:
+
+Understand what depends on it.
+
+If a refactor is risky:
+
+make a checkpoint/commit first.
+
+150. AUTONOMOUS DEVELOPMENT BEHAVIOR
+Do not stop after every tiny change and ask me what to do next.
+
+You have authority to make normal engineering decisions within this specification.
+
+Proceed through logical tasks.
+
+Stop and ask only when:
+
+a decision materially changes the product
+credentials/private information are needed
+irreversible external action is required
+there are multiple fundamentally different directions with major consequences
+tooling prevents progress
+Otherwise:
+
+BUILD.
+
+TEST.
+
+INSPECT.
+
+FIX.
+
+CONTINUE.
+
+151. WHEN SOMETHING BREAKS
+Do not immediately rewrite everything.
+
+Use disciplined debugging:
+
+reproduce
+inspect output
+identify failing subsystem
+trace state
+isolate root cause
+implement smallest reasonable fix
+retest
+test nearby behavior
+commit when stable
+Do not randomly modify unrelated files until the error disappears.
+
+152. VISUAL QA LOOP
+For EVERY major visual feature:
+
+BUILD
+
+↓
+
+PLAY
+
+↓
+
+LOOK
+
+↓
+
+CRITIQUE
+
+↓
+
+FIX
+
+↓
+
+PLAY AGAIN
+
+Specifically evaluate:
+
+spacing
+alignment
+contrast
+scale
+hierarchy
+animation
+readability
+composition
+consistency
+Do not call visual work complete from code inspection alone.
+
+153. GAMEPLAY QA LOOP
+For EVERY major mechanic:
+
+BUILD
+
+↓
+
+PLAY
+
+↓
+
+BREAK IT
+
+↓
+
+FIX
+
+↓
+
+MULTIPLAYER TEST
+
+↓
+
+BREAK IT AGAIN
+
+Test unexpected behavior.
+
+Players will do things we didn't intend.
+
+That is especially important in a sandbox.
+
+154. PERFORMANCE QA LOOP
+Periodically profile.
+
+Watch:
+
+client frame rate
+server frame time
+memory
+network traffic
+physics load
+instance count
+Do not wait until the entire game is built to discover the neighborhood runs at 20 FPS on mobile.
+
+155. SECURITY QA LOOP
+Before calling a system complete, ask:
+
+"What happens if the client lies?"
+
+If the answer is:
+
+"They get free money."
+
+The system is not complete.
+
+156. CODING AGENT RULE
+Never claim a task succeeded without evidence when evidence is obtainable.
+
+BAD:
+
+"Implemented successfully."
+
+GOOD:
+
+"Implemented robbery carrying. Tested with two Studio clients: Player B stole the Golden Toilet, movement penalty applied, Player A saw the item disappear, and the server produced no new errors."
+
+Report what was actually verified.
+
+157. PROGRESS REPORTING
+After a meaningful batch of work, summarize briefly:
+
+COMPLETED
+What changed.
+
+VERIFIED
+What was actually tested.
+
+ISSUES
+Known problems.
+
+NEXT
+What you are doing next.
+
+Do not produce massive essays after every small change.
+
+Spend tokens on building.
+
+158. README
+Maintain a useful README containing:
+
+project purpose
+setup
+Studio/Rojo workflow
+architecture overview
+major services
+development commands
+testing workflow
+important conventions
+Do not turn README into this entire design document.
+
+Keep it useful for engineering.
+
+159. DEVELOPMENT ROADMAP
+Maintain a lightweight roadmap/checklist.
+
+Example:
+
+FOUNDATION
+[x] project structure
+[x] interaction framework
+[x] plot assignment
+[ ] persistence
+
+CORE LOOP
+[ ] items
+[ ] theft
+[ ] carrying
+[ ] Golden Toilet
+[ ] security
+[ ] evidence
+[ ] incidents
+
+POLISH
+[ ] UI
+[ ] audio
+[ ] animation
+[ ] mobile
+[ ] multiplayer QA
+
+Update it as work progresses.
+
+160. ART BIBLE
+Create a lightweight development document describing:
+
+ENVIRONMENT
+Styl
+
+keep going
+Continuing from #160. This will finish the master prompt.
+
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+160. ART BIBLE
+Create and maintain a lightweight art bible.
+
+ENVIRONMENT
+Stylized suburban America.
+
+Clean shapes.
+
+Slightly exaggerated proportions.
+
+Warm and inviting.
+
+Dense enough to feel alive.
+
+Never photorealistic.
+
+Never visually noisy.
+
+ARCHITECTURE
+Homes should have recognizable silhouettes.
+
+Use variety without breaking cohesion.
+
+Potential styles:
+
+starter suburban
+craftsman
+modern
+cottage
+ranch
+upscale suburban
+eccentric collector house
+PROPS
+Chunky.
+
+Readable.
+
+Slightly exaggerated.
+
+Interactive objects should be recognizable immediately.
+
+RARE ITEMS
+Rare items need distinct silhouettes first.
+
+Effects come second.
+
+Do not make rarity depend exclusively on glowing particles.
+
+UI
+Modern.
+
+Playful.
+
+Minimal.
+
+Premium-feeling.
+
+Soft dimensionality.
+
+Consistent spacing.
+
+Excellent animation.
+
+Avoid generic simulator UI.
+
+ANIMATION
+Expressive.
+
+Readable.
+
+Slightly exaggerated.
+
+Comedy > realism when appropriate.
+
+AUDIO
+Cozy suburban ambience mixed with exaggerated gameplay feedback.
+
+161. DESIGN TOKENS
+Establish actual reusable design tokens rather than eyeballing every screen.
+
+Define:
+
+spacing units
+typography sizes
+corner radii
+panel transparency
+shadow treatment
+animation durations
+easing styles
+semantic colors
+rarity presentation
+notification priority
+Use these throughout the UI.
+
+If we later redesign the visual system, we should be able to change centralized values rather than manually editing every screen.
+
+162. UI MOTION LANGUAGE
+Animation should communicate state.
+
+Examples:
+
+BUTTON HOVER
+
+subtle scale / highlight
+
+BUTTON PRESS
+
+fast compression
+
+MODAL OPEN
+
+short scale + fade
+
+NOTIFICATION
+
+slide + fade
+
+RARE ITEM
+
+controlled reveal
+
+ALARM
+
+brief attention animation
+
+Avoid making every UI element bounce constantly.
+
+Motion should feel deliberate.
+
+163. MICROINTERACTIONS
+Small interactions create perceived quality.
+
+Examples:
+
+Mailbox flag moves.
+
+Door handle rotates.
+
+Light switch physically clicks.
+
+Security camera tracks slightly.
+
+Cash register opens.
+
+Package tape tears.
+
+Garage door rolls upward.
+
+Dog tilts head.
+
+Pawn-shop sign flickers.
+
+Golden Toilet lid can open.
+
+These details should be added strategically after core gameplay works.
+
+164. SIGNATURE DETAILS
+Create several small details that players associate specifically with THE NEIGHBORHOOD.
+
+Potential examples:
+
+Every mailbox has a tiny customizable flag.
+
+Neighborhood street signs slightly rotate when hit.
+
+Golden Toilet produces an absurdly subtle angelic sound when opened.
+
+Totally Legal Pawn Shop's "LEGAL" sign occasionally flickers off.
+
+Security-camera footage uses a recognizable visual treatment.
+
+Newspaper lands physically near the front door.
+
+These become part of the game's identity.
+
+165. THE GOLDEN TOILET IS OUR TEST CHARACTER
+Treat the Golden Toilet almost like a mascot during development.
+
+Use it to test:
+
+item rendering
+rarity
+inventory
+ownership
+placement
+carrying
+weight
+stealing
+evidence
+selling
+recovery
+persistence
+trading later
+provenance later
+If our architecture handles the Golden Toilet correctly across the entire lifecycle, we have a strong foundation for other collectibles.
+
+166. THE GOLDEN TOILET LIFECYCLE
+Eventually this exact lifecycle should work:
+
+Store/world generation
+
+↓
+
+Player A obtains Golden Toilet #00482
+
+↓
+
+Item enters Player A ownership
+
+↓
+
+Player A displays it
+
+↓
+
+Player B sees it
+
+↓
+
+Player B begins robbery
+
+↓
+
+Player B steals it
+
+↓
+
+Item becomes stolen
+
+↓
+
+Camera records event
+
+↓
+
+Player B carries it
+
+↓
+
+Player B escapes
+
+↓
+
+Player A receives incident
+
+↓
+
+Player B fences it OR keeps it
+
+↓
+
+Ownership/provenance updates
+
+↓
+
+Player A investigates
+
+↓
+
+Item may later be recovered/traded/stolen again
+
+Every transition must have one authoritative state.
+
+167. STATE MACHINES
+Use explicit states where they simplify complicated systems.
+
+Example robbery:
+
+Idle
+
+↓
+
+Preparing
+
+↓
+
+Trespassing
+
+↓
+
+Stealing
+
+↓
+
+Escaping
+
+↓
+
+Succeeded
+
+or
+
+Failed
+
+Do not represent complex gameplay with fifteen unrelated booleans like:
+
+isRobbing
+isEscaping
+hasStolen
+gotCaught
+isInside
+robberyDone
+
+if those booleans can create impossible combinations.
+
+Use clear state transitions.
+
+168. HOUSE PERMISSIONS
+Eventually support house permissions.
+
+Possible levels:
+
+OWNER
+
+ROOMMATE
+
+FRIEND
+
+VISITOR
+
+UNAUTHORIZED
+
+Do not confuse legitimate access with burglary.
+
+If I invite a friend inside, the game should know they entered legitimately.
+
+But legitimate entry does not necessarily mean:
+
+"You may take my Golden Toilet."
+
+Separate:
+
+entry permission
+
+interaction permission
+
+item ownership.
+
+169. LOCKING SYSTEM
+Keep locking intuitive.
+
+Door states:
+
+Unlocked
+
+Locked
+
+Compromised
+
+Potential security upgrades modify:
+
+interaction difficulty
+noise
+time
+evidence risk
+Do not create tedious lockpicking minigames that players repeat 500 times.
+
+If a minigame exists, keep it quick and skill-readable.
+
+170. ROBBERY COOLDOWNS
+Do not allow one player to endlessly target the same victim.
+
+Implement protections such as:
+
+victim cooldown
+attacker-target cooldown
+recently robbed protection
+diminishing reward where appropriate
+Exact values should be tuned through testing.
+
+Never hardcode balancing numbers throughout the codebase.
+
+Centralize them.
+
+171. RISK SIGNALS
+Before players commit to dangerous actions, communicate risk.
+
+Example:
+
+Attempting to break window:
+
+SECURITY DETECTED
+
+📹 Camera
+🔔 Alarm
+
+Risk:
+HIGH
+
+[BREAK IN]
+
+This creates meaningful choice.
+
+Don't punish players with invisible rules.
+
+172. INFORMATION AS GAMEPLAY
+Information itself should have value.
+
+Knowing:
+
+which house has valuables
+which security system is installed
+when someone was last active
+which pawn shop buys something
+what evidence exists
+where an item was last seen
+can drive gameplay.
+
+Do not reveal all information automatically.
+
+Observation should matter.
+
+173. HOUSE CASING
+Eventually players could "case" a house.
+
+Casing might reveal:
+
+VALUABLES SEEN
+
+Golden Toilet
+Fancy Television
+
+SECURITY OBSERVED
+
+Front Camera
+Alarm
+
+UNKNOWN
+
+Backyard
+Garage
+
+This turns walking around the neighborhood into gameplay.
+
+For MVP, visual observation may be enough.
+
+Do not overbuild this yet.
+
+174. BINOCULARS / SPY GADGETS — FUTURE
+Possible future gadgets:
+
+binoculars
+cheap camera
+listening gadget
+disguise
+tracker
+decoy package
+Keep these playful.
+
+Do not create realistic surveillance functionality.
+
+They exist only inside the fictional game world.
+
+175. HEAT
+Consider a lightweight "Heat" concept later.
+
+Committing suspicious actions increases temporary attention.
+
+Higher Heat might:
+
+make NPCs suspicious
+make cameras more useful
+affect pawn-shop prices
+create Neighborhood Watch alerts
+Heat should decay.
+
+Do not turn the game into GTA wanted levels.
+
+It should remain lighthearted.
+
+176. WITNESSES
+NPC/player presence can influence risk.
+
+If someone visibly watches a player steal something, that can become evidence.
+
+Do not automatically expose the thief's identity to everyone.
+
+Possible witness record:
+
+Person observed:
+Tall avatar
+Blue shirt
+Carrying large gold object
+
+Again:
+
+information with uncertainty.
+
+177. PLAYER MEMORY
+The game should create recognizable neighborhood relationships.
+
+Players should remember:
+
+"That's the guy who robbed me."
+
+"That's the person who helped recover my couch."
+
+"That's the house with all the gnomes."
+
+Systems should reinforce social memory through:
+
+incidents
+provenance
+reputation
+recurring neighbors
+house identity
+Do not over-automate social relationships.
+
+Let humans create the story.
+
+178. NEIGHBOR CARDS
+Potential future UI when inspecting a neighbor:
+
+MIA
+
+🏠 Maple Street
+
+Known For:
+
+🎨 Decorator
+🤝 Helpful Neighbor
+
+Recent public activity:
+
+Won Yard of the Week
+
+Do NOT publicly expose private crime history automatically.
+
+Suspicion should come through gameplay, not permanent public shaming.
+
+179. HOUSE VALUE
+House value can become a status metric.
+
+Calculated from:
+
+house tier
+legitimate furniture
+collectibles
+decoration
+upgrades
+Avoid making house value purely:
+
+"who spent the most Robux."
+
+Earned items should matter.
+
+180. YARD OF THE WEEK
+Potential recurring social event:
+
+Players can receive:
+
+YARD OF THE WEEK
+or
+
+HOUSE OF THE WEEK
+based on safe voting/curated criteria.
+
+Reward:
+
+temporary sign
+cosmetic trophy
+newspaper mention
+small currency reward
+This gives decorators recognition.
+
+181. GARAGE SALES
+Garage sales could become an excellent social economy mechanic.
+
+Player places items for sale.
+
+Items physically appear on tables.
+
+Neighbors browse.
+
+Possible sign:
+
+GARAGE SALE
+
+Everything Must Go!
+
+This creates natural gatherings.
+
+Stolen items appearing at garage sales could create hilarious situations.
+
+But the system must clearly handle ownership/provenance.
+
+182. AUCTIONS — FUTURE
+Rare serialized items could eventually be auctioned through an in-game system.
+
+Do not implement this until the economy is stable.
+
+Avoid speculative mechanics.
+
+No real-money cash-out promises.
+
+Keep all economy inside Roblox's allowed systems.
+
+183. SOCIAL EVENTS
+Potential events:
+
+Block Party
+
+Neighborhood Cookout
+
+Garage Sale Weekend
+
+Halloween Trick-or-Treat
+
+Christmas Lights
+
+Neighborhood Watch Night
+
+Gnome Hunt
+
+Treasure Hunt
+
+Mystery Package
+
+Events should encourage players to gather physically.
+
+184. RANDOM EVENTS
+Small random events can prevent sessions feeling identical.
+
+Examples:
+
+Power flickers.
+
+Delivery truck drops wrong package.
+
+Dog escapes yard.
+
+Streetlight breaks.
+
+NPC loses keys.
+
+Garage sale appears.
+
+Suspicious van arrives.
+
+Rare item rumor begins.
+
+Keep event frequency controlled.
+
+Constant chaos stops feeling special.
+
+185. WORLD MEMORY
+The neighborhood should occasionally remember meaningful things.
+
+Example:
+
+A house that was repeatedly robbed might temporarily display police tape.
+
+A famous item recovery could appear in newspaper history.
+
+A player who wins House of the Week gets a temporary yard sign.
+
+These little consequences make the world feel persistent.
+
+186. SERVER STORY
+Think of each server as generating its own episode.
+
+At the end of an active session, you should be able to summarize:
+
+"Someone stole a Golden Toilet, blamed the guy next door, the toilet appeared at a garage sale, and then the original owner's dog chased the buyer through the park."
+
+That is success.
+
+The game is a STORY GENERATOR.
+
+187. SESSION PACING
+Avoid long dead periods.
+
+Rough desired rhythm:
+
+EXPLORE
+
+↓
+
+NOTICE OPPORTUNITY
+
+↓
+
+MAKE DECISION
+
+↓
+
+ACTION
+
+↓
+
+CONSEQUENCE
+
+↓
+
+RECOVERY / REWARD
+
+↓
+
+SOCIAL REACTION
+
+↓
+
+NEW OPPORTUNITY
+
+The player should not need to grind alone for an hour before something interesting happens.
+
+188. SHORT SESSION FRIENDLY
+A player with ten minutes should accomplish something.
+
+Examples:
+
+decorate room
+buy item
+investigate clue
+prank neighbor
+visit garage sale
+complete small robbery
+participate in event
+Long-term progression can exist without demanding huge uninterrupted sessions.
+
+189. LONG SESSION FRIENDLY
+Players staying longer should naturally encounter:
+
+social drama
+rare events
+progression
+collection opportunities
+neighborhood events
+trading
+investigations
+Do not simply multiply rewards for staying AFK.
+
+190. AFK DESIGN
+Do not reward AFK farming heavily.
+
+The game should reward interaction.
+
+If players spend most of their time standing still because passive money is optimal, redesign the economy.
+
+191. ECONOMIC FAUCETS
+Track where currency enters the economy.
+
+Examples:
+
+jobs
+quests
+events
+NPC sales
+achievements
+Track amounts.
+
+192. ECONOMIC SINKS
+Track where currency leaves.
+
+Examples:
+
+furniture
+house upgrades
+security
+cosmetics
+vehicles later
+listing fees later
+customization
+The economy needs meaningful sinks.
+
+193. ROBBERY DOES NOT CREATE MONEY
+Important:
+
+Stealing an item should generally transfer value rather than magically create full additional value.
+
+If:
+
+Player A owns $8,400 Golden Toilet
+
+and Player B steals it,
+
+the economy should not automatically create another $8,400.
+
+If B fences it for $2,900:
+
+the item is transferred/consumed/resolved according to the designed economy.
+
+Be careful with economic duplication.
+
+194. PAWN SHOP ECONOMICS
+Pawn shop pays less than legitimate value.
+
+Example:
+
+Golden Toilet legitimate value:
+$8,400
+
+Stolen fence value:
+$2,900
+
+Why?
+
+Robbery should be tempting but not automatically the best money-making strategy.
+
+The real value is:
+
+excitement
+rare possession acquisition
+social story
+risk/reward
+195. LEGITIMATE PLAY MUST BE VIABLE
+Players who don't enjoy stealing must still have a complete game.
+
+They can:
+
+decorate
+collect
+trade
+investigate
+protect
+participate in events
+run garage sales
+pursue achievements
+socialize
+Do not force everyone to become a thief.
+
+196. MISCHIEF SPECTRUM
+Give players escalating choices.
+
+LOW RISK:
+
+Ring doorbell.
+
+MEDIUM:
+
+Prank yard.
+
+HIGH:
+
+Trespass.
+
+VERY HIGH:
+
+Steal valuable collectible.
+
+Players choose their own level of chaos.
+
+197. EMERGENT ROLES
+Do not display:
+
+CHOOSE YOUR CLASS
+
+THIEF
+COP
+DECORATOR
+
+Instead let players become those things through behavior.
+
+One night I'm a detective.
+
+Tomorrow I'm stealing someone's microwave.
+
+That flexibility is important.
+
+198. NPC ECONOMY
+NPC systems should stabilize the economy.
+
+Players should always have some way to:
+
+buy baseline goods
+sell baseline goods
+earn baseline currency
+Player trading enhances the economy but should not be mandatory for basic progression.
+
+199. PLAYER MARKET — LATER
+A player marketplace could eventually exist.
+
+Do not build it initially.
+
+Trading and garage sales are more social and more aligned with the fantasy.
+
+200. CONTENT RARITY
+Rarity should mean something.
+
+Do not make everything Legendary.
+
+Suggested conceptual distribution:
+
+Common:
+normal household objects
+
+Uncommon:
+interesting variants
+
+Rare:
+recognizable status items
+
+Epic:
+strong visual identity
+
+Legendary:
+conversation pieces
+
+Mythic:
+server-level excitement
+
+A Mythic item appearing should matter.
+
+201. RARITY WITHOUT CASINO DESIGN
+Do not make the entire game depend on slot-machine-style random purchases.
+
+Rare items can come from:
+
+events
+difficult objectives
+exploration
+collections
+achievements
+limited seasonal activities
+controlled random world discoveries
+If randomness exists, communicate it appropriately and follow Roblox policies.
+
+202. MYSTERY
+Do not publish every probability, secret, event trigger, and hidden item directly inside the normal gameplay UI unless necessary.
+
+Some discovery is healthy.
+
+Players should share:
+
+"How did you get that?"
+
+That question is valuable.
+
+203. COMMUNITY KNOWLEDGE
+Design some systems that encourage community discovery.
+
+Examples:
+
+Secret bunker entrance.
+
+Rare van event.
+
+Moving gnome.
+
+Strange pawn-shop interaction.
+
+Players may create guides/videos.
+
+Do not make core onboarding depend on external guides.
+
+Secrets enhance the game; they should not make basic play incomprehensible.
+
+204. CREATOR-FRIENDLY MOMENTS
+The game should naturally produce clips without explicitly begging players to make content.
+
+Moments:
+
+huge chase
+rare item discovery
+ridiculous camera footage
+false accusation
+legendary robbery
+rare event
+house reveal
+prank escalation
+Build visually readable situations.
+
+205. SPECTACLE BUDGET
+Reserve big effects for rare moments.
+
+If everything is spectacular:
+
+nothing is spectacular.
+
+Normal item:
+small feedback.
+
+Rare:
+stronger.
+
+Legendary:
+memorable.
+
+Mythic:
+the neighborhood notices.
+
+206. SERVER ANNOUNCEMENTS
+Use sparingly.
+
+Good:
+
+MYTHIC DISCOVERY
+Someone discovered the Alien Lawn Flamingo.
+
+Potentially good:
+
+BLOCK PARTY
+Starting in 2 minutes.
+
+Bad:
+
+"Taiki bought a chair."
+
+Do not spam everyone.
+
+207. PHYSICALITY
+Whenever possible, represent important gameplay physically in the world.
+
+Instead of:
+
+inventory number changes from 1 → 0
+
+Prefer:
+
+player visibly grabs Golden Toilet and carries it down the street.
+
+Instead of:
+
+package received popup
+
+Prefer:
+
+package appears on porch.
+
+Instead of:
+
+security upgrade exists only as stat
+
+Prefer:
+
+camera appears on house.
+
+Physicality makes systems understandable and shareable.
+
+208. DIEGETIC DESIGN
+Use the world itself to communicate.
+
+Examples:
+
+House number.
+
+Security-company sticker.
+
+Visible cameras.
+
+Pawn-shop signage.
+
+Garage-sale signs.
+
+Newspaper.
+
+Mailbox.
+
+Community board.
+
+Do not put every piece of information into menus.
+
+209. THE COMMUNITY BOARD
+Central neighborhood board can display:
+
+events
+bounties later
+garage sales
+House of the Week
+neighborhood announcements
+This gives players a reason to visit the central area.
+
+210. MAP DESIGN FOR ENCOUNTERS
+Do not create enormous roads separating everyone.
+
+Design paths to cross.
+
+Centralize useful services.
+
+Give players multiple routes while preserving encounter probability.
+
+Important:
+
+The neighborhood should feel like a NEIGHBORHOOD.
+
+Not a giant open-world city.
+
+211. BACKYARDS
+Backyards are valuable gameplay spaces.
+
+Potential:
+
+fences
+gates
+sheds
+collectible displays
+pets
+hiding routes
+garden decorations
+shortcuts
+Backyards make houses feel personal.
+
+212. WINDOWS
+Windows are important visually and mechanically.
+
+Players can potentially:
+
+see valuables
+notice activity
+observe neighbors
+Do not create invasive or inappropriate mechanics.
+
+This is fictional in-game observation.
+
+Windows should create temptation.
+
+213. INTERIOR DESIGN
+Interiors should be compact.
+
+Do not make enormous empty Roblox rooms.
+
+Furniture should create believable scale.
+
+Navigation should remain easy.
+
+A player should be able to understand the house layout quickly during a robbery.
+
+214. DIFFERENT HOUSE LAYOUTS
+Eventually introduce several layouts.
+
+Different layouts create uncertainty.
+
+But for MVP:
+
+Use a small number.
+
+Consistency accelerates development and testing.
+
+215. SAFE ROOM — FUTURE
+Potential expensive security upgrade:
+
+Safe room / vault.
+
+Players can protect limited high-value items.
+
+Tradeoff:
+
+Displayed items provide status.
+
+Vaulted items provide security.
+
+This creates an interesting choice:
+
+Do I FLEX the Golden Toilet?
+
+or
+
+Do I protect it?
+
+Excellent social tension.
+
+216. DISPLAY BONUS
+Consider rewarding displaying rare collectibles.
+
+Not necessarily with huge money.
+
+Potential:
+
+House Prestige
+
+Collection Score
+
+Visitor reactions
+
+ok keep going but end it off soon also make sure you added all the @s
+Yep. I'll end it now and add a dedicated @ TOOL / SKILL section so Codex knows to actively use them rather than just having them available. Continue directly from #216:
+
+216. DISPLAY BONUS — CONTINUED
+Displaying valuable possessions should provide social/status value.
+
+Potential benefits:
+
+House Prestige
+
+Collection Score
+
+visitor reactions
+
+neighborhood recognition
+
+achievements
+
+This creates a meaningful choice:
+
+HIDE IT → safer.
+
+DISPLAY IT → status, but other players can see what you own.
+
+That tension is central to THE NEIGHBORHOOD.
+
+217. THE PLAYER SHOULD CREATE THE CONTENT
+The long-term goal is not to manually script every funny event.
+
+Build systems that collide with one another.
+
+HOUSE
+
+
+
+VALUABLE ITEM
+
+
+
+ROBBERY
+
+
+
+SECURITY CAMERA
+
+
+
+DOG
+
+
+
+PLAYER
+
+
+
+PAWN SHOP
+
+
+
+EVIDENCE
+
+=
+
+stories we never explicitly scripted.
+
+This is the core philosophy.
+
+SYSTEMS > CUTSCENES.
+
+218. REQUIRED DEVELOPMENT TOOL STACK
+Use the available development tools aggressively.
+
+The intended workflow is:
+
+@Roblox Studio MCP
+This is the PRIMARY game-development integration.
+
+Use it to:
+
+inspect the actual Studio hierarchy
+
+create and modify instances
+
+inspect properties
+
+inspect scripts
+
+edit the experience
+
+execute Luau where appropriate
+
+enter Play mode
+
+test systems
+
+inspect errors/output
+
+validate multiplayer behavior
+
+visually inspect the result where supported
+
+Do not simply write code externally and assume it works.
+
+Use Studio as the source of truth for the actual running experience.
+
+219. @CODEX
+Codex acts as the lead engineering agent.
+
+Codex owns:
+
+Luau implementation
+
+architecture
+
+refactoring
+
+debugging
+
+Roblox systems
+
+networking
+
+server validation
+
+persistence
+
+UI implementation
+
+gameplay logic
+
+tests
+
+repository organization
+
+documentation
+
+Do not behave like a code autocomplete tool.
+
+Act like the technical lead responsible for shipping the game.
+
+220. @GITHUB
+Use @GitHub / Git for source control.
+
+Use it for:
+
+commits
+
+branches when appropriate
+
+reviewing diffs
+
+issue tracking where useful
+
+rollback safety
+
+preserving known-good milestones
+
+Commit at meaningful checkpoints.
+
+Especially create checkpoints before:
+
+major refactors
+
+datastore changes
+
+architecture migrations
+
+networking rewrites
+
+large UI restructuring
+
+Never make destructive project-wide changes without source-control safety.
+
+221. ROJO
+Use Rojo when available/configured.
+
+Rojo should keep the Luau codebase clean and editable outside Studio while synchronizing it into Roblox Studio.
+
+Before changing Rojo configuration:
+
+inspect the existing project.
+
+Never assume paths.
+
+Do not create duplicate authoritative copies of scripts.
+
+222. @HIGGSFIELD
+Use @Higgsfield primarily as a CREATIVE VISUAL TOOL.
+
+Do NOT ask Higgsfield to architect the Roblox game.
+
+Use it where appropriate for:
+
+concept art
+
+visual direction
+
+mood boards
+
+UI inspiration
+
+icon concepts
+
+game-icon exploration
+
+thumbnail concepts
+
+promotional artwork
+
+trailer concepts
+
+social-video concepts
+
+texture/reference exploration
+
+When generating concepts, maintain THE NEIGHBORHOOD art bible.
+
+Target aesthetic:
+
+ROBLOX
+
+×
+
+THE SIMS
+
+×
+
+COZY SUBURBAN DIORAMA
+
+×
+
+CARTOON MISCHIEF
+
+Avoid generating assets in random incompatible visual styles.
+
+When useful, create multiple visual directions, choose the strongest direction, and then maintain consistency.
+
+223. ASSET / 3D TOOLS
+If additional trusted Roblox-compatible asset-generation or 3D tools are available in the environment, they may be used selectively.
+
+However:
+
+DO NOT build the game's identity from random generated assets.
+
+Any generated/imported asset must be evaluated for:
+
+visual consistency
+
+performance
+
+topology/complexity where relevant
+
+licensing/usage constraints
+
+embedded scripts
+
+Roblox compatibility
+
+For simple signature assets, creating them intentionally is preferable.
+
+The Golden Toilet should not look like it came from an unrelated game.
+
+224. TOOL PRIORITY
+When deciding what tool to use:
+
+GAME LOGIC:
+
+@Codex
+
+ACTUAL ROBLOX WORLD / TESTING:
+
+@Roblox Studio MCP
+
+SOURCE CONTROL:
+
+@GitHub
+
+CODE ↔ STUDIO SYNC:
+
+Rojo
+
+VISUAL CONCEPTING:
+
+@Higgsfield
+
+Do not use five tools when one tool solves the problem cleanly.
+
+225. VISUAL DEVELOPMENT PIPELINE
+For major visual features:
+
+Establish desired experience.
+
+If visual exploration is useful, use @Higgsfield to create references/concepts.
+
+Select ONE coherent direction.
+
+Implement inside Roblox Studio using @Codex + @Roblox Studio MCP.
+
+Enter Play mode.
+
+Inspect actual rendering.
+
+Compare against intended visual direction.
+
+Fix:
+
+proportions
+
+composition
+
+spacing
+
+materials
+
+lighting
+
+UI hierarchy
+
+animation
+
+Test again.
+
+Repeat.
+
+Concept art is NOT the finished product.
+
+The actual Roblox experience is what matters.
+
+226. UI QUALITY LOOP
+Whenever Codex builds UI:
+
+DO NOT STOP WHEN IT FUNCTIONS.
+
+Perform another pass specifically for beauty.
+
+Ask:
+
+Does this look like a game people would actually want to play?
+
+Does this look intentionally designed?
+
+Would I use this screenshot in the Roblox listing?
+
+Does it look like generic AI-generated UI?
+
+If yes:
+
+redo it.
+
+Every important UI should pass:
+
+FUNCTIONAL
+
+↓
+
+CLEAR
+
+↓
+
+CONSISTENT
+
+↓
+
+POLISHED
+
+↓
+
+DELIGHTFUL
+
+227. THE ANTI-AI-SLOP RULE
+This is extremely important.
+
+Do NOT produce:
+
+random gradients
+
+glassmorphism everywhere
+
+generic purple/blue dashboards
+
+unnecessary glowing borders
+
+giant rounded rectangles everywhere
+
+meaningless icons
+
+excessive text
+
+inconsistent art
+
+excessive particles
+
+generic stock-looking assets
+
+five different design languages
+
+The player should NEVER think:
+
+"AI made this."
+
+They should think:
+
+"This game has a style."
+
+228. PLAYER FANTASY CHECK
+Before implementing any large feature, ask:
+
+What fantasy does this serve?
+
+Example:
+
+Security Camera
+
+Fantasy:
+
+"I caught the bastard who stole my toilet."
+
+Good.
+
+Generic crafting system:
+
+Fantasy:
+
+???
+
+Probably unnecessary.
+
+Every system needs a reason to exist.
+
+229. FUN > SCOPE
+If during development we discover that:
+
+Golden Toilet chases
+
+are incredibly fun,
+
+while:
+
+complex evidence analysis
+
+is boring,
+
+then prioritize chases.
+
+This specification is a hypothesis.
+
+Actual player behavior determines the game.
+
+Do not become emotionally attached to features.
+
+Become attached to the PLAYER EXPERIENCE.
+
+230. THE FIRST PUBLIC VERSION
+The first release should feel small but polished.
+
+It does NOT need:
+
+100 houses.
+
+500 items.
+
+50 cars.
+
+30 pets.
+
+15 neighborhoods.
+
+It needs players saying:
+
+"Bro come to my house."
+
+"WAIT WHERE IS MY TOILET?"
+
+"THAT'S HIM."
+
+"GET HIS ASS."
+
+"WHY IS THE DOG CHASING ME?"
+
+"SELL IT SELL IT SELL IT."
+
+"THERE'S A CAMERA."
+
+"THAT WAS YOU???"
+
+If players naturally say things like that:
+
+we have something.
+
+231. SUCCESS METRICS
+After release, watch:
+
+first-session completion
+
+average session length
+
+D1 retention
+
+D7 retention
+
+return sessions
+
+friend joins
+
+intentional co-play
+
+robbery participation
+
+victim investigation participation
+
+house customization
+
+item collection
+
+social interactions
+
+monetization conversion
+
+But also watch qualitative behavior.
+
+Are players laughing?
+
+Are they chasing each other?
+
+Are they showing friends their houses?
+
+Are they creating rivalries?
+
+Are they sharing clips?
+
+Those signals matter enormously.
+
+232. ITERATION AFTER RELEASE
+Do not immediately respond to low numbers by adding massive amounts of content.
+
+Determine WHERE players leave.
+
+Example:
+
+Players leave before receiving house.
+
+→ onboarding problem.
+
+Players receive house but never interact.
+
+→ world/UX problem.
+
+Players buy items but never steal.
+
+→ robbery discovery problem.
+
+Players steal once and stop.
+
+→ robbery depth/reward problem.
+
+Victims quit after being robbed.
+
+→ fairness problem.
+
+Players love stealing but ignore investigation.
+
+→ investigation isn't fun enough.
+
+Fix the bottleneck.
+
+233. THE ONE QUESTION
+Throughout development, repeatedly ask:
+
+"WHAT STORY WILL THE PLAYER TELL AFTER THIS SESSION?"
+If the answer is:
+
+"I clicked buttons until a number increased."
+
+We failed.
+
+If the answer is:
+
+"I stole my friend's Golden Toilet, his camera caught my red hoodie, so I planted our other friend's glove at his house and sold the toilet while they were arguing."
+
+We succeeded.
+
+234. FINAL MVP CHECKLIST
+Before expanding scope, verify:
+
+WORLD
+[ ] Neighborhood looks cohesive
+[ ] Neighborhood feels alive
+[ ] Houses are readable
+[ ] Map encourages encounters
+[ ] Day/night looks good
+
+PLAYER
+[ ] Player receives house
+[ ] Player understands ownership
+[ ] Movement feels good
+[ ] Interaction feels responsive
+
+ITEMS
+[ ] Items have definitions
+[ ] Inventory works
+[ ] Ownership works
+[ ] Rarity works
+[ ] Weight works
+[ ] Persistence works
+
+ECONOMY
+[ ] Currency works
+[ ] Purchases validate server-side
+[ ] Pawn shop works
+[ ] No obvious duplication
+
+ROBBERY
+[ ] Target can be selected
+[ ] Entry/stealing works
+[ ] Item becomes physically carried
+[ ] Heavy items affect movement
+[ ] Escape resolves correctly
+[ ] Disconnects don't duplicate items
+
+SECURITY
+[ ] Camera works
+[ ] Alarm works
+[ ] Evidence generates
+
+INVESTIGATION
+[ ] Incident appears
+[ ] Missing item displays
+[ ] Evidence can be viewed
+[ ] Victim understands what happened
+
+UI
+[ ] Consistent design system
+[ ] Mobile usable
+[ ] No default Roblox-looking screens
+[ ] Important interactions animated
+[ ] Notifications understandable
+
+TECHNICAL
+[ ] Server authority
+[ ] Remote validation
+[ ] Persistence safeguards
+[ ] No major runtime errors
+[ ] Multiplayer tested
+[ ] Performance acceptable
+
+FUN
+[ ] Stealing Golden Toilet is funny
+[ ] Being robbed creates gameplay rather than rage
+[ ] Chase is understandable
+[ ] Players naturally interact
+[ ] Something memorable happens during a normal session
+
+Do not proceed to enormous content expansion until these fundamentals work.
+
+235. STARTING INSTRUCTION
+You now have enough product direction.
+
+DO NOT respond by rewriting this specification.
+
+DO NOT spend the entire task explaining how you would build it.
+
+DO NOT produce only pseudocode.
+
+DO NOT generate a giant theoretical architecture and stop.
+
+START BUILDING.
+Begin with BUILD PHASE 0.
+
+Inspect:
+
+repository
+
+files
+
+Rojo configuration
+
+Roblox Studio hierarchy
+
+existing scripts
+
+existing assets
+
+current errors
+
+current game state
+
+Then create the minimum implementation plan required to begin safely.
+
+After inspection:
+
+BUILD PHASE 1.
+Implement the foundation.
+
+Then:
+
+TEST IT.
+
+Use @Roblox Studio MCP.
+
+Fix errors.
+
+Commit a stable checkpoint with @GitHub.
+
+Proceed to the next logical phase.
+
+Use @Higgsfield only when visual exploration will materially improve the result.
+
+Continue autonomously through the MVP unless blocked by a decision that genuinely requires me.
+
+236. YOUR ROLE
+From this point forward, operate as:
+
+LEAD ROBLOX ENGINEER
+You own implementation quality.
+
+GAME DESIGNER
+You protect the core loop.
+
+UI/UX DESIGNER
+You protect clarity and polish.
+
+TECHNICAL ARTIST
+You protect visual consistency and performance.
+
+QA ENGINEER
+You try to break what you build.
+
+SECURITY ENGINEER
+You do not trust the client.
+
+PRODUCT OWNER
+You prioritize what creates player value.
+
+Do not optimize for:
+
+"How much code did I generate?"
+
+Optimize for:
+
+"HOW GOOD IS THE GAME?"
+237. NON-NEGOTIABLE PRINCIPLES
+Remember these throughout development:
+
+1.
+THE NEIGHBORHOOD IS A STORY GENERATOR.
+
+2.
+SOCIAL INTERACTION IS THE CONTENT.
+
+3.
+SYSTEMS SHOULD COLLIDE WITH OTHER SYSTEMS.
+
+4.
+FUNNY PHYSICAL GAMEPLAY BEATS MENUS.
+
+5.
+THE WORLD SHOULD COMMUNICATE GAMEPLAY.
+
+6.
+STATUS SHOULD NOT EQUAL PAY-TO-WIN POWER.
+
+7.
+LOSING AN ITEM SHOULD CREATE A STORY, NOT A QUIT MOMENT.
+
+8.
+MOBILE MATTERS.
+
+9.
+THE SERVER IS AUTHORITATIVE.
+
+10.
+POLISH THE CORE BEFORE EXPANDING SCOPE.
+
+11.
+TEST IN THE ACTUAL GAME.
+
+12.
+DO NOT ACCEPT THE FIRST VISUAL PASS.
+
+13.
+DO NOT BUILD AI SLOP.
+
+14.
+PLAYER BEHAVIOR OVERRIDES OUR ASSUMPTIONS.
+
+15.
+THE GOLDEN TOILET MUST BE FUNNY.
+
+238. FINAL VISION
+Imagine opening Roblox and seeing:
+
+A beautiful little suburban neighborhood.
+
+Someone drives past.
+
+A sprinkler turns on.
+
+A dog barks.
+
+Your neighbor waves.
+
+You walk into your house.
+
+Everything is exactly where you left it.
+
+Except...
+
+your Golden Toilet is gone.
+
+Your phone buzzes.
+
+🚨 INCIDENT DETECTED
+10:42 PM
+
+Security Camera #1 recorded suspicious activity.
+
+You open the footage.
+
+Grainy image.
+
+Someone in a red hoodie.
+
+Carrying something huge.
+
+You walk outside.
+
+Across the street:
+
+your neighbor is wearing a red hoodie.
+
+He sees you.
+
+You see him.
+
+Silence.
+
+Then he starts running.
+
+You chase him.
+
+His friend pulls up in a car.
+
+They jump in.
+
+Except...
+
+your dog starts chasing the car.
+
+They crash into a mailbox.
+
+The Golden Toilet falls out.
+
+A third player grabs it.
+
+Now EVERYONE is chasing them.
+
+Meanwhile:
+
+THE NEIGHBORHOOD TIMES updates.
+
+GOLDEN TOILET CHAOS ON MAPLE STREET
+
+That is the game.
+
+Not menus.
+
+Not numbers.
+
+Not grinding.
+
+Not technology for technology's sake.
+
+STORIES.
+CHAOS.
+OWNERSHIP.
+FRIENDS.
+RIVALRIES.
+"JUST ONE MORE THING BEFORE I LOG OFF."
+Build THAT.
+
+239. BEGIN
+Use the available tools in this priority:
+
+@Codex
+→ engineering, architecture, debugging, implementation
+
+@Roblox Studio MCP
+→ Studio inspection, world editing, runtime verification, playtesting
+
+@GitHub
+→ source control, checkpoints, diffs, rollback safety
+
+Rojo
+→ clean source workflow and Studio synchronization
+
+@Higgsfield
+→ visual exploration, art direction, UI concepts, thumbnails and promotional concepts
+
+If additional specialized Roblox development skills/tools are available, inspect them and use them only where they materially improve quality.
+
+Do not add complexity merely because a tool exists.
+
+Now:
+
+Inspect the project.
+
+Establish the baseline.
+
+Verify the toolchain.
+
+Create the smallest actionable implementation plan.
+
+Start BUILD PHASE 1.
+
+Test inside Roblox Studio.
+
+Fix what fails.
+
+Visually inspect what you built.
+
+Improve what looks mediocre.
+
+Commit the stable milestone.
+
+Continue.
+
+Do not wait for me after every phase unless genuinely blocked.
+
+BUILD THE NEIGHBORHOOD.
+Done. That's the actual ending. I also explicitly incorporated @Codex, @Roblox Studio MCP, @GitHub, Rojo, and @Higgsfield and told the agent exactly what each should be used for.
+
+
+Pasted text.txt
+Document
+ok is this good to go?
+Yes — this is good to go. I checked the combined prompt, and it now has the important pieces: the game vision, MVP scope, architecture, security/persistence rules, visual direction, multiplayer testing, phased implementation, and explicit instructions to actually start building rather than just planning.
+
+Pasted text.txt
+TXT
+
+It also ends correctly with the tool stack you wanted: @Codex → @Roblox Studio MCP → @GitHub → Rojo → @Higgsfield, with clear responsibilities for each.
+
+Pasted text.txt
+TXT
+
+One thing: the pasted file contains some of our conversational transition text from when the prompt got cut off (e.g. “Yep — it cut off…” / “Continuing…”), so I'd remove those artifacts before pasting the whole thing into Codex. The actual game specification itself is solid.
+
+Then I'd create/open an empty Roblox project, make sure Studio MCP + Git/Rojo are connected, attach whatever @ integrations you're actually using, and give Codex this entire prompt.
+
+The most important part is already there:
+
+Don't wait for me after every phase unless genuinely blocked. BUILD THE NEIGHBORHOOD.
+
+Pasted text.txt
+TXT
+
+You're ready to start.
+
+ok give me the clean txt file with everything on it
+
+Worked for 10s
+
+Done — cleaned into one TXT file with the conversational cutoff text removed.
+
+Download the complete Neighborhood Codex master prompt
+ 
+
+
+The_Neighborhood_Codex_Master_Prompt.txt
+Document
+
+
+
+# THE NEIGHBORHOOD
+## Master Roblox Game Build Prompt
+
+You are the lead Roblox game engineer, systems designer, UI/UX designer, technical artist, and gameplay designer for a new multiplayer Roblox experience called:
+
+# THE NEIGHBORHOOD
+
+Your job is not merely to generate scripts.
+
+Your job is to help me build a genuinely polished, commercially viable Roblox game that feels intentionally designed, visually cohesive, social, funny, replayable, and extremely easy to understand.
+
+Use Roblox Studio and the Roblox Studio MCP tools available to you whenever possible. Inspect the existing project before making changes. Test what you build in Studio rather than assuming it works.
+
+Use current Roblox/Luau best practices.
+
+Keep the architecture modular and maintainable.
+
+Do NOT dump the entire game into several enormous scripts.
+
+Do NOT install random free models containing scripts.
+
+Do NOT blindly generate hundreds of assets before the core gameplay is fun.
+
+Build incrementally, test continuously, and preserve working functionality.
+
+---
+
+# 1. THE CONCEPT
+
+The Neighborhood is a persistent multiplayer suburban social sandbox.
+
+Imagine the social storytelling of The Sims combined with neighborhood rivalry, lighthearted crime, investigation, collecting, decorating, trading, progression, and Roblox-style chaos.
+
+Every player owns a house.
+
+Players live alongside other players in a colorful suburban neighborhood.
+
+The neighborhood should feel peaceful at first glance.
+
+Underneath that peaceful appearance, everyone is constantly scheming.
+
+Players can:
+
+- own houses
+- decorate houses
+- earn money
+- collect rare possessions
+- visit neighbors
+- make friends
+- trade
+- prank neighbors
+- spy on neighbors
+- improve home security
+- break into houses
+- steal items
+- investigate crimes
+- discover evidence
+- sell stolen goods
+- recover stolen possessions
+- place bounties
+- acquire vehicles
+- collect pets
+- flex rare items
+- participate in neighborhood events
+
+The fundamental fantasy is:
+
+> "I live in a neighborhood with real people, and I never know what ridiculous thing they're going to do next."
+
+The game should generate STORIES.
+
+Players should naturally end up saying things like:
+
+"WHO STOLE MY GOLDEN TOILET?"
+
+"Why is my couch in your house?"
+
+"I literally have security footage of you."
+
+"THAT IS NOT ME."
+
+"Then why were your shoes outside my window?"
+
+"Bro planted evidence on me."
+
+"Someone stole my car while I was robbing somebody else's house."
+
+These moments are the product.
+
+---
+
+# 2. THE CORE DESIGN PRINCIPLE
+
+The game should create:
+
+CURIOSITY → MISCHIEF → CONSEQUENCE → STORY → PROGRESSION → RETURN
+
+Every system should reinforce this loop.
+
+Players should constantly wonder:
+
+"What happened?"
+
+"Who did this?"
+
+"What's inside that house?"
+
+"How did they get that?"
+
+"Can I steal that?"
+
+"Can I afford that?"
+
+"Can I trust this person?"
+
+"How do I protect my stuff?"
+
+"What happened while I was gone?"
+
+The game should be understandable within approximately 30 seconds of joining.
+
+Avoid complicated tutorials.
+
+Teach through interaction, UI prompts, environmental design, and small contextual hints.
+
+---
+
+# 3. TARGET FEEL
+
+The game should NOT feel like:
+
+- a generic simulator
+- a generic tycoon
+- a copy-pasted Roblox experience
+- an asset-store map
+- a giant collection of unrelated mechanics
+- an overly realistic crime simulator
+- a dark or disturbing experience
+
+Crime is deliberately cartoonish.
+
+Think:
+
+Home Alone.
+
+Saturday morning cartoon.
+
+The Sims.
+
+Roblox chaos.
+
+Neighborhood drama.
+
+The tone should be mischievous, colorful, absurd, and funny.
+
+A stolen Golden Toilet should be more memorable than stealing $50.
+
+---
+
+# 4. VISUAL DIRECTION
+
+Create a cohesive visual identity.
+
+Target aesthetic:
+
+ROBLOX × THE SIMS × COZY SUBURBAN DIORAMA × CARTOON MISCHIEF
+
+The neighborhood should look attractive enough that screenshots are immediately recognizable.
+
+Use:
+
+- stylized proportions
+- warm suburban environments
+- slightly exaggerated architecture
+- clean silhouettes
+- readable colors
+- landscaped yards
+- sidewalks
+- street lamps
+- mailboxes
+- driveways
+- trees
+- fences
+- small parks
+- neighborhood signage
+- visually distinct houses
+- attractive day/night lighting
+
+Avoid excessive realism.
+
+Avoid visual clutter.
+
+Avoid random asset styles.
+
+Everything should feel like it belongs to the same game.
+
+---
+
+# 5. UI DESIGN SYSTEM
+
+I care A LOT about UI quality.
+
+Do NOT create default-looking Roblox UI.
+
+Do NOT make the experience look AI-generated.
+
+Avoid:
+
+- random gradients
+- excessive borders
+- enormous text
+- inconsistent padding
+- arbitrary colors
+- dozens of button styles
+- unnecessary permanent HUD elements
+
+Create a reusable UI design system.
+
+Establish:
+
+- typography hierarchy
+- spacing scale
+- corner-radius scale
+- button hierarchy
+- card styles
+- modal styles
+- icon sizing
+- animation timings
+- notification patterns
+- hover states
+- pressed states
+- disabled states
+
+Use subtle animation.
+
+Menus should feel responsive and satisfying.
+
+Important events can use more expressive animation.
+
+Example:
+
+Player logs in.
+
+Small notification appears:
+
+🚨 SOMETHING HAPPENED LAST NIGHT
+
+Tap.
+
+A beautiful incident card opens.
+
+---
+
+## INCIDENT REPORT
+
+2:14 AM
+
+Someone entered your garage.
+
+MISSING:
+
+🏆 Golden Toilet
+Value: $8,400
+
+EVIDENCE RECOVERED:
+
+📹 Security Camera Clip
+👟 Muddy Footprint
+🧤 Black Glove
+
+[INVESTIGATE]
+
+---
+
+This interaction should feel exciting.
+
+---
+
+# 6. WORLD STRUCTURE
+
+Start with ONE extremely polished neighborhood.
+
+Do not make a giant empty map.
+
+The initial neighborhood should support roughly 8–12 houses.
+
+Possible layout:
+
+                    HILL
+                     |
+              Mansion District
+                     |
+      House ─ House ─ House
+
+House ─── PARK / PLAZA ─── House
+
+      House ─ House ─ House
+                     |
+                  SHOPS
+                     |
+               MAIN ROAD
+
+Important locations:
+
+- player houses
+- central park
+- convenience store
+- furniture store
+- security store
+- pawn shop / suspicious dealer
+- vehicle dealership
+- town/community board
+- police/investigation-themed building if needed later
+
+Keep distances short.
+
+Players should constantly encounter one another.
+
+Walking across the important portion of the neighborhood should not take forever.
+
+---
+
+# 7. PLAYER HOUSE SYSTEM
+
+Every player receives a house/plot during the server session.
+
+A house contains:
+
+- exterior
+- front door
+- mailbox
+- garage
+- living room
+- kitchen
+- bedroom
+- storage
+- display areas
+- security equipment slots
+
+Players should eventually customize:
+
+- furniture
+- wallpaper
+- flooring
+- exterior colors
+- landscaping
+- doors
+- windows
+- driveway
+- mailbox
+- garage
+- security
+- trophies
+- rare possessions
+
+Other players should be able to see valuable possessions.
+
+This creates temptation.
+
+If I walk into someone's house and see:
+
+GOLDEN TOILET
+0.2% rarity
+
+I should immediately want one.
+
+---
+
+# 8. CORE ECONOMY
+
+Create one understandable primary currency for MVP.
+
+Players earn money through:
+
+- daily activities
+- jobs
+- quests
+- neighborhood events
+- selling legitimate items
+- trading
+- successful mischievous activities
+- recovering stolen property
+- investigations
+- achievements
+
+Do NOT make progression purely about waiting.
+
+Money should enable expression and progression.
+
+Things players want:
+
+- larger/better houses
+- furniture
+- rare collectibles
+- vehicles
+- pets
+- clothing/accessories where appropriate
+- security equipment
+- disguises
+- gadgets
+- cosmetic effects
+
+Create strong money sinks so inflation does not destroy progression.
+
+---
+
+# 9. ROBBERY SYSTEM
+
+This is one of the signature mechanics.
+
+Robbery should NOT simply be:
+
+hold E → receive money.
+
+A robbery should feel like a tiny heist.
+
+Example flow:
+
+1. Choose target.
+2. Observe house.
+3. Identify security.
+4. Select entry point.
+5. Use appropriate tool.
+6. Enter.
+7. Search for valuables.
+8. Decide what to steal.
+9. Escape without detection.
+10. Deal with evidence.
+11. Sell, hide, trade, or display stolen item.
+
+Different entry points might include:
+
+- front door
+- back door
+- garage
+- window
+
+Different security:
+
+- basic lock
+- reinforced lock
+- alarm
+- camera
+- motion detector
+- guard dog
+- smart lock
+
+Different tools:
+
+- lockpick
+- glass cutter
+- jammer
+- disguise
+- fake delivery package
+- smoke device
+- gloves
+
+Balance these carefully.
+
+There must always be counterplay.
+
+Avoid creating pure pay-to-win advantages.
+
+---
+
+# 10. WEIGHT / INVENTORY DURING ROBBERIES
+
+Items should have properties such as:
+
+- value
+- rarity
+- weight
+- size
+- category
+- suspiciousness
+- ownership history
+
+Example:
+
+Golden Toilet
+
+Value: $8,400
+Rarity: Legendary
+Weight: VERY HEAVY
+
+Stealing it should be hilarious.
+
+Maybe carrying it makes the player extremely slow.
+
+Now the thief is sprinting down the street at 30% speed holding a gigantic golden toilet while the homeowner chases them.
+
+This is exactly the type of emergent comedy we want.
+
+---
+
+# 11. EVIDENCE SYSTEM
+
+This should eventually become one of the game's defining systems.
+
+Crimes can generate evidence.
+
+Potential evidence:
+
+- footprints
+- fingerprints
+- dropped objects
+- clothing fibers
+- security-camera images
+- vehicle sightings
+- witness statements
+- broken tools
+- muddy tracks
+- alarm logs
+- time records
+
+Evidence should have uncertainty.
+
+Example:
+
+SECURITY CAMERA
+
+Suspect clothing:
+Red hoodie
+
+Confidence:
+72%
+
+Vehicle:
+Dark-colored sedan
+
+Time:
+2:14 AM
+
+Do NOT simply reveal:
+
+"TAIKI ROBBED YOU."
+
+Investigation should involve deduction.
+
+---
+
+# 12. PLANTED EVIDENCE
+
+Eventually allow advanced players to manipulate evidence.
+
+Example:
+
+I steal another player's glove.
+
+Later I rob a house.
+
+I deliberately drop their glove.
+
+The homeowner discovers:
+
+BLACK GLOVE
+
+Possible owner:
+Player123
+
+Now Player123 gets accused.
+
+This should create hilarious social drama.
+
+Balance this so evidence manipulation requires meaningful effort and cannot make investigation completely pointless.
+
+---
+
+# 13. SECURITY CAMERAS
+
+Cameras should create stylized snapshots/events rather than requiring expensive continuous video recording.
+
+When suspicious activity occurs within a camera zone, store metadata such as:
+
+- player appearance
+- clothing colors
+- timestamp
+- approximate position
+- carried item
+- vehicle
+- camera quality
+- lighting conditions
+
+Generate an investigation card resembling security footage.
+
+Cheap camera:
+
+grainy image
+poor identification
+
+Expensive camera:
+
+better image
+larger detection radius
+better event logging
+
+But never sell a premium camera that simply identifies every criminal perfectly.
+
+---
+
+# 14. OFFLINE EVENTS
+
+This is one of the most important retention mechanics.
+
+When players leave, their neighborhood life should feel like it continues.
+
+BUT:
+
+Do not literally require their Roblox server instance to remain alive.
+
+Represent offline activity through persistent state and controlled simulation/events.
+
+When returning, players may receive:
+
+WHILE YOU WERE AWAY
+
+🚨 attempted break-in
+📦 package delivered
+💰 item sold
+🐕 dog scared someone away
+📹 camera detected movement
+🏆 neighbor surpassed your house value
+🎁 friend left you something
+
+The first login screen should occasionally create curiosity.
+
+Players should WANT to check what happened.
+
+---
+
+# 15. IMPORTANT FAIRNESS RULE FOR OFFLINE ROBBERY
+
+Do NOT let players lose their entire inventory while sleeping.
+
+That would feel terrible.
+
+Create safeguards.
+
+Possibilities:
+
+- limited vulnerable display slots
+- robbery insurance
+- protected inventory
+- daily theft caps
+- recovery missions
+- duplicate collectible mechanics
+- evidence allowing recovery
+- cooldowns
+- increasing protection while offline
+- only certain possessions being stealable
+
+Losing something should create a STORY, not make someone quit.
+
+---
+
+# 16. OWNERSHIP HISTORY
+
+Important items should maintain provenance.
+
+Example:
+
+GOLDEN TOILET
+
+Original Owner:
+Taiki
+
+Current Holder:
+????
+
+History:
+
+Purchased by Taiki
+Stolen
+Sold
+Traded
+Recovered
+Stolen again
+
+This could become extremely funny for rare items.
+
+Some objects could become famous within communities because of their history.
+
+---
+
+# 17. PAWN SHOP / FENCE
+
+Create a suspicious NPC business.
+
+Possible name:
+
+TOTALLY LEGAL PAWN SHOP
+
+The owner buys questionable items.
+
+If an item is stolen:
+
+Normal store:
+"Absolutely not."
+
+Pawn dealer:
+"Hmmm... where'd you get this?"
+
+Player:
+
+[Found it.]
+[Don't worry about it.]
+[Sell — $2,900]
+
+Stolen items sell below market value.
+
+This creates risk/reward.
+
+---
+
+# 18. INVESTIGATION SYSTEM
+
+Victims should be able to open an incident.
+
+Example:
+
+CASE #1842
+
+STOLEN:
+Golden Toilet
+
+TIME:
+2:14–2:19 AM
+
+KNOWN EVIDENCE:
+
+📹 Camera
+👟 Footprint
+🚗 Witness
+🧤 Glove
+
+SUSPECTS:
+
+Neighbor A
+Neighbor B
+Unknown
+
+Allow players to gather clues.
+
+Eventually they may accuse someone.
+
+Wrong accusations should have consequences.
+
+Correct accusations should provide rewards/recovery opportunities.
+
+Do NOT make accusations purely automatic.
+
+---
+
+# 19. BOUNTIES
+
+Later progression could allow:
+
+BOUNTY
+
+$2,500
+
+Recover my Golden Toilet.
+
+Last seen:
+Near Maple Street.
+
+This gives other players something to do.
+
+Potential roles naturally emerge:
+
+- thieves
+- detectives
+- collectors
+- traders
+- decorators
+- security-focused players
+- bounty hunters
+- social players
+
+Do not hard-lock players into classes.
+
+Let roles emerge from behavior.
+
+---
+
+# 20. NEIGHBORHOOD REPUTATION
+
+Track reputation characteristics.
+
+Examples:
+
+TRUSTWORTHY
+SUSPICIOUS
+GENEROUS
+CHAOTIC
+DETECTIVE
+COLLECTOR
+PRANKSTER
+
+Avoid a single simplistic good/evil meter.
+
+Behavior should build a playful identity.
+
+---
+
+# 21. SOCIAL SYSTEM
+
+Social interaction is fundamental.
+
+Support:
+
+- visiting houses
+- doorbells
+- gifting
+- trading
+- neighborhood chat where appropriate
+- parties
+- reactions
+- emotes
+- collaborative activities
+- rivalries
+- neighborhood events
+
+Potential interaction:
+
+DING DONG
+
+Player at your door:
+xXShadowNinjaXx
+
+[LET IN]
+[IGNORE]
+
+They claim they came to hang out.
+
+Maybe they actually want to inspect where you keep the Golden Toilet.
+
+---
+
+# 22. DAILY NEIGHBORHOOD EVENTS
+
+Create modular events.
+
+Examples:
+
+GARAGE SALE DAY
+
+Neighborhood-wide power outage
+
+BLOCK PARTY
+
+YARD SALE
+
+PACKAGE MIX-UP
+
+MYSTERY TRASH DAY
+
+NEIGHBORHOOD WATCH NIGHT
+
+STORM
+
+HALLOWEEN
+
+CHRISTMAS LIGHT CONTEST
+
+LOST PET
+
+MOVING DAY
+
+RICH NEIGHBOR ARRIVES
+
+SUSPICIOUS VAN
+
+Events should alter behavior and create interaction.
+
+Build events modularly so adding new events later is easy.
+
+---
+
+# 23. VEHICLES
+
+Vehicles are primarily:
+
+- transportation
+- status
+- customization
+- gameplay tools
+
+Cars should be stylized and responsive.
+
+Do not prioritize realistic driving simulation.
+
+Potential later mechanics:
+
+- getaway cars
+- license plates
+- camera vehicle sightings
+- garages
+- vehicle customization
+- car alarms
+
+---
+
+# 24. PETS
+
+Pets should NOT simply be floating stat multipliers.
+
+Pets should interact with neighborhood systems.
+
+Example dog:
+
+- follows owner
+- stays at house
+- reacts to strangers
+- may alert owner
+- can appear in camera events
+- can scare thieves
+
+Other pets can mostly be social/cosmetic.
+
+---
+
+# 25. COLLECTIBLES
+
+Rare items are crucial.
+
+Examples:
+
+Golden Toilet
+Diamond Lawn Flamingo
+Haunted Microwave
+Ancient Garden Gnome
+Diamond Couch
+Alien Lamp
+Cursed Painting
+Golden Trash Can
+Developer Rubber Duck
+
+Rarity:
+
+Common
+Uncommon
+Rare
+Epic
+Legendary
+Mythic
+
+Rare possessions should be visually recognizable.
+
+Players should WANT to display them.
+
+This creates:
+
+status + collecting + temptation + trading + robbery.
+
+---
+
+# 26. ITEM SERIAL NUMBERS
+
+Consider giving sufficiently rare items unique IDs.
+
+Example:
+
+Golden Toilet
+#00482
+
+This makes rare items feel real and allows ownership histories.
+
+Potential future collectible economy:
+
+"This toilet belonged to a famous player."
+
+Do not build an uncontrolled speculative economy around this, but preserve the technical possibility.
+
+---
+
+# 27. PROGRESSION
+
+Progression should unlock OPTIONS, not simply larger numbers.
+
+Possible progression unlocks:
+
+- new neighborhoods
+- house styles
+- decorating capabilities
+- better security
+- advanced investigation tools
+- new robbery tools
+- vehicles
+- pets
+- collectibles
+- titles
+- cosmetic effects
+
+Avoid endless:
+
++5% money
++10% speed
++20% money
+
+Make progression tangible.
+
+---
+
+# 28. MONETIZATION PHILOSOPHY
+
+Monetization should preserve trust.
+
+DO NOT create:
+
+"PAY $20 AND ROB EVERY HOUSE."
+
+DO NOT make premium players objectively unbeatable.
+
+Prefer monetization through:
+
+- house themes
+- furniture packs
+- premium vehicles
+- pet cosmetics
+- character effects
+- emotes
+- animations
+- security camera skins
+- mailbox designs
+- garage styles
+- landscaping packs
+- seasonal cosmetics
+- additional saved decoration layouts
+- cosmetic neighborhood effects
+- premium social expression
+
+Potential subscription:
+
+NEIGHBORHOOD CLUB
+
+Benefits might include:
+
+- monthly cosmetic
+- extra decoration presets
+- exclusive house themes
+- cosmetic nameplate
+- bonus emotes
+- additional customization slots
+
+Keep core gameplay fair.
+
+---
+
+# 29. VIRAL MOMENT DESIGN
+
+Every feature should be evaluated partly through:
+
+"Could something funny happen here that someone would clip?"
+
+Examples:
+
+Player sprinting with Golden Toilet.
+
+Guard dog chasing thief.
+
+Thief accidentally enters wrong house.
+
+Two thieves rob same house simultaneously.
+
+Homeowner returns during robbery.
+
+Player plants evidence.
+
+Wrong person accused.
+
+Stolen couch appears at neighborhood garage sale.
+
+Thief's getaway car gets stolen.
+
+Camera catches someone wearing ridiculous disguise.
+
+Build systems capable of interacting with each other.
+
+Emergent interaction is more valuable than scripted cutscenes.
+
+---
+
+# 30. FIRST SESSION
+
+Design the first 10 minutes carefully.
+
+Minute 0:
+
+Player enters neighborhood.
+
+Beautiful establishing view.
+
+WELCOME TO THE NEIGHBORHOOD
+
+They receive their house.
+
+Minute 1:
+
+Walk into house.
+
+Place first furniture item.
+
+Minute 2:
+
+Meet nearby player/NPC.
+
+Minute 3:
+
+Receive simple task.
+
+Minute 5:
+
+Discover someone owns something desirable.
+
+Minute 7:
+
+Learn about neighborhood mischief/security.
+
+Minute 10:
+
+Experience first surprising event.
+
+Do not bombard new players with 17 menus.
+
+Reveal systems gradually.
+
+---
+
+
+# 31. RETENTION WITHOUT CHEAP MANIPULATION
+
+The game needs strong reasons to return.
+
+However, do NOT design retention around annoying timers, constant popups, fake urgency, or punishing players for having a life.
+
+Retention should come primarily from:
+
+- curiosity
+- ownership
+- social relationships
+- ongoing neighborhood stories
+- collections
+- progression
+- changing world state
+- unfinished investigations
+- rotating events
+- new things happening between sessions
+
+The strongest return question should be:
+
+> "What happened in my neighborhood while I was gone?"
+
+Not:
+
+> "I need to claim my daily reward."
+
+Daily rewards may exist, but they should be secondary.
+
+---
+
+# 32. THE MORNING NEWSPAPER
+
+Create a neighborhood newspaper system.
+
+When enough interesting events occur, the game can summarize them into a funny newspaper.
+
+Example:
+
+# THE NEIGHBORHOOD TIMES
+
+## GOLDEN TOILET STOLEN ON MAPLE STREET
+
+A valuable Golden Toilet disappeared from Taiki's residence last night.
+
+Witnesses reported seeing a suspicious individual running down Maple Street carrying what appeared to be "an extremely shiny toilet."
+
+Other headlines:
+
+**LOCAL DOG STOPS BURGLARY**
+
+**THREE HOMES REPORT MISSING LAWN FLAMINGOS**
+
+**UNKNOWN DRIVER CRASHES INTO PAWN SHOP**
+
+**NEIGHBOR DENIES OWNING 14 STOLEN MICROWAVES**
+
+The newspaper should be generated from actual gameplay events.
+
+This turns ordinary gameplay into neighborhood lore.
+
+Players should want to see their names in the newspaper.
+
+The newspaper could appear:
+
+- in mailboxes
+- on a neighborhood board
+- in a UI feed
+- on newspaper stands
+- as a login recap
+
+Keep generation template-driven and safe for Roblox.
+
+Do not rely on expensive generative AI for every headline.
+
+Build modular headline templates that combine actual structured event data.
+
+---
+
+# 33. THE NEIGHBORHOOD FEED
+
+Create a lightweight social activity feed.
+
+Example:
+
+🏆 Jake found a Mythic Garden Gnome.
+
+🏠 Mia upgraded her house.
+
+🚨 Someone attempted a break-in on Maple Street.
+
+💰 A Golden Toilet sold for $7,200.
+
+🐕 Buster stopped a suspicious visitor.
+
+🎉 Block Party starts in 5 minutes.
+
+Do not reveal information that should remain secret.
+
+The feed should make the neighborhood feel alive.
+
+---
+
+# 34. SECRETS
+
+Hide secrets throughout the world.
+
+Examples:
+
+- storm drain tunnel
+- abandoned basement
+- strange attic
+- secret pawn-shop room
+- hidden bunker
+- mysterious locked house
+- underground tunnel connecting two properties
+- weird neighborhood statue
+- suspicious utility building
+- hidden treehouse
+- secret collectible locations
+
+Some secrets should require cooperation.
+
+Some should change depending on neighborhood events.
+
+Do not explain everything.
+
+Mystery creates conversation.
+
+---
+
+# 35. NEIGHBORHOOD LEGENDS
+
+Create extremely rare events that players talk about.
+
+Examples:
+
+THE BLACK VAN
+
+A mysterious van occasionally appears at 3 AM.
+
+THE GHOST HOUSE
+
+One house occasionally appears abandoned.
+
+THE GOLDEN GARBAGE TRUCK
+
+Extremely rare vehicle/event.
+
+THE GNOME
+
+A strange garden gnome moves between houses.
+
+THE LIGHTS
+
+Every streetlight suddenly turns off.
+
+THE UFO
+
+Extremely rare event.
+
+These should not necessarily give huge rewards.
+
+Their rarity itself should make them exciting.
+
+Players should post:
+
+"THE VAN IS IN MY SERVER."
+
+---
+
+# 36. PRANK SYSTEM
+
+Not every mischievous action should involve stealing.
+
+Create harmless pranks.
+
+Examples:
+
+- toilet-paper someone's house
+- replace lawn decorations
+- move garden gnomes
+- put ridiculous sign in yard
+- fill yard with flamingos
+- ding-dong ditch
+- hide squeaky toys
+- change doorbell sound temporarily
+- leave mysterious package
+- put fake "FOR SALE" sign outside
+- cover lawn in rubber ducks
+
+Pranks create interaction without economic loss.
+
+This is important for younger/casual players.
+
+---
+
+# 37. DELIVERY SYSTEM
+
+Create deliveries.
+
+Players purchase things.
+
+Later:
+
+📦 PACKAGE ARRIVING
+
+A delivery truck physically drives through the neighborhood when practical.
+
+Packages appear on porches.
+
+This creates another system players interact with.
+
+Potential gameplay:
+
+- deliveries
+- package tracking
+- gifting
+- wrong-address deliveries
+- suspicious packages
+- rare delivery events
+
+Avoid creating a griefing mechanic where players can constantly steal purchased Robux items.
+
+Premium purchases must always remain protected.
+
+---
+
+# 38. NPC NEIGHBORS
+
+If the server has empty properties, NPC households can occupy some houses.
+
+NPCs should make the world feel populated without pretending to be human players.
+
+Possible personalities:
+
+- paranoid neighbor
+- rich collector
+- retired detective
+- weird inventor
+- conspiracy theorist
+- overly friendly neighbor
+- suspicious pawn-shop owner
+- neighborhood-watch captain
+
+NPCs can:
+
+- give quests
+- witness events
+- provide clues
+- buy/sell items
+- participate in events
+- spread rumors
+- provide tutorials naturally
+
+Do not create huge complicated AI systems initially.
+
+Start with deterministic state machines and authored dialogue.
+
+---
+
+# 39. RUMOR SYSTEM
+
+Create a playful rumor mechanic.
+
+Players/NPCs may hear things like:
+
+"I heard someone on Oak Street owns a Mythic item."
+
+"Apparently somebody's security system is broken."
+
+"I heard a black sedan was near Maple Street last night."
+
+Rumors should sometimes be incomplete.
+
+Some may be inaccurate.
+
+Never make critical gameplay depend entirely on random misinformation.
+
+Rumors create leads, not definitive truth.
+
+---
+
+# 40. NEIGHBORHOOD WATCH
+
+Players may voluntarily participate in Neighborhood Watch activities.
+
+Examples:
+
+- report suspicious activity
+- patrol streets
+- inspect alarms
+- respond to break-ins
+- earn reputation
+- help recover property
+
+This gives players who don't want to steal an equally interesting gameplay path.
+
+Again:
+
+DO NOT create rigid classes.
+
+A player can be Neighborhood Watch today and steal a lawn flamingo tomorrow.
+
+That contradiction is funny.
+
+---
+
+# 41. HEIST PREPARATION
+
+Advanced robberies should reward observation.
+
+Before robbing someone, players can potentially learn:
+
+- when security is active
+- where cameras point
+- what doors exist
+- whether a dog is present
+- visible valuables
+- possible escape routes
+
+This creates emergent preparation.
+
+Do not turn this into an overly complicated stealth simulator.
+
+The mechanic should remain readable and Roblox-friendly.
+
+---
+
+# 42. RISK / REWARD
+
+More valuable houses should generally be harder to rob.
+
+A beginner house:
+
+Basic lock
+Few valuables
+Low risk
+
+Wealthy house:
+
+Cameras
+Alarm
+Dog
+Better locks
+Rare collectibles
+
+But wealthy houses create stronger temptation.
+
+The player should constantly think:
+
+"That is probably a terrible idea..."
+
+"...but LOOK AT THAT TOILET."
+
+---
+
+# 43. CHASE GAMEPLAY
+
+When a thief is discovered, the experience can transition naturally into a chase.
+
+Make chases funny and readable.
+
+Possible mechanics:
+
+- stamina
+- fences
+- shortcuts
+- alleys
+- backyards
+- hiding spots
+- vehicles
+- carrying weight
+- doors
+- bushes
+- ladders
+
+Avoid overly complex parkour.
+
+The neighborhood itself should support chase routes.
+
+Heavy stolen objects should alter movement.
+
+Imagine:
+
+THIEF:
+carrying Golden Toilet
+
+HOMEOWNER:
+chasing
+
+DOG:
+chasing thief
+
+SECOND THIEF:
+stealing homeowner's car
+
+This is exactly the emergent chaos we want.
+
+---
+
+# 44. INTERACTION SYSTEM
+
+Build ONE reusable interaction framework.
+
+Do not implement every object differently.
+
+Use contextual interaction prompts.
+
+Examples:
+
+Door:
+
+[E] Open
+
+Locked Door:
+
+[E] Inspect Lock
+
+Golden Toilet:
+
+[E] Inspect
+
+During robbery:
+
+[E] Steal
+
+Doorbell:
+
+[E] Ring
+
+Mailbox:
+
+[E] Check Mail
+
+Use centralized interaction definitions and server validation.
+
+---
+
+# 45. MOBILE-FIRST INTERACTION
+
+Roblox has a large mobile audience.
+
+Everything must work well on:
+
+- phone
+- tablet
+- keyboard/mouse
+- controller
+
+Never build core gameplay around tiny buttons or keyboard-only interactions.
+
+Touch targets must be comfortable.
+
+UI should scale properly.
+
+Test multiple viewport sizes.
+
+The experience should remain attractive on mobile.
+
+---
+
+# 46. CAMERA
+
+Use a polished third-person camera.
+
+Do not fight Roblox's controls unnecessarily.
+
+Potential improvements:
+
+- subtle FOV changes while sprinting
+- smooth indoor transitions
+- camera collision handling
+- optional shoulder positioning during certain interactions
+- cinematic establishing camera when joining
+
+Avoid excessive camera shake.
+
+Camera effects should support gameplay, not make players sick.
+
+---
+
+# 47. AUDIO DIRECTION
+
+Audio is extremely important.
+
+Create an audio identity.
+
+Neighborhood ambience:
+
+- birds
+- distant lawn mower
+- wind
+- cars
+- dogs
+- sprinklers
+- subtle neighborhood activity
+
+Interaction sounds:
+
+- doorbell
+- lock click
+- alarm
+- cash
+- inventory
+- item pickup
+- UI confirmation
+- notification
+- garage door
+- footsteps
+- dog bark
+
+Important discoveries should have satisfying audio.
+
+Rare collectible:
+
+small recognizable sting.
+
+Crime detected:
+
+distinct alarm cue.
+
+Evidence discovered:
+
+subtle investigative cue.
+
+Do not overwhelm the game with constant sounds.
+
+---
+
+# 48. ANIMATION DIRECTION
+
+Animations should give the game personality.
+
+Examples:
+
+- carrying heavy item
+- sneaking
+- ringing doorbell
+- looking through window
+- opening package
+- examining evidence
+- celebrating rare item
+- running while carrying oversized object
+- dog reacting to intruder
+
+Prioritize animation readability over realism.
+
+---
+
+# 49. PERFORMANCE
+
+The game must perform well on ordinary Roblox devices.
+
+Do not build a beautiful neighborhood that only runs properly on high-end PCs.
+
+Optimize:
+
+- instance counts
+- particle counts
+- transparency
+- dynamic lights
+- expensive loops
+- physics objects
+- networking
+- memory
+- streaming
+
+Use StreamingEnabled appropriately.
+
+Avoid polling loops where events/signals can be used.
+
+Avoid sending unnecessary remote events.
+
+Do not replicate secret server information to clients.
+
+Profile before prematurely optimizing everything.
+
+---
+
+# 50. SERVER AUTHORITY
+
+SECURITY IS IMPORTANT.
+
+The client must never be trusted for:
+
+- currency
+- item ownership
+- purchases
+- robbery results
+- inventory changes
+- rare-item generation
+- trade completion
+- evidence creation
+- rewards
+- security-system results
+
+The server should validate meaningful state changes.
+
+Treat client requests as REQUESTS, not truth.
+
+Example:
+
+BAD:
+
+Client:
+"I stole the Golden Toilet. Give me $8,400."
+
+GOOD:
+
+Client:
+"I attempted to interact with item X."
+
+Server verifies:
+
+- player position
+- item exists
+- item is stealable
+- player has permission/tool
+- house state
+- cooldown
+- interaction state
+
+Then server performs the action.
+
+---
+
+# 51. REMOTE SECURITY
+
+Create a clean networking layer.
+
+Avoid random RemoteEvents scattered throughout the project.
+
+Validate:
+
+- types
+- ranges
+- IDs
+- permissions
+- cooldowns
+- state transitions
+
+Rate-limit sensitive requests.
+
+Log suspicious impossible behavior where useful.
+
+Never place secrets in LocalScripts.
+
+---
+
+# 52. DATA ARCHITECTURE
+
+Design persistent data carefully.
+
+Potential player profile:
+
+PlayerProfile
+
+- Version
+- Currency
+- XP / progression
+- Inventory
+- House
+- Furniture
+- Collectibles
+- Vehicles
+- Pets
+- SecurityEquipment
+- Cosmetics
+- Reputation
+- Settings
+- TutorialState
+- DailyState
+- IncidentHistory
+- Statistics
+
+Important items:
+
+ItemInstance
+
+- UniqueId
+- ItemDefinitionId
+- CurrentOwnerUserId
+- OriginalOwnerUserId
+- CreatedAt
+- Rarity
+- Provenance
+- StolenState
+- Metadata
+
+Do not store enormous unnecessary histories forever.
+
+Create reasonable history limits.
+
+---
+
+# 53. DATASTORE SAFETY
+
+Implement persistence defensively.
+
+Requirements:
+
+- retry handling
+- session locking/profile ownership strategy
+- schema versioning
+- migration support
+- autosave
+- safe shutdown saving
+- failure handling
+- default data
+- corruption protection
+
+Do not save on every tiny property change.
+
+Use dirty-state tracking or reasonable save intervals.
+
+Test failure cases.
+
+---
+
+# 54. PROJECT ARCHITECTURE
+
+Use a clean project structure.
+
+Example:
+
+ReplicatedStorage
+  Shared
+    Config
+    Types
+    Constants
+    Utility
+    ItemDefinitions
+    HouseDefinitions
+    EventDefinitions
+  Remotes
+  Assets
+
+ServerScriptService
+  Services
+    PlayerDataService
+    HouseService
+    EconomyService
+    InventoryService
+    InteractionService
+    RobberyService
+    SecurityService
+    EvidenceService
+    InvestigationService
+    ItemService
+    TradeService
+    EventService
+    NotificationService
+    NPCService
+  Server
+
+StarterPlayer
+  StarterPlayerScripts
+    Controllers
+      UIController
+      InteractionController
+      CameraController
+      HouseController
+      InventoryController
+      InvestigationController
+      NotificationController
+
+StarterGui
+  App
+
+Workspace
+  Map
+  Houses
+  Shops
+  Runtime
+
+Exact structure can change if there is a better architectural reason.
+
+Explain significant deviations.
+
+---
+
+# 55. SERVICE DESIGN
+
+Services should have clear responsibilities.
+
+Example:
+
+HouseService
+
+Responsible for:
+
+- plot assignment
+- house ownership
+- house state
+- doors
+- customization hooks
+
+RobberyService
+
+Responsible for:
+
+- robbery sessions
+- eligibility
+- target validation
+- robbery state
+- escape/completion
+
+EvidenceService
+
+Responsible for:
+
+- evidence generation
+- evidence storage
+- clue metadata
+- evidence discovery
+
+Do not make HouseService responsible for the entire game.
+
+---
+
+# 56. CONFIGURATION-DRIVEN CONTENT
+
+Whenever reasonable, define content through configuration.
+
+Example:
+
+ItemDefinitions = {
+
+GoldenToilet = {
+    DisplayName = "Golden Toilet",
+    Rarity = "Legendary",
+    BaseValue = 8400,
+    Weight = 80,
+    Stealable = true,
+    Displayable = true,
+},
+
+GardenGnome = {...}
+
+}
+
+Then systems operate on definitions.
+
+Do NOT write:
+
+if item == "GoldenToilet" then...
+
+all over the codebase.
+
+The game should be easy to expand.
+
+---
+
+# 57. EVENT ARCHITECTURE
+
+Systems should communicate through clean APIs/signals rather than tightly coupling everything.
+
+Example:
+
+RobberyCompleted
+
+could trigger:
+
+- EvidenceService
+- NewspaperService
+- ReputationService
+- NotificationService
+- AnalyticsService
+
+without RobberyService needing enormous knowledge of every system.
+
+Keep dependencies understandable.
+
+Avoid creating an over-engineered enterprise framework.
+
+This is still a game.
+
+---
+
+# 58. ANALYTICS
+
+Instrument the game from the beginning.
+
+Track important funnels.
+
+FIRST SESSION:
+
+- joined
+- loaded
+- received house
+- entered house
+- placed first furniture
+- completed first task
+- interacted with neighbor
+- inspected valuable
+- attempted first mischief action
+- completed first robbery/investigation
+- played 5 minutes
+- played 10 minutes
+- played 20 minutes
+
+RETENTION:
+
+- returned next session
+- opened offline recap
+- interacted with incident
+- joined friend
+- invited friend
+
+ECONOMY:
+
+- currency earned
+- currency spent
+- item purchased
+- item stolen
+- item recovered
+- item traded
+- item sold
+
+MONETIZATION:
+
+- store viewed
+- product viewed
+- purchase initiated
+- purchase completed
+
+Never collect unnecessary personal information.
+
+Use Roblox-supported analytics capabilities where appropriate.
+
+---
+
+# 59. MEASURE FUN
+
+Analytics are not enough.
+
+During playtesting, explicitly evaluate:
+
+Did something funny happen?
+
+Did players talk to each other?
+
+Did somebody care about losing/recovering an item?
+
+Did players show each other their houses?
+
+Did somebody chase someone?
+
+Did somebody voluntarily play another round/activity?
+
+Did someone understand the game without explanation?
+
+If not, fix the gameplay before adding more content.
+
+---
+
+# 60. MVP — DO NOT BUILD EVERYTHING YET
+
+This is CRITICAL.
+
+The full document describes the long-term vision.
+
+DO NOT attempt to implement every feature immediately.
+
+Build a polished vertical slice first.
+
+The MVP should prove ONE thing:
+
+# IS LIVING NEXT TO PEOPLE AND MESSING WITH THEIR HOUSES FUN?
+
+Initial MVP:
+
+- 1 neighborhood
+- 8 houses
+- plot assignment
+- basic persistent player data
+- currency
+- basic inventory
+- several furniture pieces
+- house interaction
+- 1 simple store
+- 1 pawn shop
+- 10–15 collectible items
+- rarity system
+- one Golden Toilet
+- basic house security
+- one robbery flow
+- item carrying
+- heavy-item movement penalty
+- basic evidence
+- security camera event
+- incident report
+- simple investigation screen
+- notifications
+- polished core UI
+- day/night atmosphere
+
+NO vehicles initially unless necessary.
+
+NO giant pet system.
+
+NO complicated NPC AI.
+
+NO 100-item catalog.
+
+NO multiple neighborhoods.
+
+NO enormous quest system.
+
+PROVE THE LOOP FIRST.
+
+---
+
+# 61. THE MVP GOLDEN TOILET TEST
+
+The MVP succeeds if this scenario works and is genuinely fun:
+
+PLAYER A owns Golden Toilet.
+
+PLAYER B sees it through/inside the house.
+
+PLAYER B decides to steal it.
+
+PLAYER B breaks in.
+
+Camera detects suspicious activity.
+
+PLAYER B grabs Golden Toilet.
+
+PLAYER B becomes dramatically slower because it is heavy.
+
+PLAYER A notices.
+
+PLAYER A chases Player B down the street.
+
+PLAYER B escapes.
+
+Ownership state changes correctly.
+
+PLAYER A receives an incident report.
+
+Evidence exists.
+
+PLAYER B can attempt to sell the item at the pawn shop.
+
+PLAYER A can begin investigating.
+
+Both players understand what happened.
+
+Both players think the situation was funny.
+
+If this experience isn't fun:
+
+DO NOT build fifty additional systems.
+
+Fix this first.
+
+---
+
+# 62. FIRST PLAYABLE BUILD
+
+For the first playable version, prioritize:
+
+1. beautiful neighborhood
+2. movement
+3. houses
+4. interaction framework
+5. item system
+6. Golden Toilet
+7. stealing
+8. carrying
+9. chase
+10. incident report
+11. evidence
+12. persistence
+13. UI polish
+
+Everything else comes later.
+
+---
+
+# 63. VISUAL QUALITY BAR
+
+Every time you create a major screen or environment area:
+
+STOP.
+
+Inspect it visually.
+
+Ask:
+
+- Does this look intentionally designed?
+- Is spacing consistent?
+- Is hierarchy obvious?
+- Does this look good at 1920×1080?
+- Does it look good on mobile?
+- Is there unnecessary clutter?
+- Does it resemble default Roblox UI?
+- Are there mismatched visual styles?
+- Does lighting look flat?
+- Are important objects visually obvious?
+- Would this screenshot make someone curious about the game?
+
+If not:
+
+ITERATE.
+
+Do not accept the first functional version.
+
+---
+
+# 64. SCREENSHOT-DRIVEN ITERATION
+
+When Roblox Studio MCP provides screenshot or visual inspection capability, use it.
+
+After implementing visual work:
+
+1. Enter Play mode.
+2. Navigate to the feature.
+3. Capture/inspect the rendered result.
+4. Evaluate composition, spacing, readability, lighting, scale, hierarchy, and polish.
+5. Fix obvious problems.
+6. Test again.
+7. Repeat until the feature looks intentionally designed.
+
+Do NOT assume something looks good because the code is correct.
+
+Functional ≠ polished.
+
+The goal is to eliminate the classic:
+
+> "AI generated a technically working Roblox game."
+
+look.
+
+---
+
+# 65. ASSET WORKFLOW
+
+Use a consistent asset pipeline.
+
+When external image-generation/design tools such as Higgsfield are available, use them primarily for:
+
+- concept art
+- mood boards
+- UI references
+- icon concepts
+- texture concepts
+- thumbnail concepts
+- promotional artwork
+- visual exploration
+
+Do NOT randomly generate assets in unrelated styles.
+
+Before producing lots of visual assets, establish a mini art bible containing:
+
+- architecture style
+- environment proportions
+- material language
+- furniture style
+- icon style
+- UI style
+- lighting direction
+- color philosophy
+- character compatibility
+- vehicle style
+
+Every asset should feel like it belongs to THE NEIGHBORHOOD.
+
+---
+
+# 66. 3D ASSET PHILOSOPHY
+
+Prefer clean stylized assets over hyper-detailed assets.
+
+Objects should have strong silhouettes.
+
+A player should recognize:
+
+Golden Toilet
+
+Garden Gnome
+
+Security Camera
+
+Alarm
+
+Package
+
+Dog
+
+Pawn Shop
+
+from a distance.
+
+Avoid unnecessary geometric complexity.
+
+Objects players interact with should visually communicate that they are interactive.
+
+Rare objects should have distinctive visual treatments without covering the screen in particles.
+
+---
+
+# 67. LIGHTING
+
+Lighting should become part of the game's identity.
+
+DAY:
+
+Warm
+Friendly
+Colorful
+Inviting
+
+SUNSET:
+
+Beautiful
+Slightly cinematic
+
+NIGHT:
+
+Cozy suburban darkness
+Streetlights
+House windows glowing
+Porch lights
+Security lights
+
+Night should make sneaking feel different without making the game impossible to see.
+
+A player should be able to look at a screenshot and roughly recognize THE NEIGHBORHOOD.
+
+---
+
+# 68. DAY / NIGHT
+
+Implement a manageable day/night cycle.
+
+Do not make players wait real-world hours.
+
+Different times can slightly influence gameplay.
+
+Examples:
+
+DAY
+
+- stores active
+- social activity
+- deliveries
+- garage sales
+- easier visibility
+
+NIGHT
+
+- stealth opportunities
+- security systems become visually prominent
+- rare nighttime events
+- mysterious NPC/event appearances
+
+Do not make nighttime automatically equal "crime mode."
+
+Players should retain freedom.
+
+---
+
+# 69. WEATHER — LATER
+
+Architect the environment so weather can eventually exist.
+
+Potential weather:
+
+- clear
+- cloudy
+- rain
+- thunderstorm
+- fog
+- snow for seasonal events
+
+Weather could affect evidence later.
+
+Example:
+
+Rain makes footprints easier to create but causes some evidence to disappear faster.
+
+DO NOT implement an elaborate weather simulation for MVP.
+
+---
+
+# 70. ACCESSIBILITY
+
+Support accessibility from the beginning.
+
+Do not rely exclusively on:
+
+- color
+- tiny text
+- audio
+- rapid reaction time
+
+Provide clear text/icon combinations.
+
+Maintain readable contrast.
+
+Allow important audio events to have visual indicators where appropriate.
+
+Avoid unnecessarily tiny UI.
+
+Avoid excessive flashing.
+
+Allow camera effects to be reduced if implemented.
+
+---
+
+# 71. PLAYER SAFETY / SOCIAL DESIGN
+
+Follow Roblox's current platform requirements and moderation systems.
+
+Do not implement custom systems that encourage harassment.
+
+Neighborhood rivalry should remain playful.
+
+Provide:
+
+- blocking/reporting compatibility
+- appropriate chat integration
+- anti-spam protections where needed
+- safe player-generated text handling
+
+Never allow arbitrary unsanitized text to appear on signs, newspapers, house labels, or public surfaces.
+
+Use Roblox-supported filtering/moderation systems.
+
+---
+
+# 72. GRIEFING PREVENTION
+
+Because players can mess with one another, grief prevention is essential.
+
+The difference between:
+
+FUN:
+
+"Someone stole my ridiculous toilet and now I have a mystery."
+
+and
+
+NOT FUN:
+
+"I logged in and everything I've spent 40 hours earning is gone."
+
+must remain clear.
+
+Design limits.
+
+Possible safeguards:
+
+- protected inventory
+- limited theft frequency
+- item recovery paths
+- temporary protection after being robbed
+- beginner protection
+- protected premium purchases
+- cooldowns
+- victim compensation where appropriate
+- vulnerable display slots
+- insurance mechanics later
+
+Monitor player behavior.
+
+If a mechanic disproportionately causes players to quit, change it.
+
+---
+
+# 73. NEW PLAYER PROTECTION
+
+New players should not immediately become prey for experienced players.
+
+Possible protections:
+
+- first-session robbery immunity
+- starter-house security
+- low-value beginner possessions
+- gradually introduced PvP/social-risk systems
+
+Do not create obvious "new player = free loot" incentives.
+
+---
+
+# 74. TRADING
+
+Trading should eventually support the collectible economy.
+
+Security requirements:
+
+- both players explicitly confirm
+- clearly show items
+- clearly show rarity
+- clearly show ownership
+- prevent last-second item substitution
+- server-authoritative completion
+- prevent duplication
+- record important transactions
+
+Consider a two-step confirmation:
+
+READY
+
+then
+
+CONFIRM TRADE
+
+If either side changes the offer, confirmations reset.
+
+---
+
+# 75. ITEM PROVENANCE
+
+For rare serialized items, maintain a lightweight history.
+
+Example:
+
+# GOLDEN TOILET #00482
+
+Created:
+Season 1
+
+Original Owner:
+Player A
+
+Notable History:
+Stolen 4 times
+Recovered twice
+Sold at auction once
+
+Current Owner:
+Player B
+
+Do not expose private information.
+
+Use display names/usernames only where platform rules allow.
+
+History itself can make an object desirable.
+
+---
+
+# 76. COLLECTION BOOK
+
+Create a future collection interface.
+
+Example:
+
+# NEIGHBORHOOD COLLECTION
+
+Furniture
+34 / 120
+
+Oddities
+7 / 35
+
+Legendary
+2 / 18
+
+Mythic
+0 / 5
+
+Unknown silhouettes should create curiosity.
+
+Do not reveal every secret item immediately.
+
+---
+
+# 77. SEASONAL CONTENT
+
+The game should support seasonal neighborhood transformations.
+
+Examples:
+
+HALLOWEEN
+
+- decorations
+- costumes
+- haunted houses
+- spooky collectibles
+- trick-or-treat event
+
+CHRISTMAS
+
+- snow where appropriate stylistically
+- lights
+- decorations
+- presents
+- neighborhood light competition
+
+SUMMER
+
+- block parties
+- yard sales
+- cookouts
+
+Do not build seasons yet.
+
+Architect content definitions so adding them later is straightforward.
+
+---
+
+# 78. LIVE OPS
+
+Eventually, content updates should be possible without rewriting core systems.
+
+Potential weekly update:
+
+NEW:
+
+3 collectibles
+1 prank
+1 furniture set
+1 neighborhood event
+
+Potential larger update:
+
+THE PET UPDATE
+
+THE GARAGE SALE UPDATE
+
+THE DETECTIVE UPDATE
+
+THE HALLOWEEN UPDATE
+
+THE RICH NEIGHBOR UPDATE
+
+The architecture should support incremental expansion.
+
+---
+
+# 79. CONTENT FACTORY
+
+Design systems so adding content is cheap.
+
+A new collectible should ideally require:
+
+- asset
+- definition
+- icon
+- optional behavior configuration
+
+NOT:
+
+editing six unrelated scripts.
+
+A new security system should implement a predictable interface.
+
+A new neighborhood event should implement a predictable event contract.
+
+A new house style should use standardized attachment points and metadata.
+
+Codex should optimize for future development speed.
+
+---
+
+# 80. CODE QUALITY
+
+Use Luau type checking where practical.
+
+Prefer clear names.
+
+Avoid:
+
+x
+thing
+stuff
+data2
+managerFinalNew
+
+Use:
+
+targetHouse
+robberySession
+evidenceRecord
+itemDefinition
+securityDevice
+
+Comment WHY when necessary.
+
+Do not comment obvious code.
+
+Bad:
+
+-- increment money
+money += 1
+
+Useful:
+
+-- Currency mutations are server-authoritative so clients cannot
+-- spoof robbery payouts.
+EconomyService:AddCurrency(...)
+
+Keep functions reasonably small.
+
+---
+
+# 81. DO NOT OVERENGINEER
+
+Do not build:
+
+- custom dependency injection framework
+- enormous abstraction hierarchy
+- generic ECS architecture
+
+unless the game genuinely requires it.
+
+Choose boring, understandable architecture.
+
+We should be able to return six months later and understand the code.
+
+---
+
+# 82. ERROR HANDLING
+
+Systems should fail gracefully.
+
+If persistence fails:
+
+Do not silently destroy player data.
+
+If shop purchase fails:
+
+Explain that the purchase failed.
+
+If house assignment fails:
+
+Recover or assign another plot.
+
+If asset is missing:
+
+Use a safe fallback.
+
+If a server system throws:
+
+Log enough context to debug it.
+
+Do not spam output continuously.
+
+---
+
+# 83. DEVELOPMENT LOGGING
+
+Create configurable logging.
+
+Development environment:
+
+More detailed logs.
+
+Production:
+
+Only important warnings/errors.
+
+Potential categories:
+
+[DATA]
+[HOUSE]
+[ROBBERY]
+[EVIDENCE]
+[ECONOMY]
+[TRADE]
+[SECURITY]
+
+Do not leak sensitive internal state to clients.
+
+---
+
+# 84. TESTING STRATEGY
+
+For every meaningful system, test:
+
+HAPPY PATH
+
+What happens when everything works?
+
+EDGE CASES
+
+What if the item disappears?
+
+What if the owner leaves?
+
+What if the thief disconnects?
+
+What if both players interact simultaneously?
+
+What if the server closes?
+
+What if the datastore fails?
+
+What if the player has high latency?
+
+EXPLOIT CASES
+
+What if the client lies?
+
+What if interaction requests are spammed?
+
+What if invalid IDs are submitted?
+
+What if the player teleports locally?
+
+---
+
+# 85. MULTIPLAYER TESTING
+
+Do not test multiplayer systems with only one player.
+
+Use Roblox Studio multiplayer/server testing capabilities when possible.
+
+Specifically test:
+
+Player A owns house.
+
+Player B visits.
+
+Player B steals item.
+
+Player A receives appropriate state.
+
+Player C joins.
+
+Player C sees correct ownership state.
+
+Player B leaves.
+
+State remains consistent.
+
+Player A leaves/rejoins.
+
+Persistent state loads correctly.
+
+---
+
+# 86. DISCONNECT BEHAVIOR
+
+Define behavior explicitly.
+
+Example:
+
+Thief steals Golden Toilet.
+
+Before reaching safe state:
+
+Thief disconnects.
+
+Do NOT let disconnecting become an exploit.
+
+Potential approach:
+
+Server resolves carried stolen property according to robbery state.
+
+Likewise:
+
+Victim disconnecting should not magically duplicate/delete items.
+
+Design deterministic resolution rules.
+
+---
+
+# 87. DUPLICATION PREVENTION
+
+Rare-item duplication would destroy the economy.
+
+Every persistent item should have authoritative ownership.
+
+Transfers should behave transactionally where possible.
+
+During transfer:
+
+OLD OWNER
+
+→ pending transfer
+
+→ validation
+
+→ NEW OWNER
+
+Avoid situations where both profiles save themselves as owner.
+
+Design and test this carefully before creating highly valuable serialized collectibles.
+
+---
+
+# 88. EXPLOIT RESISTANCE
+
+Assume exploiters can:
+
+- inspect LocalScripts
+- fire remotes
+- alter local movement
+- alter local UI
+- spam requests
+- fabricate parameters
+
+They cannot be allowed to:
+
+- create money
+- create items
+- assign ownership
+- complete arbitrary robberies
+- bypass trades
+- generate evidence
+- award themselves collectibles
+
+Server authority is mandatory.
+
+---
+
+# 89. UI ARCHITECTURE
+
+Create reusable components.
+
+Examples:
+
+Button
+IconButton
+Card
+Modal
+Toast
+CurrencyDisplay
+ItemCard
+RarityBadge
+PlayerCard
+IncidentCard
+EvidenceCard
+ShopItemCard
+ConfirmationDialog
+Tooltip
+TabBar
+
+Do not recreate the same visual element independently on five screens.
+
+---
+
+# 90. HUD
+
+Keep the normal HUD minimal.
+
+Potential default HUD:
+
+Top:
+
+Currency
+
+Side/bottom:
+
+Inventory
+House
+Neighborhood
+Phone/Menu
+
+Contextual systems should appear only when relevant.
+
+Do not cover half the screen permanently.
+
+The WORLD is the main interface.
+
+---
+
+# 91. THE PHONE
+
+Eventually consider consolidating many systems into an in-game phone.
+
+Possible apps:
+
+HOME
+
+SECURITY
+
+NEIGHBORHOOD
+
+CASES
+
+MARKET
+
+MAP
+
+MESSAGES / platform-safe social features
+
+COLLECTION
+
+This could become a strong thematic UI framework.
+
+For MVP, do not build ten fake apps.
+
+But architect major interfaces so they could eventually live inside this system.
+
+---
+
+# 92. NOTIFICATIONS
+
+Notifications should be prioritized.
+
+LOW:
+
+Friend entered neighborhood.
+
+MEDIUM:
+
+Package delivered.
+
+HIGH:
+
+Alarm triggered.
+
+SPECIAL:
+
+MYTHIC ITEM DISCOVERED.
+
+Avoid constant notification spam.
+
+Queue intelligently.
+
+Combine repeated low-priority events.
+
+---
+
+# 93. JUICE
+
+Important interactions should feel satisfying.
+
+Use tasteful:
+
+- sound
+- scale animation
+- particles
+- camera response
+- UI motion
+- object animation
+
+Example:
+
+Player discovers Legendary Golden Toilet.
+
+Small pause.
+
+Golden shimmer.
+
+Distinct sound.
+
+LEGENDARY
+
+GOLDEN TOILET
+
+Not:
+
+screen exploding with 400 particles for every Common Chair.
+
+Reserve intensity for important moments.
+
+---
+
+# 94. HUMOR
+
+Humor should emerge from:
+
+- item descriptions
+- NPC dialogue
+- absurd collectibles
+- system interactions
+- event combinations
+- player behavior
+
+Avoid trying too hard with constant memes.
+
+Memes age quickly.
+
+Build timeless situational comedy.
+
+Examples:
+
+"Totally Legal Pawn Shop"
+
+Security camera catches someone carrying a toilet.
+
+Dog named "Attorney."
+
+Rare item:
+
+THE EMERGENCY CHAIR
+
+Description:
+
+"For emergencies involving sitting."
+
+Keep writing concise.
+
+---
+
+# 95. BRAND IDENTITY
+
+THE NEIGHBORHOOD should have recognizable branding.
+
+Explore a logo centered around:
+
+- suburban house
+- street sign
+- suspicious eye/window
+- friendly neighborhood aesthetic with mischievous undertone
+
+Possible title treatment:
+
+THE
+NEIGHBORHOOD
+
+with a small house/street motif.
+
+Avoid generic simulator branding.
+
+No:
+
+THE NEIGHBORHOOD
+🔥 UPDATE 7 🔥
+💰 x999 MONEY 💰
+
+The game should feel confident enough not to scream.
+
+---
+
+# 96. THUMBNAIL PHILOSOPHY
+
+Thumbnails should communicate a STORY immediately.
+
+Example:
+
+Foreground:
+
+Player sprinting while carrying giant Golden Toilet.
+
+Background:
+
+Angry homeowner chasing.
+
+Security camera pointed toward them.
+
+Dog also chasing.
+
+House alarm flashing.
+
+Text:
+
+WHO STOLE IT?
+
+That's dramatically stronger than:
+
+three characters standing in front of houses.
+
+Future thumbnails should represent actual gameplay fantasies.
+
+---
+
+# 97. GAME ICON
+
+The icon must read at tiny size.
+
+Potential:
+
+Golden Toilet sitting outside a beautiful suburban house with a suspicious masked Roblox character peeking around the corner.
+
+Keep composition simple.
+
+One focal point.
+
+High readability.
+
+---
+
+# 98. DISCOVERY / ONBOARDING PRINCIPLE
+
+The experience needs to communicate its fantasy immediately.
+
+Within seconds of seeing:
+
+- icon
+- thumbnail
+- title
+- description
+
+players should understand:
+
+"Funny neighborhood sandbox where you mess with your neighbors."
+
+Do not make players read paragraphs to understand why the game is interesting.
+
+---
+
+# 99. FRIEND PLAY
+
+Design specifically for friends.
+
+Friends should be able to:
+
+- live near one another where technically reasonable
+- visit houses
+- trade
+- collaborate
+- prank one another
+- investigate together
+- compete
+- attend events
+
+Joining a friend's server should feel meaningful.
+
+If practical, prioritize assigning friends nearby plots.
+
+---
+
+# 100. PRIVATE SERVERS
+
+Long-term, private servers could be particularly fun.
+
+Friend group gets its own neighborhood.
+
+This creates:
+
+- ongoing inside jokes
+- persistent rivalries
+- decorated houses
+- collectible histories
+- friend-group events
+
+Do not make private servers required.
+
+Public neighborhoods must remain compelling.
+
+---
+
+# 101. SERVER SIZE
+
+Start around 8–12 players depending on performance and gameplay testing.
+
+The neighborhood should feel:
+
+ACTIVE
+
+not
+
+CROWDED.
+
+If 12 players make the map chaotic, reduce it.
+
+If 8 players make it empty, adjust density before blindly increasing server size.
+
+Player encounter frequency matters more than raw player count.
+
+---
+
+# 102. THE WORLD MUST FEEL ALIVE
+
+Add small environmental behaviors.
+
+Examples:
+
+- sprinklers activate
+- porch lights turn on
+- NPC car drives past
+- dog barks
+- leaves move
+- garage door opens
+- delivery vehicle arrives
+- distant siren
+- neighbor waters plants
+- lights change at night
+
+These details create life.
+
+Do not make them expensive simulations.
+
+Use illusion efficiently.
+
+---
+
+# 103. ENVIRONMENTAL STORYTELLING
+
+Houses should communicate personalities.
+
+Example:
+
+PARANOID HOUSE
+
+Six cameras.
+Tall fence.
+Warning signs.
+Nothing valuable visible.
+
+COLLECTOR HOUSE
+
+Huge windows.
+Rare items everywhere.
+Terrible security.
+
+CHAOTIC HOUSE
+
+Garden gnomes everywhere.
+
+Players should form opinions before entering.
+
+---
+
+# 104. HOUSE CUSTOMIZATION TECHNICAL DESIGN
+
+Furniture placement should eventually support:
+
+- grid snapping
+- rotation
+- collision validation
+- ownership validation
+- placement bounds
+- save/load
+- mobile controls
+
+For MVP:
+
+Keep it simple.
+
+Implement a small number of standardized placement zones if free placement becomes too expensive to build initially.
+
+Polish > breadth.
+
+---
+
+# 105. ROBBERY UX
+
+Robbery state should be obvious without giant text.
+
+Possible subtle HUD:
+
+SUSPICIOUS ACTIVITY
+
+Noise: ██░░░
+Evidence Risk: ███░░
+
+Carrying:
+Golden Toilet
+
+Movement:
+SLOW
+
+Do not expose exact internal calculations unnecessarily.
+
+Players should understand risk intuitively.
+
+---
+
+# 106. SECURITY UX
+
+Homeowners should understand WHY something happened.
+
+Bad:
+
+"You were robbed."
+
+Better:
+
+FRONT WINDOW BREACHED
+
+Camera detected movement.
+
+Alarm triggered at 2:14 AM.
+
+Intruder escaped before Neighborhood Watch arrived.
+
+Missing:
+
+Golden Toilet.
+
+This teaches players how security works.
+
+---
+
+# 107. COUNTERPLAY
+
+Every strong mechanic should have a counter.
+
+Lockpick
+→ better lock
+
+Camera
+→ disguise / blind spot
+
+Disguise
+→ stronger evidence elsewhere
+
+Heavy valuable
+→ getaway planning
+
+Dog
+→ distraction
+
+Alarm
+→ faster escape
+
+Evidence planting
+→ multiple clue correlation
+
+Do not create absolute solutions.
+
+Interesting systems create decisions.
+
+---
+
+# 108. PLAYER EXPRESSION
+
+Players should be able to communicate personality through their property.
+
+Examples:
+
+- pristine modern house
+- ridiculous pink mansion
+- paranoid fortress
+- collector museum
+- cozy cottage
+- chaotic gnome house
+
+Expression creates attachment.
+
+Attachment creates retention.
+
+And attachment makes neighborhood interactions matter.
+
+---
+
+# 109. STATUS WITHOUT RAW POWER
+
+High-status players should LOOK impressive.
+
+They should not automatically destroy new players.
+
+Status can come from:
+
+- rare furniture
+- house architecture
+- collectibles
+- vehicles
+- cosmetic effects
+- titles
+- provenance
+- achievements
+- neighborhood history
+
+Avoid making status synonymous with combat/gameplay dominance.
+
+---
+
+# 110. LONG-TERM META
+
+Long-term players could pursue:
+
+- collection completion
+- house value
+- neighborhood reputation
+- rare-item hunting
+- investigation achievements
+- prank achievements
+- seasonal collections
+- house design
+- vehicle collection
+- social prestige
+
+There should be multiple definitions of success.
+
+---
+
+# 111. ACHIEVEMENTS
+
+Achievements should celebrate stories.
+
+Examples:
+
+## CAUGHT RED-HANDED
+
+Get discovered while carrying stolen property.
+
+## WRONG HOUSE
+
+Attempt to rob your own house.
+
+## THIS SEEMS HEAVY
+
+Successfully escape carrying a Golden Toilet.
+
+##Finishing it. **Continue directly from the cut-off at #111:**
+
+# 111. ACHIEVEMENTS
+
+## INSIDE JOB
+Successfully steal from someone on your friends list.
+
+## NEIGHBORHOOD WATCH
+Stop a robbery in progress.
+
+## NOT SUSPICIOUS AT ALL
+Walk through the neighborhood carrying an obviously stolen Legendary item.
+
+## FINDERS KEEPERS
+Recover one of your stolen possessions.
+
+## CRIME DOESN'T PAY
+Get caught before successfully fencing a stolen item.
+
+## COLLECTOR
+Own ten Rare-or-better collectibles simultaneously.
+
+## UNFORTUNATE COINCIDENCE
+Be falsely accused of a crime.
+
+## RETURN TO SENDER
+Recover an item and return it to its original owner.
+
+Achievements should create funny goals rather than repetitive grinding.
+
+---
+
+# 112. QUEST DESIGN
+
+Do not create generic quests like:
+
+"Open 20 doors."
+
+Prefer quests that encourage interaction.
+
+Examples:
+
+## CURIOUS NEIGHBOR
+
+Visit three neighbors.
+
+## SECURITY INSPECTION
+
+Inspect your home's entry points.
+
+## RUMOR HAS IT
+
+Follow a neighborhood rumor.
+
+## SOMETHING'S MISSING
+
+Investigate an incident.
+
+## GARAGE SALE
+
+Sell an item to another player.
+
+## QUESTIONABLE BUSINESS
+
+Visit the Totally Legal Pawn Shop.
+
+Quests should introduce systems naturally.
+
+---
+
+# 113. TUTORIAL DESIGN
+
+Avoid a traditional 15-step tutorial.
+
+The first experience should be contextual.
+
+Player receives house.
+
+Prompt:
+
+> This one's yours.
+
+Player approaches door.
+
+> [OPEN]
+
+Inside:
+
+> Looks empty.
+
+A starter furniture box appears.
+
+Player opens it.
+
+They place something.
+
+Later:
+
+> Your neighbor has something interesting...
+
+The game gradually introduces mechanics.
+
+Players should feel like they're playing immediately.
+
+---
+
+# 114. NPC GUIDE
+
+Consider one memorable NPC who introduces the neighborhood.
+
+Potential character:
+
+## GARY
+
+Neighborhood association representative.
+
+Extremely enthusiastic.
+
+Slightly suspicious.
+
+Gary says things like:
+
+> "Welcome to the neighborhood! Crime is extremely low."
+
+Pause.
+
+Alarm goes off behind him.
+
+> "...usually."
+
+Do not make Gary talk for five minutes.
+
+Short interactions.
+
+Strong personality.
+
+---
+
+# 115. WORLD INTRODUCTION
+
+On first join:
+
+Camera glides over neighborhood.
+
+Kids playing / NPC activity.
+
+Delivery truck.
+
+Beautiful houses.
+
+Someone waters lawn.
+
+Then in background:
+
+A player jumps a fence carrying a giant Golden Toilet.
+
+Alarm starts.
+
+Homeowner runs after them.
+
+Camera continues as if nothing happened.
+
+Title:
+
+# THE NEIGHBORHOOD
+
+Then control goes to player.
+
+This communicates the entire fantasy without explaining it.
+
+If technically feasible and performant, build toward an intro like this eventually.
+
+For MVP, a simpler version is acceptable.
+
+---
+
+# 116. CORE GAMEPLAY PILLARS
+
+Every proposed feature should support at least one pillar:
+
+## LIVE
+
+Own and customize a home.
+
+## COLLECT
+
+Acquire interesting possessions.
+
+## SCHEME
+
+Prank, spy, steal, plan.
+
+## PROTECT
+
+Secure your property.
+
+## INVESTIGATE
+
+Understand what happened.
+
+## SOCIALIZE
+
+Interact with neighbors.
+
+## DISCOVER
+
+Find secrets and unusual events.
+
+If a feature supports none of these:
+
+Question why it exists.
+
+---
+
+# 117. FEATURE PRIORITIZATION
+
+When deciding what to build next, use:
+
+IMPACT × FREQUENCY × DEVELOPMENT COST.
+
+Prioritize features that:
+
+- happen frequently
+- create social interaction
+- produce stories
+- strengthen the core loop
+- are relatively cheap to iterate
+
+Do not prioritize something merely because it sounds technologically impressive.
+
+---
+
+# 118. DO NOT BUILD TECH DEMOS
+
+I do not want:
+
+"Here is an advanced procedural neighborhood generator."
+
+if the actual game is boring.
+
+I would rather have:
+
+8 beautifully designed houses
+
+than:
+
+800 procedural houses nobody cares about.
+
+Gameplay first.
+
+---
+
+# 119. NO FAKE COMPLETENESS
+
+Never hide unfinished functionality behind polished-looking buttons.
+
+If a feature isn't implemented:
+
+- hide it
+- clearly mark it development-only
+- or omit it
+
+Do not create a UI containing 20 dead buttons.
+
+A smaller functioning game is better.
+
+---
+
+# 120. PLACEHOLDER POLICY
+
+Placeholders are acceptable during development.
+
+But placeholders should be centralized and obvious.
+
+Do not leave random gray blocks everywhere indefinitely.
+
+Before calling a milestone polished:
+
+Replace important placeholders.
+
+---
+
+# 121. SOURCE CONTROL
+
+Use Git/source control.
+
+Commit logically.
+
+Examples:
+
+feat: add plot assignment system
+
+feat: add item definitions and inventory
+
+feat: implement robbery sessions
+
+feat: add security camera evidence
+
+fix: prevent duplicated stolen items on disconnect
+
+ui: polish incident report
+
+Do not create giant commits containing unrelated work when avoidable.
+
+Never overwrite working systems casually.
+
+---
+
+# 122. ROJO WORKFLOW
+
+If Rojo is configured, use it as the primary source-code workflow where appropriate.
+
+Keep scripts in the repository.
+
+Sync them into Studio.
+
+Do not create conflicting copies of scripts in both places without understanding which is authoritative.
+
+Before restructuring the project:
+
+Inspect the existing Rojo configuration.
+
+Do not break it.
+
+---
+
+# 123. ROBLOX STUDIO MCP
+
+Use Roblox Studio MCP actively.
+
+Do not treat it as a last resort.
+
+Use it to:
+
+- inspect hierarchy
+- inspect instances
+- create instances
+- modify properties
+- inspect scripts
+- run Luau where appropriate
+- enter Play mode
+- test behavior
+- inspect output/errors
+- verify changes
+
+When a change can be verified in Studio:
+
+VERIFY IT.
+
+Do not merely say:
+
+"This should work."
+
+---
+
+# 124. NEVER GUESS PROJECT STATE
+
+Before changing an existing system:
+
+Inspect it.
+
+Before creating a duplicate system:
+
+Search for an existing one.
+
+Before assuming an object exists:
+
+Verify it.
+
+Before changing an API:
+
+Find its consumers.
+
+Do not hallucinate project structure.
+
+---
+
+# 125. EXTERNAL DOCUMENTATION
+
+When uncertain about current Roblox APIs:
+
+Use official Roblox documentation when available.
+
+Prefer:
+
+- Roblox Creator Hub
+- Roblox API documentation
+- Roblox official examples
+
+over random outdated tutorials.
+
+Do not use deprecated APIs merely because they appear in old code examples.
+
+---
+
+# 126. ASSET SAFETY
+
+Do not insert arbitrary free models with unknown scripts.
+
+If a Creator Store asset is used:
+
+Inspect it.
+
+Remove unnecessary scripts.
+
+Verify licensing/usage where relevant.
+
+Prefer building simple important gameplay assets ourselves rather than importing suspicious packages.
+
+---
+
+# 127. BUILD PHASE 0 — INSPECTION
+
+Before implementing anything:
+
+1. Inspect the current repository.
+2. Inspect Roblox Studio hierarchy.
+3. Determine whether Rojo is configured.
+4. Determine existing dependencies.
+5. Determine existing architecture.
+6. Determine whether any systems already exist.
+7. Run the current game.
+8. Record existing errors.
+9. Take/inspect screenshots if possible.
+10. Establish a baseline.
+
+Then create a concise implementation plan.
+
+DO NOT spend hours writing a giant design document.
+
+This prompt already IS the design document.
+
+---
+
+# 128. BUILD PHASE 1 — FOUNDATION
+
+Build:
+
+- project structure
+- shared types
+- configuration
+- networking layer
+- service lifecycle if needed
+- basic player data
+- basic UI framework
+- interaction framework
+- plot assignment
+
+Acceptance criteria:
+
+Two players can join.
+
+Each receives a different house.
+
+Both can interact with their own house.
+
+Server state remains authoritative.
+
+No major errors.
+
+---
+
+# 129. BUILD PHASE 2 — WORLD
+
+Create the first neighborhood.
+
+Target:
+
+8 houses.
+
+Central social area.
+
+Pawn shop.
+
+Basic store.
+
+Short streets.
+
+Backyards.
+
+Several shortcuts.
+
+Lighting.
+
+Basic environmental ambience.
+
+The map should already feel pleasant to walk around.
+
+Do not build the entire final city.
+
+---
+
+# 130. BUILD PHASE 3 — ITEMS
+
+Implement:
+
+ItemDefinitions.
+
+ItemInstance representation.
+
+Inventory.
+
+World item representation.
+
+Pickup/drop where appropriate.
+
+Display placement.
+
+Rarity.
+
+Value.
+
+Weight.
+
+Ownership.
+
+Create initial items:
+
+- Basic Chair
+- Lamp
+- Television
+- Garden Gnome
+- Lawn Flamingo
+- Microwave
+- Fancy Vase
+- Suspicious Painting
+- Golden Trash Can
+- Golden Toilet
+
+The Golden Toilet must be visually distinctive.
+
+---
+
+# 131. BUILD PHASE 4 — ECONOMY
+
+Implement:
+
+- starting currency
+- store purchases
+- inventory ownership
+- pawn-shop sales
+- transaction validation
+
+Do not build complex dynamic pricing yet.
+
+Prices can be configuration-driven.
+
+Test all transactions server-side.
+
+---
+
+# 132. BUILD PHASE 5 — THEFT
+
+Implement the first theft loop.
+
+Player B enters eligible robbery state.
+
+Player B interacts with stealable item.
+
+Server validates action.
+
+Item becomes carried.
+
+Ownership enters appropriate stolen state.
+
+Player movement changes according to item weight.
+
+Player can escape.
+
+Successful escape resolves robbery state.
+
+Do not build fifteen burglary tools yet.
+
+One polished theft flow.
+
+---
+
+# 133. BUILD PHASE 6 — GOLDEN TOILET
+
+Now specifically make the Golden Toilet scenario excellent.
+
+Requirements:
+
+Golden Toilet is large.
+
+Golden Toilet is funny.
+
+Golden Toilet is obviously valuable.
+
+Golden Toilet is difficult to carry.
+
+Golden Toilet is visible when carried.
+
+Movement becomes noticeably slower.
+
+Other players immediately understand what is happening.
+
+Add appropriate animation/audio feedback.
+
+Playtest with at least two simulated players.
+
+If this isn't fun:
+
+ITERATE.
+
+---
+
+# 134. BUILD PHASE 7 — SECURITY
+
+Implement:
+
+- basic house lock
+- one security camera
+- alarm state
+- security event recording
+
+Camera detects suspicious activity within reasonable conditions.
+
+Do NOT implement literal continuous video recording.
+
+Generate structured evidence.
+
+---
+
+# 135. BUILD PHASE 8 — EVIDENCE
+
+Create EvidenceRecord.
+
+Potential MVP evidence:
+
+CameraObservation
+
+Footprint
+
+AlarmLog
+
+For MVP, keep deduction simple.
+
+Evidence should include useful but not necessarily perfect information.
+
+Example:
+
+CAMERA OBSERVATION
+
+Time:
+10:42 PM
+
+Clothing:
+Red
+
+Carrying:
+Large Object
+
+Image Quality:
+Poor
+
+Do not directly expose the culprit's user ID to the victim UI.
+
+---
+
+# 136. BUILD PHASE 9 — INCIDENTS
+
+Create IncidentRecord.
+
+When robbery resolves:
+
+Victim receives incident.
+
+Incident contains:
+
+- timestamp
+- property
+- missing items
+- evidence references
+- status
+
+Create polished Incident UI.
+
+Example:
+
+# BREAK-IN
+
+Last night • 10:42 PM
+
+MISSING
+
+Golden Toilet
+
+EVIDENCE
+
+Camera Observation
+Alarm Log
+
+[OPEN CASE]
+
+This is a major visual moment.
+
+Polish it.
+
+---
+
+# 137. BUILD PHASE 10 — INVESTIGATION
+
+Create simple case interface.
+
+Player can:
+
+- inspect evidence
+- view stolen item
+- see incident timeline
+- mark case active
+- eventually accuse a suspect
+
+For MVP, accusation can remain simple.
+
+The goal is to prove:
+
+Robbery produces a second gameplay loop for the victim.
+
+---
+
+# 138. BUILD PHASE 11 — PERSISTENCE
+
+Persist:
+
+- currency
+- owned items
+- house customization required for MVP
+- relevant progression
+- unresolved incidents
+- item ownership
+
+Test:
+
+leave
+
+rejoin
+
+verify.
+
+Test server shutdown behavior.
+
+Test failed saves where possible.
+
+Do not call persistence finished because one save succeeded once.
+
+---
+
+# 139. BUILD PHASE 12 — OFFLINE RECAP
+
+Create:
+
+# WHILE YOU WERE AWAY
+
+Summarize relevant persisted events.
+
+Examples:
+
+Someone attempted to enter your house.
+
+Your security camera recorded activity.
+
+An item was stolen.
+
+An item was recovered.
+
+No activity?
+
+Do not fabricate drama.
+
+Maybe simply say:
+
+"Quiet night in the neighborhood."
+
+The recap should create curiosity without lying.
+
+---
+
+# 140. BUILD PHASE 13 — UI POLISH
+
+Now perform a dedicated UI pass.
+
+Inspect every screen.
+
+Standardize:
+
+- spacing
+- typography
+- corner radius
+- icon scale
+- shadows
+- animation
+- button states
+- modal behavior
+
+Delete redundant UI.
+
+Test mobile.
+
+Test controller navigation where relevant.
+
+---
+
+# 141. BUILD PHASE 14 — WORLD POLISH
+
+Dedicated environmental pass.
+
+Improve:
+
+- lighting
+- landscaping
+- street composition
+- house variation
+- props
+- storefronts
+- signage
+- ambient animation
+- night appearance
+
+Do not hide weak gameplay behind decoration.
+
+This phase happens after the loop works.
+
+---
+
+# 142. BUILD PHASE 15 — AUDIO / ANIMATION
+
+Add audio feedback.
+
+Add key animations.
+
+Focus on:
+
+- item pickup
+- carrying
+- doors
+- robbery
+- alarm
+- evidence discovery
+- notifications
+- Golden Toilet chase
+
+Avoid spending a week animating irrelevant NPCs.
+
+---
+
+# 143. BUILD PHASE 16 — PLAYTEST
+
+Run multiplayer playtests.
+
+Do NOT explain everything to testers.
+
+Observe.
+
+Can they figure out:
+
+Where is my house?
+
+How do I earn/buy something?
+
+What belongs to me?
+
+How do I interact?
+
+How do I steal something?
+
+What happens when I'm robbed?
+
+Where do I investigate?
+
+If you have to verbally explain the game constantly:
+
+The UX is failing.
+
+---
+
+# 144. BUILD PHASE 17 — FIX THE BORING PARTS
+
+Identify:
+
+Where do players stand around?
+
+Where are they confused?
+
+Where do they stop caring?
+
+What takes too long?
+
+What interaction feels tedious?
+
+What UI gets ignored?
+
+Fix those before adding more systems.
+
+---
+
+# 145. MVP DEFINITION OF DONE
+
+The MVP is NOT done because:
+
+"all planned scripts exist."
+
+The MVP is done when:
+
+- game loads reliably
+- neighborhood looks coherent
+- houses assign correctly
+- core UI looks polished
+- players can own items
+- items persist
+- Golden Toilet exists
+- another player can steal it
+- carrying it changes gameplay
+- owner can discover theft
+- evidence is generated
+- incident appears
+- victim can investigate
+- thief can fence item
+- economy updates correctly
+- multiplayer state remains synchronized
+- leaving/rejoining does not duplicate items
+- mobile experience is usable
+- no obvious remote exploits exist
+- no major output errors exist
+
+AND MOST IMPORTANTLY:
+
+The Golden Toilet scenario is actually fun.
+
+---
+
+# 146. FAILURE CONDITION
+
+If the core loop is not fun:
+
+DO NOT solve it by adding:
+
+pets
+cars
+twenty shops
+battle passes
+100 collectibles
+another currency
+another neighborhood
+
+Fix:
+
+interaction
+risk
+chase
+social consequences
+feedback
+pacing
+
+Content cannot rescue a weak loop.
+
+---
+
+# 147. POST-MVP EXPANSION ORDER
+
+Only after MVP proves itself, consider expanding roughly in this order:
+
+1. more collectibles
+2. house customization
+3. more security options
+4. more burglary approaches
+5. pranks
+6. trading
+7. neighborhood events
+8. reputation
+9. collection book
+10. vehicles
+11. pets
+12. bounties
+13. advanced investigation
+14. planted evidence
+15. additional neighborhoods
+16. seasonal content
+17. deeper social systems
+
+Change this order based on actual player behavior.
+
+Data beats this document.
+
+---
+
+# 148. CREATIVE FREEDOM
+
+You are allowed to improve ideas in this specification.
+
+If you discover:
+
+- a mechanic is not fun
+- something is technically impractical
+- another implementation would be cleaner
+- a feature harms performance
+- a simpler mechanic produces better gameplay
+
+say so.
+
+Then propose the better solution.
+
+Do not blindly follow a bad implementation merely because this prompt suggested it.
+
+Preserve the underlying design goals.
+
+---
+
+# 149. DO NOT DELETE WORKING SYSTEMS WITHOUT REASON
+
+When iterating:
+
+Preserve functioning behavior.
+
+Refactor deliberately.
+
+Before deleting/replacing something:
+
+Understand what depends on it.
+
+If a refactor is risky:
+
+make a checkpoint/commit first.
+
+---
+
+# 150. AUTONOMOUS DEVELOPMENT BEHAVIOR
+
+Do not stop after every tiny change and ask me what to do next.
+
+You have authority to make normal engineering decisions within this specification.
+
+Proceed through logical tasks.
+
+Stop and ask only when:
+
+- a decision materially changes the product
+- credentials/private information are needed
+- irreversible external action is required
+- there are multiple fundamentally different directions with major consequences
+- tooling prevents progress
+
+Otherwise:
+
+BUILD.
+
+TEST.
+
+INSPECT.
+
+FIX.
+
+CONTINUE.
+
+---
+
+# 151. WHEN SOMETHING BREAKS
+
+Do not immediately rewrite everything.
+
+Use disciplined debugging:
+
+1. reproduce
+2. inspect output
+3. identify failing subsystem
+4. trace state
+5. isolate root cause
+6. implement smallest reasonable fix
+7. retest
+8. test nearby behavior
+9. commit when stable
+
+Do not randomly modify unrelated files until the error disappears.
+
+---
+
+# 152. VISUAL QA LOOP
+
+For EVERY major visual feature:
+
+BUILD
+
+↓
+
+PLAY
+
+↓
+
+LOOK
+
+↓
+
+CRITIQUE
+
+↓
+
+FIX
+
+↓
+
+PLAY AGAIN
+
+Specifically evaluate:
+
+- spacing
+- alignment
+- contrast
+- scale
+- hierarchy
+- animation
+- readability
+- composition
+- consistency
+
+Do not call visual work complete from code inspection alone.
+
+---
+
+# 153. GAMEPLAY QA LOOP
+
+For EVERY major mechanic:
+
+BUILD
+
+↓
+
+PLAY
+
+↓
+
+BREAK IT
+
+↓
+
+FIX
+
+↓
+
+MULTIPLAYER TEST
+
+↓
+
+BREAK IT AGAIN
+
+Test unexpected behavior.
+
+Players will do things we didn't intend.
+
+That is especially important in a sandbox.
+
+---
+
+# 154. PERFORMANCE QA LOOP
+
+Periodically profile.
+
+Watch:
+
+- client frame rate
+- server frame time
+- memory
+- network traffic
+- physics load
+- instance count
+
+Do not wait until the entire game is built to discover the neighborhood runs at 20 FPS on mobile.
+
+---
+
+# 155. SECURITY QA LOOP
+
+Before calling a system complete, ask:
+
+"What happens if the client lies?"
+
+If the answer is:
+
+"They get free money."
+
+The system is not complete.
+
+---
+
+# 156. CODING AGENT RULE
+
+Never claim a task succeeded without evidence when evidence is obtainable.
+
+BAD:
+
+"Implemented successfully."
+
+GOOD:
+
+"Implemented robbery carrying. Tested with two Studio clients: Player B stole the Golden Toilet, movement penalty applied, Player A saw the item disappear, and the server produced no new errors."
+
+Report what was actually verified.
+
+---
+
+# 157. PROGRESS REPORTING
+
+After a meaningful batch of work, summarize briefly:
+
+## COMPLETED
+
+What changed.
+
+## VERIFIED
+
+What was actually tested.
+
+## ISSUES
+
+Known problems.
+
+## NEXT
+
+What you are doing next.
+
+Do not produce massive essays after every small change.
+
+Spend tokens on building.
+
+---
+
+# 158. README
+
+Maintain a useful README containing:
+
+- project purpose
+- setup
+- Studio/Rojo workflow
+- architecture overview
+- major services
+- development commands
+- testing workflow
+- important conventions
+
+Do not turn README into this entire design document.
+
+Keep it useful for engineering.
+
+---
+
+# 159. DEVELOPMENT ROADMAP
+
+Maintain a lightweight roadmap/checklist.
+
+Example:
+
+FOUNDATION
+[x] project structure
+[x] interaction framework
+[x] plot assignment
+[ ] persistence
+
+CORE LOOP
+[ ] items
+[ ] theft
+[ ] carrying
+[ ] Golden Toilet
+[ ] security
+[ ] evidence
+[ ] incidents
+
+POLISH
+[ ] UI
+[ ] audio
+[ ] animation
+[ ] mobile
+[ ] multiplayer QA
+
+Update it as work progresses.
+
+---
+
+# 160. ART BIBLE
+
+Create a lightweight development document describing:
+
+## ENVIRONMENT
+
+StylContinuing from **#160**. This will finish the master prompt.
+
+# 160. ART BIBLE
+
+Create and maintain a lightweight art bible.
+
+## ENVIRONMENT
+
+Stylized suburban America.
+
+Clean shapes.
+
+Slightly exaggerated proportions.
+
+Warm and inviting.
+
+Dense enough to feel alive.
+
+Never photorealistic.
+
+Never visually noisy.
+
+## ARCHITECTURE
+
+Homes should have recognizable silhouettes.
+
+Use variety without breaking cohesion.
+
+Potential styles:
+
+- starter suburban
+- craftsman
+- modern
+- cottage
+- ranch
+- upscale suburban
+- eccentric collector house
+
+## PROPS
+
+Chunky.
+
+Readable.
+
+Slightly exaggerated.
+
+Interactive objects should be recognizable immediately.
+
+## RARE ITEMS
+
+Rare items need distinct silhouettes first.
+
+Effects come second.
+
+Do not make rarity depend exclusively on glowing particles.
+
+## UI
+
+Modern.
+
+Playful.
+
+Minimal.
+
+Premium-feeling.
+
+Soft dimensionality.
+
+Consistent spacing.
+
+Excellent animation.
+
+Avoid generic simulator UI.
+
+## ANIMATION
+
+Expressive.
+
+Readable.
+
+Slightly exaggerated.
+
+Comedy > realism when appropriate.
+
+## AUDIO
+
+Cozy suburban ambience mixed with exaggerated gameplay feedback.
+
+---
+
+# 161. DESIGN TOKENS
+
+Establish actual reusable design tokens rather than eyeballing every screen.
+
+Define:
+
+- spacing units
+- typography sizes
+- corner radii
+- panel transparency
+- shadow treatment
+- animation durations
+- easing styles
+- semantic colors
+- rarity presentation
+- notification priority
+
+Use these throughout the UI.
+
+If we later redesign the visual system, we should be able to change centralized values rather than manually editing every screen.
+
+---
+
+# 162. UI MOTION LANGUAGE
+
+Animation should communicate state.
+
+Examples:
+
+BUTTON HOVER
+
+subtle scale / highlight
+
+BUTTON PRESS
+
+fast compression
+
+MODAL OPEN
+
+short scale + fade
+
+NOTIFICATION
+
+slide + fade
+
+RARE ITEM
+
+controlled reveal
+
+ALARM
+
+brief attention animation
+
+Avoid making every UI element bounce constantly.
+
+Motion should feel deliberate.
+
+---
+
+# 163. MICROINTERACTIONS
+
+Small interactions create perceived quality.
+
+Examples:
+
+Mailbox flag moves.
+
+Door handle rotates.
+
+Light switch physically clicks.
+
+Security camera tracks slightly.
+
+Cash register opens.
+
+Package tape tears.
+
+Garage door rolls upward.
+
+Dog tilts head.
+
+Pawn-shop sign flickers.
+
+Golden Toilet lid can open.
+
+These details should be added strategically after core gameplay works.
+
+---
+
+# 164. SIGNATURE DETAILS
+
+Create several small details that players associate specifically with THE NEIGHBORHOOD.
+
+Potential examples:
+
+Every mailbox has a tiny customizable flag.
+
+Neighborhood street signs slightly rotate when hit.
+
+Golden Toilet produces an absurdly subtle angelic sound when opened.
+
+Totally Legal Pawn Shop's "LEGAL" sign occasionally flickers off.
+
+Security-camera footage uses a recognizable visual treatment.
+
+Newspaper lands physically near the front door.
+
+These become part of the game's identity.
+
+---
+
+# 165. THE GOLDEN TOILET IS OUR TEST CHARACTER
+
+Treat the Golden Toilet almost like a mascot during development.
+
+Use it to test:
+
+- item rendering
+- rarity
+- inventory
+- ownership
+- placement
+- carrying
+- weight
+- stealing
+- evidence
+- selling
+- recovery
+- persistence
+- trading later
+- provenance later
+
+If our architecture handles the Golden Toilet correctly across the entire lifecycle, we have a strong foundation for other collectibles.
+
+---
+
+# 166. THE GOLDEN TOILET LIFECYCLE
+
+Eventually this exact lifecycle should work:
+
+Store/world generation
+
+↓
+
+Player A obtains Golden Toilet #00482
+
+↓
+
+Item enters Player A ownership
+
+↓
+
+Player A displays it
+
+↓
+
+Player B sees it
+
+↓
+
+Player B begins robbery
+
+↓
+
+Player B steals it
+
+↓
+
+Item becomes stolen
+
+↓
+
+Camera records event
+
+↓
+
+Player B carries it
+
+↓
+
+Player B escapes
+
+↓
+
+Player A receives incident
+
+↓
+
+Player B fences it OR keeps it
+
+↓
+
+Ownership/provenance updates
+
+↓
+
+Player A investigates
+
+↓
+
+Item may later be recovered/traded/stolen again
+
+Every transition must have one authoritative state.
+
+---
+
+# 167. STATE MACHINES
+
+Use explicit states where they simplify complicated systems.
+
+Example robbery:
+
+Idle
+
+↓
+
+Preparing
+
+↓
+
+Trespassing
+
+↓
+
+Stealing
+
+↓
+
+Escaping
+
+↓
+
+Succeeded
+
+or
+
+Failed
+
+Do not represent complex gameplay with fifteen unrelated booleans like:
+
+isRobbing
+isEscaping
+hasStolen
+gotCaught
+isInside
+robberyDone
+
+if those booleans can create impossible combinations.
+
+Use clear state transitions.
+
+---
+
+# 168. HOUSE PERMISSIONS
+
+Eventually support house permissions.
+
+Possible levels:
+
+OWNER
+
+ROOMMATE
+
+FRIEND
+
+VISITOR
+
+UNAUTHORIZED
+
+Do not confuse legitimate access with burglary.
+
+If I invite a friend inside, the game should know they entered legitimately.
+
+But legitimate entry does not necessarily mean:
+
+"You may take my Golden Toilet."
+
+Separate:
+
+entry permission
+
+interaction permission
+
+item ownership.
+
+---
+
+# 169. LOCKING SYSTEM
+
+Keep locking intuitive.
+
+Door states:
+
+Unlocked
+
+Locked
+
+Compromised
+
+Potential security upgrades modify:
+
+- interaction difficulty
+- noise
+- time
+- evidence risk
+
+Do not create tedious lockpicking minigames that players repeat 500 times.
+
+If a minigame exists, keep it quick and skill-readable.
+
+---
+
+# 170. ROBBERY COOLDOWNS
+
+Do not allow one player to endlessly target the same victim.
+
+Implement protections such as:
+
+- victim cooldown
+- attacker-target cooldown
+- recently robbed protection
+- diminishing reward where appropriate
+
+Exact values should be tuned through testing.
+
+Never hardcode balancing numbers throughout the codebase.
+
+Centralize them.
+
+---
+
+# 171. RISK SIGNALS
+
+Before players commit to dangerous actions, communicate risk.
+
+Example:
+
+Attempting to break window:
+
+SECURITY DETECTED
+
+📹 Camera
+🔔 Alarm
+
+Risk:
+HIGH
+
+[BREAK IN]
+
+This creates meaningful choice.
+
+Don't punish players with invisible rules.
+
+---
+
+# 172. INFORMATION AS GAMEPLAY
+
+Information itself should have value.
+
+Knowing:
+
+- which house has valuables
+- which security system is installed
+- when someone was last active
+- which pawn shop buys something
+- what evidence exists
+- where an item was last seen
+
+can drive gameplay.
+
+Do not reveal all information automatically.
+
+Observation should matter.
+
+---
+
+# 173. HOUSE CASING
+
+Eventually players could "case" a house.
+
+Casing might reveal:
+
+VALUABLES SEEN
+
+Golden Toilet
+Fancy Television
+
+SECURITY OBSERVED
+
+Front Camera
+Alarm
+
+UNKNOWN
+
+Backyard
+Garage
+
+This turns walking around the neighborhood into gameplay.
+
+For MVP, visual observation may be enough.
+
+Do not overbuild this yet.
+
+---
+
+# 174. BINOCULARS / SPY GADGETS — FUTURE
+
+Possible future gadgets:
+
+- binoculars
+- cheap camera
+- listening gadget
+- disguise
+- tracker
+- decoy package
+
+Keep these playful.
+
+Do not create realistic surveillance functionality.
+
+They exist only inside the fictional game world.
+
+---
+
+# 175. HEAT
+
+Consider a lightweight "Heat" concept later.
+
+Committing suspicious actions increases temporary attention.
+
+Higher Heat might:
+
+- make NPCs suspicious
+- make cameras more useful
+- affect pawn-shop prices
+- create Neighborhood Watch alerts
+
+Heat should decay.
+
+Do not turn the game into GTA wanted levels.
+
+It should remain lighthearted.
+
+---
+
+# 176. WITNESSES
+
+NPC/player presence can influence risk.
+
+If someone visibly watches a player steal something, that can become evidence.
+
+Do not automatically expose the thief's identity to everyone.
+
+Possible witness record:
+
+Person observed:
+Tall avatar
+Blue shirt
+Carrying large gold object
+
+Again:
+
+information with uncertainty.
+
+---
+
+# 177. PLAYER MEMORY
+
+The game should create recognizable neighborhood relationships.
+
+Players should remember:
+
+"That's the guy who robbed me."
+
+"That's the person who helped recover my couch."
+
+"That's the house with all the gnomes."
+
+Systems should reinforce social memory through:
+
+- incidents
+- provenance
+- reputation
+- recurring neighbors
+- house identity
+
+Do not over-automate social relationships.
+
+Let humans create the story.
+
+---
+
+# 178. NEIGHBOR CARDS
+
+Potential future UI when inspecting a neighbor:
+
+MIA
+
+🏠 Maple Street
+
+Known For:
+
+🎨 Decorator
+🤝 Helpful Neighbor
+
+Recent public activity:
+
+Won Yard of the Week
+
+Do NOT publicly expose private crime history automatically.
+
+Suspicion should come through gameplay, not permanent public shaming.
+
+---
+
+# 179. HOUSE VALUE
+
+House value can become a status metric.
+
+Calculated from:
+
+- house tier
+- legitimate furniture
+- collectibles
+- decoration
+- upgrades
+
+Avoid making house value purely:
+
+"who spent the most Robux."
+
+Earned items should matter.
+
+---
+
+# 180. YARD OF THE WEEK
+
+Potential recurring social event:
+
+Players can receive:
+
+# YARD OF THE WEEK
+
+or
+
+# HOUSE OF THE WEEK
+
+based on safe voting/curated criteria.
+
+Reward:
+
+- temporary sign
+- cosmetic trophy
+- newspaper mention
+- small currency reward
+
+This gives decorators recognition.
+
+---
+
+# 181. GARAGE SALES
+
+Garage sales could become an excellent social economy mechanic.
+
+Player places items for sale.
+
+Items physically appear on tables.
+
+Neighbors browse.
+
+Possible sign:
+
+GARAGE SALE
+
+Everything Must Go!
+
+This creates natural gatherings.
+
+Stolen items appearing at garage sales could create hilarious situations.
+
+But the system must clearly handle ownership/provenance.
+
+---
+
+# 182. AUCTIONS — FUTURE
+
+Rare serialized items could eventually be auctioned through an in-game system.
+
+Do not implement this until the economy is stable.
+
+Avoid speculative mechanics.
+
+No real-money cash-out promises.
+
+Keep all economy inside Roblox's allowed systems.
+
+---
+
+# 183. SOCIAL EVENTS
+
+Potential events:
+
+Block Party
+
+Neighborhood Cookout
+
+Garage Sale Weekend
+
+Halloween Trick-or-Treat
+
+Christmas Lights
+
+Neighborhood Watch Night
+
+Gnome Hunt
+
+Treasure Hunt
+
+Mystery Package
+
+Events should encourage players to gather physically.
+
+---
+
+# 184. RANDOM EVENTS
+
+Small random events can prevent sessions feeling identical.
+
+Examples:
+
+Power flickers.
+
+Delivery truck drops wrong package.
+
+Dog escapes yard.
+
+Streetlight breaks.
+
+NPC loses keys.
+
+Garage sale appears.
+
+Suspicious van arrives.
+
+Rare item rumor begins.
+
+Keep event frequency controlled.
+
+Constant chaos stops feeling special.
+
+---
+
+# 185. WORLD MEMORY
+
+The neighborhood should occasionally remember meaningful things.
+
+Example:
+
+A house that was repeatedly robbed might temporarily display police tape.
+
+A famous item recovery could appear in newspaper history.
+
+A player who wins House of the Week gets a temporary yard sign.
+
+These little consequences make the world feel persistent.
+
+---
+
+# 186. SERVER STORY
+
+Think of each server as generating its own episode.
+
+At the end of an active session, you should be able to summarize:
+
+"Someone stole a Golden Toilet, blamed the guy next door, the toilet appeared at a garage sale, and then the original owner's dog chased the buyer through the park."
+
+That is success.
+
+The game is a STORY GENERATOR.
+
+---
+
+# 187. SESSION PACING
+
+Avoid long dead periods.
+
+Rough desired rhythm:
+
+EXPLORE
+
+↓
+
+NOTICE OPPORTUNITY
+
+↓
+
+MAKE DECISION
+
+↓
+
+ACTION
+
+↓
+
+CONSEQUENCE
+
+↓
+
+RECOVERY / REWARD
+
+↓
+
+SOCIAL REACTION
+
+↓
+
+NEW OPPORTUNITY
+
+The player should not need to grind alone for an hour before something interesting happens.
+
+---
+
+# 188. SHORT SESSION FRIENDLY
+
+A player with ten minutes should accomplish something.
+
+Examples:
+
+- decorate room
+- buy item
+- investigate clue
+- prank neighbor
+- visit garage sale
+- complete small robbery
+- participate in event
+
+Long-term progression can exist without demanding huge uninterrupted sessions.
+
+---
+
+# 189. LONG SESSION FRIENDLY
+
+Players staying longer should naturally encounter:
+
+- social drama
+- rare events
+- progression
+- collection opportunities
+- neighborhood events
+- trading
+- investigations
+
+Do not simply multiply rewards for staying AFK.
+
+---
+
+# 190. AFK DESIGN
+
+Do not reward AFK farming heavily.
+
+The game should reward interaction.
+
+If players spend most of their time standing still because passive money is optimal, redesign the economy.
+
+---
+
+# 191. ECONOMIC FAUCETS
+
+Track where currency enters the economy.
+
+Examples:
+
+- jobs
+- quests
+- events
+- NPC sales
+- achievements
+
+Track amounts.
+
+---
+
+# 192. ECONOMIC SINKS
+
+Track where currency leaves.
+
+Examples:
+
+- furniture
+- house upgrades
+- security
+- cosmetics
+- vehicles later
+- listing fees later
+- customization
+
+The economy needs meaningful sinks.
+
+---
+
+# 193. ROBBERY DOES NOT CREATE MONEY
+
+Important:
+
+Stealing an item should generally transfer value rather than magically create full additional value.
+
+If:
+
+Player A owns $8,400 Golden Toilet
+
+and Player B steals it,
+
+the economy should not automatically create another $8,400.
+
+If B fences it for $2,900:
+
+the item is transferred/consumed/resolved according to the designed economy.
+
+Be careful with economic duplication.
+
+---
+
+# 194. PAWN SHOP ECONOMICS
+
+Pawn shop pays less than legitimate value.
+
+Example:
+
+Golden Toilet legitimate value:
+$8,400
+
+Stolen fence value:
+$2,900
+
+Why?
+
+Robbery should be tempting but not automatically the best money-making strategy.
+
+The real value is:
+
+- excitement
+- rare possession acquisition
+- social story
+- risk/reward
+
+---
+
+# 195. LEGITIMATE PLAY MUST BE VIABLE
+
+Players who don't enjoy stealing must still have a complete game.
+
+They can:
+
+- decorate
+- collect
+- trade
+- investigate
+- protect
+- participate in events
+- run garage sales
+- pursue achievements
+- socialize
+
+Do not force everyone to become a thief.
+
+---
+
+# 196. MISCHIEF SPECTRUM
+
+Give players escalating choices.
+
+LOW RISK:
+
+Ring doorbell.
+
+MEDIUM:
+
+Prank yard.
+
+HIGH:
+
+Trespass.
+
+VERY HIGH:
+
+Steal valuable collectible.
+
+Players choose their own level of chaos.
+
+---
+
+# 197. EMERGENT ROLES
+
+Do not display:
+
+CHOOSE YOUR CLASS
+
+THIEF
+COP
+DECORATOR
+
+Instead let players become those things through behavior.
+
+One night I'm a detective.
+
+Tomorrow I'm stealing someone's microwave.
+
+That flexibility is important.
+
+---
+
+# 198. NPC ECONOMY
+
+NPC systems should stabilize the economy.
+
+Players should always have some way to:
+
+- buy baseline goods
+- sell baseline goods
+- earn baseline currency
+
+Player trading enhances the economy but should not be mandatory for basic progression.
+
+---
+
+# 199. PLAYER MARKET — LATER
+
+A player marketplace could eventually exist.
+
+Do not build it initially.
+
+Trading and garage sales are more social and more aligned with the fantasy.
+
+---
+
+# 200. CONTENT RARITY
+
+Rarity should mean something.
+
+Do not make everything Legendary.
+
+Suggested conceptual distribution:
+
+Common:
+normal household objects
+
+Uncommon:
+interesting variants
+
+Rare:
+recognizable status items
+
+Epic:
+strong visual identity
+
+Legendary:
+conversation pieces
+
+Mythic:
+server-level excitement
+
+A Mythic item appearing should matter.
+
+---
+
+# 201. RARITY WITHOUT CASINO DESIGN
+
+Do not make the entire game depend on slot-machine-style random purchases.
+
+Rare items can come from:
+
+- events
+- difficult objectives
+- exploration
+- collections
+- achievements
+- limited seasonal activities
+- controlled random world discoveries
+
+If randomness exists, communicate it appropriately and follow Roblox policies.
+
+---
+
+# 202. MYSTERY
+
+Do not publish every probability, secret, event trigger, and hidden item directly inside the normal gameplay UI unless necessary.
+
+Some discovery is healthy.
+
+Players should share:
+
+"How did you get that?"
+
+That question is valuable.
+
+---
+
+# 203. COMMUNITY KNOWLEDGE
+
+Design some systems that encourage community discovery.
+
+Examples:
+
+Secret bunker entrance.
+
+Rare van event.
+
+Moving gnome.
+
+Strange pawn-shop interaction.
+
+Players may create guides/videos.
+
+Do not make core onboarding depend on external guides.
+
+Secrets enhance the game; they should not make basic play incomprehensible.
+
+---
+
+# 204. CREATOR-FRIENDLY MOMENTS
+
+The game should naturally produce clips without explicitly begging players to make content.
+
+Moments:
+
+- huge chase
+- rare item discovery
+- ridiculous camera footage
+- false accusation
+- legendary robbery
+- rare event
+- house reveal
+- prank escalation
+
+Build visually readable situations.
+
+---
+
+# 205. SPECTACLE BUDGET
+
+Reserve big effects for rare moments.
+
+If everything is spectacular:
+
+nothing is spectacular.
+
+Normal item:
+small feedback.
+
+Rare:
+stronger.
+
+Legendary:
+memorable.
+
+Mythic:
+the neighborhood notices.
+
+---
+
+# 206. SERVER ANNOUNCEMENTS
+
+Use sparingly.
+
+Good:
+
+# MYTHIC DISCOVERY
+
+Someone discovered the Alien Lawn Flamingo.
+
+Potentially good:
+
+# BLOCK PARTY
+
+Starting in 2 minutes.
+
+Bad:
+
+"Taiki bought a chair."
+
+Do not spam everyone.
+
+---
+
+# 207. PHYSICALITY
+
+Whenever possible, represent important gameplay physically in the world.
+
+Instead of:
+
+inventory number changes from 1 → 0
+
+Prefer:
+
+player visibly grabs Golden Toilet and carries it down the street.
+
+Instead of:
+
+package received popup
+
+Prefer:
+
+package appears on porch.
+
+Instead of:
+
+security upgrade exists only as stat
+
+Prefer:
+
+camera appears on house.
+
+Physicality makes systems understandable and shareable.
+
+---
+
+# 208. DIEGETIC DESIGN
+
+Use the world itself to communicate.
+
+Examples:
+
+House number.
+
+Security-company sticker.
+
+Visible cameras.
+
+Pawn-shop signage.
+
+Garage-sale signs.
+
+Newspaper.
+
+Mailbox.
+
+Community board.
+
+Do not put every piece of information into menus.
+
+---
+
+# 209. THE COMMUNITY BOARD
+
+Central neighborhood board can display:
+
+- events
+- bounties later
+- garage sales
+- House of the Week
+- neighborhood announcements
+
+This gives players a reason to visit the central area.
+
+---
+
+# 210. MAP DESIGN FOR ENCOUNTERS
+
+Do not create enormous roads separating everyone.
+
+Design paths to cross.
+
+Centralize useful services.
+
+Give players multiple routes while preserving encounter probability.
+
+Important:
+
+The neighborhood should feel like a NEIGHBORHOOD.
+
+Not a giant open-world city.
+
+---
+
+# 211. BACKYARDS
+
+Backyards are valuable gameplay spaces.
+
+Potential:
+
+- fences
+- gates
+- sheds
+- collectible displays
+- pets
+- hiding routes
+- garden decorations
+- shortcuts
+
+Backyards make houses feel personal.
+
+---
+
+# 212. WINDOWS
+
+Windows are important visually and mechanically.
+
+Players can potentially:
+
+- see valuables
+- notice activity
+- observe neighbors
+
+Do not create invasive or inappropriate mechanics.
+
+This is fictional in-game observation.
+
+Windows should create temptation.
+
+---
+
+# 213. INTERIOR DESIGN
+
+Interiors should be compact.
+
+Do not make enormous empty Roblox rooms.
+
+Furniture should create believable scale.
+
+Navigation should remain easy.
+
+A player should be able to understand the house layout quickly during a robbery.
+
+---
+
+# 214. DIFFERENT HOUSE LAYOUTS
+
+Eventually introduce several layouts.
+
+Different layouts create uncertainty.
+
+But for MVP:
+
+Use a small number.
+
+Consistency accelerates development and testing.
+
+---
+
+# 215. SAFE ROOM — FUTURE
+
+Potential expensive security upgrade:
+
+Safe room / vault.
+
+Players can protect limited high-value items.
+
+Tradeoff:
+
+Displayed items provide status.
+
+Vaulted items provide security.
+
+This creates an interesting choice:
+
+Do I FLEX the Golden Toilet?
+
+or
+
+Do I protect it?
+
+Excellent social tension.
+
+---
+
+# 216. DISPLAY BONUS
+
+Displaying valuable possessions should provide social/status value.
+
+Potential benefits:
+
+- House Prestige
+- Collection Score
+- visitor reactions
+- neighborhood recognition
+- achievements
+
+This creates a meaningful choice:
+
+HIDE IT → safer.
+
+DISPLAY IT → status, but other players can see what you own.
+
+That tension is central to THE NEIGHBORHOOD.
+
+---
+
+# 217. THE PLAYER SHOULD CREATE THE CONTENT
+
+The long-term goal is not to manually script every funny event.
+
+Build systems that collide with one another.
+
+HOUSE
+
++
+
+VALUABLE ITEM
+
++
+
+ROBBERY
+
++
+
+SECURITY CAMERA
+
++
+
+DOG
+
++
+
+PLAYER
+
++
+
+PAWN SHOP
+
++
+
+EVIDENCE
+
+=
+
+stories we never explicitly scripted.
+
+This is the core philosophy.
+
+SYSTEMS > CUTSCENES.
+
+---
+
+# 218. REQUIRED DEVELOPMENT TOOL STACK
+
+Use the available development tools aggressively.
+
+The intended workflow is:
+
+# @Roblox Studio MCP
+
+This is the PRIMARY game-development integration.
+
+Use it to:
+
+- inspect the actual Studio hierarchy
+- create and modify instances
+- inspect properties
+- inspect scripts
+- edit the experience
+- execute Luau where appropriate
+- enter Play mode
+- test systems
+- inspect errors/output
+- validate multiplayer behavior
+- visually inspect the result where supported
+
+Do not simply write code externally and assume it works.
+
+Use Studio as the source of truth for the actual running experience.
+
+---
+
+# 219. @CODEX
+
+Codex acts as the lead engineering agent.
+
+Codex owns:
+
+- Luau implementation
+- architecture
+- refactoring
+- debugging
+- Roblox systems
+- networking
+- server validation
+- persistence
+- UI implementation
+- gameplay logic
+- tests
+- repository organization
+- documentation
+
+Do not behave like a code autocomplete tool.
+
+Act like the technical lead responsible for shipping the game.
+
+---
+
+# 220. @GITHUB
+
+Use @GitHub / Git for source control.
+
+Use it for:
+
+- commits
+- branches when appropriate
+- reviewing diffs
+- issue tracking where useful
+- rollback safety
+- preserving known-good milestones
+
+Commit at meaningful checkpoints.
+
+Especially create checkpoints before:
+
+- major refactors
+- datastore changes
+- architecture migrations
+- networking rewrites
+- large UI restructuring
+
+Never make destructive project-wide changes without source-control safety.
+
+---
+
+# 221. ROJO
+
+Use Rojo when available/configured.
+
+Rojo should keep the Luau codebase clean and editable outside Studio while synchronizing it into Roblox Studio.
+
+Before changing Rojo configuration:
+
+inspect the existing project.
+
+Never assume paths.
+
+Do not create duplicate authoritative copies of scripts.
+
+---
+
+# 222. @HIGGSFIELD
+
+Use @Higgsfield primarily as a CREATIVE VISUAL TOOL.
+
+Do NOT ask Higgsfield to architect the Roblox game.
+
+Use it where appropriate for:
+
+- concept art
+- visual direction
+- mood boards
+- UI inspiration
+- icon concepts
+- game-icon exploration
+- thumbnail concepts
+- promotional artwork
+- trailer concepts
+- social-video concepts
+- texture/reference exploration
+
+When generating concepts, maintain THE NEIGHBORHOOD art bible.
+
+Target aesthetic:
+
+ROBLOX
+
+×
+
+THE SIMS
+
+×
+
+COZY SUBURBAN DIORAMA
+
+×
+
+CARTOON MISCHIEF
+
+Avoid generating assets in random incompatible visual styles.
+
+When useful, create multiple visual directions, choose the strongest direction, and then maintain consistency.
+
+---
+
+# 223. ASSET / 3D TOOLS
+
+If additional trusted Roblox-compatible asset-generation or 3D tools are available in the environment, they may be used selectively.
+
+However:
+
+DO NOT build the game's identity from random generated assets.
+
+Any generated/imported asset must be evaluated for:
+
+- visual consistency
+- performance
+- topology/complexity where relevant
+- licensing/usage constraints
+- embedded scripts
+- Roblox compatibility
+
+For simple signature assets, creating them intentionally is preferable.
+
+The Golden Toilet should not look like it came from an unrelated game.
+
+---
+
+# 224. TOOL PRIORITY
+
+When deciding what tool to use:
+
+GAME LOGIC:
+
+@Codex
+
+ACTUAL ROBLOX WORLD / TESTING:
+
+@Roblox Studio MCP
+
+SOURCE CONTROL:
+
+@GitHub
+
+CODE ↔ STUDIO SYNC:
+
+Rojo
+
+VISUAL CONCEPTING:
+
+@Higgsfield
+
+Do not use five tools when one tool solves the problem cleanly.
+
+---
+
+# 225. VISUAL DEVELOPMENT PIPELINE
+
+For major visual features:
+
+1. Establish desired experience.
+
+2. If visual exploration is useful, use @Higgsfield to create references/concepts.
+
+3. Select ONE coherent direction.
+
+4. Implement inside Roblox Studio using @Codex + @Roblox Studio MCP.
+
+5. Enter Play mode.
+
+6. Inspect actual rendering.
+
+7. Compare against intended visual direction.
+
+8. Fix:
+   - proportions
+   - composition
+   - spacing
+   - materials
+   - lighting
+   - UI hierarchy
+   - animation
+
+9. Test again.
+
+10. Repeat.
+
+Concept art is NOT the finished product.
+
+The actual Roblox experience is what matters.
+
+---
+
+# 226. UI QUALITY LOOP
+
+Whenever Codex builds UI:
+
+DO NOT STOP WHEN IT FUNCTIONS.
+
+Perform another pass specifically for beauty.
+
+Ask:
+
+Does this look like a game people would actually want to play?
+
+Does this look intentionally designed?
+
+Would I use this screenshot in the Roblox listing?
+
+Does it look like generic AI-generated UI?
+
+If yes:
+
+redo it.
+
+Every important UI should pass:
+
+FUNCTIONAL
+
+↓
+
+CLEAR
+
+↓
+
+CONSISTENT
+
+↓
+
+POLISHED
+
+↓
+
+DELIGHTFUL
+
+---
+
+# 227. THE ANTI-AI-SLOP RULE
+
+This is extremely important.
+
+Do NOT produce:
+
+- random gradients
+- glassmorphism everywhere
+- generic purple/blue dashboards
+- unnecessary glowing borders
+- giant rounded rectangles everywhere
+- meaningless icons
+- excessive text
+- inconsistent art
+- excessive particles
+- generic stock-looking assets
+- five different design languages
+
+The player should NEVER think:
+
+"AI made this."
+
+They should think:
+
+"This game has a style."
+
+---
+
+# 228. PLAYER FANTASY CHECK
+
+Before implementing any large feature, ask:
+
+What fantasy does this serve?
+
+Example:
+
+Security Camera
+
+Fantasy:
+
+"I caught the bastard who stole my toilet."
+
+Good.
+
+Generic crafting system:
+
+Fantasy:
+
+???
+
+Probably unnecessary.
+
+Every system needs a reason to exist.
+
+---
+
+# 229. FUN > SCOPE
+
+If during development we discover that:
+
+Golden Toilet chases
+
+are incredibly fun,
+
+while:
+
+complex evidence analysis
+
+is boring,
+
+then prioritize chases.
+
+This specification is a hypothesis.
+
+Actual player behavior determines the game.
+
+Do not become emotionally attached to features.
+
+Become attached to the PLAYER EXPERIENCE.
+
+---
+
+# 230. THE FIRST PUBLIC VERSION
+
+The first release should feel small but polished.
+
+It does NOT need:
+
+100 houses.
+
+500 items.
+
+50 cars.
+
+30 pets.
+
+15 neighborhoods.
+
+It needs players saying:
+
+"Bro come to my house."
+
+"WAIT WHERE IS MY TOILET?"
+
+"THAT'S HIM."
+
+"GET HIS ASS."
+
+"WHY IS THE DOG CHASING ME?"
+
+"SELL IT SELL IT SELL IT."
+
+"THERE'S A CAMERA."
+
+"THAT WAS YOU???"
+
+If players naturally say things like that:
+
+we have something.
+
+---
+
+# 231. SUCCESS METRICS
+
+After release, watch:
+
+- first-session completion
+- average session length
+- D1 retention
+- D7 retention
+- return sessions
+- friend joins
+- intentional co-play
+- robbery participation
+- victim investigation participation
+- house customization
+- item collection
+- social interactions
+- monetization conversion
+
+But also watch qualitative behavior.
+
+Are players laughing?
+
+Are they chasing each other?
+
+Are they showing friends their houses?
+
+Are they creating rivalries?
+
+Are they sharing clips?
+
+Those signals matter enormously.
+
+---
+
+# 232. ITERATION AFTER RELEASE
+
+Do not immediately respond to low numbers by adding massive amounts of content.
+
+Determine WHERE players leave.
+
+Example:
+
+Players leave before receiving house.
+
+→ onboarding problem.
+
+Players receive house but never interact.
+
+→ world/UX problem.
+
+Players buy items but never steal.
+
+→ robbery discovery problem.
+
+Players steal once and stop.
+
+→ robbery depth/reward problem.
+
+Victims quit after being robbed.
+
+→ fairness problem.
+
+Players love stealing but ignore investigation.
+
+→ investigation isn't fun enough.
+
+Fix the bottleneck.
+
+---
+
+# 233. THE ONE QUESTION
+
+Throughout development, repeatedly ask:
+
+# "WHAT STORY WILL THE PLAYER TELL AFTER THIS SESSION?"
+
+If the answer is:
+
+"I clicked buttons until a number increased."
+
+We failed.
+
+If the answer is:
+
+"I stole my friend's Golden Toilet, his camera caught my red hoodie, so I planted our other friend's glove at his house and sold the toilet while they were arguing."
+
+We succeeded.
+
+---
+
+# 234. FINAL MVP CHECKLIST
+
+Before expanding scope, verify:
+
+## WORLD
+
+[ ] Neighborhood looks cohesive  
+[ ] Neighborhood feels alive  
+[ ] Houses are readable  
+[ ] Map encourages encounters  
+[ ] Day/night looks good  
+
+## PLAYER
+
+[ ] Player receives house  
+[ ] Player understands ownership  
+[ ] Movement feels good  
+[ ] Interaction feels responsive  
+
+## ITEMS
+
+[ ] Items have definitions  
+[ ] Inventory works  
+[ ] Ownership works  
+[ ] Rarity works  
+[ ] Weight works  
+[ ] Persistence works  
+
+## ECONOMY
+
+[ ] Currency works  
+[ ] Purchases validate server-side  
+[ ] Pawn shop works  
+[ ] No obvious duplication  
+
+## ROBBERY
+
+[ ] Target can be selected  
+[ ] Entry/stealing works  
+[ ] Item becomes physically carried  
+[ ] Heavy items affect movement  
+[ ] Escape resolves correctly  
+[ ] Disconnects don't duplicate items  
+
+## SECURITY
+
+[ ] Camera works  
+[ ] Alarm works  
+[ ] Evidence generates  
+
+## INVESTIGATION
+
+[ ] Incident appears  
+[ ] Missing item displays  
+[ ] Evidence can be viewed  
+[ ] Victim understands what happened  
+
+## UI
+
+[ ] Consistent design system  
+[ ] Mobile usable  
+[ ] No default Roblox-looking screens  
+[ ] Important interactions animated  
+[ ] Notifications understandable  
+
+## TECHNICAL
+
+[ ] Server authority  
+[ ] Remote validation  
+[ ] Persistence safeguards  
+[ ] No major runtime errors  
+[ ] Multiplayer tested  
+[ ] Performance acceptable  
+
+## FUN
+
+[ ] Stealing Golden Toilet is funny  
+[ ] Being robbed creates gameplay rather than rage  
+[ ] Chase is understandable  
+[ ] Players naturally interact  
+[ ] Something memorable happens during a normal session  
+
+Do not proceed to enormous content expansion until these fundamentals work.
+
+---
+
+# 235. STARTING INSTRUCTION
+
+You now have enough product direction.
+
+DO NOT respond by rewriting this specification.
+
+DO NOT spend the entire task explaining how you would build it.
+
+DO NOT produce only pseudocode.
+
+DO NOT generate a giant theoretical architecture and stop.
+
+# START BUILDING.
+
+Begin with BUILD PHASE 0.
+
+Inspect:
+
+- repository
+- files
+- Rojo configuration
+- Roblox Studio hierarchy
+- existing scripts
+- existing assets
+- current errors
+- current game state
+
+Then create the minimum implementation plan required to begin safely.
+
+After inspection:
+
+# BUILD PHASE 1.
+
+Implement the foundation.
+
+Then:
+
+TEST IT.
+
+Use @Roblox Studio MCP.
+
+Fix errors.
+
+Commit a stable checkpoint with @GitHub.
+
+Proceed to the next logical phase.
+
+Use @Higgsfield only when visual exploration will materially improve the result.
+
+Continue autonomously through the MVP unless blocked by a decision that genuinely requires me.
+
+---
+
+# 236. YOUR ROLE
+
+From this point forward, operate as:
+
+## LEAD ROBLOX ENGINEER
+
+You own implementation quality.
+
+## GAME DESIGNER
+
+You protect the core loop.
+
+## UI/UX DESIGNER
+
+You protect clarity and polish.
+
+## TECHNICAL ARTIST
+
+You protect visual consistency and performance.
+
+## QA ENGINEER
+
+You try to break what you build.
+
+## SECURITY ENGINEER
+
+You do not trust the client.
+
+## PRODUCT OWNER
+
+You prioritize what creates player value.
+
+Do not optimize for:
+
+"How much code did I generate?"
+
+Optimize for:
+
+# "HOW GOOD IS THE GAME?"
+
+---
+
+# 237. NON-NEGOTIABLE PRINCIPLES
+
+Remember these throughout development:
+
+### 1.
+
+THE NEIGHBORHOOD IS A STORY GENERATOR.
+
+### 2.
+
+SOCIAL INTERACTION IS THE CONTENT.
+
+### 3.
+
+SYSTEMS SHOULD COLLIDE WITH OTHER SYSTEMS.
+
+### 4.
+
+FUNNY PHYSICAL GAMEPLAY BEATS MENUS.
+
+### 5.
+
+THE WORLD SHOULD COMMUNICATE GAMEPLAY.
+
+### 6.
+
+STATUS SHOULD NOT EQUAL PAY-TO-WIN POWER.
+
+### 7.
+
+LOSING AN ITEM SHOULD CREATE A STORY, NOT A QUIT MOMENT.
+
+### 8.
+
+MOBILE MATTERS.
+
+### 9.
+
+THE SERVER IS AUTHORITATIVE.
+
+### 10.
+
+POLISH THE CORE BEFORE EXPANDING SCOPE.
+
+### 11.
+
+TEST IN THE ACTUAL GAME.
+
+### 12.
+
+DO NOT ACCEPT THE FIRST VISUAL PASS.
+
+### 13.
+
+DO NOT BUILD AI SLOP.
+
+### 14.
+
+PLAYER BEHAVIOR OVERRIDES OUR ASSUMPTIONS.
+
+### 15.
+
+THE GOLDEN TOILET MUST BE FUNNY.
+
+---
+
+# 238. FINAL VISION
+
+Imagine opening Roblox and seeing:
+
+A beautiful little suburban neighborhood.
+
+Someone drives past.
+
+A sprinkler turns on.
+
+A dog barks.
+
+Your neighbor waves.
+
+You walk into your house.
+
+Everything is exactly where you left it.
+
+Except...
+
+your Golden Toilet is gone.
+
+Your phone buzzes.
+
+# 🚨 INCIDENT DETECTED
+
+10:42 PM
+
+Security Camera #1 recorded suspicious activity.
+
+You open the footage.
+
+Grainy image.
+
+Someone in a red hoodie.
+
+Carrying something huge.
+
+You walk outside.
+
+Across the street:
+
+your neighbor is wearing a red hoodie.
+
+He sees you.
+
+You see him.
+
+Silence.
+
+Then he starts running.
+
+You chase him.
+
+His friend pulls up in a car.
+
+They jump in.
+
+Except...
+
+your dog starts chasing the car.
+
+They crash into a mailbox.
+
+The Golden Toilet falls out.
+
+A third player grabs it.
+
+Now EVERYONE is chasing them.
+
+Meanwhile:
+
+THE NEIGHBORHOOD TIMES updates.
+
+> GOLDEN TOILET CHAOS ON MAPLE STREET
+
+That is the game.
+
+Not menus.
+
+Not numbers.
+
+Not grinding.
+
+Not technology for technology's sake.
+
+# STORIES.
+
+# CHAOS.
+
+# OWNERSHIP.
+
+# FRIENDS.
+
+# RIVALRIES.
+
+# "JUST ONE MORE THING BEFORE I LOG OFF."
+
+Build THAT.
+
+---
+
+# 239. BEGIN
+
+Use the available tools in this priority:
+
+**@Codex**
+→ engineering, architecture, debugging, implementation
+
+**@Roblox Studio MCP**
+→ Studio inspection, world editing, runtime verification, playtesting
+
+**@GitHub**
+→ source control, checkpoints, diffs, rollback safety
+
+**Rojo**
+→ clean source workflow and Studio synchronization
+
+**@Higgsfield**
+→ visual exploration, art direction, UI concepts, thumbnails and promotional concepts
+
+If additional specialized Roblox development skills/tools are available, inspect them and use them only where they materially improve quality.
+
+Do not add complexity merely because a tool exists.
+
+Now:
+
+1. Inspect the project.
+2. Establish the baseline.
+3. Verify the toolchain.
+4. Create the smallest actionable implementation plan.
+5. Start BUILD PHASE 1.
+6. Test inside Roblox Studio.
+7. Fix what fails.
+8. Visually inspect what you built.
+9. Improve what looks mediocre.
+10. Commit the stable milestone.
+11. Continue.
+
+Do not wait for me after every phase unless genuinely blocked.
+
+# BUILD THE NEIGHBORHOOD.
+⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮

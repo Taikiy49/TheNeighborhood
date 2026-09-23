@@ -1,5 +1,7 @@
 # Implementation tracker
 
+Current overview: start with [README](../README.md), [Testing](TESTING.md), and [Release status](RELEASE.md). The milestone prose below is historical. Subsequent work added the garden redesign, friend parties, saved circles, cross-server invitation orchestration and persistent move-in plot choices. These features and their remaining published-client checks are documented in [Friends and neighborhoods](FRIENDS-NEIGHBORHOODS.md). GitHub now hosts the source/build history; this does not mean the later revisions were published to Roblox or all specification sections were completed.
+
 - [x] Read complete specification and inspect empty repository/Studio
 - [x] Baseline Play: one player, no console errors, screenshot inspected
 - [x] Phase 1 foundation and two-client verification (session-only basic data)

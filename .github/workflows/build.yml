@@ -1,0 +1,36 @@
+name: Validate and build Roblox place
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Validate repository files
+        run: python3 tools/check_repository.py
+      - name: Install verified Rojo 7.7.0
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 https://github.com/rojo-rbx/rojo/releases/download/v7.7.0/rojo-7.7.0-linux-x86_64.zip -o "$RUNNER_TEMP/rojo.zip"
+          echo "22503e5839864f9d7c2171c48b536fc229f2cc4d8774c9cc149f60941d864073  $RUNNER_TEMP/rojo.zip" | sha256sum --check
+          mkdir -p "$RUNNER_TEMP/rojo"
+          unzip -q "$RUNNER_TEMP/rojo.zip" -d "$RUNNER_TEMP/rojo"
+          chmod +x "$RUNNER_TEMP/rojo/rojo"
+      - name: Build place from source
+        run: '"$RUNNER_TEMP/rojo/rojo" build default.project.json --output builds/TheNeighborhood.rbxl'
+      - name: Upload Studio build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: TheNeighborhood-Studio
+          path: builds/TheNeighborhood.rbxl
+          if-no-files-found: error
+          retention-days: 14

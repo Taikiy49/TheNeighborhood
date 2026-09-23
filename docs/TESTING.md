@@ -1,0 +1,54 @@
+# Testing and evidence
+
+## Run Studio acceptance tests
+
+Open the current build in Studio, stop ordinary Play, and run the following in the Edit command bar (or through Studio MCP):
+
+```lua
+local result = game:GetService("StudioTestService"):ExecuteMultiplayerTestAsync(
+    3, {Name = "PlotChoiceAcceptance"}
+)
+print(game:GetService("HttpService"):JSONEncode(result))
+```
+
+Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results and Output. Live-storage tests require Studio API access. Automated profiles are memory-isolated; real DataStore tests use separate GUID-prefixed fixtures. Never point fixtures at production profile keys.
+
+| Test name | Clients | Scope |
+|---|---:|---|
+| FoundationAcceptance | 2 | Purchases, possessions, locks, theft/recovery, activities, car/pet, persistence |
+| ArtAcceptance | 2 | Decoration constraints and 23 navigation routes |
+| CapacityAcceptance | 8 | Independent homes/profiles, cars, pets, rain and server timing |
+| FriendsAcceptance | 3 | Consent, readiness, directory, travel failures and partial departure |
+| PlotChoiceAcceptance | 3 | Nearby defaults, choices, conflicts, saved plots and live directory storage |
+| ExplorationAcceptance | 2 | Deliveries, discoveries, collection and weather |
+| NetworkAcceptance | 2 | Remote/input adversarial probes and client lifecycle |
+| LifecycleStress | 2 | Item lifecycle and invalid-transition stress |
+| DisconnectRaceAcceptance | 2 | Departing-player races |
+
+`FriendsAcceptance` accepts `SkipLiveDirectory=true` when the live-directory portion has already been verified separately. This skips that portion honestly; it does not count as a new live-storage pass.
+
+## Current evidence
+
+| Evidence | Recorded outcome |
+|---|---|
+| [Plot choice](plot-choice-results.json) | Passed; three clients, 56 nearest-choice steps, reverse arrivals, conflicts and chosen-plot DataStore reload |
+| [Friends regression after plot changes](plot-friends-regression.json) | Passed; transport mocked, directory live checks covered separately |
+| [Friends live directory](friends-acceptance-results.json) | Passed; real fixture create/invite/accept/reload/decline, cleanup succeeded |
+| [Friends final failure paths](friends-final-results.json) | Passed; save failure/exception and transport recovery |
+| [Core gameplay](friends-core-results.json) | Passed; two clients, 239 injected storage requests and actual profile fixture tests |
+| [Art navigation](garden-navigation-results.json) | Passed; 23 routes, 1,812 decorative parts, 320 siding textures, 104 mesh parts |
+| [Garden capacity](garden-capacity-results.json) | Functional pass; local server mean ~16.7 ms, p95 ~18.1 ms |
+
+Earlier capacity runs had materially worse spikes. One favorable local run is not a mobile or production performance pass. Tests do not prove that unfamiliar players find the game clear or fun.
+
+## UI and assets
+
+Actual Studio mouse input exercised Phone → Friends → create party → ready → travel refusal, plus plot choice and Back navigation. Narrow panel wrapping/scrolling was inspected; a narrow panel is not a real mobile device. VirtualInput rejected Escape/gamepad B injection as CoreGUI-bound, so those controls remain uncertified. Asset preload tests succeeded for the actual tree MeshPart instances and images.
+
+## GitHub CI
+
+`python tools/check_repository.py` checks required files, parses JSON and validates local links in the new top-level guides. CI also builds with Rojo 7.7.0 and uploads the result as an artifact. It does not run Studio, teleport players or publish the experience.
+
+## Still required
+
+Published-client teleports and lease handoff; invitation/privacy/cross-play behavior with real accounts; founder-offline return; adverse network/partial travel in Roblox clients; real touch/controller testing; device performance; production-scale budgets; human usability/fun testing. See [Release status](RELEASE.md).
