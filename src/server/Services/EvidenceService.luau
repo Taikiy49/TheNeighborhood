@@ -10,9 +10,22 @@ function Service:Transition(incident,status,description)
 end
 function Service:Observe(player,house,item)
  local evidence={{Kind="Alarm log",Time=os.time(),Description="Display sensor triggered inside the house.",Quality="Clear"}}
+ if os.time()-(house.Model:GetAttribute("PetLastAlert") or 0)<30 then table.insert(evidence,{Kind="Pet observation",Time=os.time(),Description="The household dog recently reacted to a visitor near the front door.",Quality="Circumstantial"})end
  local camera=house.Model:FindFirstChild("SecurityCamera")
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
- if camera and root then
+ if root then
+  local Observation=require(script.Parent.ObservationService)
+  local witnesses=0
+  for _,neighbor in ipairs(game.Players:GetPlayers())do
+   if neighbor~=player and Observation:Visible(neighbor,root,30)then
+    witnesses+=1
+    local torso=player.Character:FindFirstChild("UpperTorso") or player.Character:FindFirstChild("Torso")
+    table.insert(evidence,{Kind="Nearby witness",Time=os.time(),Description="A neighbor had a clear view of someone in "..(torso and torso.BrickColor.Name or "unclear").." clothing lifting a household possession.",Quality="Visual observation; identity unconfirmed"})
+    if witnesses>=2 then break end
+   end
+  end
+ end
+ if camera and root and (not workspace.Neighborhood:GetAttribute("PowerOutage") or (house.Model:GetAttribute("SecurityLevel") or 0)>=2) then
   local direction=root.Position-camera.Position
   local params=RaycastParams.new();params.FilterType=Enum.RaycastFilterType.Exclude;params.FilterDescendantsInstances={camera,player.Character,self.Context.Items.Models[item.Id]}
   local hit=workspace:Raycast(camera.Position,direction,params)
@@ -29,7 +42,8 @@ function Service:Incident(session,status)
  local incident={Id=Http:GenerateGUID(false),Time=os.time(),HouseId=session.House.Model.Name,ItemName=Defs[session.Item.DefinitionId].Name,ItemId=session.Item.Id,Evidence=session.Evidence,Status=status}
  incident.Timeline={{Time=incident.Time,Status=status,Description=status=="Recovered" and "The possession was returned before a sale." or "The possession left the property."}}
  table.insert(profile.Incidents,1,incident)
- while #profile.Incidents>Config.MaxIncidents do table.remove(profile.Incidents) end
+ profile.CaseTruth[incident.Id]=session.Player.UserId
+ while #profile.Incidents>Config.MaxIncidents do local removed=table.remove(profile.Incidents);profile.CaseTruth[removed.Id]=nil end
  session.Incident=incident
  local owner=game.Players:GetPlayerByUserId(session.Item.OwnerUserId)
  if owner then self.Context.Notify(owner,status=="Recovered" and "Your property is back home." or "Break-in recorded. Open Cases to see what happened.",status=="Recovered");self.Context.Sync(owner) end

@@ -4,25 +4,31 @@
 - [x] Baseline Play: one player, no console errors, screenshot inspected
 - [x] Phase 1 foundation and two-client verification (session-only basic data)
 - [ ] Phase 2: eight houses, shops, park, backyards, shortcuts and lighting built; environmental ambience remains basic
-- [ ] Phase 3: all ten item definitions/models, inventory and fixed display placement implemented; voluntary drop/carry UX remains
+- [x] Phase 3 baseline: ten item definitions/models, inventory, fixed display placement, voluntary drop/resume
 - [x] Phase 4: starting money, authoritative purchases/sales and duplicate/ownership rejection verified
-- [ ] Phases 5–6: physical weighted Golden Toilet theft, walking escape, recovery and fencing verified with two real clients; carry animation and subjective fun iteration remain
-- [ ] Phases 7–10: timed locks, camera/alarm evidence, incident timelines, active cases and pawn recovery implemented; accusation and richer incident presentation remain
-- [ ] Phases 11–12 durable persistence and honest offline recap
+- [ ] Phases 5–6: physical weighted Golden Toilet theft, walking escape, recovery, fencing and carry pose verified; subjective fun iteration remains
+- [ ] Phases 7–10: timed locks, camera/alarm/witness evidence, incident timelines, evidence-checked accusations and pawn recovery implemented; richer investigation/presentation remain
+- [x] Phases 11–12 basic durable persistence, failure checks, actual shutdown/rejoin and honest offline recap
 - [ ] Phases 13–17 UI/world/audio polish, device/multiplayer QA and fun iteration
 
-Post-MVP content remains deferred per sections 60 and 147. Do not equate implemented scripts with verified acceptance criteria.
+The user expanded the scope to all sections, including originally deferred content. `SPEC-COVERAGE.md` lists all 239 numbered sections. Do not equate implemented scripts with verified acceptance criteria.
 
-## Current blocker
+## Persistence milestone
 
-Roblox rejects the read-only development DataStore probe with `StudioAccessToApisNotAllowed`. The experience owner must enable Studio Access to API Services in Game Settings → Security. No persistent store has been written. Session locks, migrations, retries, shutdown saves and honest persisted recaps remain unfinished. The HUD truthfully says progress resets.
+The owner enabled Studio API access. Persistent profiles now use separate development/production stores, UpdateAsync session leases, schema migration, bounded retries, periodic saves, shutdown flushing and corruption rejection. A sequenced outbox/inbox protects pawn payments from replay. Ten injected-storage scenarios and five actual Roblox DataStore checks passed. A normal Studio stop/rejoin retained currency, original item identity, display placement, lock state, and a change made after the explicit save, exercising shutdown flushing. The returning-player recap displayed successfully. See `rejoin-results.json` and `multiplayer-expanded-results.json`.
 
 ## Verification evidence
 
-See `multiplayer-results.json` for the latest two-client production-service acceptance run. Eighteen recorded verification groups passed, including real walking escape, timed lock cancellation, recovery history, teleport rejection and actual client departure. A first departure test checked too early; it now waits for the removal event with a bounded timeout.
+See `multiplayer-expansion-results.json` for the latest two-client production-service acceptance run. Twenty-seven gameplay groups passed, plus ten injected storage groups and five real DataStore groups. Coverage includes walking escape, timed lock cancellation, drop/resume, recovery history, teleport rejection, actual departure, vehicle physics/input validation, pet paths, community consent/rewards, physical patrols, prank protections and house-observation occlusion.
 
 Latest desktop Play: Inventory and Close activated through MCP input. Feedback audio loaded and played; alarm lights activated, stopped and temporary sounds were cleaned up. Fixed a streaming-related missing-door error and repeated Play with clean application Output. Earlier mobile portrait/landscape screenshots were inspected; touch activation and controller navigation are still unverified. Automated tests do not establish that unfamiliar human testers find the game clear or fun.
 
 ## Remaining before declaring MVP complete
 
-Finish persistent profiles and rejoin/shutdown/failure tests; honest recap; accusation/recovery investigation UX; voluntary drop behavior; carry animation and broader audio; full onboarding progression; mobile/controller end-to-end interaction; capacity/concurrency/failure simulations; unfamiliar-user playtests and iteration. No launch or publication approval is implied by local checkpoints.
+Newly implemented: evidence-checked accusations, quest checklist and achievements, voluntary drop/resume, carry pose for current and legacy avatar joints, phone/collection/preferences, house paint/flooring and lock upgrades, friend/roommate entry permissions, authored guide NPCs, event-based newspaper, and temporary opt-out yard pranks. These require continued UI/device/regression coverage. Eight actual Studio clients passed independent house, starter-kit and currency checks without server errors.
+
+New expansion baseline: purchasable compact car with server-owned suspension, paint/recall and native controls; companion dog with path following, stay and visitor observations; four rotating community events; line-of-sight house casing; heat decay; neighbor cards; and eight furnished interiors with two mirrored layouts. Actual keyboard driving exposed a curb snag missed by the initial fixture. Raycast suspension fixed it: the vehicle crossed the curb and travelled 48.5 studs, peaked near 28 studs/sec, and stopped on key release. Actual mouse input applied paint; jump exited the seat. Visual fixtures explicitly use memory profiles, and their Edit-mode activation attribute was cleared afterwards.
+
+Eight actual clients also exercised eight cars and eight pets. Functional capacity passed. Timing measurements are local Studio observations, not a mobile or production performance pass; see `capacity-results.json`.
+
+Still open: durable player trading/garage sales/auctions, bounties, planted evidence, gadgets, secrets/legends, weather/seasonal content, expanded neighborhoods, garages and broader house customization, advanced social/content systems, broader security/device testing, unfamiliar-user playtests and release operations. The full TXT is not yet implemented; all 239 sections remain accountable in the coverage ledger. No launch or publication approval is implied by local checkpoints.

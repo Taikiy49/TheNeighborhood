@@ -1,0 +1,12 @@
+{
+  "Phase": 2,
+  "Verified": [
+    "Normal Studio player rejoined same persistent profile",
+    "Currency retained",
+    "Original item GUID and display placement restored",
+    "House lock restored",
+    "Post-save change retained by shutdown save",
+    "Recap reflects real previous session"
+  ],
+  "Passed": true
+}

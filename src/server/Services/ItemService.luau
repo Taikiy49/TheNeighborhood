@@ -3,6 +3,15 @@ local Defs=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinitions)
 local Factory=require(script.Parent.Parent.ItemFactory)
 local Service={Items={},Models={}}
 function Service:Init(context) self.Context=context end
+function Service:Restore(player,profile,house)
+ for _,item in ipairs(profile.Items or {})do
+  self.Items[item.Id]=item
+  if item.State=="Displayed"then item.HouseId=house.Model.Name;local slot=house.Model.DisplaySlots:FindFirstChild("Slot"..item.Slot);self:Render(item,slot.CFrame*CFrame.new(0,0.15,0))end
+ end
+ if profile.FirstVisit then self:Create(player,"BasicChair");self:Create(player,"Lamp");profile.FirstVisit=false end
+ house.Locked=profile.House.Locked==true;house.Model:SetAttribute("Locked",house.Locked)
+ profile._Restored=true
+end
 function Service:Create(player,definitionId)
  if not Defs[definitionId] then return nil end
  local id=Http:GenerateGUID(false)
@@ -32,9 +41,10 @@ function Service:Place(player,id,slotNumber)
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
  local humanoid=player.Character and player.Character:FindFirstChildOfClass("Humanoid")
  if not root or not humanoid or humanoid.Health<=0 or (root.Position-slot.Position).Magnitude>14 then return false,"Stand near that display spot." end
- for _,other in pairs(self.Items) do if other.HouseId==house.Model.Name and other.Slot==slotNumber and (other.State=="Displayed" or other.State=="Carried" or other.State=="Escaped") then return false,"That spot is occupied or reserved for a missing possession." end end
+ for _,other in pairs(self.Items) do if other.HouseId==house.Model.Name and other.Slot==slotNumber and (other.State=="Displayed" or other.State=="Carried" or other.State=="Escaped" or other.State=="Dropped") then return false,"That spot is occupied or reserved for a missing possession." end end
  item.State="Displayed";item.HouseId=house.Model.Name;item.Slot=slotNumber
  self:Render(item,slot.CFrame*CFrame.new(0,0.15,0))
+ if not item.PlacedBefore then item.PlacedBefore=true;self.Context.Record(player,"Place")end
  return true,"Displayed "..Defs[item.DefinitionId].Name.."."
 end
 function Service:Store(player,item)

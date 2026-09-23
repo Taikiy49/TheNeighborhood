@@ -3,6 +3,7 @@ function Feedback.Init()
  local audio=game:GetService("SoundService")
  local Debris=game:GetService("Debris")
  local function tone(pitch)
+  if game.Players.LocalPlayer:GetAttribute("SoundEnabled")==false then return end
   local sound=Instance.new("Sound")
   sound.Name="NeighborhoodFeedback";sound.SoundId="rbxasset://sounds/volume_slider.ogg"
   sound.Volume=0.12;sound.PlaybackSpeed=pitch;sound.Parent=audio;sound:Play();Debris:AddItem(sound,3)
@@ -20,10 +21,11 @@ function Feedback.Init()
    if not house:GetAttribute("Alarm") then lamp.Brightness=0;return end
    task.spawn(function()
     while current==generation and door.Parent do
-     lamp.Brightness=2
+     local reduced=game.Players.LocalPlayer:GetAttribute("ReducedMotion")==true
+     lamp.Brightness=reduced and 0.8 or 2
      local player=game.Players.LocalPlayer;local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
      if root and (root.Position-door.Position).Magnitude<65 then tone(0.65) end
-     task.wait(0.35);if current~=generation then return end;lamp.Brightness=0;task.wait(0.65)
+     task.wait(0.35);if current~=generation then return end;if not reduced then lamp.Brightness=0 end;task.wait(0.65)
     end
    end)
   end

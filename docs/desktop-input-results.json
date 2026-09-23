@@ -1,0 +1,26 @@
+{
+  "Environment": "Roblox Studio, explicit memory-only visual fixture",
+  "Verified": [
+    "Real keyboard W crossed the driveway curb and moved the car 48.536 studs",
+    "Observed driving speed stayed near 28 studs per second",
+    "Key release stopped the vehicle; later speed 0.000026 studs per second",
+    "Real keyboard W+D changed vehicle heading by 49.087 degrees",
+    "Real mouse input opened Phone and Garage screens",
+    "Real mouse input selected Peach paint; server body color changed correctly",
+    "Space exited the driver seat",
+    "Kitchen screenshot inspected; camera moved to preserve front-room coverage",
+    "Companion screenshot inspected again after connecting its body, muzzle and tail silhouettes"
+  ],
+  "Fixes": [
+    "Rigid decorative wheels snagged on curb; server raycast suspension now supports the chassis",
+    "Server fixture throttle conflicted with idle client packets; isolated the physics fixture and separately tested actual controls",
+    "Pet body proportions appeared disconnected; adjusted shapes and welded the assembly",
+    "Give automatically laid-out menu rows unique names and explicit order"
+  ],
+  "Limitations": [
+    "Desktop only; actual mobile touch and controller flow remain unverified",
+    "Studio MCP logged CoreGUI virtual-input warnings; successful requested actions were checked against server state",
+    "Screenshots and functional checks do not establish human enjoyment"
+  ],
+  "Cleanup": "Stopped Play and cleared Workspace.NeighborhoodVisualTest in Edit; persistent development profile was not changed by fixtures"
+}

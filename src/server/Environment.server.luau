@@ -7,6 +7,6 @@ while true do
  local hours=(15.5+(os.clock()-start)/75)%24
  Lighting.ClockTime=hours
  local night=hours>18 or hours<6
- for _,lamp in ipairs(lamps)do if lamp.Parent then lamp.Enabled=night end end
+ for _,lamp in ipairs(lamps)do if lamp.Parent then lamp.Enabled=night and not world:GetAttribute("PowerOutage") end end
  task.wait(2)
 end

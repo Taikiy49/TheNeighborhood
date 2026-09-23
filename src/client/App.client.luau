@@ -8,7 +8,12 @@ local Theme=UI.Theme
 local remotes=game.ReplicatedStorage:WaitForChild("Neighborhood"):WaitForChild("Remotes")
 local gui=UI.New("ScreenGui",{Name="NeighborhoodApp",ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.Sibling},player:WaitForChild("PlayerGui"))
 local Screens=require(script.Parent.Screens)
-Screens:Init(gui,function(...) remotes.Request:FireServer(...) end)
+local requestSequence=0
+Screens:Init(gui,function(action,id,argument)
+ requestSequence+=1
+ if Screens.Pending then Screens.Pending.RequestId=requestSequence end
+ remotes.Request:FireServer(action,id,argument,requestSequence)
+end)
 local plaque=UI.Panel(gui,UDim2.new(0.58,-24,0,92),UDim2.new(0,16,0,16))
 UI.New("UISizeConstraint",{MaxSize=Vector2.new(268,92)},plaque)
 plaque.BackgroundColor3=Theme.Primary
@@ -31,23 +36,34 @@ local function updateHint()
  hintText.Text=carrying and ("Carrying "..carrying.." · Reach the street, then the pawn shop.") or destination and ("Parcel delivery → "..destination.." mailbox") or "Visit a display spot inside to place your starter furniture."
 end
 local playtest=UI.Label(gui,"PLAYTEST · Progress resets when the server stops",UDim2.new(0.8,0,0,24),UDim2.new(0.1,0,1,-26),12,Theme.Surface)
+local recapShown=false
+player:GetAttributeChangedSignal("SaveStatus"):Connect(function()if not Screens.State.SessionOnly then playtest.Text="Progress · "..(player:GetAttribute("SaveStatus") or "Loading")end end)
 playtest.TextXAlignment=Enum.TextXAlignment.Center
 remotes.Notification.OnClientEvent:Connect(function(data)
-    Screens:Resolve(data.Success)
+    if data.RequestId then Screens:Resolve(data.Success,data.RequestId)end
     notificationVersion+=1; local version=notificationVersion
     toastText.Text=data.Text; toastText.TextColor3=data.Success and Theme.Text or Theme.Danger; toast.Visible=true
     task.delay(4,function() if version==notificationVersion then toast.Visible=false end end)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
     Screens.State=state
+    if state.Settings then player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
+    playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"
     updateHint()
+    if state.Recap and not recapShown then recapShown=true;Screens:Open("Recap",state.Recap)end
 end)
 UI.Button(gui,"Inventory",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,16),function()Screens:Open("Inventory")end)
 UI.Button(gui,"Cases",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,72),function()Screens:Open("Cases")end)
+UI.Button(gui,"Phone",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,128),function()Screens:Open("Phone")end)
+local drop=UI.Button(gui,"Set down",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,184),function()remotes.Request:FireServer("Drop","")end)
+drop.Visible=player:GetAttribute("Carrying")~=nil
+player:GetAttributeChangedSignal("Carrying"):Connect(function()drop.Visible=player:GetAttribute("Carrying")~=nil end)
 remotes.View.OnClientEvent:Connect(function(view,detail)Screens:Open(view,detail)end)
 remotes.Request:FireServer("Sync")
 require(script.Parent.InteractionController).Init(gui)
 require(script.Parent.Feedback).Init()
+require(script.Parent.CarryPose).Init()
+require(script.Parent.VehicleControls)()
 player:GetAttributeChangedSignal("DeliveryAddress"):Connect(updateHint)
 player:GetAttributeChangedSignal("Carrying"):Connect(updateHint)

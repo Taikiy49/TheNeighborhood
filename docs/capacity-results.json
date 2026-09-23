@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "result": {
+    "Players": [
+      {
+        "House": "House01",
+        "Player": "Player1"
+      },
+      {
+        "House": "House02",
+        "Player": "Player2"
+      },
+      {
+        "House": "House03",
+        "Player": "Player3"
+      },
+      {
+        "House": "House04",
+        "Player": "Player4"
+      },
+      {
+        "House": "House05",
+        "Player": "Player5"
+      },
+      {
+        "House": "House06",
+        "Player": "Player6"
+      },
+      {
+        "House": "House07",
+        "Player": "Player7"
+      },
+      {
+        "House": "House08",
+        "Player": "Player8"
+      }
+    ],
+    "Verified": [
+      "Eight actual clients connected",
+      "Eight distinct owned houses",
+      "One starter kit per player",
+      "Correct independent currency balances",
+      "Eight purchased cars with stable parked suspension",
+      "Eight companion pets active",
+      "No server application errors"
+    ],
+    "Passed": true,
+    "Performance": {
+      "WorldInstances": 1638,
+      "Baseline": {
+        "WorldInstances": 1174,
+        "MeanServerFrameMs": 29.653622925980017,
+        "ServerMemoryMb": 1977.94140625,
+        "P95ServerFrameMs": 89.84694629907608,
+        "Samples": 140
+      },
+      "MeanServerFrameMs": 30.12025148722009,
+      "ServerMemoryMb": 1806.52734375,
+      "P95ServerFrameMs": 98.08295965194702,
+      "Samples": 265,
+      "Note": "Warm local Studio server alongside eight client processes; not a mobile-device benchmark or a production performance pass."
+    }
+  }
+}

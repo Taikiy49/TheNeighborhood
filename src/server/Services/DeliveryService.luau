@@ -17,6 +17,7 @@ function Service:Init(context)
   if os.clock()-job.Started<8 then return false,"That delivery was too fast. Try again in a moment." end
   self.Jobs[player.UserId]=nil;player:SetAttribute("DeliveryAddress",nil)
   self.Context.Data:Get(player).Currency+=180
+  self.Context.Record(player,"Delivery")
   return true,"Delivered. You earned $180 — honestly, for once."
  end)
  game.Players.PlayerRemoving:Connect(function(player)self.Jobs[player.UserId]=nil;self.Last[player.UserId]=nil end)

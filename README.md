@@ -3,7 +3,7 @@
 Roblox social sandbox. Target place: 111572448337932.
 
 ## Workflow
-Source in `src/` is authoritative. Studio is the running verification target. No existing Rojo configuration or binary was present at baseline. `tools/package.ps1` emits an MCP installation payload. Apply that payload through `execute_luau` in Edit mode only. Do not edit duplicate script copies independently. A future Rojo migration must preserve the world and adopt the same mapping.
+Source in `src/` is authoritative. Studio is the running verification target. `tools/package.ps1` emits an MCP installation payload. Apply through `execute_luau` in Edit mode only. `default.project.json` now supports Rojo 7.7.0, preserves unrelated Studio instances, and restricts live sync to place 111572448337932. Build with `rojo build default.project.json --output TheNeighborhood.rbxl`. The editable world snapshot lives in `assets/Neighborhood.model.json`; re-export it after intentional world changes. Do not edit duplicate script copies independently.
 
 `src/shared` → ReplicatedStorage.Neighborhood.Shared
 `src/server` → ServerScriptService.Neighborhood
@@ -12,7 +12,13 @@ Source in `src/` is authoritative. Studio is the running verification target. No
 WorldBuilder authors editable models in Workspace.Neighborhood. It refuses to overwrite an existing world. Original template parts are retained under ServerStorage.NeighborhoodBaseline.
 
 ## Testing
-Run Studio Play and inspect Output. Use StudioTestService.ExecuteMultiplayerTestAsync for real simulated clients where available. Runtime tests exercise production services, not separate toy implementations. Studio sessions use isolated in-memory profiles until persistent storage is explicitly implemented and verified. Never claim this mode saves between sessions.
+Run Studio Play and inspect Output. Use StudioTestService.ExecuteMultiplayerTestAsync with Name=FoundationAcceptance for two-client gameplay/regression checks or Name=CapacityAcceptance for eight-client plot/currency checks. Explicit automated multiplayer sessions use memory profiles; LiveStorageTests uses isolated, cleaned-up DataStore fixtures. Normal Studio Play uses TheNeighborhood_Development_v2; published servers use TheNeighborhood_Profiles_v2. Failed production loads never fall back to overwritable defaults. When Studio API access is unavailable, the HUD explicitly labels session-only mode.
+
+Verified evidence is in docs/multiplayer-expansion-results.json, docs/capacity-results.json and docs/rejoin-results.json. The normal stop/rejoin test verified shutdown flushing and original item placement. SPEC-COVERAGE.md tracks all 239 numbered sections; the full specification is not yet complete.
+
+For isolated visual/input QA, set Workspace.NeighborhoodVisualTest=true in Edit, then enter normal Play. The gated VisualAcceptance fixture uses memory profiles and supplies a car and pet. Clear the attribute after stopping. This mode is ignored outside Studio and must not be confused with persistence testing. No test attribute is enabled in the delivered project.
+
+`tools/build-interiors.luau` authors the two furnished room layouts idempotently in Edit mode. `tools/export-world.luau` prepares a flat scene snapshot for chunked MCP export. Rebuild the Rojo place after changing scripts or world assets.
 
 ## Architecture
 Small lifecycle bootstrap; shared configuration/types; server-only player, house, and interaction services; reusable client UI tokens/components. Clients request actions; server validates type, identity, distance, state and rate limit. No third-party scripts/assets.

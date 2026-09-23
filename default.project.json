@@ -1,0 +1,39 @@
+{
+  "name": "The Neighborhood",
+  "servePlaceIds": [111572448337932],
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {"$ignoreUnknownInstances": true,"$properties":{"StreamingEnabled":true},"Neighborhood":{"$path":"assets/Neighborhood.model.json"}},
+    "Lighting": {
+      "$properties":{"ClockTime":15.5,"Brightness":2.2,"Ambient":[0.5294,0.5608,0.5765],"OutdoorAmbient":[0.5686,0.5882,0.5490],"GlobalShadows":true},
+      "Atmosphere":{"$className":"Atmosphere","$properties":{"Density":0.22,"Color":[0.8588,0.9059,0.8863],"Decay":[0.7059,0.7765,0.8118],"Haze":0.8}},
+      "DepthOfField":{"$className":"DepthOfFieldEffect","$properties":{"Enabled":false}}
+    },
+    "ReplicatedStorage": {
+      "$ignoreUnknownInstances": true,
+      "Neighborhood": {
+        "$className": "Folder",
+        "Shared": {"$path": "src/shared"},
+        "Remotes": {
+          "$className": "Folder",
+          "Request": {"$className": "RemoteEvent"},
+          "State": {"$className": "RemoteEvent"},
+          "Notification": {"$className": "RemoteEvent"},
+          "View": {"$className": "RemoteEvent"}
+          ,"Drive": {"$className": "RemoteEvent"}
+        }
+      }
+    },
+    "ServerScriptService": {
+      "$ignoreUnknownInstances": true,
+      "Neighborhood": {"$path": "src/server"}
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "$ignoreUnknownInstances": true,
+        "Neighborhood": {"$path": "src/client"}
+      }
+    }
+  }
+}

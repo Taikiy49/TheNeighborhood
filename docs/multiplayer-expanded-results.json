@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "result": {
+    "Players": [
+      {
+        "House": "House01",
+        "Name": "Player1",
+        "UserId": -1
+      },
+      {
+        "House": "House02",
+        "Name": "Player2",
+        "UserId": -2
+      }
+    ],
+    "DataStoreAccess": {
+      "Allowed": true,
+      "Result": "nil"
+    },
+    "Errors": [],
+    "PersistenceTests": {
+      "Passed": true,
+      "Verified": [
+        "Concurrent profile session rejected",
+        "Transient save failures retry without resetting data",
+        "Lost commit response produces one revision",
+        "Exhausted retries preserve previous durable snapshot",
+        "Release and rejoin retain money, original item identity, placement, lock and progression",
+        "Expired lease recovery rejects stale server writes",
+        "Future schema and corrupt money rejected without overwriting storage",
+        "Version-one migration adds defaults while preserving currency",
+        "Duplicate item IDs and foreign ownership rejected",
+        "Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles"
+      ],
+      "Backend": "Injected storage; not proof of Roblox API access",
+      "Requests": 29
+    },
+    "Verified": [
+      "Two real clients connected",
+      "Distinct houses assigned",
+      "Player1 opened their own door",
+      "Player2 opened their own door",
+      "Visitor lock mutation rejected",
+      "Malformed interaction rejected",
+      "Purchase, placement, storage and sale lifecycle",
+      "Invalid item, insufficient funds, foreign ownership and duplicate sale rejected",
+      "Paint purchase is charged once; invalid options rejected; entry, roommate locks and item ownership remain separate",
+      "Timed lock breach; protection and movement cancellation; owner reset",
+      "Drop and resume preserve original possession, physical carry pose and movement restoration",
+      "Golden Toilet theft, physical weld, weight penalty and owner recovery",
+      "Beginner protection, concurrent theft and premature fence rejection",
+      "Structured incident evidence without culprit user ID",
+      "Heavy-item character walked through the door and escaped",
+      "Fence payout exactly $2900; duplicate fence rejected",
+      "Evidence-backed accusation solves case once; foreign case and self accusations rejected",
+      "Original item reclaimed; foreign, remote, duplicate and repeat-farming requests rejected; four incident transitions retained",
+      "Disconnect cleanup returns carried property and restores movement",
+      "Teleport during carry returns property with no payout",
+      "Actual client disconnect releases plot and returns carried possession"
+    ],
+    "Passed": true,
+    "LiveStorageTests": {
+      "Passed": true,
+      "Verified": [
+        "Actual UpdateAsync profile creation",
+        "Cross-session lock rejection",
+        "Save/reload of currency, XP, original item ID, display slot and lock",
+        "Duplicate queued settlement pays once",
+        "Session release"
+      ],
+      "Backend": "Roblox DataStore: isolated GUID-prefixed fixtures",
+      "FixtureRemoved": true
+    }
+  }
+}

@@ -1,6 +1,6 @@
 --!strict
 return table.freeze({
-    SchemaVersion = 1,
+    SchemaVersion = 2,
     StartingCurrency = 1200,
     InteractionRange = 12,
     ActionInterval = 0.2,
@@ -13,5 +13,5 @@ return table.freeze({
     EscapeDistance = 45,
     MaxInventory = 40,
     MaxIncidents = 12,
-    SessionOnly = true,
+    SessionOnly = false,
 })

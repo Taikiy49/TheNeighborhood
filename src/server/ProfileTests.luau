@@ -1,0 +1,46 @@
+local Schema=require(script.Parent.ProfileSchema)
+local Repository=require(script.Parent.ProfileRepository)
+return function()
+ local records={};local failures=0;local afterCommit=false;local now=1000;local calls=0
+ local store={}
+ function store:UpdateAsync(key,callback)
+  calls+=1;if failures>0 then failures-=1;error("Injected request failure")end
+  local old=records[key] and Schema.Copy(records[key]);local nextValue=callback(old)
+  if nextValue then records[key]=Schema.Copy(nextValue)end
+  if afterCommit then afterCommit=false;error("Injected lost response after commit")end
+  return nextValue and Schema.Copy(nextValue) or nil
+ end
+ local a=Repository.new(store,"server-a",function()return now end,function()end)
+ local b=Repository.new(store,"server-b",function()return now end,function()end)
+ local passed={}
+ local profile=assert(a:Load(42));assert(profile.Currency==1200)
+ assert(not b:Load(42));table.insert(passed,"Concurrent profile session rejected")
+ profile.Currency=913;failures=2;assert(a:Save(42,profile,false));assert(records["player:42"].Data.Currency==913)
+ table.insert(passed,"Transient save failures retry without resetting data")
+ local revision=records["player:42"].Revision;afterCommit=true;assert(a:Save(42,profile,false));assert(records["player:42"].Revision==revision+1)
+ table.insert(passed,"Lost commit response produces one revision")
+ failures=3;profile.Currency=800;assert(not a:Save(42,profile,false));assert(records["player:42"].Data.Currency==913)
+ table.insert(passed,"Exhausted retries preserve previous durable snapshot")
+ profile.Items={{Id="original-item",DefinitionId="GoldenToilet",OwnerUserId=42,OriginalOwnerUserId=42,State="Displayed",Slot=2,Provenance={{Kind="Acquired",Time=1000}}}}
+ profile.House.Locked=true;profile.TutorialState="Done";profile.XP=50
+ assert(a:Save(42,profile,true));local rejoined=assert(b:Load(42))
+ assert(rejoined.Currency==800 and rejoined.Items[1].Id=="original-item" and rejoined.Items[1].Slot==2 and rejoined.House.Locked and rejoined.XP==50)
+ table.insert(passed,"Release and rejoin retain money, original item identity, placement, lock and progression")
+ assert(not a:Save(42,profile,false));now+=121;assert(a:Load(42));assert(not b:Save(42,profile,false))
+ table.insert(passed,"Expired lease recovery rejects stale server writes")
+ records["player:77"]={Data={Version=999,Currency=1200},Revision=0};assert(not a:Load(77));assert(records["player:77"].Data.Version==999)
+ records["player:78"]={Data={Version=1,Currency=-1},Revision=0};assert(not a:Load(78));assert(records["player:78"].Data.Currency==-1)
+ table.insert(passed,"Future schema and corrupt money rejected without overwriting storage")
+ records["player:79"]={Data={Version=1,Currency=333},Revision=0};local migrated=assert(a:Load(79));assert(migrated.Version==2 and migrated.Currency==333 and migrated.XP==0)
+ table.insert(passed,"Version-one migration adds defaults while preserving currency")
+ local duplicate=Schema.Copy(profile);table.insert(duplicate.Items,Schema.Copy(duplicate.Items[1]));assert(not a:Save(42,duplicate,false))
+ local wrongOwner=Schema.Copy(profile);wrongOwner.Items[1].OwnerUserId=99;assert(not a:Save(42,wrongOwner,false))
+ table.insert(passed,"Duplicate item IDs and foreign ownership rejected")
+ assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,2,200))
+ local recipient=assert(a:Load(55));assert(recipient.Currency==4300,"Credit queue duplicated or lost payment")
+ assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,2,200));assert(a:EnqueueCredit(55,42,3,100))
+ local saved,_,durable=a:Save(55,recipient,false);assert(saved and durable.Currency==4400,"Active profile did not consume new credit once")
+ afterCommit=true;assert(a:EnqueueCredit(55,42,4,75));local savedAgain,_,after=a:Save(55,durable,true);assert(savedAgain and after.Currency==4475,"Lost queue response duplicated payment")
+ table.insert(passed,"Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles")
+ return {Passed=true,Verified=passed,Requests=calls,Backend="Injected storage; not proof of Roblox API access"}
+end
