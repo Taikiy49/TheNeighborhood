@@ -4,7 +4,37 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
-![Actual cottage screenshot from Roblox Studio](assets/art/garden-cottage.jpg)
+## Screenshots
+
+Actual 1920 × 1079 captures from a temporary Roblox Studio play session on September 23, 2026. Scenic views use a free camera with the HUD hidden. The preview fixture supplies the car, pet and test balance without changing saved player progress. These show the current development build.
+
+**A walk down Maple Street**
+
+![Tree-lined Maple Street with cottages and the community park](assets/screenshots/street.jpg)
+
+| The whole neighborhood | A home on Maple Street |
+|---|---|
+| ![Aerial view of the eight homes, park and shops](assets/screenshots/overview.jpg) | ![101 Maple Street with a mint car in the driveway](assets/screenshots/cottage.jpg) |
+
+| Gardens and a companion | The community park |
+|---|---|
+| ![Porch garden, front path and Biscuit the dog](assets/screenshots/garden.jpg) | ![Park fountain, benches, trees and a neighborhood character](assets/screenshots/park.jpg) |
+
+| Shopping on Maple Street | Inside the general store |
+|---|---|
+| ![General store and pawn shop storefronts](assets/screenshots/shops.jpg) | ![General store counter and collectible displays](assets/screenshots/general-store.jpg) |
+
+| Home interior and display spaces | The kitchen |
+|---|---|
+| ![Wood floors and display spaces inside a cottage](assets/screenshots/living-room.jpg) | ![Cottage kitchen with cabinets, cooktop and sink](assets/screenshots/kitchen.jpg) |
+
+| The bedroom | Your phone |
+|---|---|
+| ![Cottage bedroom with bed, quilt and botanical artwork](assets/screenshots/bedroom.jpg) | ![In-game phone with friends, progress and home controls](assets/screenshots/phone.jpg) |
+
+**Maple Style Boutique — optional home finishes**
+
+![Maple Style Boutique showing owned cosmetic finishes during the playtest](assets/screenshots/boutique.jpg)
 
 ## Systems in this build
 
