@@ -28,3 +28,7 @@ Higgsfield supplied the concept/reference and image assets. Roblox Studio mesh g
 Additional Roblox content references, including sky/audio, are in source and the project/world files. This table identifies the new redesign assets; it is not a license grant or exhaustive registry of every platform content ID.
 
 Assets loaded in the tested experience. Moving the project to another owner/universe may require asset permissions or re-uploading. A successful Rojo build does not validate all remote content moderation/permissions. No open-source license has been assigned to the repository; preserve applicable service and asset terms.
+
+## Maple Adventures
+
+The six story posts, noticeboard, three park improvements and three earned trophies are built from native Roblox parts by AdventureService and ItemFactory. Their authored story text and positions live in AdventureDefinitions. No new external art, mesh or paid asset dependency was introduced.

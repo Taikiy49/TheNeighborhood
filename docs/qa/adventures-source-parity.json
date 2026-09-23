@@ -1,0 +1,72 @@
+[
+  {
+    "File": "src/shared/AdventureDefinitions.luau",
+    "StudioPath": "ReplicatedStorage.Neighborhood.Shared.AdventureDefinitions",
+    "Matched": true
+  },
+  {
+    "File": "src/shared/ItemDefinitions.luau",
+    "StudioPath": "ReplicatedStorage.Neighborhood.Shared.ItemDefinitions",
+    "Matched": true
+  },
+  {
+    "File": "src/server/Services/AdventureService.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.Services.AdventureService",
+    "Matched": true
+  },
+  {
+    "File": "src/server/Bootstrap.server.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.Bootstrap",
+    "Matched": true
+  },
+  {
+    "File": "src/server/ProfileSchema.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.ProfileSchema",
+    "Matched": true
+  },
+  {
+    "File": "src/server/ItemFactory.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.ItemFactory",
+    "Matched": true
+  },
+  {
+    "File": "src/server/AdventureAcceptance.server.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.AdventureAcceptance",
+    "Matched": true
+  },
+  {
+    "File": "src/server/ProfileTests.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.ProfileTests",
+    "Matched": true
+  },
+  {
+    "File": "src/server/LiveStorageTests.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.LiveStorageTests",
+    "Matched": true
+  },
+  {
+    "File": "src/server/RejoinAcceptance.server.luau",
+    "StudioPath": "ServerScriptService.Neighborhood.RejoinAcceptance",
+    "Matched": true
+  },
+  {
+    "File": "src/client/AdventureScreen.luau",
+    "StudioPath": "StarterPlayer.StarterPlayerScripts.Neighborhood.AdventureScreen",
+    "Matched": true
+  },
+  {
+    "File": "src/client/App.client.luau",
+    "StudioPath": "StarterPlayer.StarterPlayerScripts.Neighborhood.App",
+    "Matched": true
+  },
+  {
+    "File": "src/client/Screens.luau",
+    "StudioPath": "StarterPlayer.StarterPlayerScripts.Neighborhood.Screens",
+    "Matched": true
+  },
+  {
+    "File": "src/client/UIAcceptance.client.luau",
+    "StudioPath": "StarterPlayer.StarterPlayerScripts.Neighborhood.UIAcceptance",
+    "Matched": true
+  }
+]

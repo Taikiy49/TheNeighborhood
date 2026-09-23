@@ -34,7 +34,7 @@ The user requested all sections, including features originally labeled later or 
 | 28 | MONETIZATION PHILOSOPHY | Partial: two permanent cosmetic passes, clear prices/confirmation, no paid gameplay advantage or random rewards. Passes off sale; published purchase delivery remains unverified. See MONETIZATION.md. |
 | 29 | VIRAL MOMENT DESIGN | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 30 | FIRST SESSION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
-| 31 | RETENTION WITHOUT CHEAP MANIPULATION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
+| 31 | RETENTION WITHOUT CHEAP MANIPULATION | Partial: permanent rumor stories, saved albums, optional personal bests and cooperative park projects; no streaks or expiring rewards. Long-term retention still needs player evidence. |
 | 32 | THE MORNING NEWSPAPER | Partial: honest offline recap and current-server headlines; physical newspaper and persistent publication history remain. |
 | 33 | THE NEIGHBORHOOD FEED | Implemented current-server feed of real events; broader history remains. |
 | 34 | SECRETS | Partial: five physical gnome clues, saved discovery journal and replay-safe exclusive reward tested; broader secrets remain. |
@@ -115,7 +115,7 @@ The user requested all sections, including features originally labeled later or 
 | 109 | STATUS WITHOUT RAW POWER | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 110 | LONG-TERM META | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 111 | ACHIEVEMENTS | Partial: six achievements; full specified achievement set remains. |
-| 112 | QUEST DESIGN | Partial: contextual onboarding checklist and delivery; complete social quest set remains. |
+| 112 | QUEST DESIGN | Partial: contextual onboarding, delivery and six three-chapter rumor trails with saved endings and checkpoints; cooperative park contributions and earned trophies. Complete social quest set remains. |
 | 113 | TUTORIAL DESIGN | Partial: immediate home ownership and guided checklist; starter-box presentation/first-session testing remains. |
 | 114 | NPC GUIDE | Implemented three short authored NPC guides; personality and intro polish remain. |
 | 115 | WORLD INTRODUCTION | Open: cinematic world introduction is not implemented. |

@@ -33,7 +33,8 @@ local notificationVersion=0
 local function updateHint()
  local destination=player:GetAttribute("DeliveryAddress")
  local carrying=player:GetAttribute("Carrying")
- hintText.Text=carrying and ("Carrying "..carrying.." · Reach the street, then the pawn shop.") or destination and ("Parcel delivery → "..destination.." mailbox") or "Visit a display spot inside to place your starter furniture."
+ local adventure=player:GetAttribute("AdventureHint")
+ hintText.Text=carrying and ("Carrying "..carrying.." · Reach the street, then the pawn shop.") or destination and ("Parcel delivery → "..destination.." mailbox") or adventure and ("Story clue → "..adventure) or "Phone → Adventures: follow a rumor or help the park bloom."
 end
 local playtest=UI.Label(gui,"PLAYTEST · Progress resets when the server stops",UDim2.new(0.8,0,0,24),UDim2.new(0.1,0,1,-26),12,Theme.Surface)
 local recapShown=false
@@ -55,7 +56,7 @@ remotes.State.OnClientEvent:Connect(function(state)
         local row=rowName and Screens.List:FindFirstChild(rowName)
         if row then game:GetService("GuiService").SelectedObject=row:FindFirstChildWhichIsA("TextButton")end
     end
-    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal" or Screens.CurrentView=="Adventures" or Screens.CurrentView=="Projects")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
     if state.Settings then player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"
@@ -77,3 +78,5 @@ require(script.Parent.VehicleControls)()
 require(script.Parent.WeatherView).Init()
 player:GetAttributeChangedSignal("DeliveryAddress"):Connect(updateHint)
 player:GetAttributeChangedSignal("Carrying"):Connect(updateHint)
+
+player:GetAttributeChangedSignal("AdventureHint"):Connect(updateHint)

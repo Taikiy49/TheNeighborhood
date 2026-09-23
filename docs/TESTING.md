@@ -15,6 +15,7 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 
 | Test name | Clients | Scope |
 |---|---:|---|
+| AdventureAcceptance | 2 | Six rumor trails, actual walks, checkpoint replays, shared park projects, trophies and saved album |
 | FoundationAcceptance | 2 | Purchases, possessions, locks, theft/recovery, activities, car/pet, persistence |
 | ArtAcceptance | 2 | Decoration constraints and 23 navigation routes |
 | CapacityAcceptance | 8 | Independent homes/profiles, cars, pets, rain and server timing |
@@ -30,9 +31,13 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 
 `FriendsAcceptance` accepts `SkipLiveDirectory=true` when the live-directory portion has already been verified separately. This skips that portion honestly; it does not count as a new live-storage pass.
 
-## Latest full regression
+## Latest expansion verification
 
-See [full QA report](QA-FULL-REGRESSION.md) and [machine-readable results](qa/full-regression-results.json). Earlier records below remain historical evidence. `tools/run-studio-suites.luau` reproduces all 12 named suites sequentially; real stop/rejoin is a separate two-phase procedure.
+[Maple Adventures QA](QA-ADVENTURES.md) records the new story/project suite plus a fresh run of the 12 existing suites, expanded UI checks and a restart fixture.
+
+## Previous full regression
+
+See [full QA report](QA-FULL-REGRESSION.md) and [machine-readable results](qa/full-regression-results.json). Earlier records below remain historical evidence. `tools/run-studio-suites.luau` reproduces all 13 named suites sequentially; real stop/rejoin is a separate two-phase procedure.
 
 ## Current evidence
 

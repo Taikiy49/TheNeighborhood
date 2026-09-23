@@ -1,9 +1,10 @@
 local Config=require(game.ReplicatedStorage.Neighborhood.Shared.Config)
 local Definitions=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinitions)
+local Adventures=require(game.ReplicatedStorage.Neighborhood.Shared.AdventureDefinitions)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -27,6 +28,14 @@ function Schema.Migrate(raw,userId)
  assert(p.Pets.Dog==nil or type(p.Pets.Dog)=="boolean","Corrupt pet ownership")
  assert(p.Pets.Mode==nil or p.Pets.Mode=="Follow" or p.Pets.Mode=="Stay","Corrupt pet mode")
  assert(type(p.EventClaims)=="table" and #p.EventClaims<=32,"Corrupt event receipts")
+ local a=p.Adventures
+ assert(type(a)=="table" and type(a.Completed)=="table" and type(a.Runs)=="table" and type(a.BestMs)=="table" and type(a.Rewards)=="table" and integer(a.Contributions,0,1000000),"Corrupt adventure album")
+ for id,value in pairs(a.Completed)do assert(Adventures.Routes[id] and value==true,"Corrupt story stamp")end
+ for id,value in pairs(a.Runs)do assert(Adventures.Routes[id] and integer(value,1,1000000),"Corrupt story runs")end
+ for id,value in pairs(a.BestMs)do assert(Adventures.Routes[id] and integer(value,1,100000000000),"Corrupt route time")end
+ local rewardIds={};for _,r in ipairs(Adventures.Rewards)do rewardIds[r.Id]=true end
+ for id,value in pairs(a.Rewards)do assert(rewardIds[id] and value==true,"Corrupt trophy receipt")end
+ if a.Active~=nil then assert(type(a.Active)=="table" and Adventures.Routes[a.Active.Id] and integer(a.Active.Next,1,3),"Corrupt active story")end
  assert(type(p.Collection)=="table" and type(p.Discoveries)=="table" and type(p.DiscoveryRewardClaimed)=="boolean","Corrupt collection progress")
  for id,firstSeen in pairs(p.Collection)do assert(Definitions[id] and integer(firstSeen,0,100000000000),"Corrupt collected item")end
  for id,found in pairs(p.Discoveries)do assert(type(id)=="string" and id:match("^Gnome[1-5]$") and found==true,"Corrupt discovery progress")end

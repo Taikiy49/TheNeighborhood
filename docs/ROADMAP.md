@@ -37,3 +37,7 @@ Still open: durable player trading/garage sales/auctions, bounties, planted evid
 
 ## September 23 expansion and fault testing
 Physical parcels and cancellation, five discoverable gnome clues with an exclusive collectible, historical collection records, rain/overcast/clear weather with shelter/reduced-motion support, journal/forecast screens and eight total achievements are now implemented. See QA-SEPTEMBER23.md for the latest evidence and scope. Twelve injected storage groups, six actual DataStore groups, 100 item lifecycle cycles, 600 rejected invalid transitions and 328 actual remote probes passed. Lost-save-acknowledgment income loss and a departing-owner targeting race were reproduced and fixed. Eight clients exercised cars, pets and rain; server frame spikes remain. Earlier counts above describe earlier milestones.
+
+## Maple Adventures expansion
+
+Six permanent rumor trails, saved story endings and checkpoints, optional uninterrupted walking records, three earned display trophies, and three cooperative park decorations are implemented. Personal progress persists; construction state belongs to the current server. See [Maple Adventures](MAPLE-ADVENTURES.md) and [QA](QA-ADVENTURES.md). This adds replayable exploration and cooperation without claiming the full master specification or long-term retention is complete.

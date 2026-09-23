@@ -10,7 +10,7 @@ Client `App`, `Screens`, `FriendsScreen` and `UI` render server snapshots. `Them
 | Homes | HouseService, CustomizationService |
 | Possessions/economy | ItemService, ItemFactory, EconomyService |
 | Mischief/investigation | RobberyService, EvidenceService, InvestigationService, ObservationService, PrankService |
-| Activities | DeliveryService, DiscoveryService, EventService, ProgressionService, CommunityService |
+| Activities | AdventureService, DeliveryService, DiscoveryService, EventService, ProgressionService, CommunityService |
 | Car/pet | VehicleService, PetService |
 | Environment | WeatherService, Environment, WorldBuilder, WorldInteractions, WorldPolish |
 | Friends | FriendsService, NeighborhoodRepository, PlotLayout |
@@ -31,6 +31,6 @@ The circle persists as membership and plots, not an always-running simulation or
 
 ## World and tests
 
-The authored world is `assets/Neighborhood.model.json`; lighting is in `default.project.json`. Decorative geometry is anchored and excluded from gameplay collision/query/touch where verified. Authoring scripts run in Edit, not every player session.
+The authored world is `assets/Neighborhood.model.json`; lighting is in `default.project.json`. Decorative geometry is anchored and excluded from gameplay collision/query/touch where verified. Authoring scripts run in Edit, not every player session. AdventureService creates its six story posts and noticeboard at runtime, then builds each shared park decoration once when that server completes its project. Saved album data lives in player profiles; live route clocks and shared project state do not.
 
 Acceptance scripts exit unless Studio and matching explicit test arguments are present. Visual fixtures require Studio attributes. Live storage tests use separate stores and unique prefixes. GitHub CI builds source; it cannot substitute for Studio simulation or published-client travel tests.

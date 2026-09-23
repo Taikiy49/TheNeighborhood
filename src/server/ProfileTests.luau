@@ -25,9 +25,11 @@ return function(options)
  table.insert(passed,"Exhausted retries preserve previous durable snapshot")
  profile.Items={{Id="original-item",DefinitionId="GoldenToilet",OwnerUserId=42,OriginalOwnerUserId=42,State="Displayed",Slot=2,Provenance={{Kind="Acquired",Time=1000}}}}
  profile.House.Locked=true;profile.TutorialState="Done";profile.XP=50
+ profile.Adventures={Completed={Teaspoon=true},Runs={Teaspoon=4},BestMs={Teaspoon=43000},Rewards={TrailCompass=true},Contributions=12,Active={Id="Moon",Next=2}}
  assert(a:Save(42,profile,true));local rejoined=assert(b:Load(42))
  assert(rejoined.Currency==800 and rejoined.Items[1].Id=="original-item" and rejoined.Items[1].Slot==2 and rejoined.House.Locked and rejoined.XP==50)
- table.insert(passed,"Release and rejoin retain money, original item identity, placement, lock and progression")
+ assert(rejoined.Adventures.Active.Next==2 and rejoined.Adventures.Completed.Teaspoon and rejoined.Adventures.Rewards.TrailCompass and rejoined.Adventures.Contributions==12 and rejoined.Adventures.BestMs.Teaspoon==43000,"Adventure state lost on repository reload")
+ table.insert(passed,"Release and rejoin retain money, original item identity, placement, lock, progression and adventure album")
  assert(not a:Save(42,profile,false));now+=121;assert(a:Load(42));assert(not b:Save(42,profile,false))
  table.insert(passed,"Expired lease recovery rejects stale server writes")
  records["player:77"]={Data={Version=999,Currency=1200},Revision=0};assert(not a:Load(77));assert(records["player:77"].Data.Version==999)

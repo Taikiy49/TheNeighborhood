@@ -36,6 +36,18 @@ Actual 1920 × 1079 captures from a temporary Roblox Studio play session on Sept
 
 ![Maple Style Boutique showing owned cosmetic finishes during the playtest](assets/screenshots/boutique.jpg)
 
+## Maple Adventures
+
+Follow six neighborhood rumors, save their endings in a story album, replay walking routes for personal bests, and earn three display trophies. Deliveries, discoveries, events and completed trails also build shared flower beds, a little library and lanterns in Maple Green. Chapters and personal rewards stay saved; the shared park build lasts for the current server.
+
+[How to play Maple Adventures](docs/MAPLE-ADVENTURES.md) · [Expansion verification](docs/QA-ADVENTURES.md)
+
+| Saved story album | Shared park projects |
+|---|---|
+| ![Story chapter restored after a real Studio restart](assets/screenshots/adventures-album.jpg) | ![Completed shared park projects in a controlled Studio preview](assets/screenshots/adventures-park.jpg) |
+
+These are actual Studio captures: the album uses an isolated restart fixture; park completion is staged in a memory-only preview.
+
 ## Systems in this build
 
 - Eight furnished homes, two shops, gardens, a community park, deliveries and a five-clue collectible trail.
@@ -110,4 +122,6 @@ Private project repository. No open-source license has been selected. Generated 
 
 ## Latest verification
 
-[Full regression report](docs/QA-FULL-REGRESSION.md) records 12 passing named suites, isolated live save/rejoin, stress counts, fixes and remaining production/device checks. Studio functional passes do not mean the full master specification is complete.
+[Maple Adventures QA](docs/QA-ADVENTURES.md) records the newest 13-suite expansion regression and saved-story restart checks.
+
+The preceding [full regression report](docs/QA-FULL-REGRESSION.md) records 12 passing named suites, isolated live save/rejoin, stress counts, fixes and remaining production/device checks. Studio functional passes do not mean the full master specification is complete.

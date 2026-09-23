@@ -6,6 +6,8 @@ Start with the [project overview](../README.md), then use:
 - [ARCHITECTURE](ARCHITECTURE.md): runtime ownership and persistence.
 - [TESTING](TESTING.md): commands, evidence and caveats.
 - [Full regression report](QA-FULL-REGRESSION.md): latest run, fixes, performance and remaining gaps.
+- [Maple Adventures](MAPLE-ADVENTURES.md): rumor trails, trophies and shared park projects.
+- [Adventure expansion QA](QA-ADVENTURES.md): newest expansion/regression evidence.
 - [MONETIZATION](MONETIZATION.md): cosmetic pass IDs, safeguards, tests and sale status.
 - [RELEASE](RELEASE.md): publication status and remaining checks.
 - [FRIENDS-NEIGHBORHOODS](FRIENDS-NEIGHBORHOODS.md): social flow and plot selection.

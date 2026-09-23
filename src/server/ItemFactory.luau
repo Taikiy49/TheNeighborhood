@@ -10,7 +10,26 @@ function Factory.Create(id)
   if shape then p.Shape=shape end;p.Parent=model;return p
  end
  local dark=Color3.fromRGB(36,53,54);local cream=Color3.fromRGB(244,233,204)
- if id=="GoldenToilet" then
+ if id=="TrailCompass"then
+  piece("Base",Vector3.new(2.6,.4,2.6),Vector3.new(0,.2,0),dark)
+  local face=piece("BrassDial",Vector3.new(.4,2.4,2.4),Vector3.new(0,.6,0),nil,Enum.PartType.Cylinder);face.CFrame*=CFrame.Angles(0,0,math.pi/2);face.Material=Enum.Material.Metal
+  local needle=piece("Needle",Vector3.new(.18,.12,1.6),Vector3.new(0,.9,0),Color3.fromRGB(172,72,58));needle.CFrame*=CFrame.Angles(0,.5,0)
+ elseif id=="StoryOwl"then
+  piece("Perch",Vector3.new(2.6,.35,2),Vector3.new(0,.2,0),dark)
+  piece("Body",Vector3.new(1.8,2.5,1.6),Vector3.new(0,1.6,0),nil,Enum.PartType.Ball)
+  for _,x in ipairs({-.45,.45})do
+   piece("EyeRing",Vector3.new(.8,.8,.3),Vector3.new(x,2.3,-.65),cream,Enum.PartType.Ball)
+   piece("Eye",Vector3.new(.28,.28,.2),Vector3.new(x,2.3,-.85),dark,Enum.PartType.Ball)
+  end
+  piece("Beak",Vector3.new(.22,.4,.3),Vector3.new(0,1.9,-.9),Color3.fromRGB(214,169,75))
+ elseif id=="NeighborLantern"then
+  piece("Base",Vector3.new(2.2,.3,2.2),Vector3.new(0,.2,0))
+  for _,x in ipairs({-.8,.8})do for _,z in ipairs({-.8,.8})do piece("Frame",Vector3.new(.15,2.5,.15),Vector3.new(x,1.6,z))end end
+  local glow=piece("WarmGlow",Vector3.new(1,1.8,1),Vector3.new(0,1.5,0),cream);glow.Material=Enum.Material.Neon
+  local light=Instance.new("PointLight");light.Color=cream;light.Brightness=.6;light.Range=9;light.Parent=glow
+  piece("Top",Vector3.new(2.2,.35,2.2),Vector3.new(0,3,0))
+  piece("Handle",Vector3.new(1,.45,.2),Vector3.new(0,3.35,0))
+ elseif id=="GoldenToilet" then
   piece("Pedestal",Vector3.new(3.2,0.7,4),Vector3.new(0,0.35,0))
   piece("Stem",Vector3.new(2,2.1,2.5),Vector3.new(0,1.4,0))
   piece("Bowl",Vector3.new(4.8,2,5.6),Vector3.new(0,2.6,-0.4),nil,Enum.PartType.Ball)

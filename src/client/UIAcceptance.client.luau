@@ -11,7 +11,7 @@ local function begin()
   local oldSize=screens.Panel.Size;local checks={}
   for _,width in ipairs({510,360})do
    screens.Panel.Size=UDim2.fromOffset(width,480)
-   for _,view in ipairs({"Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
+   for _,view in ipairs({"Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
     screens:Open(view);task.wait(.15)
     assert(screens.Panel.Visible and screens.Title.Text~="","Screen failed to open: "..view)
     local rows=0

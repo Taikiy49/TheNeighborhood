@@ -1,0 +1,60 @@
+{
+  "Phase1": {
+    "Locked": true,
+    "Currency": 1200,
+    "ShutdownProbe": 1,
+    "Slot": 1,
+    "Phase": 1,
+    "UserId": 2868186764,
+    "Passed": true,
+    "ItemId": "6dcafcc5-16b0-49d7-8a89-79194710699c"
+  },
+  "Phase2": {
+    "Phase": 2,
+    "Verified": [
+      "Normal Studio player rejoined same persistent profile",
+      "Currency retained",
+      "Original item GUID and display placement restored",
+      "House lock restored",
+      "Post-save change retained by shutdown save",
+      "Recap reflects real previous session",
+      "Boutique selection retained across actual server restart",
+      "Adventure album and unfinished chapter retained by shutdown save"
+    ],
+    "Passed": true
+  },
+  "FixtureRemoved": true,
+  "Navigation": [
+    {
+      "Name": "The west-side letterbox",
+      "Passed": true
+    },
+    {
+      "Name": "The last bench",
+      "Passed": true
+    },
+    {
+      "Name": "The pawn-shop notice",
+      "Passed": true
+    },
+    {
+      "Name": "The market notice",
+      "Passed": true
+    },
+    {
+      "Name": "The east-side letterbox",
+      "Passed": true
+    },
+    {
+      "Name": "The welcome post",
+      "Passed": true
+    }
+  ],
+  "Mouse": {
+    "ResumeButtonClicked": true,
+    "ServerJobVerified": true,
+    "HUDHintVerified": true,
+    "PanelClosed": true
+  },
+  "Scope": "Isolated real DataStore fixture; album seeded after explicit save to test shutdown persistence"
+}

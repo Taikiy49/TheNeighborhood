@@ -1,5 +1,8 @@
 --!strict
 return table.freeze({
+ TrailCompass={Name="Curiosity Compass",Rarity="Rare",Value=250,Weight=3,DiscoverOnly=true,Color=Color3.fromRGB(197,161,85),Description="One rumor solved. It points toward the next bad idea."},
+ StoryOwl={Name="Maple Story Owl",Rarity="Epic",Value=900,Weight=5,DiscoverOnly=true,Color=Color3.fromRGB(135,108,82),Description="Six stories remembered. This owl knows everyone's ending."},
+ NeighborLantern={Name="Good Neighbor Lantern",Rarity="Rare",Value=500,Weight=4,DiscoverOnly=true,Color=Color3.fromRGB(63,106,86),Description="Twelve acts of neighborliness, one warm welcome."},
  BasicChair={Name="Basic Chair",Rarity="Common",Value=80,Weight=8,Color=Color3.fromRGB(151,105,65),Description="For emergencies involving sitting."},
  Lamp={Name="Lamp",Rarity="Common",Value=110,Weight=4,Color=Color3.fromRGB(234,197,113),Description="A bright idea."},
  Television={Name="Television",Rarity="Uncommon",Value=480,Weight=18,Color=Color3.fromRGB(56,70,73),Description="The drama outside is better."},

@@ -20,6 +20,7 @@ local ok,result=pcall(function()
   assert(Data:Save(player,false),"Explicit live save failed")
   -- This change is intentionally after the explicit save: only shutdown saving can retain it.
   profile.Statistics.ShutdownProbe=(profile.Statistics.ShutdownProbe or 0)+1
+  profile.Adventures={Completed={Teaspoon=true},Runs={Teaspoon=2},BestMs={Teaspoon=45000},Rewards={TrailCompass=true},Contributions=12,Active={Id="Moon",Next=2}}
   return {Passed=true,Phase=1,UserId=player.UserId,ItemId=item.Id,Slot=slotNumber,Currency=profile.Currency,ShutdownProbe=profile.Statistics.ShutdownProbe,Locked=house.Locked}
  end
  local expected=game:GetService("HttpService"):JSONDecode(assert(workspace:GetAttribute("PersistenceExpected"),"Missing expected profile"))
@@ -29,7 +30,8 @@ local ok,result=pcall(function()
  local item=Items.Items[expected.ItemId];assert(item and item.State=="Displayed" and item.Slot==expected.Slot and Items.Models[item.Id],"Original displayed item did not restore")
  assert(house.Locked==expected.Locked,"Lock state did not restore")
  assert(profile.Statistics.ShutdownProbe==expected.ShutdownProbe,"Unsaved change was not flushed during shutdown")
+ assert(profile.Adventures.Completed.Teaspoon and profile.Adventures.BestMs.Teaspoon==45000 and profile.Adventures.Rewards.TrailCompass and profile.Adventures.Contributions==12 and profile.Adventures.Active.Id=="Moon" and profile.Adventures.Active.Next==2,"Adventure progress did not survive shutdown/rejoin")
  assert(profile._Recap and profile._Recap.LastSeen>0,"Honest recap missing")
- return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session","Boutique selection retained across actual server restart"}}
+ return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session","Boutique selection retained across actual server restart","Adventure album and unfinished chapter retained by shutdown save"}}
 end)
 workspace:SetAttribute("PersistenceCycleResult",game:GetService("HttpService"):JSONEncode(ok and result or {Passed=false,Error=tostring(result)}))
