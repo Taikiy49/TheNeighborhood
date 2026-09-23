@@ -1,6 +1,7 @@
 local Schema=require(script.Parent.ProfileSchema)
 local Repository=require(script.Parent.ProfileRepository)
-return function()
+return function(options)
+ options=options or {};local cycles=options.Cycles or 50;local seed=options.Seed or 88217
  local records={};local failures=0;local afterCommit=false;local lostResponses=0;local now=1000;local calls=0
  local store={}
  function store:UpdateAsync(key,callback)
@@ -49,8 +50,8 @@ return function()
  local retried,_,reconciled=a:Save(55,uncertain,true)
  assert(retried and reconciled.Currency==4575,"Unacknowledged committed credit or later spending was overwritten")
  table.insert(passed,"Committed credit survives all retry responses being lost and a later stale-memory save")
- local random=Random.new(88217);local simulation=assert(a:Load(55));local expected=simulation.Currency
- for sequence=6,55 do
+ local random=Random.new(seed);local simulation=assert(a:Load(55));local expected=simulation.Currency
+ for sequence=6,5+cycles do
   local source=sequence%2==0 and 42 or 99;local amount=random:NextInteger(1,200)
   assert(a:EnqueueCredit(55,source,sequence,amount));assert(a:EnqueueCredit(55,source,sequence,amount));expected+=amount
   local spent=random:NextInteger(0,25);simulation.Currency-=spent;expected-=spent
@@ -59,6 +60,6 @@ return function()
   simulation=nextProfile
  end
  assert(a:Save(55,simulation,true));assert(b:Load(55).Currency==expected)
- table.insert(passed,"Fifty seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements")
- return {Passed=true,Verified=passed,Requests=calls,Backend="Injected storage; not proof of Roblox API access"}
+ table.insert(passed,tostring(cycles).." seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements")
+ return {Passed=true,Verified=passed,Requests=calls,Seed=seed,Cycles=cycles,Backend="Injected storage; not proof of Roblox API access"}
 end

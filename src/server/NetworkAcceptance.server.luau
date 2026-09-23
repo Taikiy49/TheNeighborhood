@@ -27,6 +27,7 @@ local function run()
   sent+=reports[player.UserId].fuzz.Sent
   local profile=Data:Get(player)
   assert(profile.Currency==1200 and #Items:Owned(player)==2,"Malformed network requests changed money or inventory")
+  assert(profile.House.Boutique==nil,"Malformed network request changed boutique selection")
   assert(next(profile.House.Permissions)==nil and profile.Settings.Sound==true and not profile.DiscoveryRewardClaimed,"Malformed network requests changed preferences or permissions")
  end
  Events:Finish();Weather:Set("Rain")

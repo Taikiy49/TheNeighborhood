@@ -21,8 +21,8 @@ for path in root.rglob("*.json"):
         json_count += 1
     except (ValueError, OSError) as exc:
         errors.append(f"Invalid JSON {path.relative_to(root)}: {exc}")
-guides = ["README.md", "docs/INDEX.md", "docs/BUILDING.md", "docs/ARCHITECTURE.md",
-          "docs/TESTING.md", "docs/RELEASE.md", "docs/ASSETS.md"]
+guides = sorted(str(path.relative_to(root)) for path in root.rglob("*.md")
+                if ".git" not in path.parts)
 link_count = 0
 for name in guides:
     path = root / name

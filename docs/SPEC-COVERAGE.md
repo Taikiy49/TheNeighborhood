@@ -31,7 +31,7 @@ The user requested all sections, including features originally labeled later or 
 | 25 | COLLECTIBLES | Partial: ten shop collectibles plus exclusive discovery-earned Moonlight Gnome; expanded content remains. |
 | 26 | ITEM SERIAL NUMBERS | Partial: unique persistent GUIDs; player-facing numbered serial presentation remains. |
 | 27 | PROGRESSION | Partial: XP, levels, checklist and eight achievements; complete long-term progression remains. |
-| 28 | MONETIZATION PHILOSOPHY | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
+| 28 | MONETIZATION PHILOSOPHY | Partial: two permanent cosmetic passes, clear prices/confirmation, no paid gameplay advantage or random rewards. Passes off sale; published purchase delivery remains unverified. See MONETIZATION.md. |
 | 29 | VIRAL MOMENT DESIGN | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 30 | FIRST SESSION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 31 | RETENTION WITHOUT CHEAP MANIPULATION | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
@@ -87,7 +87,7 @@ The user requested all sections, including features originally labeled later or 
 | 81 | DO NOT OVERENGINEER | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 82 | ERROR HANDLING | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 83 | DEVELOPMENT LOGGING | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
-| 84 | TESTING STRATEGY | Ongoing: two/eight-client suites, 100 lifecycle cycles, 600 rejected invalid transitions, 328 remote probes, storage faults, visual/input checks; real-device/human/soak coverage remains. |
+| 84 | TESTING STRATEGY | Ongoing: 12 named suites, 5,000 storage cycles, 600 cosmetic equips, 368 actual remote probes, 72 UI checks, eight-client capacity and isolated restart. See QA-FULL-REGRESSION.md; real-device/human/production/soak coverage remains. |
 | 85 | MULTIPLAYER TESTING | Verified current two-client gameplay and eight-client cars/pets/rain capacity. Local frame spikes remain. |
 | 86 | DISCONNECT BEHAVIOR | Verified actual departure with four-second delayed save: closing home protected, carry restored, plot released and delayed callbacks cancelled; shutdown/rejoin tested. |
 | 87 | DUPLICATION PREVENTION | Verified tested paths: 100 full item lifecycles, 600 invalid transitions, discovery reward replay, fence/reclaim and credit replay/lost acknowledgments. |
@@ -223,9 +223,9 @@ The user requested all sections, including features originally labeled later or 
 | 217 | THE PLAYER SHOULD CREATE THE CONTENT | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 218 | REQUIRED DEVELOPMENT TOOL STACK | Partial: Studio MCP, local Git and Rojo available; required external services are not all connected. |
 | 219 | @CODEX | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
-| 220 | @GITHUB | Blocked: no GitHub remote configured; local Git checkpoints only. |
+| 220 | @GITHUB | Implemented: private Taikiy49/the-neighborhood repository, source history, documentation, build artifact and GitHub Actions. |
 | 221 | ROJO | Implemented Rojo 7.7.0 project/build pipeline and serialized editable scene. |
-| 222 | @HIGGSFIELD | Blocked: no callable Higgsfield integration available in this task. |
+| 222 | @HIGGSFIELD | Used for visual direction, siding and botanical artwork; see GARDEN-REDESIGN.md. Complete visual polish remains ongoing. |
 | 223 | ASSET / 3D TOOLS | Partial: safely authored primitive models; external asset tooling remains optional/unconnected. |
 | 224 | TOOL PRIORITY | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |
 | 225 | VISUAL DEVELOPMENT PIPELINE | Open: no complete implementation and acceptance evidence yet; includes ongoing design constraints. |

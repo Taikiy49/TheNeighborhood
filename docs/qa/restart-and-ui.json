@@ -1,0 +1,44 @@
+{
+  "Phase1": {
+    "Locked": true,
+    "Currency": 1200,
+    "ShutdownProbe": 1,
+    "Slot": 1,
+    "Phase": 1,
+    "UserId": 2868186764,
+    "Passed": true,
+    "ItemId": "5954353e-fdab-484e-bd0a-c57932b99e76"
+  },
+  "Phase2": {
+    "Phase": 2,
+    "Verified": [
+      "Normal Studio player rejoined same persistent profile",
+      "Currency retained",
+      "Original item GUID and display placement restored",
+      "House lock restored",
+      "Post-save change retained by shutdown save",
+      "Recap reflects real previous session",
+      "Boutique selection retained across actual server restart"
+    ],
+    "Passed": true
+  },
+  "InitialHarnessFailure": "Initial fixture used a GUID prefix plus a real user ID, exceeding Roblox's 50-character key limit. No profile was written. Fixed by using the GUID as DataStore scope.",
+  "Cleanup": {
+    "FixtureRemoved": true,
+    "Attributes": []
+  },
+  "MouseFlow": {
+    "Passed": true,
+    "Steps": [
+      "Phone click",
+      "Browse styles click",
+      "Apply Lavender Linen click"
+    ],
+    "ServerFloorColor": "0.835294, 0.756863, 0.639216",
+    "ServerFloorMaterial": "WoodPlanks",
+    "PanelClosed": true,
+    "Ownership": "Real creator account ownership; no new purchase",
+    "ToolWarnings": "CoreGUI pointer-interpolation warnings; target clicks succeeded"
+  },
+  "LivePurchaseVerified": false
+}

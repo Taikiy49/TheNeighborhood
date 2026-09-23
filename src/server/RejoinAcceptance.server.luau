@@ -16,6 +16,7 @@ local ok,result=pcall(function()
   for slot=1,6 do local occupied=false;for _,candidate in pairs(Items.Items)do if candidate.HouseId==house.Model.Name and candidate.Slot==slot and candidate.State=="Displayed"then occupied=true end end;if not occupied then slotNumber=slot;break end end
   local slot=house.Model.DisplaySlots:FindFirstChild("Slot"..slotNumber);player.Character:PivotTo(slot.CFrame*CFrame.new(0,3,0));assert(Items:Place(player,item.Id,slotNumber))
   if not house.Locked then assert(Houses:DoorAction(player,house.Model.Lock,"Lock"))end
+  profile.House.Boutique="Coastal:SeaGlass"
   assert(Data:Save(player,false),"Explicit live save failed")
   -- This change is intentionally after the explicit save: only shutdown saving can retain it.
   profile.Statistics.ShutdownProbe=(profile.Statistics.ShutdownProbe or 0)+1
@@ -24,10 +25,11 @@ local ok,result=pcall(function()
  local expected=game:GetService("HttpService"):JSONDecode(assert(workspace:GetAttribute("PersistenceExpected"),"Missing expected profile"))
  assert(player.UserId==expected.UserId,"Rejoin account changed")
  assert(profile.Currency==expected.Currency,"Currency did not survive rejoin")
+ assert(profile.House.Boutique=="Coastal:SeaGlass","Boutique preference did not survive actual server restart")
  local item=Items.Items[expected.ItemId];assert(item and item.State=="Displayed" and item.Slot==expected.Slot and Items.Models[item.Id],"Original displayed item did not restore")
  assert(house.Locked==expected.Locked,"Lock state did not restore")
  assert(profile.Statistics.ShutdownProbe==expected.ShutdownProbe,"Unsaved change was not flushed during shutdown")
  assert(profile._Recap and profile._Recap.LastSeen>0,"Honest recap missing")
- return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session"}}
+ return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session","Boutique selection retained across actual server restart"}}
 end)
 workspace:SetAttribute("PersistenceCycleResult",game:GetService("HttpService"):JSONEncode(ok and result or {Passed=false,Error=tostring(result)}))

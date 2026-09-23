@@ -77,3 +77,7 @@ Private project repository. No open-source license has been selected. Generated 
 ## Optional cosmetic passes
 
 [Maple Style Boutique](docs/MONETIZATION.md) adds six home finishes across two registered permanent passes. Passes remain off sale until this revision is published and live delivery is verified.
+
+## Latest verification
+
+[Full regression report](docs/QA-FULL-REGRESSION.md) records 12 passing named suites, isolated live save/rejoin, stress counts, fixes and remaining production/device checks. Studio functional passes do not mean the full master specification is complete.

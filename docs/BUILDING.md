@@ -35,6 +35,7 @@ Enable **Studio Access to API Services** in the experience's security settings f
 | Studio saved circles | `NeighborhoodGroups_Development_v1` |
 | Published circles | `NeighborhoodGroups_v1` |
 | Profile fixtures | `TheNeighborhood_AutomatedTests_v2` |
+| Isolated stop/rejoin fixtures | `TheNeighborhood_RejoinFixtures_v1` |
 | Circle fixtures | `NeighborhoodGroups_AutomatedTests_v1` |
 
 Explicit automated sessions use memory profiles. Live-storage modules separately create GUID-prefixed fixtures and remove them. Normal Studio Play uses development persistence when access succeeds; otherwise the HUD announces session-only mode. Production load failures never silently replace a saved profile with defaults.

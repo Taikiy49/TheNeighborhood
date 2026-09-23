@@ -34,3 +34,7 @@ Run `BoutiqueAcceptance` and `NeighborhoodVisualTest` Workspace attributes toget
 4. Verify a successful buyer receives all three advertised styles before broad release. Keep passes off sale if delivery cannot be verified.
 
 Official references: [Passes](https://create.roblox.com/docs/production/monetization/passes), [MarketplaceService](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService).
+
+## Expanded regression
+
+`BoutiqueRegression` runs with two real Studio clients and an injected server-only ownership adapter. It covers cancelled/unknown purchase callbacks, unverified purchases, transient API outages, revocation, cross-player isolation, throttled refresh, and purchase completion racing an existing lookup. It also exercises 600 style equips, 24,000 texture checks and 800 malformed requests. The queued recheck fixes a dropped purchase-completion race. See [full QA report](QA-FULL-REGRESSION.md) for current evidence and live-purchase limits.

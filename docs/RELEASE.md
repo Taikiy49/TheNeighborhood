@@ -10,6 +10,7 @@ Recorded September 23, 2026. This document distinguishes local/source milestones
 | Later environment redesign | In source, Studio edit state and included build; not published |
 | Friends and plot choices | In source, Studio edit state and included build; not published |
 | Public access | Previously blocked by account eligibility; current status must be checked in Creator Dashboard |
+| Style boutique | Two real passes registered; off sale, code not published, live purchase test pending |
 | GitHub upload | Source delivery, not a Roblox publication |
 
 Earlier dashboard work saved an icon, Higgsfield cover, description, genre and eight-player limit. The recorded audience was Private. Camera age check, identity verification and two-factor requirements were reported by Roblox at that time; platform requirements/status may change. Do not infer current eligibility from this historical note.
@@ -31,3 +32,5 @@ Do not call the complete specification done: [SPEC-COVERAGE](SPEC-COVERAGE.md) t
 Keep prior source commits and Roblox place versions. A place rollback does not roll back DataStores. Do not delete/reset production keys to solve deployment problems. Schema compatibility, asset permissions and datastore changes need explicit review before replacing a live version.
 
 The GitHub build workflow has read-only repository permissions and no Roblox credentials. It cannot publish or change production progress.
+
+Latest QA: [full regression report](QA-FULL-REGRESSION.md). Passing Studio tests does not enable sales or change the public release state.

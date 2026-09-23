@@ -9,6 +9,8 @@ local function begin()
    local cases={};local values={false,{},0/0,math.huge,-math.huge,0.5,"invalid",string.rep("x",1000),9e18,-9e18}
    for _,value in ipairs(values)do
     table.insert(cases,table.pack("Buy",value,nil))
+    table.insert(cases,table.pack("Boutique","Equip",value))
+    table.insert(cases,table.pack("Friends","ChoosePlot",value))
     table.insert(cases,table.pack("Event","HighFive",value))
     table.insert(cases,table.pack("Accuse","missing-case",value))
     if type(value)~="boolean"then table.insert(cases,table.pack("Setting","Sound",value))end

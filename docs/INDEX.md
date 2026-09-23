@@ -5,6 +5,8 @@ Start with the [project overview](../README.md), then use:
 - [BUILDING](BUILDING.md): open, build, sync and configure Studio.
 - [ARCHITECTURE](ARCHITECTURE.md): runtime ownership and persistence.
 - [TESTING](TESTING.md): commands, evidence and caveats.
+- [Full regression report](QA-FULL-REGRESSION.md): latest run, fixes, performance and remaining gaps.
+- [MONETIZATION](MONETIZATION.md): cosmetic pass IDs, safeguards, tests and sale status.
 - [RELEASE](RELEASE.md): publication status and remaining checks.
 - [FRIENDS-NEIGHBORHOODS](FRIENDS-NEIGHBORHOODS.md): social flow and plot selection.
 - [GARDEN-REDESIGN](GARDEN-REDESIGN.md): environment redesign.

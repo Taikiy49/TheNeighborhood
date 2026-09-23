@@ -1,0 +1,481 @@
+{
+  "normalization": "UTF-8, LF, leading/trailing whitespace stripped",
+  "files": [
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.App",
+      "file": "src/client/App.client.luau",
+      "bytes": 5929,
+      "adler32": 426706596,
+      "sha256": "1dec367e47c0c59e707ac1e847730739b8f190362189d7b2553c873729da7245"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.BoutiqueScreen",
+      "file": "src/client/BoutiqueScreen.luau",
+      "bytes": 2496,
+      "adler32": 510552735,
+      "sha256": "4888b4093f89f5dc147a4c8f3ef590e1eb1f29069f00f69540124399b040dba7"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.CarryPose",
+      "file": "src/client/CarryPose.luau",
+      "bytes": 1344,
+      "adler32": 3256541680,
+      "sha256": "db7726e70cb0438c1ee7c07c47d7b89ec757a0344277637651ad52c161f82303"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.Feedback",
+      "file": "src/client/Feedback.luau",
+      "bytes": 2085,
+      "adler32": 3067402517,
+      "sha256": "77f9bb470ffa6b005dd01ed4cef1ce0901e2850cd6c4ac4106e59105c79caad8"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.FriendsScreen",
+      "file": "src/client/FriendsScreen.luau",
+      "bytes": 7753,
+      "adler32": 2250347451,
+      "sha256": "da501cf9fa70d7a58fa376d0b3e1ae101a7e1f2e743743630d58fc595ec66167"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.InteractionController",
+      "file": "src/client/InteractionController.luau",
+      "bytes": 1118,
+      "adler32": 2097251910,
+      "sha256": "3890968375ca085b8109db5ee7e61cdd7df91e071bf4e7165383725cc3f58cb1"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.NetworkAcceptance",
+      "file": "src/client/NetworkAcceptance.client.luau",
+      "bytes": 2784,
+      "adler32": 548454411,
+      "sha256": "5fd569eade04e14b34d5801130b8b4574e9629c965c46fa2a86545c605bc402e"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.Screens",
+      "file": "src/client/Screens.luau",
+      "bytes": 17647,
+      "adler32": 1222570926,
+      "sha256": "a2651cbfbb4b409a21e87b72ae28a1a5e8769d415a9a59e70d54dc4d67a673a7"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.UI",
+      "file": "src/client/UI.luau",
+      "bytes": 1265,
+      "adler32": 3921461405,
+      "sha256": "3a2bb491b1f97665515e3881b2377ce0cd999e12c908600e4a99cf74ca47555a"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.UIAcceptance",
+      "file": "src/client/UIAcceptance.client.luau",
+      "bytes": 2057,
+      "adler32": 53921233,
+      "sha256": "0356c922319df083e8b1e70f80c7b91b95a70df981373d5b765a9a6d95fd77be"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.VehicleControls",
+      "file": "src/client/VehicleControls.luau",
+      "bytes": 489,
+      "adler32": 1229958816,
+      "sha256": "33afe9f1073494a6062eb42b6d4ab1291bb9e8e8aff5a66207752bd7452017c5"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Neighborhood.WeatherView",
+      "file": "src/client/WeatherView.luau",
+      "bytes": 1847,
+      "adler32": 2042595028,
+      "sha256": "656f439fdd3a3a410443bca3ae300620f1f40e9d3d1e10b4db71ef4fa2576dc5"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Acceptance",
+      "file": "src/server/Acceptance.server.luau",
+      "bytes": 23901,
+      "adler32": 3317720475,
+      "sha256": "82df79f49045cc57bdbf0b9bb29e6c7b732de4b04067a11a8ac68ad11eebe29b"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ArtAcceptance",
+      "file": "src/server/ArtAcceptance.server.luau",
+      "bytes": 3385,
+      "adler32": 4128615733,
+      "sha256": "808aca2ec1e5b29c84883c8766f3207c76cd1b04871fc7d4fe5a199ee1598b15"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Bootstrap",
+      "file": "src/server/Bootstrap.server.luau",
+      "bytes": 11418,
+      "adler32": 741336178,
+      "sha256": "4edf38b1a6e0769f692d2df3f5357b81c791419cc1f8e220608e2fe8d2dab54c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.BoutiqueAcceptance",
+      "file": "src/server/BoutiqueAcceptance.server.luau",
+      "bytes": 2344,
+      "adler32": 2546812056,
+      "sha256": "29f32e9ff5ac231e28b0f4135e4cfb1d32f379b3de9ae4ba4b6ace52acee17df"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.BoutiqueRegression",
+      "file": "src/server/BoutiqueRegression.server.luau",
+      "bytes": 6601,
+      "adler32": 2950376579,
+      "sha256": "e74af8960357c8c23bd17c768283437da7a7536527da487ba022d820da7997d6"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.CapacityAcceptance",
+      "file": "src/server/CapacityAcceptance.server.luau",
+      "bytes": 4495,
+      "adler32": 2808891318,
+      "sha256": "266eef60c7a283bf8caf7ae8d2ea8f2fdb65b49d0605a4d217323d94345cfd55"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.DisconnectRaceAcceptance",
+      "file": "src/server/DisconnectRaceAcceptance.server.luau",
+      "bytes": 3826,
+      "adler32": 2834784329,
+      "sha256": "cf41fc54c46d39ed6f7850f61083de7b9409d355b501da66eeb310f9728413e1"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Environment",
+      "file": "src/server/Environment.server.luau",
+      "bytes": 487,
+      "adler32": 694004097,
+      "sha256": "1a9cc6db7a2bfa4824064499715626a04bb8453f00d204d3390be221b3d8c43b"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ExplorationAcceptance",
+      "file": "src/server/ExplorationAcceptance.server.luau",
+      "bytes": 9515,
+      "adler32": 192441188,
+      "sha256": "b76409b4746fb13bf7e88e31885453c276ee61c59d24224149752edef4fe79f7"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.FriendsAcceptance",
+      "file": "src/server/FriendsAcceptance.server.luau",
+      "bytes": 7408,
+      "adler32": 96612597,
+      "sha256": "edcfe55f172c8eba9be0c418b3605136a485425b1578d8a7f4eb5fc133f32ae6"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.GuideCharacters",
+      "file": "src/server/GuideCharacters.luau",
+      "bytes": 3573,
+      "adler32": 3890404833,
+      "sha256": "07f397964e58fc6c5132fd0e92a017567a134c24188d98a38f660d2e8dbcbb49"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ItemFactory",
+      "file": "src/server/ItemFactory.luau",
+      "bytes": 4468,
+      "adler32": 3114819214,
+      "sha256": "2576e9bbc00557703294f4f04afc8d0c382ccaa2c429864deb11e7976e72f715"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.LifecycleStress",
+      "file": "src/server/LifecycleStress.server.luau",
+      "bytes": 4424,
+      "adler32": 2142125296,
+      "sha256": "46d44c9eec0c6d8159724929978427ca54d36e748faa5cba7bba828dabeca2ba"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.LiveNeighborhoodTests",
+      "file": "src/server/LiveNeighborhoodTests.luau",
+      "bytes": 2050,
+      "adler32": 1577961404,
+      "sha256": "5123552f73318b3f29ba1eb6b751f752e7fb7c1a09da4c2c12735db503232b55"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.LiveStorageTests",
+      "file": "src/server/LiveStorageTests.luau",
+      "bytes": 2428,
+      "adler32": 282027317,
+      "sha256": "64157541315fd894547de2dca3dc70749b2ae7fd6656d3cb0a58066063ccce0f"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.NeighborhoodRepository",
+      "file": "src/server/NeighborhoodRepository.luau",
+      "bytes": 4107,
+      "adler32": 178697847,
+      "sha256": "38624b50bf4832404121a8208980ffbee0c4eeb74c59feda175d0add5e138d1c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.NetworkAcceptance",
+      "file": "src/server/NetworkAcceptance.server.luau",
+      "bytes": 6063,
+      "adler32": 3755178623,
+      "sha256": "40615dd560c301d7182314b05301499a8263cdeeeb1f8d4ee02ee8838f7dd690"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.PlotChoiceAcceptance",
+      "file": "src/server/PlotChoiceAcceptance.server.luau",
+      "bytes": 5736,
+      "adler32": 3675580859,
+      "sha256": "c78b591b124b353f786a2af746371a8f361969ac8f02c29af7a604045284f887"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ProfileRepository",
+      "file": "src/server/ProfileRepository.luau",
+      "bytes": 3970,
+      "adler32": 1670945637,
+      "sha256": "38148de2fe88a9bfda7c8a417c01e1eb360c7b0d13e363b3426679d8b5a92e19"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ProfileSchema",
+      "file": "src/server/ProfileSchema.luau",
+      "bytes": 5555,
+      "adler32": 78025629,
+      "sha256": "0d41e9e24e8ef14b3bcc99df5aa181e308ff5a5114417f9f4a45fd7521365a83"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.ProfileTests",
+      "file": "src/server/ProfileTests.luau",
+      "bytes": 5869,
+      "adler32": 2594119879,
+      "sha256": "ba16eeec5e1d9229908af7bbbaf9b740be9d7ed3fba22c8f18953d0e91f55d98"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.RejoinAcceptance",
+      "file": "src/server/RejoinAcceptance.server.luau",
+      "bytes": 3482,
+      "adler32": 3854493685,
+      "sha256": "fad6fe2935a88e6c1798dc927e4fe7ed19f521143632dcb5fbfe1ca44853df44"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.BoutiqueService",
+      "file": "src/server/Services/BoutiqueService.luau",
+      "bytes": 4190,
+      "adler32": 3840206431,
+      "sha256": "97619afb4402ed37be22b3f076aa900c4f87c923bf23b5586c46a3dfba0b9a2c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.CommunityService",
+      "file": "src/server/Services/CommunityService.luau",
+      "bytes": 974,
+      "adler32": 596922548,
+      "sha256": "0fa4f6a8708af668cec3a738cae2a1203b751459e0c18d55e7210f0a5729b501"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.CustomizationService",
+      "file": "src/server/Services/CustomizationService.luau",
+      "bytes": 4122,
+      "adler32": 4054299309,
+      "sha256": "6a4a31428d8229ceb6050ee59a000a9f7a7f97192ec82b5110950dd97d24606f"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.DeliveryService",
+      "file": "src/server/Services/DeliveryService.luau",
+      "bytes": 4948,
+      "adler32": 3638751835,
+      "sha256": "dc5432a11c34049ead0d1c76bfa4ec09a223a87fa31554ca03e4437da694b319"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.DiscoveryService",
+      "file": "src/server/Services/DiscoveryService.luau",
+      "bytes": 4238,
+      "adler32": 2482233418,
+      "sha256": "bdc29a4a8469c9550bdc220900866b2a7fe5d7957a4b3ed63a8ca9a3d1875e0e"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.EconomyService",
+      "file": "src/server/Services/EconomyService.luau",
+      "bytes": 2216,
+      "adler32": 2020217275,
+      "sha256": "005130ab4f93d0f9e9080258663d8c4b08365b3657e95ddd84de3a8ffe68d62c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.EventService",
+      "file": "src/server/Services/EventService.luau",
+      "bytes": 6168,
+      "adler32": 3004734154,
+      "sha256": "72eef0037bf9525951a08243bbde5b931d220c7862a6e47a535de171528680eb"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.EvidenceService",
+      "file": "src/server/Services/EvidenceService.luau",
+      "bytes": 3751,
+      "adler32": 3290646056,
+      "sha256": "214ab6b5ec8fe7ebaa884633cf6171bd28e5a8530b35913eb8f533e3581420d6"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.FriendsService",
+      "file": "src/server/Services/FriendsService.luau",
+      "bytes": 15811,
+      "adler32": 106319560,
+      "sha256": "32867c01ae1bafa4bde7377c95213e32597668aab753e9547550cf250f272ba9"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.HouseService",
+      "file": "src/server/Services/HouseService.luau",
+      "bytes": 3615,
+      "adler32": 3609967289,
+      "sha256": "2d6410a1bb4bce0283e5f5844e9bc6dd017c96a523fba7b6edc7e9003caab0d9"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.InteractionService",
+      "file": "src/server/Services/InteractionService.luau",
+      "bytes": 2706,
+      "adler32": 2719592157,
+      "sha256": "b5e2f15dc7c2eb751eea49db03a5119dddca5c7c24c5dd5b3ccf5b02a2a8a83a"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.InvestigationService",
+      "file": "src/server/Services/InvestigationService.luau",
+      "bytes": 2100,
+      "adler32": 426963899,
+      "sha256": "bae4cdb22c25df05fac3c08dc161ff8e3c0a0ed87f7bcc63011a8b043de57949"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.ItemService",
+      "file": "src/server/Services/ItemService.luau",
+      "bytes": 4335,
+      "adler32": 947656259,
+      "sha256": "fc1a3413000b41dd765c3a57b1b3acae03dee70ab3f090c263c455b0fdbedbe6"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.ObservationService",
+      "file": "src/server/Services/ObservationService.luau",
+      "bytes": 3444,
+      "adler32": 2927677712,
+      "sha256": "f962639956bd52d735aea104f1e545b51e4b1463bb5758b3035dfc7404c17f46"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.PetService",
+      "file": "src/server/Services/PetService.luau",
+      "bytes": 5785,
+      "adler32": 1108721143,
+      "sha256": "cd794cf91848ee55990019b62a82d3e493d24c036e006b1fe40aad7cf76e1ea5"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.PlayerDataService",
+      "file": "src/server/Services/PlayerDataService.luau",
+      "bytes": 7060,
+      "adler32": 2672096748,
+      "sha256": "12ba1bebe7105e2aa330094ab81079ac82a5afb5f8dee3f70c94d290abd6dbdf"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.PrankService",
+      "file": "src/server/Services/PrankService.luau",
+      "bytes": 2949,
+      "adler32": 48438388,
+      "sha256": "59d3baa9dc1482c14800ac2bdf871cad4e8fa8bc294cfb68bfd418fb2152259a"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.ProgressionService",
+      "file": "src/server/Services/ProgressionService.luau",
+      "bytes": 2546,
+      "adler32": 2455995562,
+      "sha256": "4e19c3c99497ca7553c671efc37af6f5da22241f6a519671746064d62d08dd80"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.RobberyService",
+      "file": "src/server/Services/RobberyService.luau",
+      "bytes": 16294,
+      "adler32": 260761603,
+      "sha256": "d70cec6b9678918a56027752648e40a15013b336a50698375f2ec48dbbe3a839"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.VehicleService",
+      "file": "src/server/Services/VehicleService.luau",
+      "bytes": 9357,
+      "adler32": 1888935780,
+      "sha256": "12739ffae7f35e097f0df74fec164366d8ce323fb8865c3a5437755fc9ef9600"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.Services.WeatherService",
+      "file": "src/server/Services/WeatherService.luau",
+      "bytes": 2156,
+      "adler32": 2013333503,
+      "sha256": "dbbb6aec72d7367955cd10e8679dec89f47b18935ea845ff577f087b6265bf8c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.StorageStress",
+      "file": "src/server/StorageStress.server.luau",
+      "bytes": 915,
+      "adler32": 1017137912,
+      "sha256": "e8c1a717832a59a810cb5838b15aa64aec6c58120c1c46be3b06da927c83cbcd"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.UIAcceptance",
+      "file": "src/server/UIAcceptance.server.luau",
+      "bytes": 1410,
+      "adler32": 2921462122,
+      "sha256": "26ea2af4e3e89a9a252b5727f8567dba8e2b38a543465a7020e334b9ebf4c30c"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.VisualAcceptance",
+      "file": "src/server/VisualAcceptance.server.luau",
+      "bytes": 1815,
+      "adler32": 2191494928,
+      "sha256": "548e9236e994b2f7944b0a86c0a4205f388957d52809beba10dfb9fac2b40047"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.WorldBuilder",
+      "file": "src/server/WorldBuilder.luau",
+      "bytes": 13237,
+      "adler32": 2749906989,
+      "sha256": "6d88668ea23f0e70efcc09e3634261f775c8d92eca8e52ee1687e93a3fc649d9"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.WorldInteractions",
+      "file": "src/server/WorldInteractions.luau",
+      "bytes": 1517,
+      "adler32": 1619661560,
+      "sha256": "e739933205f78f676c9952e78292933986d5a9cef06d2ed55644f442369933c5"
+    },
+    {
+      "path": "ServerScriptService.Neighborhood.WorldPolish",
+      "file": "src/server/WorldPolish.luau",
+      "bytes": 2691,
+      "adler32": 2677642394,
+      "sha256": "80af2a801df9fb1b5a6bd8c5b41050a694d62e80527372b64cf8dfc2bed4be9c"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.BoutiqueCatalog",
+      "file": "src/shared/BoutiqueCatalog.luau",
+      "bytes": 1185,
+      "adler32": 3904799875,
+      "sha256": "f272eabd2f9d01a99a8a6bded7f9956b5ca1a5e40c14c2a22e98e2cd9caa5342"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.Config",
+      "file": "src/shared/Config.luau",
+      "bytes": 577,
+      "adler32": 784902778,
+      "sha256": "6b4d9bad0f314ae2b6deaa9ea134a30add48a7a54847a6d846bc475f8d770627"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.ItemDefinitions",
+      "file": "src/shared/ItemDefinitions.luau",
+      "bytes": 1746,
+      "adler32": 2232437633,
+      "sha256": "3b3d4dabde9ae0f81fdceaf2b78078a88438f3df1de71c372bdfdb234b97c56c"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.PlotLayout",
+      "file": "src/shared/PlotLayout.luau",
+      "bytes": 704,
+      "adler32": 1865348160,
+      "sha256": "c7ed94213f26577071c41668f1bbde7ce81a03989a1993c9cfb3df83c1036acc"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.Theme",
+      "file": "src/shared/Theme.luau",
+      "bytes": 404,
+      "adler32": 68318139,
+      "sha256": "ef91bd9b2871d778ae02b229d07cf239aaaefd0a5cf9cc6727f1ce137b1507a6"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.Types",
+      "file": "src/shared/Types.luau",
+      "bytes": 684,
+      "adler32": 3799839490,
+      "sha256": "ed0a1168549a58d8a5468187133b332c74d2e6cc7a81ad7fa010672e583c828b"
+    },
+    {
+      "path": "ReplicatedStorage.Neighborhood.Shared.Validation",
+      "file": "src/shared/Validation.luau",
+      "bytes": 185,
+      "adler32": 3554295745,
+      "sha256": "be65119391947034245cad1d9723e61f8e161262829a353f1b063a0825cf83c4"
+    }
+  ]
+}

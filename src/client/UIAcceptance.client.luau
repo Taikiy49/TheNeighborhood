@@ -1,0 +1,34 @@
+if not game:GetService("RunService"):IsStudio()then return end
+local started=false
+local function begin()
+ if started or workspace:GetAttribute("UIAcceptance")~=true then return end;started=true
+ local root=game.ReplicatedStorage:WaitForChild("Neighborhood")
+ local probe=root:WaitForChild("UIProbe",15);if not probe then return end
+ local ok,result=pcall(function()
+  local screens=require(script.Parent.Screens);local deadline=os.clock()+30
+  repeat task.wait(.2)until screens.Panel and screens.State.House or os.clock()>deadline
+  assert(screens.Panel and screens.State.House,"UI/profile not ready")
+  local oldSize=screens.Panel.Size;local checks={}
+  for _,width in ipairs({510,360})do
+   screens.Panel.Size=UDim2.fromOffset(width,480)
+   for _,view in ipairs({"Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
+    screens:Open(view);task.wait(.15)
+    assert(screens.Panel.Visible and screens.Title.Text~="","Screen failed to open: "..view)
+    local rows=0
+    for _,row in ipairs(screens.List:GetChildren())do if row:IsA("GuiObject")then
+     rows+=1
+     assert(row.AbsoluteSize.X<=screens.List.AbsoluteSize.X+1,"Horizontal overflow: "..view)
+     for _,label in ipairs(row:GetDescendants())do if label:IsA("TextLabel")then assert(label.TextFits,"Clipped text: "..view.." / "..label.Text)end end
+    end end
+    table.insert(checks,{View=view,Width=width,Rows=rows})
+    screens:Close();assert(not screens.Panel.Visible,"Close failed")
+   end
+  end
+  screens.Panel.Size=oldSize
+  local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
+  assert(#errors==0,table.concat(errors,";"))
+  return {Passed=true,Checks=checks,Errors=errors}
+ end)
+ probe:FireServer(ok and result or {Passed=false,Error=tostring(result)})
+end
+workspace:GetAttributeChangedSignal("UIAcceptance"):Connect(begin);begin()

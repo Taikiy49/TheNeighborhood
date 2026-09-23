@@ -7,6 +7,12 @@ local Service={Profiles={},Saving={},Flushing={},Closing=false,SessionOnly=false
 function Service:Init(context)
  self.Context=context
  local store=game:GetService("DataStoreService"):GetDataStore(Run:IsStudio() and "TheNeighborhood_Development_v2" or "TheNeighborhood_Profiles_v2")
+ -- Explicit Studio-only restart fixtures never touch normal player profiles.
+ local fixture=workspace:GetAttribute("PersistenceFixture")
+ if Run:IsStudio()and type(fixture)=="string"then
+  assert(#fixture==36 and fixture:match("^[%x%-]+$"),"Invalid persistence fixture namespace")
+  store=game:GetService("DataStoreService"):GetDataStore("TheNeighborhood_RejoinFixtures_v1",fixture)
+ end
  if Run:IsStudio()then
   local args=game:GetService("StudioTestService"):GetTestArgs()
   if type(args)=="table" and args.Name or workspace:GetAttribute("NeighborhoodVisualTest")==true then self.SessionOnly=true else

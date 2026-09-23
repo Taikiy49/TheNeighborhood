@@ -24,8 +24,15 @@ Run one session at a time. Inspect `Passed`, `Errors`, fixture-cleanup results a
 | NetworkAcceptance | 2 | Remote/input adversarial probes and client lifecycle |
 | LifecycleStress | 2 | Item lifecycle and invalid-transition stress |
 | DisconnectRaceAcceptance | 2 | Departing-player races |
+| BoutiqueRegression | 2 | Ownership outage/cancellation/race, 600 style equips, 800 invalid requests |
+| UIAcceptance | 2 | 18 screens at two panel widths on both clients |
+| StorageStress | 1 | 20 seeded storage simulations, 5,000 settlement/spending cycles |
 
 `FriendsAcceptance` accepts `SkipLiveDirectory=true` when the live-directory portion has already been verified separately. This skips that portion honestly; it does not count as a new live-storage pass.
+
+## Latest full regression
+
+See [full QA report](QA-FULL-REGRESSION.md) and [machine-readable results](qa/full-regression-results.json). Earlier records below remain historical evidence. `tools/run-studio-suites.luau` reproduces all 12 named suites sequentially; real stop/rejoin is a separate two-phase procedure.
 
 ## Current evidence
 
@@ -47,7 +54,7 @@ Actual Studio mouse input exercised Phone → Friends → create party → ready
 
 ## GitHub CI
 
-`python tools/check_repository.py` checks required files, parses JSON and validates local links in the new top-level guides. CI also builds with Rojo 7.7.0 and uploads the result as an artifact. It does not run Studio, teleport players or publish the experience.
+`python tools/check_repository.py` checks required files, parses JSON and validates local links in every Markdown guide. CI also builds with Rojo 7.7.0 and uploads the result as an artifact. It does not run Studio, teleport players or publish the experience.
 
 ## Still required
 
