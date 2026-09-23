@@ -11,7 +11,8 @@ function Service:Validate(player, target)
     if not root or not humanoid or humanoid.Health<=0 then return false,"Your character is not ready." end
     local distance = (root.Position-target.Position).Magnitude
     if distance ~= distance or distance > Config.InteractionRange then return false,"Move closer." end
-    local ray = RaycastParams.new(); ray.FilterType=Enum.RaycastFilterType.Exclude; ray.FilterDescendantsInstances={char}
+    local ray = RaycastParams.new(); ray.FilterType=Enum.RaycastFilterType.Exclude
+    ray.FilterDescendantsInstances=target:GetAttribute("ItemId") and {char,target.Parent} or {char}
     local hit = workspace:Raycast(root.Position,target.Position-root.Position,ray)
     if hit and hit.Instance ~= target and not hit.Instance:IsDescendantOf(target) then return false,"There is something in the way." end
     return true
