@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "stylesExercised": 6,
+  "verified": ["Unowned equip rejected", "All six floor colors and materials applied", "Currency unchanged", "Saved selection survives serialization and schema migration", "Malformed equip requests rejected", "Travel blocks style changes", "Reset restores original floor", "Missing entitlement restores base finish"],
+  "client": {"opened": true, "title": "Maple Style Boutique", "rowsWithUnconfiguredIds": 13, "purchaseButtonsWithUnconfiguredIds": 0, "rowsAfterRealIdOwnershipRefresh": 11},
+  "realMarketplaceMetadata": [{"passId":1989884747,"name":"Cottage Atelier","isForSale":false},{"passId":1989248710,"name":"Coastal Collection","isForSale":false}],
+  "finalStudioConsole": "[NEIGHBORHOOD] Ready; session-only playtest",
+  "limitations": ["Injected test entitlements", "No Robux spent", "No completed purchase or published-client rejoin test", "Selection tested through schema round-trip, not live datastore rejoin in this change"],
+  "build": "Rojo 7.7.0 successful"
+}

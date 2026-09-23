@@ -7,11 +7,18 @@ function Service:Apply(player)
  local profile=self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[player.UserId];if not profile or not house then return end
  local settings=profile.House;settings.UnlockedColors=settings.UnlockedColors or {};settings.UnlockedFloors=settings.UnlockedFloors or {Wood=true};settings.Permissions=settings.Permissions or {}
  local color=colors[settings.Color]
+ for _,part in ipairs(house.Model:GetChildren())do
+  if part:IsA("BasePart")and (part.Name:find("Wall")or part.Name=="FrontSill"or part.Name=="FrontHeader"or part.Name=="Gable")then
+   if part:GetAttribute("EverydayOriginalColor")==nil then part:SetAttribute("EverydayOriginalColor",part.Color)end
+   if not color then part.Color=part:GetAttribute("EverydayOriginalColor");for _,finish in ipairs(part:GetChildren())do if finish:IsA("Texture")and finish.Name:match("^HiggsfieldSiding")then finish.Color3=part.Color end end end
+  end
+ end
  if color then for _,p in ipairs(house.Model:GetChildren())do if p:IsA("BasePart") and (p.Name:find("Wall") or p.Name=="FrontSill" or p.Name=="FrontHeader" or p.Name=="Gable")then
   p.Color=color
   for _,finish in p:GetChildren()do if finish:IsA("Texture")and finish.Name:match("^HiggsfieldSiding")then finish.Color3=color end end
  end end end
  local floor=floors[settings.Floor or "Wood"];house.Model.Floor.Material=floor.Material;house.Model.Floor.Color=floor.Color
+ if self.Context.Boutique then self.Context.Boutique:Apply(player)end
  house.Permissions=settings.Permissions;house.Model:SetAttribute("SecurityLevel",settings.SecurityLevel or 0)
 end
 function Service:Change(player,kind,id)
@@ -31,6 +38,7 @@ function Service:Change(player,kind,id)
   local cost=(level+1)*350;if p.Currency<cost then return false,"The next lock upgrade costs $"..cost.."."end
   p.Currency-=cost;p.House.SecurityLevel=level+1
  else return false,"Unknown house option."end
+ if kind=="Color"or kind=="Floor"then p.House.Boutique=nil end
  self:Apply(player);self.Context.Record(player,"Customize");return true,"Home updated. Purchased finishes stay unlocked."
 end
 function Service:Permission(player,id,role)

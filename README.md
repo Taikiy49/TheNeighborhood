@@ -73,3 +73,7 @@ The last verified published version was **37**. Later environment, friends and p
 ## Ownership
 
 Private project repository. No open-source license has been selected. Generated images, Roblox-hosted assets and dependencies remain subject to their applicable terms and permissions. See [Asset inventory](docs/ASSETS.md) before reusing under another Roblox owner.
+
+## Optional cosmetic passes
+
+[Maple Style Boutique](docs/MONETIZATION.md) adds six home finishes across two registered permanent passes. Passes remain off sale until this revision is published and live delivery is verified.
