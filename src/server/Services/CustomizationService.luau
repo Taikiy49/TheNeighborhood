@@ -7,7 +7,10 @@ function Service:Apply(player)
  local profile=self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[player.UserId];if not profile or not house then return end
  local settings=profile.House;settings.UnlockedColors=settings.UnlockedColors or {};settings.UnlockedFloors=settings.UnlockedFloors or {Wood=true};settings.Permissions=settings.Permissions or {}
  local color=colors[settings.Color]
- if color then for _,p in ipairs(house.Model:GetChildren())do if p:IsA("BasePart") and (p.Name:find("Wall") or p.Name=="FrontSill" or p.Name=="FrontHeader" or p.Name=="Gable")then p.Color=color end end end
+ if color then for _,p in ipairs(house.Model:GetChildren())do if p:IsA("BasePart") and (p.Name:find("Wall") or p.Name=="FrontSill" or p.Name=="FrontHeader" or p.Name=="Gable")then
+  p.Color=color
+  for _,finish in p:GetChildren()do if finish:IsA("Texture")and finish.Name:match("^HiggsfieldSiding")then finish.Color3=color end end
+ end end end
  local floor=floors[settings.Floor or "Wood"];house.Model.Floor.Material=floor.Material;house.Model.Floor.Color=floor.Color
  house.Permissions=settings.Permissions;house.Model:SetAttribute("SecurityLevel",settings.SecurityLevel or 0)
 end

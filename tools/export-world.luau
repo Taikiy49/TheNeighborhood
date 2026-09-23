@@ -13,6 +13,9 @@ local function export(instance)
  local node={Name=instance.Name,ClassName=instance.ClassName,Properties={},Children={}}
  local function properties(names)for _,name in ipairs(names)do local ok,v=pcall(function()return instance[name]end);if ok then node.Properties[name]=value(v)end end end
  if instance:IsA("BasePart")then properties({"Size","CFrame","Color","Material","Transparency","Reflectance","Anchored","CanCollide","CanQuery","CanTouch","CastShadow","TopSurface","BottomSurface"});if instance:IsA("Part")then properties({"Shape"})end end
+ if instance:IsA('MeshPart')then properties({'MeshId','TextureID','DoubleSided','RenderFidelity','CollisionFidelity','MeshSize'})end
+ if instance:IsA('Decal')then properties({'Texture','Face','Color3','Transparency','ZIndex'})end
+ if instance:IsA('Texture')then properties({'StudsPerTileU','StudsPerTileV','OffsetStudsU','OffsetStudsV'})end
  if instance:IsA("SpawnLocation")then properties({"Neutral","Duration","Enabled"})end
  if instance:IsA("ProximityPrompt")then properties({"ActionText","ObjectText","Style","HoldDuration","MaxActivationDistance","RequiresLineOfSight","KeyboardKeyCode","GamepadKeyCode","Enabled"})end
  if instance:IsA("PointLight")then properties({"Brightness","Range","Color","Enabled","Shadows"})end

@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "result": {
+    "SidingTextures": 320,
+    "SuccessfulNavigationRoutes": 23,
+    "Errors": [],
+    "Passed": true,
+    "Verified": [
+      "All decorative geometry is anchored and excluded from gameplay raycasts, touch and collision",
+      "Eight delivery routes and eight front-door routes remain navigable",
+      "All five gnome clues and both stores remain reachable",
+      "Six item display slots retained in every house",
+      "Scene stays within the explicit decoration budget",
+      "Generated siding and tree meshes retained"
+    ],
+    "DecorativeParts": 1812,
+    "TexturedMeshes": 104
+  }
+}

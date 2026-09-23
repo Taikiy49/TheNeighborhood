@@ -55,6 +55,15 @@ local function run()
     local Customization=require(script.Parent.Services.CustomizationService)
     local paintBalance=Data:Get(player).Currency
     assert(Customization:Change(player,"Color","Blue"));assert(Data:Get(player).Currency==paintBalance-150)
+    local paintedTextures=0
+    for _,finish in a.Model:GetDescendants()do
+        if finish:IsA("Texture")and finish.Name:match("^HiggsfieldSiding")then
+            assert(finish.Color3==Color3.fromRGB(154,187,205),"Siding did not follow purchased paint")
+            paintedTextures+=1
+        end
+    end
+    assert(paintedTextures>0,"House siding missing")
+    table.insert(verified,"Higgsfield siding follows purchased house paint")
     assert(Customization:Change(player,"Color","Blue"));assert(Data:Get(player).Currency==paintBalance-150,"Unlocked paint charged again")
     assert(not Customization:Change(player,"Color","invalid"),"Invalid paint accepted")
     assert(Customization:Permission(player,tostring(players[2].UserId),"Friend"))

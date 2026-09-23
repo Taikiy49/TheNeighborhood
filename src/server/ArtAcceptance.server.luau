@@ -11,7 +11,14 @@ local function run()
  for _,p in ipairs(art:GetDescendants())do if p:IsA("BasePart")then
   count+=1;assert(p.Anchored and not p.CanQuery and not p.CanTouch and not p.CanCollide,"Scenery interferes with queries or physics: "..p:GetFullName())
  end end
- assert(count>300 and count<850,"Unexpected art budget")
+ assert(count>300 and count<1900,"Unexpected art budget")
+ assert(world:GetAttribute('ArtPassVersion')==2,'Expected garden redesign')
+ local textureCount=0;local meshCount=0
+ for _,p in world:GetDescendants()do
+  if p:IsA('Texture')and p.Name:match('^HiggsfieldSiding')then textureCount+=1;assert(p.Texture=='rbxassetid://112300470260355','Wrong siding texture')end
+  if p:IsA('MeshPart')then meshCount+=1;assert(p.MeshId~=''and p.TextureID~='','Missing mesh content')end
+ end
+ assert(textureCount>=128 and meshCount>=32,'Art assets missing')
  local path=game:GetService("PathfindingService"):CreatePath({AgentRadius=2,AgentHeight=5,AgentCanJump=true})
  local routes=0
  local function route(a,b,label)
@@ -29,6 +36,6 @@ local function run()
  for _,shop in ipairs(world.Shops:GetChildren())do route(start,shop.Counter.Position+Vector3.new(0,2,-5),shop.Name)end
  local errors={};for _,v in ipairs(game:GetService("LogService"):GetLogHistory())do if v.messageType==Enum.MessageType.MessageError then table.insert(errors,v.message)end end
  assert(#errors==0,table.concat(errors,"; "))
- return {Passed=true,DecorativeParts=count,SuccessfulNavigationRoutes=routes,Verified={"All decorative geometry is anchored and excluded from gameplay raycasts, touch and collision","Eight delivery routes and eight front-door routes remain navigable","All five gnome clues and both stores remain reachable","Six item display slots retained in every house","Scene stays within the explicit decoration budget"},Errors=errors}
+ return {Passed=true,DecorativeParts=count,SidingTextures=textureCount,TexturedMeshes=meshCount,SuccessfulNavigationRoutes=routes,Verified={"All decorative geometry is anchored and excluded from gameplay raycasts, touch and collision","Eight delivery routes and eight front-door routes remain navigable","All five gnome clues and both stores remain reachable","Six item display slots retained in every house","Scene stays within the explicit decoration budget","Generated siding and tree meshes retained"},Errors=errors}
 end
 local ok,result=pcall(run);Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})
