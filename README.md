@@ -1,8 +1,12 @@
 # The Neighborhood
 
-A Roblox social sandbox about settling into Maple Street, collecting unusual possessions, and investigating trouble next door.
+A Roblox neighborhood about earning your way from a cottage to a skyline home, decorating, meeting neighbors and exploring town. Mischief and investigations are optional.
 
 ## Current build — September 24, 2026
+
+**Growing homes and surface cleanup — published as v100.** Four housing tiers, furnished upper floors, a housing agent, saved renovation projects and stone foundations. [Features, prices, screenshots and test limits](docs/RESIDENCES.md).
+
+![Grow from cottage to skyline](assets/screenshots/residence-townhouse.png)
 
 **Private home marker — published as v92**, confirmed September 24, 2026 at 12:37:25 UTC. Each player sees their own long-distance YOUR HOME marker. [Screenshot and verification](docs/HOME-MARKER.md).
 

@@ -4,10 +4,11 @@ local Adventures=require(game.ReplicatedStorage.Neighborhood.Shared.AdventureDef
 local BuildingRules=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingRules)
 local BuildingDefs=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
 local LifeRules=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
+local Residence=require(game.ReplicatedStorage.Neighborhood.Shared.ResidenceDefinitions)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Activities={XP=0,Day=0,Counts={},Claimed={},BestMs=0,Finishes=0},Trials={Best={},Wins={},XP=0},Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Music=true,Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Residence=Residence.Default(),Activities={XP=0,Day=0,Counts={},Claimed={},BestMs=0,Finishes=0},Trials={Best={},Wins={},XP=0},Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Music=true,Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -22,6 +23,7 @@ function Schema.Migrate(raw,userId)
  assert(integer(raw.Version or 1,1,Schema.Version),"Unsupported profile version")
  assert(integer(raw.Currency,0,1000000000),"Corrupt currency")
  local p=Schema.Default();for key in pairs(p)do if raw[key]~=nil then p[key]=Schema.Copy(raw[key])end end
+ assert(Residence.Valid(p.Residence),'Corrupt residence progress')
  local activity=p.Activities
  assert(type(activity)=="table" and integer(activity.XP,0,1000000000) and integer(activity.Day,0,1000000) and integer(activity.BestMs,0,600000) and integer(activity.Finishes,0,1000000000),"Corrupt activity progress")
  assert(type(activity.Counts)=="table" and type(activity.Claimed)=="table","Corrupt activity goals")

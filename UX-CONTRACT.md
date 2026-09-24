@@ -57,3 +57,7 @@ Open panels reserve space beneath their header for success/error notifications. 
 ## Neighborhood Life
 
 Phone → Neighborhood Life is the single hub for seven activities. World prompts open the same canonical screens. All resource changes wait for server confirmation. Tour opening explicitly says it unlocks the home and retains displayed-item theft rules. Locking immediately closes a tour. Garden timers never imply offline loss. Festival archives keep past cosmetic rewards available. Business labels distinguish NPC customers from player trading. Renovation copy distinguishes shared server construction from saved personal contributions.
+
+
+## Home plans
+ResidenceService owns upgrade eligibility and charges; ResidenceDefinitions owns tier prices and work thresholds. ResidenceScreen shows job and cash progress, locates Avery and requires an explicit in-game-cash confirmation. The server checks agent distance, profile readiness, tier sequence, duplicate requests, work and funds. Upgrades preserve possessions and garage. Repeating renovations require fresh work, show their next cost and never reset the home. ResidenceAcceptance and ResidencePersistence cover these behaviors.

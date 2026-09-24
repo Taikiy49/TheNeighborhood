@@ -28,7 +28,7 @@ function M.Init(context)
 
   local home=h.Model.Foundation.Position;local side=home.X<0 and -1 or 1
 
-  local points={Vector3.new(side*84,0,home.Z),Vector3.new(side*75,0,home.Z),Vector3.new(side*75,0,60),Vector3.new(side*43,0,60),Vector3.new(side*43,0,0),Vector3.new(side*20,0,0)}
+  local points={Vector3.new(side*84,0,home.Z),Vector3.new(side*75,0,home.Z),Vector3.new(side*75,0,60),Vector3.new(side*43,0,60),Vector3.new(side*43,0,0),Vector3.new(side*20,0,(id%6-2.5)*6)}
 
   model:PivotTo(CFrame.new(points[1]+Vector3.new(0,3,0)))
 

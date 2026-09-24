@@ -4,7 +4,7 @@ return function(screens)
  assert(type(original.HomePosition)=='table','Server omitted home coordinates')
  screens:Close();M:Update()
  assert(M.Badge.Parent==player.PlayerGui and M.Badge:GetAttribute('HouseId')==original.HouseId,'Marker belongs to wrong house')
- local expected=Vector3.new(table.unpack(original.HomePosition))+Vector3.new(0,20,0)
+ local expected=Vector3.new(table.unpack(original.HomePosition))+Vector3.new(0,math.max(20,require(game.ReplicatedStorage.Neighborhood.Shared.ResidenceDefinitions).Tiers[original.Residence and original.Residence.Tier or 1].Floors*12.4+3),0)
  assert((M.Anchor.Position-expected).Magnitude<.1,'Incorrect marker anchor')
  local function fixture(id,position)screens.State={HouseId=id,HomePosition={position.X,position.Y,position.Z}};M:Update()end
  fixture('UnstreamedTestHouse',root.Position+Vector3.new(500,0,0));assert(M.Badge.Enabled,'Distant/unstreamed home hidden')

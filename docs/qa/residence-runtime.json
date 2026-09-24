@@ -1,0 +1,15 @@
+{
+  "SurfaceAudit": "{\"Before\":1140,\"After\":0,\"Adjusted\":519}",
+  "Verified": [
+    "old-profile defaults and corrupt tier rejection",
+    "agent distance and cash/work gates",
+    "three upgrades preserve plot, inventory and garage",
+    "duplicate requests do not charge twice",
+    "lift reaches upper floor; locked home rejects stranger",
+    "repeat renovation requires fresh work and changes palette",
+    "profile schema round trip and release/restore",
+    "stone apron replaces grass pad"
+  ],
+  "Passed": true,
+  "TiersTested": 3
+}

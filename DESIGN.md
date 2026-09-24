@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: The Neighborhood
-description: Suburban address plaques meet playful physical mischief.
+description: Earn, build a home and belong to a lively neighborhood.
 colors:
   primary: '#234F46'
   background: '#F4F5EC'
@@ -96,3 +96,7 @@ The current UI is for younger readers as well as older players. Preserve the str
 Theme remains the runtime token owner (Model B). Theme.Track (#D7E3DD) and Theme.Primary form every shared UI.Progress meter; Theme.Accent (#F8CC5B) marks the active Goals tab and controller focus. Bars always pair with numbers or completion words. UI.Button owns the selection outline and disabled-handler guard. Screens.Row owns 16px body copy, bold headings and 48px actions. GoalHUD owns responsive task placement; TaskGuide owns task selection and local waypoint markers. Memory uses named shapes, so recognizing a symbol does not require reading a long word.
 
 The introductory tour uses short sentences and waits for Next; Skip and reduced-motion still views remain available. This supersedes the historical auto-advance behavior above. Current world geometry is the Maple Heights release documented in docs/MAPLE-HEIGHTS.md; older expansion/valley sections above are historical design records.
+
+
+## Housing progression
+Four silhouettes grow vertically on one plot: cottage, townhouse, family residence, skyline residence. A stone apron replaces the raised lawn under foundations. Furnished floors, a readable lobby housing desk and private home marker explain ownership and progression. Mischief is an optional activity. See docs/RESIDENCES.md.

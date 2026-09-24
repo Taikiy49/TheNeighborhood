@@ -25,6 +25,7 @@ function M.Render(s,tab)
    end)
    break
   end
+  local residence=s.State.Residence;if residence then local defs=require(game.ReplicatedStorage.Neighborhood.Shared.ResidenceDefinitions);local nextHome=defs.Tiers[residence.Tier+1];s:Row(nextHome and 'Dream home: '..nextHome.Name or 'Your next renovation',nextHome and 'Work, save and grow your home upward.'or 'Refresh your home and keep building your renovation record.','See home plans',function()s:Open('Residence')end)end
   s:Row('Today’s tasks','Optional goals. New tasks arrive each day.')
   local names={Circuit='Finish a checkpoint run',Memory='Win the memory game',Work='Finish 3 jobs or trials'}
   for _,g in ipairs(a.Goals or {})do

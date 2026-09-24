@@ -1,0 +1,16 @@
+{
+  "Phase1": {
+    "Renovations": 2,
+    "Style": "Blue",
+    "Tier": 4,
+    "Phase": 1,
+    "Passed": true
+  },
+  "Phase2": {
+    "Renovations": 2,
+    "Style": "Blue",
+    "Tier": 4,
+    "Phase": 2,
+    "Passed": true
+  }
+}

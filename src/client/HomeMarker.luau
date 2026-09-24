@@ -14,9 +14,9 @@ function Marker.Init(app,screens)
   local ready=state.HouseId~=nil and type(p)=='table' and #p==3 and root~=nil
   badge.Enabled=false
   if not ready then return end
-  local home=Vector3.new(p[1],p[2],p[3]);anchor.Position=home+Vector3.new(0,20,0)
+  local home=Vector3.new(p[1],p[2],p[3]);local tier=state.Residence and state.Residence.Tier or 1;local floors=require(game.ReplicatedStorage.Neighborhood.Shared.ResidenceDefinitions).Tiers[tier].Floors;anchor.Position=home+Vector3.new(0,math.max(20,floors*12.4+3),0)
   badge:SetAttribute('HouseId',state.HouseId)
-  local studs=math.floor((root.Position-home).Magnitude+.5)
+  local studs=math.floor((Vector3.new(root.Position.X,home.Y,root.Position.Z)-home).Magnitude+.5)
   distance.Text=studs..' studs away'
   badge.Enabled=studs>35 and app.Enabled and not screens.Panel.Visible
  end

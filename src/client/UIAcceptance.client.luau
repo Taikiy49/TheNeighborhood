@@ -11,7 +11,7 @@ local function begin()
   local oldSize=screens.Panel.Size;local checks={}
   for _,width in ipairs({510,360})do
    screens.Panel.Size=UDim2.fromOffset(width,480)
-   for _,view in ipairs({"Activities","MenuHome","MenuExplore","MenuSocial","MenuHelp","Life","LifeGarden","LifeBusiness","LifeProjects","LifeMystery","LifeTours","LifeMastery","LifeFestival","LifeStop","Building","Crafting","Furnish","Layouts","Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
+   for _,view in ipairs({"Residence","ResidenceReview","Activities","MenuHome","MenuExplore","MenuSocial","MenuHelp","Life","LifeGarden","LifeBusiness","LifeProjects","LifeMystery","LifeTours","LifeMastery","LifeFestival","LifeStop","Building","Crafting","Furnish","Layouts","Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
     screens:Open(view);task.wait(.15)
     assert(screens.Panel.Visible and screens.Title.Text~="","Screen failed to open: "..view)
     local rows=0
@@ -26,7 +26,7 @@ local function begin()
   end
   for _,width in ipairs({510,360})do
    screens.Panel.Size=UDim2.fromOffset(width,480)
-   for _,entry in ipairs({{"BuildReview","GardenRoom"},{"Furnish",{Zone="Loft"}},{"Furnish",{Zone="Loft",Cell=1}},{"Furnish",{Zone="Workshop",Cell=2,Rotation=3}}})do
+   for _,entry in ipairs({{"ResidenceReview",2},{"ResidenceReview","Renovate"},{"BuildReview","GardenRoom"},{"Furnish",{Zone="Loft"}},{"Furnish",{Zone="Loft",Cell=1}},{"Furnish",{Zone="Workshop",Cell=2,Rotation=3}}})do
     screens:Open(entry[1],entry[2]);task.wait(.15)
     for _,label in ipairs(screens.List:GetDescendants())do if label:IsA("TextLabel")then assert(label.TextFits,"Expansion text clips: "..label.Text)end end
     local button=screens.List:FindFirstChildWhichIsA("TextButton",true)

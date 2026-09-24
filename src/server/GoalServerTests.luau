@@ -3,7 +3,7 @@ return function(player)
  local root=script.Parent;local D=require(root.Services.PlayerDataService);assert(D.SessionOnly,'UI tests require isolated session profiles')
  local I=require(root.Services.InteractionService);local J=require(root.CityJobs);local profile=D:Get(player)
  local function go(target)
-  player.Character:PivotTo(target.CFrame*CFrame.new(0,1,-3));task.wait(.4);I.Last[player.UserId]=nil
+  player.Character:PivotTo(CFrame.new(target.Position+Vector3.new(0,3,0)));task.wait(.1);I.Last[player.UserId]=nil
  end
  local resident=workspace.Neighborhood.Runtime.ResidentNeighbors:GetChildren()[1].Torso
  go(resident);local ok,why=I:Request(player,resident,'Resident');assert(ok,why);assert(profile.Statistics.Visit==1,'NPC greeting did not complete introduction')

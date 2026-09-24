@@ -74,7 +74,9 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Activities"then require(script.Parent.ActivitiesScreen).Render(self,detail)
+ if view=="Residence"then require(script.Parent.ResidenceScreen).Render(self)
+ elseif view=="ResidenceReview"then require(script.Parent.ResidenceScreen).Review(self,detail)
+ elseif view=="Activities"then require(script.Parent.ActivitiesScreen).Render(self,detail)
  elseif view:sub(1,4)=="Menu"then require(script.Parent.MenuScreen).Render(self,view)
  elseif view:sub(1,4)=="Life"then require(script.Parent.LifeScreen).Render(self,view,detail)
  elseif view=="Building"or view=="BuildReview"or view=="Crafting"or view=="Furnish"or view=="Layouts"then require(script.Parent.BuildingScreen).Render(self,view,detail)

@@ -1,5 +1,9 @@
 # Current release
 
+Growing homes and surface cleanup published as **v100**, confirmed by Studio PublishSuccessful at **13:13:03 UTC on September 24, 2026**, followed by Add publish notes to v100. Place 111572448337932. [Features, screenshots and verification](RESIDENCES.md).
+
+## Previous release
+
 Private home marker published as **v92**, confirmed by Studio PublishSuccessful at **12:37:25 UTC on September 24, 2026**, followed by Add publish notes to v92. [Details and tests](HOME-MARKER.md).
 
 ## Previous release

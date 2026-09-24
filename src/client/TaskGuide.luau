@@ -30,11 +30,13 @@ function G:Pick(state,attributes)
  if a.Memory then return {Title='Memory game • round '..a.Memory.Round,Hint=a.Memory.Showing and 'Watch the shapes. Remember their order.'or 'Tap the shapes in the same order.',Count=a.Memory.Round-1,Total=5,View='Activities',Detail='Play',Button='Play'}end
  if a.Run then return {Title='Reach the next checkpoint',Hint=a.Run.Name,Count=a.Run.Step-1,Total=a.Run.Total,Position=Vector3.new(table.unpack(a.Run.Position)),Key='Circuit',Button='Show me'}end
  if not p then return {Title='Getting your home ready…',Hint='Your goals will appear here.',Count=0,Total=1,Button='Please wait',Loading=true}end
+ if self.Selected=='Housing'then return {Title='Visit Avery',Hint='Home upgrades in the hotel lobby.',Position=Vector3.new(12,3,-112),Key='HousingDesk',Button='Show me'}end
  if self.Selected then for _,job in ipairs(self.Jobs)do if job.Id==self.Selected then return {Title=job.Title,Hint=job.Hint,Position=job.Position,Key='Job:'..job.Id,Button='Show me'}end end end
  local complete=0;local nextStep
  for _,step in ipairs(p.Checklist or {})do if step.Done then complete+=1 elseif not nextStep then nextStep=step end end
  if nextStep then local guide=self.Steps[nextStep.Key];return {Title=guide and guide[1]or nextStep.Text,Hint=guide and guide[2]or 'Open Goals for help.',Key=guide and guide[3],Count=complete,Total=#p.Checklist,Button='Show me'}end
  for _,goal in ipairs(a.Goals or {})do if not goal.Claimed and goal.Count>=goal.Target then return {Title='Your reward is ready!',Hint='Open Goals to collect it.',Count=goal.Target,Total=goal.Target,View='Activities',Detail='Tasks',Button='Collect reward'}end end
+ if state.Residence then return {Title='Grow your home',Hint='Earn cash, finish town jobs and visit the housing agent.',View='Residence',Button='See home plans'}end
  return {Title='Pick something fun',Hint='Try a game, a job or a daily task.',View='Activities',Detail='Play',Button='Choose a game'}
 end
 function G:Attributes(player)

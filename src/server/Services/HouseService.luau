@@ -71,6 +71,8 @@ function Service:DoorAction(player, target, action)
 end
 function Service:ContainsInterior(house,position)
  local v=house.Model.Foundation.CFrame:PointToObjectSpace(position);local size=house.Model.Foundation.Size
+ local tier=house.Model:GetAttribute("ResidenceTier")or 1
+ if tier>1 then local floors=require(game.ReplicatedStorage.Neighborhood.Shared.ResidenceDefinitions).Tiers[tier].Floors;if math.abs(v.X)<19 and v.Z> -17 and v.Z<15 and v.Y>=12 and v.Y<floors*12.4 then return true end end
  return math.abs(v.X)<=size.X/2 and math.abs(v.Z)<=size.Z/2 and v.Y>=-2 and v.Y<=house.Model.Ceiling.Position.Y-house.Model.Foundation.Position.Y+1
 end
 function Service:Release(player)

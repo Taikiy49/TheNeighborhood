@@ -1,0 +1,19 @@
+{
+  "ClientErrors": [],
+  "CharacterReloads": 4,
+  "ServerErrors": [],
+  "Verified": [
+    "Two real clients sent malformed and burst requests through production remotes",
+    "Malformed requests leave money, inventory, preferences, permissions and building data unchanged",
+    "Two clients each bought a garden room through production remotes; 100 duplicate requests per client never double-charge",
+    "Oversized and nonfinite user IDs safely rejected",
+    "Both clients rendered forty outdoor raindrops",
+    "Roofs suppressed rain on both clients",
+    "Reduced-motion suppressed rain on both clients",
+    "Clear weather hid rain without allocating extra drops",
+    "Four real character reloads retained money, original inventory ID, home, forty rain parts and one HUD",
+    "No server or client application errors"
+  ],
+  "Passed": true,
+  "ActualRemoteRequests": 830
+}
