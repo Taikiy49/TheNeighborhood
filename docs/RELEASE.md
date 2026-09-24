@@ -1,5 +1,9 @@
 # Current release
 
+Gardens and town life published as **v122**, confirmed by Studio `PublishSuccessful` at **19:51:50.062 UTC on September 24, 2026**, place **111572448337932**. Workspace test attributes cleared; automatic VisualAcceptance restored to its guarded default; no injected test scripts in Edit. [Features and economy](TOWN-LIFE.md), [QA and limits](TOWN-LIFE-QA.md). Source and reproducible Rojo build accompany this release.
+
+## Previous release
+
 Coastal districts published as **v117**, confirmed by Studio `PublishSuccessful` at **19:18:04.425 UTC on September 24, 2026**, place **111572448337932**. The session-only test flag was cleared and no persistence fixture was present in the published Edit datamodel. [District guide and screenshots](COASTAL-WORLD.md), [verification](qa/coastal-results.json).
 
 ## Previous release

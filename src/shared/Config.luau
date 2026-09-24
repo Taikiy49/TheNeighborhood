@@ -1,7 +1,7 @@
 --!strict
 return table.freeze({
     SchemaVersion = 2,
-    StartingCurrency = 1200,
+    StartingCurrency = 250,
     InteractionRange = 12,
     ActionInterval = 0.2,
     HouseCount = 12,
@@ -14,9 +14,9 @@ return table.freeze({
     MaxInventory = 40,
     MaxIncidents = 12,
     SessionOnly = false,
-    DeliveryReward = 180,
-    DeliveryMinimumSeconds = 8,
-    DeliveryCooldown = 20,
+    DeliveryReward = 90,
+    DeliveryMinimumSeconds = 20,
+    DeliveryCooldown = 30,
     DeliveryTravelSpeed = 45,
     DiscoveryCount = 5,
     WeatherClearSeconds = 210,

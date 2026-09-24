@@ -7,13 +7,21 @@ function Screens:Init(gui,request)
  self.Panel.ZIndex=20
  self.Panel.Name="ScreensPanel"
  UI.New("UISizeConstraint",{MaxSize=Vector2.new(510,560)},self.Panel)
+ local camera=workspace.CurrentCamera
+ local function layout()
+  local size=camera.ViewportSize;local wide=size.X>=1000
+  self.Panel.AnchorPoint=Vector2.new(wide and 1 or .5,.5)
+  self.Panel.Position=wide and UDim2.new(1,-20,.5,0)or UDim2.fromScale(.5,.5)
+  self.Panel.Size=UDim2.fromOffset(math.min(510,size.X*.9),math.min(560,math.max(220,size.Y-96)))
+ end
+ camera:GetPropertyChangedSignal('ViewportSize'):Connect(layout);layout()
  self.Title=UI.Label(self.Panel,"",UDim2.new(1,-92,0,48),UDim2.fromOffset(16,8),UI.Theme.Title);self.Title.Font=UI.Theme.Display
  self.Title.TextScaled=true;UI.New("UITextSizeConstraint",{MinTextSize=14,MaxTextSize=24},self.Title)
  local close=UI.Button(self.Panel,"Close",UDim2.fromOffset(72,48),UDim2.new(1,-80,0,8),function()
-  if self.CurrentView=="ChoosePlot"or self.CurrentView=="InviteFriends"then self:Open("Friends")else self:Close()end
+  self:Close()
  end);close.Name="CloseButton"
  game:GetService("UserInputService").InputBegan:Connect(function(input,processed)
-  if not processed and self.Panel.Visible and (input.KeyCode==Enum.KeyCode.Escape or input.KeyCode==Enum.KeyCode.ButtonB) then self:Close() end
+  if self.Panel.Visible and (input.KeyCode==Enum.KeyCode.Escape or input.KeyCode==Enum.KeyCode.ButtonB) then self:Close() end
  end)
  self.Notice=UI.Panel(self.Panel,UDim2.new(1,-24,0,64),UDim2.fromOffset(12,64));self.Notice.Name="Notice";self.Notice.Visible=false
  self.NoticeText=UI.Label(self.Notice,"",UDim2.new(1,-16,1,-12),UDim2.fromOffset(8,6),14)
@@ -64,12 +72,14 @@ function Screens:Resolve(success,requestId)
  local pending=self.Pending;self.Pending=nil
  if pending.Button.Parent then pending.Button.Text=pending.Text;pending.Button.Active=true end
  if success and self.CurrentView=="BuildReview"then self:Open("Building");return end
+ if success and self.CurrentView=='VehicleReview'then self:Open('Garage');return end
+ if success and(self.CurrentView=='Yard'or self.CurrentView=='Garage')then return end
  if success and self.CurrentView:sub(1,4)~="Life"and self.CurrentView~="Building"and self.CurrentView~="Crafting"and self.CurrentView~="Furnish"and self.CurrentView~="Layouts"and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"and self.CurrentView~="Activities"then self.Panel.Visible=false end
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
  self.CurrentView=view;self.CurrentDetail=detail
- self.Panel.CloseButton.Text=(view=="ChoosePlot"or view=="InviteFriends")and "Back"or "Close"
+ self.Panel.CloseButton.Text="Close"
  self.RowIndex=0
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
@@ -124,14 +134,9 @@ function Screens:Open(view,detail)
    self:Row("Biscuit",pet.Mode=="Stay" and "Watching the yard" or "Following you","Follow me",function()self.Request("Pet","Follow")end)
    self:Row("A nose for neighbors","Visitors near your front door may catch Biscuit's attention. A bark is a lead, not proof of guilt.","Stay at home",function()self.Request("Pet","Stay")end)
   end
- elseif view=="Garage" then
-  self.Title.Text="Your garage"
-  local vehicle=self.State.Vehicles or {}
-  if not vehicle.Compact then self:Row("Maple Compact","Your garage starts empty. Buy this car with earned cash. Movement controls steer; jump to get out.","Buy · $2400",function()self.Request("Vehicle","Buy")end)
-  else
-   self:Row("Maple Compact",vehicle.Plate or "Your car","Recall to garage",function()self.Request("Vehicle","Recall")end)
-   for _,color in ipairs({"Mint","Peach","Blue","Butter"})do self:Row(color,"Included paint finish","Apply paint",function()self.Request("Vehicle","Color",color)end)end
-  end
+ elseif view=="Yard"then require(script.Parent.YardScreen).Render(self)
+ elseif view=="Garage"then require(script.Parent.VehicleScreen).Render(self)
+ elseif view=="VehicleReview"then require(script.Parent.VehicleScreen).Render(self,detail)
  elseif view=="Newspaper" then
   self.Title.Text="Neighborhood Times"
   for _,story in ipairs(self.State.Feed or {})do count+=1;self:Row(story.Title,story.Text.." · "..os.date("!%H:%M UTC",story.Time))end
@@ -144,6 +149,7 @@ function Screens:Open(view,detail)
   for _,line in ipairs(detail.Lines)do self:Row(line[1],line[2])end
   self:Row("Your next steps","Goals shows your next task. Menu has your collection and case files.","Open progress",function()self:Open("Progress")end)
  elseif view=="Home" then
+  self:Row('Your garden','Play outside and decorate six garden spaces.','Decorate garden',function()self:Open('Yard')end)
   self.Title.Text="Your home"
   self:Row("Room to grow","Garden room, upstairs loft, garage and backyard workshop.","View expansion plans",function()self:Open("Building")end)
   local house=self.State.House or {}
@@ -164,7 +170,7 @@ function Screens:Open(view,detail)
   local delivery=game.Players.LocalPlayer:GetAttribute("DeliveryAddress")
   if delivery then self:Row("Parcel for "..delivery,"Carry the box to the matching mailbox. Cancelling returns it to the depot without a reward.","Cancel delivery",function()self.Request("CancelDelivery","")end)end
   local progress=self.State.Progress or {}
-  self:ProgressRow("Level "..(progress.Level or 1),'Earn XP by exploring and completing tasks.',(progress.XP or 0)%100,100)
+  self:ProgressRow((progress.Title or 'New Resident')..' • Level '..(progress.Level or 1),'Earn XP from town work and skill activities. Later levels take more practice.',progress.LevelXP or 0,progress.NextLevelXP or 100)
   for _,step in ipairs(progress.Checklist or {})do self:Row(step.Done and "Complete" or "Next to try",step.Text)end
   for _,badge in ipairs(progress.Achievements or {})do self:ProgressRow(badge.Title,badge.Earned and "Achievement earned!"or 'Keep going!',badge.Progress,badge.Target)end
  elseif view=="Collection" then

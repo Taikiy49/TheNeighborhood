@@ -55,12 +55,12 @@ function Intro:Start(state)
   title.Text=shots[index].Title;body.Text=shots[index].Text
   nextButton.Text=index==#shots and "Let's play"or "Next"
  end
- UI.Button(panel,"Skip tour",UDim2.new(.28,-12,0,48),UDim2.new(0,12,1,-58),function()self:Finish(true)end)
+ UI.Button(panel,"Close tour",UDim2.new(.28,-12,0,48),UDim2.new(0,12,1,-58),function()self:Finish(true)end)
  local motion
  motion=UI.Button(panel,still and "Animate"or "Still views",UDim2.new(.36,-12,0,48),UDim2.new(.28,6,1,-58),function()still=not still;motion.Text=still and "Animate"or "Still views"end)
  nextButton=UI.Button(panel,"Next",UDim2.new(.36,-18,0,48),UDim2.new(.64,6,1,-58),function()if index==#shots then self:Finish(true)else index+=1;render()end end)
  render();game:GetService("GuiService").SelectedObject=nextButton
- self.Keys=game:GetService("UserInputService").InputBegan:Connect(function(input,processed)if not processed and input.KeyCode==Enum.KeyCode.ButtonB then self:Finish(true)end end)
+ self.Keys=game:GetService("UserInputService").InputBegan:Connect(function(input)if input.KeyCode==Enum.KeyCode.ButtonB or input.KeyCode==Enum.KeyCode.Escape then self:Finish(true)end end)
  self.Death=human.Died:Connect(function()self:Finish(false)end)
  self.Respawn=player.CharacterRemoving:Connect(function()self:Finish(false)end)
  self.Connection=Run.RenderStepped:Connect(function(dt)
@@ -74,11 +74,9 @@ function Intro:Start(state)
 end
 function Intro:Consider(state)
  self.State=state
- if self.Considered or state.Settings and state.Settings.IntroSeen then return end
- local RunService=game:GetService("RunService")
- -- Automated gameplay suites opt into the cinematic explicitly; normal play still shows it.
- if RunService:IsStudio()and workspace:GetAttribute("SkipArrivalIntroTest")then return end
- if self:Start(state)then self.Considered=true end
+ -- The tour is available from Help; joining never takes control away from the player.
+ self.Considered=true
+ return
 end
 function Intro.Init(app)Intro.App=app;return Intro end
 return Intro

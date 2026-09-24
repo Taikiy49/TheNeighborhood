@@ -100,3 +100,11 @@ The introductory tour uses short sentences and waits for Next; Skip and reduced-
 
 ## Housing progression
 Four silhouettes grow vertically on one plot: cottage, townhouse, family residence, skyline residence. A stone apron replaces the raised lawn under foundations. Furnished floors, a readable lobby housing desk and private home marker explain ownership and progression. Mischief is an optional activity. See docs/RESIDENCES.md.
+
+## Current coastal town and dismissible menus
+
+The coastal district geometry in docs/COASTAL-WORLD.md supersedes the historical scale/valley layouts above. Personal side gardens reserve six front decorating spaces and a rear growing/workshop area. Use cream low fences, stone paths, oak furniture and muted planting; keep trees outside placement bounds. TownLifeExpansion adds small furnished venues, varied canopy heights, controlled traffic and a three-stop coastal tram. See docs/TOWN-LIFE.md.
+
+GoalHUD is now the sole visibility owner of NEXT UP; its 48px Hide action persists for the session until Goals restores it. Screens owns one fixed Close header in every view, Escape/controller-B dismissal and right docking on wide screens. Subview Back actions live in the scrolling content. Panels remain bounded and scrollable on small screens. ArrivalIntro is opt-in from Help, with Close tour and still views. This supersedes automatic introduction and competing App/GoalHUD visibility behavior. Theme → UI remains the only token path; no token migration or new raw UI palette.
+
+YardScreen and VehicleScreen use Screens.Row/UI.Progress and explicit empty, locked, price, owned and pending states. A server update refreshes an open menu but never reopens a closed one. Purchases and resale require server confirmation; vehicle transactions additionally use a price review. Verification: docs/town-ui-results.json and docs/TOWN-LIFE.md. Narrow panel fixtures are not physical-device certification.

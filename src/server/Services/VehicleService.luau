@@ -3,6 +3,7 @@ local Players=game:GetService("Players")
 local Run=game:GetService("RunService")
 local Physics=game:GetService("PhysicsService")
 local Service={Cars={},InputTimes={}}
+local Catalog=require(game.ReplicatedStorage.Neighborhood.Shared.VehicleCatalog)
 local colors={Mint=Color3.fromRGB(111,166,141),Peach=Color3.fromRGB(220,149,109),Blue=Color3.fromRGB(104,150,186),Butter=Color3.fromRGB(224,193,100)}
 function Service:Init(context)
  self.Context=context
@@ -40,7 +41,9 @@ function Service:Remove(player)
 end
 function Service:Spawn(player)
  local profile=self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[player.UserId]
- if not profile or not profile.Vehicles.Compact or not house then return false,"Buy a Maple Compact first."end
+ if not profile or not house then return false,'Your garage is not ready.'end
+ local vehicles=Catalog.Normalize(profile.Vehicles);local id=vehicles.Selected;local definition=Catalog.Items[id]
+ if not definition or not Catalog.Owned(vehicles,id)then return false,'Buy a vehicle at Coast Motors first.'end
  local previous=self.Cars[player.UserId];if previous and previous.Seat.Occupant then return false,"Get out before recalling the car."end
  local garage=house.Model:FindFirstChild("BaseGarage")
  if not garage then return false,"Your garage is being prepared."end
@@ -49,40 +52,69 @@ function Service:Spawn(player)
  if #workspace:GetPartBoundsInBox(cf,Vector3.new(7,4,10),query)>0 then return false,"Clear the driveway before recalling your car."end
  self:Remove(player)
  local model=Instance.new("Model");model.Name="MapleCompact_"..player.UserId;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;model:SetAttribute("OwnerUserId",player.UserId)
+ model:SetAttribute('VehicleId',id)
  local color=colors[profile.Vehicles.Color] or colors.Mint
  local function part(name,size,offset,tint,class)
   local p=Instance.new(class or "Part");p.Name=name;p.Size=size;p.CFrame=cf*CFrame.new(offset);p.Color=tint;p.Anchored=false;p.CanTouch=false;p.CollisionGroup="NeighborhoodCars";p.CustomPhysicalProperties=PhysicalProperties.new(0.7,0.1,0.1,1,1);p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=model;return p
  end
- local body=part("Body",Vector3.new(6,1.4,9),Vector3.zero,color);model.PrimaryPart=body
+ local bike=definition.Kind=='Bike'
+ local body=part('Body',bike and Vector3.new(1.4,.5,6)or Vector3.new(6,1.4,9),Vector3.zero,color);model.PrimaryPart=body
  local seat=part("DriverSeat",Vector3.new(2,0.7,2),Vector3.new(0,1.05,0),Color3.fromRGB(50,65,60),"VehicleSeat");seat.HeadsUpDisplay=false;seat.MaxSpeed=28;seat.CanCollide=false
+ if not bike then
  part("Hood",Vector3.new(5.8,1,2.7),Vector3.new(0,1,-3),color)
  part("Rear",Vector3.new(5.8,1,1.8),Vector3.new(0,1,3.3),color)
  for _,x in ipairs({-3.2,3.2})do for _,z in ipairs({-2.8,2.8})do local wheel=part("Wheel",Vector3.new(0.8,2.2,2.2),Vector3.new(x,-0.8,z),Color3.fromRGB(40,46,44));wheel.Shape=Enum.PartType.Cylinder;wheel.CanCollide=false end end
  for _,x in ipairs({-2,2})do part("Headlight",Vector3.new(1,0.5,0.15),Vector3.new(x,0.5,-4.55),Color3.fromRGB(255,231,172)).Material=Enum.Material.Neon end
+ else
+  for _,z in ipairs({-2.2,2.2})do local wheel=part('Wheel',Vector3.new(.5,2.4,2.4),Vector3.new(0,-.7,z),Color3.fromRGB(40,46,44));wheel.Shape=Enum.PartType.Cylinder;wheel.CanCollide=false end
+  part('Handlebars',Vector3.new(3,.2,.2),Vector3.new(0,2,-2),colors.Butter)
+  part('HandleStem',Vector3.new(.2,2,.2),Vector3.new(0,1,-2),colors.Butter)
+ end
+ if definition.Kind=='Wagon'then part('Roof',Vector3.new(5.8,.3,6),Vector3.new(0,3,1),color);for _,x in ipairs({-2.7,2.7})do part('Pillar',Vector3.new(.3,2,5),Vector3.new(x,2,1),color)end;part('Luggage',Vector3.new(3,1,3),Vector3.new(0,3.7,1),Color3.fromRGB(147,111,75))end
+ if definition.Kind=='GT'then part('RearWing',Vector3.new(7,.3,1),Vector3.new(0,2.3,3.5),colors.Butter);for _,x in ipairs({-3,3})do part('GoldTrim',Vector3.new(.15,.25,8),Vector3.new(x,.5,0),colors.Butter)end end
  local plate=part("Plate",Vector3.new(2.4,0.7,0.1),Vector3.new(0,-0.1,4.6),Color3.fromRGB(244,235,204));plate.CanCollide=false
  local sign=Instance.new("SurfaceGui");sign.Face=Enum.NormalId.Back;sign.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;sign.PixelsPerStud=50;sign.LightInfluence=.15;sign.Parent=plate
- local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(.9,.84);text.Position=UDim2.fromScale(.05,.08);text.BackgroundTransparency=1;text.Font=Enum.Font.GothamBold;text.TextSize=30;text.TextScaled=true;text.TextColor3=Color3.fromRGB(35,79,70);text.Text=profile.Vehicles.Plate;text.Parent=sign
+ local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(.9,.84);text.Position=UDim2.fromScale(.05,.08);text.BackgroundTransparency=1;text.Font=Enum.Font.GothamBold;text.TextSize=30;text.TextScaled=true;text.TextColor3=Color3.fromRGB(35,79,70);text.Text=profile.Vehicles.Plate or "COAST";text.Parent=sign
  for _,p in ipairs(model:GetChildren())do if p:IsA("BasePart") and p~=body then p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=body;weld.Part1=p;weld.Parent=p end end
  local attachment=Instance.new("Attachment");attachment.Parent=body
  local force=Instance.new("VectorForce");force.Attachment0=attachment;force.RelativeTo=Enum.ActuatorRelativeTo.World;force.ApplyAtCenterOfMass=true;force.Parent=body
  local turn=Instance.new("AlignOrientation");turn.Attachment0=attachment;turn.Mode=Enum.OrientationAlignmentMode.OneAttachment;turn.MaxTorque=100000;turn.Responsiveness=12;turn.Parent=body
  local _,yaw=cf:ToOrientation()
  model.Parent=workspace.Neighborhood.Runtime;body:SetNetworkOwner(nil)
- self.Cars[player.UserId]={Model=model,Body=body,Seat=seat,Force=force,Turn=turn,Yaw=yaw,Throttle=0,Steer=0,LastInput=0}
+ self.Cars[player.UserId]={Model=model,Body=body,Seat=seat,Force=force,Turn=turn,Yaw=yaw,Throttle=0,Steer=0,LastInput=0,Speed=definition.Speed}
  seat:SetAttribute("Action","DriveCar");seat:SetAttribute("VehicleOwner",player.UserId)
- local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ActionText="Drive";prompt.ObjectText="Maple Compact";prompt.MaxActivationDistance=10;prompt.RequiresLineOfSight=false;prompt:SetAttribute("Action","DriveCar");prompt.Parent=seat
- return true,"Your Maple Compact is parked in your garage."
+ local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ActionText="Drive";prompt.ObjectText=definition.Name;prompt.MaxActivationDistance=10;prompt.RequiresLineOfSight=false;prompt:SetAttribute("Action","DriveCar");prompt.Parent=seat
+ return true,definition.Name.." is parked in your garage."
 end
 function Service:Action(player,action,argument)
  local profile=self.Context.Data:Get(player);if not profile then return false,"Profile unavailable."end
- if action=="Buy"then
-  if profile.Vehicles.Compact then return false,"You already own a Maple Compact."end
-  if profile.Currency<2400 then return false,"A Maple Compact costs $2400."end
-  profile.Currency-=2400;profile.Vehicles.Compact=true;profile.Vehicles.Color="Mint";profile.Vehicles.Plate="MAP-"..game:GetService("HttpService"):GenerateGUID(false):sub(1,5):upper()
-  self.Context.Record(player,"Vehicle");local spawned,message=self:Spawn(player);return true,spawned and message or "Purchased. Clear the driveway, then recall it from Menu."
- elseif action=="Recall"then return self:Spawn(player)
+ local v=Catalog.Normalize(profile.Vehicles)
+ if action=='Buy'or action=='Sell'then
+  local id=argument or 'Compact';local def=Catalog.Items[id];if not def then return false,'Choose a catalog vehicle.'end
+  local shop=workspace.Neighborhood.CoastalWorld.CommercialStrip.CarShowroom.Floor
+  local root=player.Character and player.Character:FindFirstChild('HumanoidRootPart')
+  if not root or (root.Position-shop.Position).Magnitude>35 then return false,'Visit Coast Motors to buy or sell.'end
+  local current=self.Cars[player.UserId];if current and current.Seat.Occupant then return false,'Park and get out first.'end
+  if action=='Buy'then
+   if Catalog.Owned(v,id)then return false,'You already own this vehicle.'end
+   if Catalog.Level(profile.XP)<def.Level then return false,'Reach level '..def.Level..' first.'end
+   if profile.Currency<def.Price then return false,'You need $'..def.Price..'.'end
+   profile.Currency-=def.Price;v.Owned[id]=def.Price;v.Selected=id;v.Compact=v.Owned.Compact~=nil
+   v.Color=v.Color or 'Mint';v.Plate=v.Plate or 'MAP-'..game:GetService('HttpService'):GenerateGUID(false):sub(1,5):upper()
+   self.Context.Record(player,'Vehicle');return true,def.Name..' purchased. Recall it to your garage.'
+  else
+   if not Catalog.Owned(v,id)then return false,'You do not own this vehicle.'end
+   self:Remove(player);local refund=math.floor(v.Owned[id]*.5);v.Owned[id]=nil;v.Compact=v.Owned.Compact~=nil
+   if v.Selected==id then v.Selected=next(v.Owned)or ''end
+   profile.Currency=math.min(1000000000,profile.Currency+refund);return true,'Sold for $'..refund..'.'
+  end
+ elseif action=='Select'then
+  if not Catalog.Owned(v,argument)then return false,'Buy this vehicle first.'end
+  local car=self.Cars[player.UserId];if car and car.Seat.Occupant then return false,'Get out first.'end
+  v.Selected=argument;return self:Spawn(player)
+ elseif action=='Recall'then return self:Spawn(player)
  elseif action=="Color"then
-  if not profile.Vehicles.Compact or not colors[argument]then return false,"Choose an available car color."end
+  if not Catalog.Owned(v,v.Selected) or not colors[argument]then return false,"Choose an available car color."end
   profile.Vehicles.Color=argument;local car=self.Cars[player.UserId];if car then for _,part in ipairs(car.Model:GetChildren())do if part.Name=="Body" or part.Name=="Hood" or part.Name=="Rear"then part.Color=colors[argument]end end end
   return true,"Car repainted."
  end
@@ -95,7 +127,7 @@ function Service:Step(dt)
   local velocity=car.Body.AssemblyLinearVelocity;local flat=Vector3.new(velocity.X,0,velocity.Z)
   car.Yaw-=steer*dt*1.7*math.clamp(flat.Magnitude/12,0,1)*(throttle<0 and -1 or 1)
   car.Turn.CFrame=CFrame.Angles(0,car.Yaw,0)
-  local target=car.Body.CFrame.LookVector*(throttle*28);target=Vector3.new(target.X,0,target.Z)
+  local target=car.Body.CFrame.LookVector*(throttle*(car.Speed or 28));target=Vector3.new(target.X,0,target.Z)
   -- Four ground samples provide arcade suspension; decorative rigid wheels cannot snag curbs.
   local query=RaycastParams.new();query.FilterType=Enum.RaycastFilterType.Exclude;query.FilterDescendantsInstances={car.Model};query.CollisionGroup="NeighborhoodCars";query.RespectCanCollide=true
   local ground=0;local samples=0

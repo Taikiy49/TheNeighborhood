@@ -2,8 +2,8 @@ local D={}
 D.Tiers={
  {Name='Maple cottage',Floors=1,Price=0,Work=0,Description='Your first home, garage and garden.'},
  {Name='Parkside townhouse',Floors=2,Price=2500,Work=8,Description='A furnished upstairs family lounge and study, with a home lift.'},
- {Name='Family residence',Floors=3,Price=6500,Work=25,Description='An additional bedroom floor for your growing home.'},
- {Name='Skyline residence',Floors=5,Price=16000,Work=60,Description='Five storeys: family rooms, a social lounge and a rooftop-view garden.'},
+ {Name='Family residence',Floors=3,Price=9500,Work=35,Description='An additional bedroom floor for your growing home.'},
+ {Name='Skyline residence',Floors=5,Price=45000,Work=180,Description='Five storeys: family rooms, a social lounge and a rooftop-view garden.'},
 }
 D.Styles={'Sage','Terracotta','Blue'}
 function D.Default()return {Tier=1,Renovations=0,ProjectWork=0,Style='Sage'}end

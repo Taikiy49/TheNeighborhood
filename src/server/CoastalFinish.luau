@@ -57,10 +57,10 @@ function M.Build(W,context)
  local conveyor=localPart(factory,'Conveyor',{18,1,4},0,2,7,A.Ink,Enum.Material.Metal)
  local panel=localPart(factory,'PackingControl',{2,2,.5},-14,4,5,A.Cream);A.Prompt(panel,'CoastalPacking','Packing station','Start / finish packing')
  local work={};context.Interactions:Register('CoastalPacking',function(player)
-  local now=os.clock();if not work[player]then work[player]=now;return true,'Packing started. Come back to the control in 8 seconds.'end
-  if now-work[player]<8 then return false,'The machine is still packing.'end
+  local now=os.clock();if not work[player]then work[player]=now;return true,'Packing started. Come back to the control in 20 seconds.'end
+  if now-work[player]<20 then return false,'The machine is still packing.'end
   local profile=context.Data:Get(player);if not profile then return false,'Your profile is still loading.'end
-  work[player]=nil;profile.Currency=math.min(1000000000,profile.Currency+30);context.Record(player,'CityWork');context.Sync(player);return true,'Shipment packed! Earned $30.'
+  work[player]=nil;profile.Currency=math.min(1000000000,profile.Currency+20);context.Record(player,'CityWork');context.Sync(player);return true,'Shipment packed! Earned $20.'
  end)
  game.Players.PlayerRemoving:Connect(function(player)work[player]=nil end)
  for _,x in ipairs({-200,-140})do

@@ -19,7 +19,7 @@ function M.Build(W)
  -- Cottage back gardens, low fences and shade trees stay clear of drives and doorways.
  for _,h in ipairs(workspace.Neighborhood.Houses:GetChildren())do
   local cf=h.Foundation.CFrame
-  for _,z in ipairs({-8,15})do local at=cf*Vector3.new(28,0,z);W.Tree(root,at.X,at.Z,false)end
+  local shade=cf*Vector3.new(34,0,48);W.Tree(root,shade.X,shade.Z,false)
   local at=cf*Vector3.new(0,0,25);local patio=p('BackPatio',{24,.14,9},0,0,0,stone,Enum.Material.Pavement);patio.CFrame=cf*CFrame.new(0,-.35,25)
   for _,x in ipairs({-20,20})do for _,z in ipairs({14,24})do local post=p('GardenFencePost',{.5,3,.5},0,0,0,A.Cream);post.CFrame=cf*CFrame.new(x,1,z)end;local rail=p('GardenFence',{.25,1,10},0,0,0,A.Cream);rail.CFrame=cf*CFrame.new(x,1,19)end
  end

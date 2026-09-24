@@ -1,5 +1,11 @@
 # UI behavior
 
+## Current dismissal and ownership contract
+
+September 24 town-life revision: every Screens view retains a fixed Close header. Escape and controller B also close it, clear pending presentation and restore navigation. Back is an ordinary content action. GoalHUD alone controls task-card visibility; Hide remains effective until Goals is selected. The camera tour is optional from Help and restores camera, controls and prompts on Close tour. Async server snapshots refresh open views only.
+
+YardScreen uses six named spaces, reusable unlocks, quarter-turn placement and packing. YardService verifies ownership, distance, level, cash and catalog arguments. VehicleScreen shows owned/locked states, cash progress and a separate purchase/resale review. VehicleService verifies showroom proximity, level, exact price and ownership; resale is 50%, once. ProfileSchema owns migration. No optimistic financial or persistence success is inferred by the client. See docs/TOWN-LIFE.md and docs/town-ui-results.json.
+
 ## Goals and guidance contract
 
 Source: the September 24 request for a more straightforward UI for younger readers; server progress authority remains ProgressionService, Activities and CityJobs. NPC greetings now satisfy the existing Visit first step, once, so solo players can finish it.
@@ -42,7 +48,7 @@ Saved circles retain membership and plot assignments, not an offline simulation 
 
 Roblox GUI is the runtime; browser-only DOM/ARIA, CSS and URL routing rules do not apply. Friends uses the existing non-modal phone panel, Close/Escape/gamepad B, and shared TextButton selection behavior. Touch and keyboard checks must use Roblox, not a browser mockup.
 
-Friends subviews (plot selection and Roblox friend selection) use the fixed header Back button to return to Friends; the Friends root retains Close. Plot selection stays open after success so the chosen address is visible. The parent party roster updates from the server snapshot.
+Friends subviews (plot selection and Roblox friend selection) use content-row Back actions to return to Friends; every view retains the fixed header Close. Plot selection stays open after success so the chosen address is visible. The parent party roster updates from the server snapshot.
 
 ## Home building
 

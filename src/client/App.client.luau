@@ -34,12 +34,10 @@ local toastText=UI.Label(toast,"",UDim2.new(1,-24,1,-12),UDim2.fromOffset(12,6),
 local notificationVersion=0
 Screens.Panel:GetPropertyChangedSignal("Visible"):Connect(function()
  plaque.Visible=not Screens.Panel.Visible
- hint.Visible=not Screens.Panel.Visible and not gui:GetAttribute("InteractionActive")
  if Screens.Panel.Visible and toast.Visible then
   Screens:ShowNotice(toastText.Text,toastText.TextColor3==Theme.Text);toast.Visible=false
  end
 end)
-gui:GetAttributeChangedSignal("InteractionActive"):Connect(function()hint.Visible=not Screens.Panel.Visible and not gui:GetAttribute("InteractionActive")end)
 local function updateHint()HUD:Update()end
 local playtest=UI.Label(gui,"PLAYTEST · Progress resets when the server stops",UDim2.new(0.8,0,0,24),UDim2.new(0.1,0,1,-26),12,Theme.Surface)
 local recapShown=false
@@ -66,7 +64,7 @@ remotes.State.OnClientEvent:Connect(function(state)
         local row=rowName and Screens.List:FindFirstChild(rowName)
         if row then game:GetService("GuiService").SelectedObject=row:FindFirstChildWhichIsA("TextButton")end
     end
-    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Residence" or Screens.CurrentView=="Activities" or Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal" or Screens.CurrentView=="Adventures" or Screens.CurrentView=="Projects")then local scroll=Screens.List.CanvasPosition;local selection=game:GetService("GuiService").SelectedObject;local name=selection and selection.Name;Screens:Open(Screens.CurrentView,Screens.CurrentDetail);Screens.List.CanvasPosition=scroll;if name then game:GetService("GuiService").SelectedObject=Screens.List:FindFirstChild(name,true)end end
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Yard" or Screens.CurrentView=="Garage" or Screens.CurrentView=="Residence" or Screens.CurrentView=="Activities" or Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal" or Screens.CurrentView=="Adventures" or Screens.CurrentView=="Projects")then local scroll=Screens.List.CanvasPosition;local selection=game:GetService("GuiService").SelectedObject;local name=selection and selection.Name;Screens:Open(Screens.CurrentView,Screens.CurrentDetail);Screens.List.CanvasPosition=scroll;if name then game:GetService("GuiService").SelectedObject=Screens.List:FindFirstChild(name,true)end end
     if state.Settings then player:SetAttribute("MusicEnabled",state.Settings.Music~=false);player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"

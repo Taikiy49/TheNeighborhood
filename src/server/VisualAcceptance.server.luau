@@ -18,7 +18,9 @@ if workspace:GetAttribute("VisualExploration")==true then
  return
 end
 Data:Get(player).Currency=10000
-assert(Vehicles:Action(player,"Buy"));assert(Pets:Action(player,"Adopt"))
+Data:Get(player).XP=200
+player.Character:PivotTo(workspace.Neighborhood.CoastalWorld.CommercialStrip.CarShowroom.Floor.CFrame*CFrame.new(0,5,0))
+assert(Vehicles:Action(player,"Buy","Compact"));assert(Vehicles:Spawn(player));assert(Pets:Action(player,"Adopt"))
 local car=assert(Vehicles.Cars[player.UserId])
 repeat task.wait(0.2)until player.Character and player.Character:FindFirstChild("HumanoidRootPart") or os.clock()>deadline
 player.Character:PivotTo(car.Seat.CFrame*CFrame.new(0,2,0));car.Seat:Sit(player.Character.Humanoid)

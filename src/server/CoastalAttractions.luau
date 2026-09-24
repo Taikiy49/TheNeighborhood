@@ -1,5 +1,5 @@
 local A=require(script.Parent.CityArchitecture)
-local M={Rides={},Games={},Cooldown={}}
+local M={Rides={},Games={},Cooldown={},Rewards={}}
 function M.Build(W,context)
  local root=Instance.new('Folder');root.Name='Attractions';root.Parent=W.Root
  local function p(n,s,x,y,z,c,mat,solid,class)return W.Part(root,n,s,x,y,z,c,mat,solid,class)end
@@ -48,7 +48,9 @@ function M.Build(W,context)
   local d=games[target];if not d then return false,'Choose a carnival target.'end
   local now=os.clock();if now-(M.Cooldown[player]or -10)<2 then return false,'Let the target reset.'end;M.Cooldown[player]=now
   if(now+d.Phase)%3.5>d.Window then return false,'Too early or too late. Watch for green!'end
+  if now-(M.Rewards[player]or -100)<20 then return true,'Nice timing! Practice freely; cash rewards reset after 20 seconds.'end
   local profile=context.Data:Get(player);if not profile then return false,'Your profile is still loading.'end
+  M.Rewards[player]=now
   profile.Currency=math.min(1000000000,profile.Currency+8);context.Record(player,'Trial');context.Sync(player);return true,'Nice timing! Earned $8.'
  end)
  -- Airport aircraft: built silhouettes with cabins, seats, and a free sightseeing flight.
@@ -92,7 +94,7 @@ function M.Build(W,context)
    else local a=t*math.pi*2;local pos=home.Position+Vector3.new(math.sin(a)*340,math.sin(t*math.pi)*130,(math.cos(a)-1)*220);airplane:PivotTo(CFrame.lookAt(pos,pos+Vector3.new(math.cos(a)*340,0,-math.sin(a)*220)))end
   end
  end)
- game.Players.PlayerRemoving:Connect(function(p)M.Cooldown[p]=nil end)
+ game.Players.PlayerRemoving:Connect(function(p)M.Cooldown[p]=nil;M.Rewards[p]=nil end)
  M.Rides=rides;M.Games=games;M.Ferris=ferris
 end
 return M

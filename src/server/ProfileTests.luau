@@ -1,3 +1,4 @@
+local StartingCash=require(game.ReplicatedStorage.Neighborhood.Shared.Config).StartingCurrency
 local Schema=require(script.Parent.ProfileSchema)
 local Repository=require(script.Parent.ProfileRepository)
 return function(options)
@@ -15,7 +16,7 @@ return function(options)
  local a=Repository.new(store,"server-a",function()return now end,function()end)
  local b=Repository.new(store,"server-b",function()return now end,function()end)
  local passed={}
- local profile=assert(a:Load(42));assert(profile.Currency==1200)
+ local profile=assert(a:Load(42));assert(profile.Currency==StartingCash)
  assert(not b:Load(42));table.insert(passed,"Concurrent profile session rejected")
  profile.Currency=913;failures=2;assert(a:Save(42,profile,false));assert(records["player:42"].Data.Currency==913)
  table.insert(passed,"Transient save failures retry without resetting data")
@@ -26,10 +27,12 @@ return function(options)
  profile.Items={{Id="original-item",DefinitionId="GoldenToilet",OwnerUserId=42,OriginalOwnerUserId=42,State="Displayed",Slot=2,Provenance={{Kind="Acquired",Time=1000}}}}
  profile.Building={Unlocked={GardenRoom=true,Loft=true,Workshop=true},Owned={Bench=1},Placed={["Loft:1"]={Zone="Loft",Cell=1,Kind="Bench",Rotation=2}},Layouts={}}
  profile.Building.Layouts["1"]=Schema.Copy(profile.Building.Placed)
+ profile.Yard={Owned={Flowers=true,Trampoline=true},Slots={["2"]={Id="Trampoline",Rotation=3}}};profile.Vehicles={Owned={Bicycle=350,Compact=2400},Selected="Bicycle",Compact=true}
  profile.House.Locked=true;profile.TutorialState="Done";profile.XP=50
  profile.Adventures={Completed={Teaspoon=true},Runs={Teaspoon=4},BestMs={Teaspoon=43000},Rewards={TrailCompass=true},Contributions=12,Active={Id="Moon",Next=2}}
  assert(a:Save(42,profile,true));local rejoined=assert(b:Load(42))
  assert(rejoined.Building.Unlocked.Workshop and rejoined.Building.Placed["Loft:1"].Rotation==2 and rejoined.Building.Layouts["1"]["Loft:1"].Kind=="Bench","Expansion data lost")
+ assert(rejoined.Yard.Slots["2"].Rotation==3 and rejoined.Vehicles.Owned.Bicycle==350 and rejoined.Vehicles.Selected=="Bicycle","Garden or garage lost on reload")
  assert(rejoined.Currency==800 and rejoined.Items[1].Id=="original-item" and rejoined.Items[1].Slot==2 and rejoined.House.Locked and rejoined.XP==50)
  assert(rejoined.Adventures.Active.Next==2 and rejoined.Adventures.Completed.Teaspoon and rejoined.Adventures.Rewards.TrailCompass and rejoined.Adventures.Contributions==12 and rejoined.Adventures.BestMs.Teaspoon==43000,"Adventure state lost on repository reload")
  table.insert(passed,"Release and rejoin retain money, original item identity, placement, lock, progression and adventure album")
@@ -44,16 +47,16 @@ return function(options)
  local wrongOwner=Schema.Copy(profile);wrongOwner.Items[1].OwnerUserId=99;assert(not a:Save(42,wrongOwner,false))
  table.insert(passed,"Duplicate item IDs and foreign ownership rejected")
  assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,2,200))
- local recipient=assert(a:Load(55));assert(recipient.Currency==4300,"Credit queue duplicated or lost payment")
+ local recipient=assert(a:Load(55));assert(recipient.Currency==StartingCash+3100,"Credit queue duplicated or lost payment")
  assert(a:EnqueueCredit(55,42,1,2900));assert(a:EnqueueCredit(55,42,2,200));assert(a:EnqueueCredit(55,42,3,100))
- local saved,_,durable=a:Save(55,recipient,false);assert(saved and durable.Currency==4400,"Active profile did not consume new credit once")
- afterCommit=true;assert(a:EnqueueCredit(55,42,4,75));local savedAgain,_,after=a:Save(55,durable,true);assert(savedAgain and after.Currency==4475,"Lost queue response duplicated payment")
+ local saved,_,durable=a:Save(55,recipient,false);assert(saved and durable.Currency==StartingCash+3200,"Active profile did not consume new credit once")
+ afterCommit=true;assert(a:EnqueueCredit(55,42,4,75));local savedAgain,_,after=a:Save(55,durable,true);assert(savedAgain and after.Currency==StartingCash+3275,"Lost queue response duplicated payment")
  table.insert(passed,"Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles")
  local uncertain=assert(a:Load(55));assert(a:EnqueueCredit(55,42,5,125))
  lostResponses=3;assert(not a:Save(55,uncertain,false),"Expected exhausted lost responses")
  uncertain.Currency-=25 -- Legitimate local spending after the unacknowledged commit.
  local retried,_,reconciled=a:Save(55,uncertain,true)
- assert(retried and reconciled.Currency==4575,"Unacknowledged committed credit or later spending was overwritten")
+ assert(retried and reconciled.Currency==StartingCash+3375,"Unacknowledged committed credit or later spending was overwritten")
  table.insert(passed,"Committed credit survives all retry responses being lost and a later stale-memory save")
  local random=Random.new(seed);local simulation=assert(a:Load(55));local expected=simulation.Currency
  for sequence=6,5+cycles do

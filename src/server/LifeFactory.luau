@@ -87,6 +87,11 @@ function F.Project(parent,id,amount)
   for i=1,3 do F.Flower(m,cf*CFrame.new(-3+i*1.5,2.3,-4),D.Flowers.Daisy.Color,false)end
  end
  Space.Stretch(m,cf)
+ -- Renovation rebuilds also run after players join; retain the final district location.
+ if workspace.Neighborhood:FindFirstChild('CoastalWorld')then
+  local destinations={Cafe=Vector3.new(-390,0,10),Clubhouse=Vector3.new(-480,0,10),Greenhouse=Vector3.new(-60,0,-470)}
+  if destinations[id]then require(script.Parent.CoastalWorld).Move(m,destinations[id],0)end
+ end
  return station
 end
 function F.World(parent,season)

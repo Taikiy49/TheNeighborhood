@@ -4,6 +4,18 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Gardens and town life — published as v122**, confirmed by Studio at **19:51:50 UTC**. Twelve personal yards with saved decorating, five earnable vehicles and half-price resale, longer-term resident levels/titles, four furnished snack venues, taller trees, additional pedestrians, road traffic and a three-stop coastal tram. Menus have reliable Close/Escape dismissal, the task card has Hide, and the camera tour is optional.
+
+- [Feature guide and economy](docs/TOWN-LIFE.md)
+- [Test evidence and limits](docs/TOWN-LIFE-QA.md)
+
+![Personal garden with reusable decorations](assets/screenshots/town-personal-yard.png)
+![Dismissible garden menu](assets/screenshots/town-garden-menu.png)
+
+30 gameplay/catalog checks, 22 UI cases, 1,000 injected storage cycles, five driving samples and traffic/tram/road regression checks passed. Single-client Studio coverage; full multiplayer load and live persistence rejoin are not claimed. Join a fresh server for the update.
+
+## Coastal foundation
+
 **Coastal districts — published as v117**, confirmed by Studio at **19:18:04 UTC**. Three residential streets with twelve homes and garages now connect to a separate downtown boulevard, commercial strip, school, industrial yard, airport, farms, mountain trails and a real ocean beach with a pier carnival. The pond and ring of towers are superseded.
 
 - [Complete district guide, screenshot gallery and limitations](docs/COASTAL-WORLD.md)
