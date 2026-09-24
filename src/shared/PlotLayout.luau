@@ -4,7 +4,7 @@ function Layout.Position(slot)
  assert(Layout.Valid(slot),'Invalid plot')
  local west=slot<=4 or slot==9 or slot==10
  local row=slot<=8 and ((slot-1)%4)or (slot<=10 and slot-5 or slot-7)
- return Vector2.new(west and -112 or 112,-150+row*60)
+ return Vector2.new(west and -109 or 109,-150+row*60)
 end
 function Layout.Nearest(used,anchor)
  anchor=Layout.Valid(anchor)and anchor or 1;local best,distance=nil,math.huge

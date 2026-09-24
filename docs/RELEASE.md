@@ -1,5 +1,9 @@
 # Current release
 
+Closer house rows, roadside story signs and taller skyline published as **v104**, confirmed by Studio PublishSuccessful at **18:07:48 UTC on September 24, 2026**. [Details, screenshot and checks](CITY-DENSITY.md).
+
+## Previous release
+
 Town street details published as **v102**, confirmed by Studio PublishSuccessful at **18:01:03 UTC on September 24, 2026**. [Features, dusk screenshot and checks](TOWN-STREETS.md).
 
 ## Previous release

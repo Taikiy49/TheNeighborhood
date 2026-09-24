@@ -166,6 +166,7 @@ function M.Build(w)
    if pos then for _,box in ipairs(footprints)do if math.abs(pos.X-box[1])<box[3]/2 and math.abs(pos.Z-box[2])<box[4]/2 then v:Destroy();break end end end
   end
  end
+ require(script.Parent.CityDensity).Skyline(root)
  require(script.Parent.TownStreets).Build(root)
  w:SetAttribute('CityBorough','Maple Heights');return root
 end

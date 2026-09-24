@@ -2,10 +2,10 @@
 return {
  Landmarks={
   North={Name="The welcome post",Hint="At the north entrance, beside the community board.",Position=Vector3.new(-18,2,-113)},
-  West={Name="The west-side letterbox",Hint="On the park side of the western sidewalk, halfway up Maple Street.",Position=Vector3.new(-45,2,-40)},
-  East={Name="The east-side letterbox",Hint="Across the green, on the eastern sidewalk.",Position=Vector3.new(45,2,-40)},
-  Market={Name="The market notice",Hint="Outside the shops, at the western end of the green.",Position=Vector3.new(-45,2,80)},
-  Pawn={Name="The pawn-shop notice",Hint="Outside the shops, at the eastern end of the green.",Position=Vector3.new(45,2,80)},
+  West={Name="The west-side letterbox",Hint="On the park side of the western sidewalk, halfway up Maple Street.",Position=Vector3.new(-32,2,-40)},
+  East={Name="The east-side letterbox",Hint="Across the green, on the eastern sidewalk.",Position=Vector3.new(32,2,-40)},
+  Market={Name="The market notice",Hint="Outside the shops, at the western end of the green.",Position=Vector3.new(-32,2,80)},
+  Pawn={Name="The pawn-shop notice",Hint="Outside the shops, at the eastern end of the green.",Position=Vector3.new(32,2,80)},
   South={Name="The last bench",Hint="At the shop end of the park, beside the southern path.",Position=Vector3.new(18,2,110)},
  },
  Order={"Teaspoon","Bandit","Radio","Parade","Library","Moon"},
