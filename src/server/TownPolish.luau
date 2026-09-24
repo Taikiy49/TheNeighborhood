@@ -16,6 +16,16 @@ function M.Build(w)
   w:SetAttribute("CozyLandscapeFixed",true)
  end
  local function p(n,s,x,y,z,c,solid,class)return F.Part(root,n,Vector3.new(table.unpack(s)),CFrame.new(x,y,z),c,solid,class)end
+ local paving=Color3.fromRGB(189,183,164)
+ for _,v in ipairs(w.Map:GetChildren())do if v:IsA("BasePart")then
+  if v.Name=="ParkWalk"then v.Size=Vector3.new(8,v.Size.Y,v.Size.Z);v.Color=paving
+  elseif v.Name=="ParkCrosswalk"then v.Size=Vector3.new(v.Size.X,v.Size.Y,7);v.Color=paving
+  elseif v.Name=="Sidewalk"then v.Size=Vector3.new(6,v.Size.Y,v.Size.Z);v.Color=paving end
+ end end
+ for _,v in ipairs(w.ArtDirection.GardenDistrict:GetDescendants())do if v:IsA("BasePart")and v.Name=="Walkway"then v.Color=paving end end
+ for _,spec in ipairs({{20,-42},{-20,-42},{-20,42}})do
+  local x,z=spec[1],spec[2];p("GreenActivityPath",{math.abs(x),.12,4},x/2,.19,z,paving)
+ end
  -- External cottage joinery must share the shell's vertical transformation.
  if not w:GetAttribute("CozyJoineryFixed")then
   for _,v in ipairs(w.ArtDirection.GardenDistrict.Cottages:GetDescendants())do

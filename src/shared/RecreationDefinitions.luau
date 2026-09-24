@@ -1,5 +1,5 @@
 -- 100 named activities, built from ten reusable mechanics. Coordinates are world studs.
-local D={Version="recreation-cozy-3",Zones={},Activities={},Kinds={"Toss","Bowl","Ride","Bounce","Balance","Sprint","Lantern","Water","Dig","Domino"}}
+local D={Version="recreation-cozy-4",Zones={},Activities={},Kinds={"Toss","Bowl","Ride","Bounce","Balance","Sprint","Lantern","Water","Dig","Domino"}}
 local zones={
  {"Clover Commons",-470,-550,"Clover"},{"Sunrise Gardens",0,-550,"Sunrise"},{"Foxglove Fair",470,-550,"Foxglove"},
  {"Willow Playfield",-660,-230,"Willow"},{"Meadow Works",660,-230,"Meadow"},
@@ -18,4 +18,11 @@ for z,v in ipairs(zones)do
   D.Activities[d.Id]=d
  end
 end
+-- Signature activities belong in the shared green, visible from the residential street.
+D.Activities.Activity001.Position=Vector3.new(20,0,-42)
+D.Activities.Activity001.Name="Maple Green toy shelf"
+D.Activities.Activity002.Position=Vector3.new(-20,0,-42)
+D.Activities.Activity002.Name="Maple Green skittles"
+D.Activities.Activity008.Position=Vector3.new(-20,0,42)
+D.Activities.Activity008.Name="Community flower bed"
 return D
