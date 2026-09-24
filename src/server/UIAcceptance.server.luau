@@ -24,7 +24,7 @@ local function run()
  local received=0
  repeat task.wait(.2);received=0;for _ in pairs(reports)do received+=1 end until received==2 or os.clock()>deadline
  assert(received==2,"UI client reports timed out")
- local count=0;for _,report in pairs(reports)do assert(report.Passed,report.Error);count+=#report.Checks end
+ assert(not workspace:FindFirstChild("MyHomeMarkerAnchor"),"Private marker leaked to server");local seenHomes={};for _,r in pairs(reports)do assert(r.HomeMarker and r.HomeMarker.Passed,r.Error or "Missing marker report");assert(not seenHomes[r.HomeMarker.HouseId],"Clients point to same home");seenHomes[r.HomeMarker.HouseId]=true end;local count=0;for _,report in pairs(reports)do assert(report.Passed,report.Error);count+=#report.Checks end
  workspace:SetAttribute("UIAcceptance",nil);probe:Destroy()
  return {Passed=true,ScreenChecks=count,Clients=reports,Guidance=guidance,Scope="Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input"}
 end

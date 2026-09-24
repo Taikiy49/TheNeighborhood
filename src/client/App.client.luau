@@ -24,6 +24,7 @@ address.TextScaled=true
 UI.New("UITextSizeConstraint",{MinTextSize=14,MaxTextSize=24},address)
 local cash=UI.Label(plaque,"",UDim2.new(1,-24,0,20),UDim2.fromOffset(12,65),Theme.Small,Theme.Surface)
 local HUD=require(script.Parent.GoalHUD).Init(gui,Screens)
+require(script.Parent.HomeMarker).Init(gui,Screens)
 local hint=HUD.Card
 local toast=UI.Panel(gui,UDim2.new(0.85,0,0,64),UDim2.new(0.5,0,0,120)); toast.AnchorPoint=Vector2.new(0.5,0); toast.Visible=false
 toast.ZIndex=30

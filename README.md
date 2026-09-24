@@ -4,7 +4,9 @@ A Roblox social sandbox about settling into Maple Street, collecting unusual pos
 
 ## Current build — September 24, 2026
 
-**Goals UI update — published as v89**, confirmed at 12:28:51 UTC on September 24, 2026. Simpler Goals/Bag/Menu navigation, one next task, progress bars, job waypoints and player-paced introduction. [Screenshots and test evidence](docs/GOALS-UI.md).
+**Private home marker — published as v92**, confirmed September 24, 2026 at 12:37:25 UTC. Each player sees their own long-distance YOUR HOME marker. [Screenshot and verification](docs/HOME-MARKER.md).
+
+**Previous Goals UI update — published as v89**, confirmed at 12:28:51 UTC on September 24, 2026. Simpler Goals/Bag/Menu navigation, one next task, progress bars, job waypoints and player-paced introduction. [Screenshots and test evidence](docs/GOALS-UI.md).
 
 ![New Goals interface](assets/screenshots/ui-goals.png)
 

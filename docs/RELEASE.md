@@ -1,5 +1,9 @@
 # Current release
 
+Private home marker published as **v92**, confirmed by Studio PublishSuccessful at **12:37:25 UTC on September 24, 2026**, followed by Add publish notes to v92. [Details and tests](HOME-MARKER.md).
+
+## Previous release
+
 Goals UI update published as **v89**, confirmed by Studio PublishSuccessful at **12:28:51 UTC on September 24, 2026**, followed by Add publish notes to v89. Place 111572448337932. [Features, screenshots, evidence and limits](GOALS-UI.md).
 
 ## Previous release

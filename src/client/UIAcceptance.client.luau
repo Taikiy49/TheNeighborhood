@@ -66,7 +66,7 @@ local function begin()
   for _,check in ipairs(require(script.Parent.GoalUITests)(screens))do table.insert(checks,{GoalUI=check})end
   local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
   assert(#errors==0,table.concat(errors,";"))
-  return {Passed=true,Checks=checks,Errors=errors}
+  return {Passed=true,Checks=checks,Errors=errors,HomeMarker=require(script.Parent.HomeMarkerTests)(screens)}
  end)
  probe:FireServer(ok and result or {Passed=false,Error=tostring(result)})
 end
