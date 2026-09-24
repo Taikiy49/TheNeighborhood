@@ -20,7 +20,7 @@ Baseline: commit `3e06361`, published v77. Studio connects to place `11157244833
 | Robbery protections, vehicles, swimming, jobs and cooldowns | Tested | Two-client robbery/evidence/recovery suite, driving, swimming and four job suites passed |
 | Actual multiplayer clients | Tested | Eight simultaneous clients passed renewal suite; twelve simultaneous clients remain untested |
 | District pedestrian and overhead visual QA | Tested | Eleven actual Studio screenshots reviewed; 38 new entrance/sidewalk regions clear in final obstruction scan; final interior support/ceiling-clearance fixes |
-| Recoverable build, README, documentation and GitHub | Prepared; push pending | Rojo build, scene export, screenshots, README, checklist and machine-readable QA saved |
+| Recoverable build, README, documentation and GitHub | Delivered | Rojo build, scene export, 11 screenshots, README and QA pushed to GitHub main in de6a44a |
 | Publish and verify successful version | Verified | Studio PublishSuccessful at 2026-09-24 12:02:58 UTC; publish notes linked to v85 |
 
 Statuses distinguish implementation from observed testing. No completion is inferred from source code alone.
