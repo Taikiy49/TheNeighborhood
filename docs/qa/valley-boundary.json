@@ -1,0 +1,13 @@
+{
+  "FootingChecks": 8,
+  "SuccessfulNavigationRoutes": 4,
+  "BoundaryRays": 720,
+  "Passed": true,
+  "PersistentSkyline": true,
+  "Scope": "Local two-client Studio test; radial collision and navigation checks, not exhaustive climbing or device performance certification",
+  "Footprint": {
+    "1": 3600,
+    "2": 3400
+  },
+  "SceneryParts": 292
+}

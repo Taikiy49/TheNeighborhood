@@ -39,3 +39,9 @@ The preview also exposed and fixed daytime indoor-light shutdown. LightingPolicy
 The final authored scene contains 4,736 instances, compared with 5,296 before this pass. This reduction does not substitute for device-specific performance testing.
 
 Ten Studio suites passed, including 100 counted physical walking legs and 23 separate navigation routes. The final district rerun used two clients and verified daytime indoor lighting, dynamically added fixtures and power-outage restoration. Save/reload and commerce checks use injected test storage/ownership, not real online purchases or rejoin. All 89 Studio source files match the repository; see [source parity](qa/district-source-parity.json) and [surface geometry](qa/district-surface-geometry.json).
+
+## Mountain valley follow-up
+
+The outer landscape now spans 3,600 × 3,400 studs, while plot coordinates and the existing district remain unchanged. Four solid grass extensions cover the old drop-off. Thirty-two overlapping granite ridges, thirty-two foothills, thirty-two distant peaks and sixty-four trees enclose the neighborhood. The skyline uses a Persistent streaming model; the exporter preserves that property. This is a finite valley with a natural boundary, not an infinite procedural world.
+
+The reproducible Edit-mode authoring tool is tools/build-valley.luau. The exported scene contains 5,029 instances, including 292 new parts. A two-client test passed 720 radial collision checks at two heights, eight footing checks beyond the old edge and four new navigation routes. The existing 23 home/shop/clue routes also passed. A normal play client received all 292 backdrop parts, and its screenshot is in the README. Tests do not certify every possible climbing exploit or low-end device performance.

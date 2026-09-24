@@ -27,6 +27,7 @@ local function export(instance)
  if instance:IsA("UICorner")then properties({"CornerRadius"})end
  local attrs={}
  for k,v in pairs(instance:GetAttributes())do local kind=typeof(v);attrs[k]={[kind=="number" and "Float64" or kind=="boolean" and "Bool" or "String"]=v}end
+ if instance:IsA("Model")then properties({"ModelStreamingMode"})end
  if instance:IsA("Model")and instance.PrimaryPart then attrs.ExportPrimaryPart={String=instance.PrimaryPart.Name}end
  if next(attrs)then node.Properties.Attributes={Attributes=attrs}end
 

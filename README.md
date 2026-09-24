@@ -4,6 +4,14 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Mountain valley boundary
+
+A **3,600 × 3,400-stud** surrounding landscape now extends beyond the 1,440 × 1,200 neighborhood. Continuous granite ridges, wooded foothills and distant peaks hide the abrupt map edge. The mountain backdrop stays loaded as players move between streaming cells.
+
+![Actual play-session view of the valley beyond Willow Lake](assets/screenshots/valley-lake.png)
+
+[Boundary checks](docs/qa/valley-boundary.json) · [Navigation regression](docs/qa/valley-navigation.json)
+
 ## Expanded garden district
 
 The map is now **1,440 × 1,200 studs**. All eight homes have **90 × 78-stud foundations**, **84 × 72-stud floors** and **30% taller ceilings**. That is another **2.25× increase in floor area** over the previous spacious build, with avatar-scale furniture and saved layout IDs preserved.

@@ -1,0 +1,16 @@
+{
+  "SidingTextures": 0,
+  "SuccessfulNavigationRoutes": 23,
+  "TexturedMeshes": 0,
+  "DecorativeParts": 1461,
+  "Verified": {
+    "1": "Scenery is anchored; visual-only details do not block queries; paths, seats and trunks use physical collision",
+    "2": "Eight delivery routes and eight front-door routes remain navigable",
+    "3": "All five gnome clues and both stores remain reachable",
+    "4": "Six item display slots retained in every house",
+    "5": "Scene stays within the explicit decoration budget",
+    "6": "District scenery has no imported mesh or decal dependencies"
+  },
+  "Passed": true,
+  "Errors": []
+}
