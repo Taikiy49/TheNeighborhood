@@ -1,0 +1,48 @@
+{
+  "furnishSpacious": {
+    "FoundationStuds": {
+      "1": 90,
+      "2": 78
+    },
+    "FloorAreaMultiplier": 9,
+    "PhysicalWalkingLegs": 24,
+    "OnlineSaveRejoinTested": false,
+    "MapStuds": {
+      "1": 1440,
+      "2": 1200
+    },
+    "Verified": {
+      "1": "All eight plot centers match saved-circle layout",
+      "2": "Beds and NPCs retain normal size",
+      "3": "Two players physically traverse entrance, hall, kitchen and bedroom",
+      "4": "Expansion placement and snapshot migration retain saved IDs",
+      "5": "Greater distance inside the cottage cannot prematurely complete a theft escape"
+    },
+    "Passed": true,
+    "Homes": 8
+  },
+  "furnishTest": {
+    "DisplaySlotRoutes": 48,
+    "Houses": 8,
+    "Scope": "Local two-client fixture; no production profile mutation",
+    "UsableSeats": 48,
+    "Passed": true,
+    "ActualPlayersSeated": 2
+  },
+  "furnishArt": {
+    "SidingTextures": 0,
+    "SuccessfulNavigationRoutes": 23,
+    "TexturedMeshes": 0,
+    "DecorativeParts": 1461,
+    "Verified": {
+      "1": "Scenery is anchored; visual-only details do not block queries; paths, seats and trunks use physical collision",
+      "2": "Eight delivery routes and eight front-door routes remain navigable",
+      "3": "All five gnome clues and both stores remain reachable",
+      "4": "Six item display slots retained in every house",
+      "5": "Scene stays within the explicit decoration budget",
+      "6": "District scenery has no imported mesh or decal dependencies"
+    },
+    "Passed": true,
+    "Errors": []
+  }
+}

@@ -4,6 +4,20 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Furnished cottages and coordinated planting
+
+The expanded homes now have dining groups, kitchen islands, reading seats, bookcases and bedroom storage. Matching stone-edged flower beds extend through the neighborhood. Higgsfield supplied the visual reference; the images below are actual Studio play-session captures. **This update is not yet published to the live Roblox game.**
+
+| Dining area | Kitchen island |
+|---|---|
+| ![Furnished dining area](assets/screenshots/furnished-dining.png) | ![Kitchen island](assets/screenshots/furnished-kitchen.png) |
+
+| Lounge | Cottage planting |
+|---|---|
+| ![Lounge seating](assets/screenshots/furnished-living.png) | ![Cottage planting](assets/screenshots/furnished-street.png) |
+
+[Design, scope and verification](docs/FURNISHED-COTTAGES.md)
+
 ## Mountain valley boundary
 
 A **3,600 × 3,400-stud** surrounding landscape now extends beyond the 1,440 × 1,200 neighborhood. Continuous granite ridges, wooded foothills and distant peaks hide the abrupt map edge. The mountain backdrop stays loaded as players move between streaming cells.

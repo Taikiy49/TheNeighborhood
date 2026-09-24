@@ -76,3 +76,5 @@ The landscape uses a consistent pale-stone path, dark teal roof/hardware and mut
 Authoring owners: expand-map-v3 and raise-cottage-roofs are one-time migrations; clean-interiors and beautify-district rebuild their own design systems. LightingPolicy and Environment own indoor/day-night/outage behavior, including fixtures created after startup. Indoor fixtures remain on during daytime; outdoor lights follow the evening cycle.
 
 The neighborhood is enclosed by a persistent valley backdrop: 3,600 × 3,400 total footprint, layered granite ridges and grass foothills. Keep this separate from plot coordinate scaling. Rebuild with tools/build-valley.luau; preserve ModelStreamingMode when exporting.
+
+Furnished cottage pass: use grouped dining/living furniture, restrained sage/oak/linen materials, wall-side storage and repeated stone-edged planting. Higgsfield concept provenance and scope are in docs/FURNISHED-COTTAGES.md. Authoring tool: tools/furnish-cottages.luau. All saved display slots must stay reachable; FurnishingAcceptance covers 48 routes and usable seats.
