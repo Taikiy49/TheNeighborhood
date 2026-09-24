@@ -4,6 +4,13 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Finished venues — published as v142**, confirmed at **22:01:35 UTC**. Fourteen sourced venue buildings, imported furniture in eighteen more public interiors, usable café tea, a paid barista timing job, stocked shops and a furnished farm market. Fourteen service/project checks, eight doorway walks, reward/cup checks and the build passed. [Sources, screenshots, tests and scope](docs/VENUE-RENEWAL.md).
+
+![Finished café interior](assets/screenshots/venue-cafe-interior.png)
+![Orchard farm market](assets/screenshots/venue-orchard-market.png)
+
+## Carnival midway
+
 **Carnival midway — published as v136**, confirmed at **21:37:49 UTC**. A new imported eight-car spinner with 32 seats, three detailed game booths, two cotton-candy stalls with free consumable treats, eight balloon clusters, festival lighting and a connected north pier extension. [Sources, screenshots and checks](docs/CARNIVAL-MIDWAY.md).
 
 ![Imported carnival ride, booths and candy cart](assets/screenshots/carnival-spinner-candy.png)

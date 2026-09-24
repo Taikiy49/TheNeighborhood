@@ -1,3 +1,6 @@
+# Latest release
+
+Venue renewal published as **v142**, confirmed by Studio `PublishSuccessful` at **2026-09-24T22:01:35.667Z**, place **111572448337932**. Test attributes cleared; VisualAcceptance restored; only the Neighborhood root remains in ServerScriptService. [Imported sources, checks and limits](VENUE-RENEWAL.md). Includes native source geometry and a reproducible Rojo build.
 # Current release
 
 Carnival midway published as **v136**, confirmed by Studio `PublishSuccessful` at **21:37:49.160 UTC on September 24, 2026**, place **111572448337932**. Test flags cleared and guarded VisualAcceptance restored. [Imported sources and verification](CARNIVAL-MIDWAY.md). Native CSG model library and reproducible Rojo build included.

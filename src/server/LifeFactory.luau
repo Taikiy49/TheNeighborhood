@@ -70,6 +70,7 @@ function F.Home(house,life,now)
  return m
 end
 function F.Project(parent,id,amount)
+ if game.ServerStorage:FindFirstChild("VenueArt")then return require(script.Parent.VenueRenewal).Project(parent,id,amount)end
  local d=D.Projects[id];local old=parent:FindFirstChild(id);if old then old:Destroy()end
  local m=Instance.new("Model");m.Name=id;m.Parent=parent;local position=id=="Greenhouse"and Vector3.new(95,1,245)or Space.Point(d.Position);local cf=CFrame.new(position)*CFrame.Angles(0,id=="Greenhouse"and 0 or math.pi,0);local width=id=="Greenhouse"and 12 or 18
  local function p(n,s,x,y,z,c,mat)return F.Part(m,n,s,cf*CFrame.new(x,y,z),c,mat)end
