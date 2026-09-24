@@ -49,6 +49,19 @@ local function begin()
    assert(not screens.Notice.Visible and screens.List.AbsoluteSize.Y>before,"Notice did not release layout space")
    table.insert(checks,{View="Building",Width=width,Height=height,NonOverlappingNotice=true});screens:Close()
   end end
+  local gui=game.Players.LocalPlayer.PlayerGui.NeighborhoodApp
+  local card=gui:WaitForChild("InteractionCard",10);local hint=gui.NavigationHint
+  local host=Instance.new("Frame");host.BackgroundTransparency=1;host.Parent=gui
+  card.Parent=host;hint.Parent=host
+  for _,size in ipairs({Vector2.new(854,393),Vector2.new(390,844),Vector2.new(640,360)})do
+   host.Size=UDim2.fromOffset(size.X,size.Y);gui:SetAttribute("InteractionActive",true);card.Visible=true;task.wait(.1)
+   assert(not hint.Visible,"Navigation hint covers interaction card")
+   assert(card.AbsolutePosition.Y>=host.AbsolutePosition.Y and card.AbsolutePosition.Y+card.AbsoluteSize.Y<=host.AbsolutePosition.Y+host.AbsoluteSize.Y,"Interaction card outside viewport")
+   assert(card:FindFirstChildWhichIsA("TextButton").AbsoluteSize.Y>=48,"Interaction target too small")
+   gui:SetAttribute("InteractionActive",false);card.Visible=false;task.wait(.05);assert(hint.Visible,"Hint did not return after interaction")
+   table.insert(checks,{View="InteractionHUD",Width=size.X,Height=size.Y,HintHiddenDuringInteraction=true})
+  end
+  card.Parent=gui;hint.Parent=gui;host:Destroy()
   screens.Panel.Size=oldSize
   local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
   assert(#errors==0,table.concat(errors,";"))

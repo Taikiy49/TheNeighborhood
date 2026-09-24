@@ -10,8 +10,8 @@ local function part(parent,name,size,position,color)
  p.Material=Enum.Material.Wood;p.Anchored=true;p.CanCollide=false;p.CanTouch=false;p.Parent=parent;return p
 end
 local function sign(p,text)
- local gui=Instance.new("SurfaceGui");gui.Face=Enum.NormalId.Front;gui.CanvasSize=Vector2.new(360,180);gui.Parent=p
- local label=Instance.new("TextLabel");label.Size=UDim2.fromScale(1,1);label.BackgroundTransparency=1;label.Text=text;label.TextColor3=Color3.fromRGB(248,239,213);label.TextScaled=true;label.TextWrapped=true;label.Font=Enum.Font.GothamBold;label.Parent=gui
+ local gui=Instance.new("SurfaceGui");gui.Face=Enum.NormalId.Front;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=50;gui.LightInfluence=.15;gui.Parent=p
+ local label=Instance.new("TextLabel");label.Size=UDim2.fromScale(.9,.84);label.Position=UDim2.fromScale(.05,.08);label.BackgroundTransparency=1;label.Text=text;label.TextColor3=Color3.fromRGB(248,239,213);label.TextScaled=true;label.TextWrapped=true;label.Font=Enum.Font.GothamBold;label.Parent=gui
 end
 local function prompt(p,action,label)
  p:SetAttribute("Action",action)

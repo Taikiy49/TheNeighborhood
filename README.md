@@ -4,6 +4,16 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Visual detail cleanup
+
+Corrected obscured shop signs, overlapping community boards, hidden house numbers, floating fixture joints, roof seams and the hint/interaction-card collision. The audit includes 25 screenshots, all eight house fronts, 56 physical walking legs and 162 rendered UI checks. **These changes are in the local development build, not yet published to Roblox.**
+
+| Before | After |
+|---|---|
+| ![Shop sign before cleanup](assets/screenshots/detail-before-shops-play.png) | ![Shop sign after cleanup](assets/screenshots/detail-after-shops-play.png) |
+
+[Full before/after gallery, test results and limits](docs/VISUAL-DETAIL-AUDIT.md)
+
 ## Furnished cottages and coordinated planting
 
 The expanded homes now have dining groups, kitchen islands, reading seats, bookcases and bedroom storage. Matching stone-edged flower beds extend through the neighborhood. Higgsfield supplied the visual reference; the images below are actual Studio play-session captures. **This update is not yet published to the live Roblox game.**

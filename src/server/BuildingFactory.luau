@@ -70,6 +70,7 @@ function F.Create(house,b)
   end
   q("Ridge",Vector3.new(.5,.5,d+1.7),x,h+.9+rise,z,roof,Enum.Material.SmoothPlastic)
   local light=q("Pendant",Vector3.new(1,.3,1),x,h-.2,z,cream,Enum.Material.Neon);light.CanCollide=false
+  local stem=q("PendantStem",Vector3.new(.12,rise+.65,.12),x,h+.275+rise/2,z,roof);stem.CanCollide=false;stem.CanQuery=false
   local glow=Instance.new("PointLight");glow.Color=Color3.fromRGB(255,231,191);glow.Brightness=.7;glow.Range=18;glow.Parent=light
   return r
  end
@@ -86,6 +87,7 @@ function F.Create(house,b)
   p("StairLanding",Vector3.new(10,.4,3),6,5.975,27,wood)
   for i=1,10 do local top=6.175+i*.5475;p("StairReturn"..i,Vector3.new(4,.3,1.15),3,top-.15,25.5-(i-1)*1.1,wood)end
   p("TopLanding",Vector3.new(6,.4,1.9),3,11.45,14.95,wood)
+  for _,x in ipairs({1.2,4.8})do local a=Vector3.new(x,5.8,26.1);local z=Vector3.new(x,11.15,14.7);local beam=p("StairStringer",Vector3.new(.25,.45,(z-a).Magnitude),0,0,0,roof);beam.CFrame=basis*CFrame.lookAt((a+z)/2,z);beam.CanCollide=false;beam.CanQuery=false end
   -- Rail posts and continuous caps define the stairwell edge without closing the entry.
   for z=19,29,2 do p("LoftBaluster",Vector3.new(.2,2.6,.2),0,12.95,z,cream)end
   p("LoftRail",Vector3.new(.3,.25,11),0,14.25,24,cream)

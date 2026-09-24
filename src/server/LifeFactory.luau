@@ -7,8 +7,8 @@ function F.Part(parent,name,size,cf,color,material)
  local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=cf;p.Color=color or cream;p.Material=material or Enum.Material.SmoothPlastic;p.Anchored=true;p.CanTouch=false;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=parent;return p
 end
 function F.Sign(part,text)
- local gui=Instance.new("SurfaceGui");gui.Face=Enum.NormalId.Front;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=40;gui.Parent=part
- local label=Instance.new("TextLabel");label.Size=UDim2.fromScale(1,1);label.BackgroundTransparency=1;label.TextColor3=cream;label.Font=Enum.Font.GothamMedium;label.TextScaled=true;label.TextWrapped=true;label.Text=text;label.Parent=gui
+ local gui=Instance.new("SurfaceGui");gui.Face=Enum.NormalId.Front;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=50;gui.LightInfluence=.15;gui.Parent=part
+ local label=Instance.new("TextLabel");label.Size=UDim2.fromScale(.9,.84);label.Position=UDim2.fromScale(.05,.08);label.BackgroundTransparency=1;label.TextColor3=cream;label.Font=Enum.Font.GothamMedium;label.TextScaled=true;label.TextWrapped=true;label.Text=text;label.Parent=gui
 end
 function F.Prompt(part,view,arg)
  part:SetAttribute("Action","LifeStation");part:SetAttribute("LifeView",view);part:SetAttribute("LifeArg",arg or "")
@@ -46,7 +46,7 @@ function F.Home(house,life,now)
   for _,x in ipairs({20.5,21.5})do local leg=part("CustomerLeg",Vector3.new(.5,1.4,.6),x,1,7.8,green);leg.CanCollide=false end
  end
  anchor=nil
- local tour=part("TourSign",Vector3.new(4,2,.2),8,3,-21,green);F.Sign(tour,life.TourOpen and "WELCOME\nHome tour"or "Home gallery");F.Prompt(tour,"LifeTours")
+ local tour=part("TourSign",Vector3.new(4,2,.2),8,3,-21,green);F.Sign(tour,life.TourOpen and "WELCOME\nHome tour"or "Home gallery");F.Prompt(tour,"LifeTours");anchor=Vector3.new(8,0,-21);local post=part("TourSignPost",Vector3.new(.3,3,.3),8,1,-20.7,green);post.CanCollide=false;post.CanQuery=false;anchor=nil
  if life.Banners[life.Theme]then local banner=part("ChallengeBanner",Vector3.new(2,3,.12),11,4,-14,accent);F.Sign(banner,life.Theme)end
  for i,id in ipairs(D.BlueprintOrder)do if life.Blueprints[id]then
   local x=14;local z=18+i*6;anchor=Vector3.new(x,0,z)

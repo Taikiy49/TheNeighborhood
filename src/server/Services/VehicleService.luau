@@ -58,8 +58,8 @@ function Service:Spawn(player)
  for _,x in ipairs({-3.2,3.2})do for _,z in ipairs({-2.8,2.8})do local wheel=part("Wheel",Vector3.new(0.8,2.2,2.2),Vector3.new(x,-0.8,z),Color3.fromRGB(40,46,44));wheel.Shape=Enum.PartType.Cylinder;wheel.CanCollide=false end end
  for _,x in ipairs({-2,2})do part("Headlight",Vector3.new(1,0.5,0.15),Vector3.new(x,0.5,-4.55),Color3.fromRGB(255,231,172)).Material=Enum.Material.Neon end
  local plate=part("Plate",Vector3.new(2.4,0.7,0.1),Vector3.new(0,-0.1,4.6),Color3.fromRGB(244,235,204));plate.CanCollide=false
- local sign=Instance.new("SurfaceGui");sign.Face=Enum.NormalId.Back;sign.CanvasSize=Vector2.new(240,70);sign.Parent=plate
- local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(1,1);text.BackgroundTransparency=1;text.Font=Enum.Font.GothamBold;text.TextSize=30;text.TextColor3=Color3.fromRGB(35,79,70);text.Text=profile.Vehicles.Plate;text.Parent=sign
+ local sign=Instance.new("SurfaceGui");sign.Face=Enum.NormalId.Back;sign.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;sign.PixelsPerStud=50;sign.LightInfluence=.15;sign.Parent=plate
+ local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(.9,.84);text.Position=UDim2.fromScale(.05,.08);text.BackgroundTransparency=1;text.Font=Enum.Font.GothamBold;text.TextSize=30;text.TextScaled=true;text.TextColor3=Color3.fromRGB(35,79,70);text.Text=profile.Vehicles.Plate;text.Parent=sign
  for _,p in ipairs(model:GetChildren())do if p:IsA("BasePart") and p~=body then p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=body;weld.Part1=p;weld.Parent=p end end
  local attachment=Instance.new("Attachment");attachment.Parent=body
  local force=Instance.new("VectorForce");force.Attachment0=attachment;force.RelativeTo=Enum.ActuatorRelativeTo.World;force.ApplyAtCenterOfMass=true;force.Parent=body

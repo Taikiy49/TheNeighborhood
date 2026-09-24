@@ -1,0 +1,927 @@
+{
+  "RecordedAt": "2026-09-24T07:13:25.709Z",
+  "Scope": "Local Roblox Studio development build, not published",
+  "Results": {
+    "detailBuilding": {
+      "Parts": 7023,
+      "WalkedLegs": 22,
+      "Clients": 2,
+      "MalformedRequests": 4200,
+      "PerformanceCertified": false,
+      "Verified": {
+        "1": "Old profiles gain defaults; six malformed saved profiles rejected",
+        "2": "All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks",
+        "3": "2 homes independently built with 14 collectible spots and 15 crafted furnishings each",
+        "4": "Owner isolation; atomic layout load; copied layouts; invalid cells/rotations; 48-piece cap without debit",
+        "5": "Layouts preserve original collectible GUIDs; expansion snapshot validates; release restores cottage and rebuild retains furniture",
+        "6": "22 physical walking legs: cottage connection, loft up/down, garage and workshop",
+        "7": "Owned car recalls inside garage; actual seated driver physically exits through its doorway",
+        "8": "Fifty pack/reload cycles retain exact geometry counts; owned-copy limits enforced; workshop theft cannot escape indoors"
+      },
+      "Passed": true,
+      "HeartbeatP95Ms": 17.931833863258362
+    },
+    "detailDetailAcceptance": {
+      "SignsWithProportionalText": 46,
+      "VisiblePorchAddresses": 8,
+      "Scope": "Local geometry and sign-format checks; screenshots and sightline audit cover appearance separately",
+      "Passed": true,
+      "JoinedCeilingFixtures": 40
+    },
+    "detailArtAcceptance": {
+      "SidingTextures": 0,
+      "SuccessfulNavigationRoutes": 23,
+      "TexturedMeshes": 0,
+      "DecorativeParts": 1461,
+      "Verified": {
+        "1": "Scenery is anchored; visual-only details do not block queries; paths, seats and trunks use physical collision",
+        "2": "Eight delivery routes and eight front-door routes remain navigable",
+        "3": "All five gnome clues and both stores remain reachable",
+        "4": "Six item display slots retained in every house",
+        "5": "Scene stays within the explicit decoration budget",
+        "6": "District scenery has no imported mesh or decal dependencies"
+      },
+      "Passed": true,
+      "Errors": []
+    },
+    "detailLifeWalk": {
+      "Clients": 2,
+      "PhysicalWalkingLegs": 34,
+      "OnlineSaveRejoinTested": false,
+      "Verified": {
+        "1": "Four side-yard beds reached, planted and watered on foot",
+        "2": "Side counter reached and style applied",
+        "3": "Guest physically walked porch, living room and garden; tour and compliment recorded",
+        "4": "Three park clues collected after actual walking; deduction and ending claimed",
+        "5": "North plaza crossed and cafe repair completed with real preparation delay"
+      },
+      "Passed": true,
+      "SetupTeleports": 5
+    },
+    "detailUI": {
+      "Scope": "Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input",
+      "Clients": {
+        "-1": {
+          "Errors": [],
+          "Passed": true,
+          "Checks": {
+            "1": {
+              "View": "Life",
+              "Rows": 8,
+              "Width": 510
+            },
+            "2": {
+              "View": "LifeGarden",
+              "Rows": 20,
+              "Width": 510
+            },
+            "3": {
+              "View": "LifeBusiness",
+              "Rows": 6,
+              "Width": 510
+            },
+            "4": {
+              "View": "LifeProjects",
+              "Rows": 6,
+              "Width": 510
+            },
+            "5": {
+              "View": "LifeMystery",
+              "Rows": 5,
+              "Width": 510
+            },
+            "6": {
+              "View": "LifeTours",
+              "Rows": 8,
+              "Width": 510
+            },
+            "7": {
+              "View": "LifeMastery",
+              "Rows": 9,
+              "Width": 510
+            },
+            "8": {
+              "View": "LifeFestival",
+              "Rows": 18,
+              "Width": 510
+            },
+            "9": {
+              "View": "LifeStop",
+              "Rows": 5,
+              "Width": 510
+            },
+            "10": {
+              "View": "Building",
+              "Rows": 7,
+              "Width": 510
+            },
+            "11": {
+              "View": "Crafting",
+              "Rows": 6,
+              "Width": 510
+            },
+            "12": {
+              "View": "Furnish",
+              "Rows": 5,
+              "Width": 510
+            },
+            "13": {
+              "View": "Layouts",
+              "Rows": 5,
+              "Width": 510
+            },
+            "14": {
+              "View": "Adventures",
+              "Rows": 10,
+              "Width": 510
+            },
+            "15": {
+              "View": "Projects",
+              "Rows": 7,
+              "Width": 510
+            },
+            "16": {
+              "View": "Phone",
+              "Rows": 17,
+              "Width": 510
+            },
+            "17": {
+              "View": "Inventory",
+              "Rows": 2,
+              "Width": 510
+            },
+            "18": {
+              "View": "Cases",
+              "Rows": 1,
+              "Width": 510
+            },
+            "19": {
+              "View": "Progress",
+              "Rows": 15,
+              "Width": 510
+            },
+            "20": {
+              "View": "Home",
+              "Rows": 10,
+              "Width": 510
+            },
+            "21": {
+              "View": "Garage",
+              "Rows": 1,
+              "Width": 510
+            },
+            "22": {
+              "View": "Pets",
+              "Rows": 1,
+              "Width": 510
+            },
+            "23": {
+              "View": "Event",
+              "Rows": 1,
+              "Width": 510
+            },
+            "24": {
+              "View": "Journal",
+              "Rows": 6,
+              "Width": 510
+            },
+            "25": {
+              "View": "Weather",
+              "Rows": 2,
+              "Width": 510
+            },
+            "26": {
+              "View": "Collection",
+              "Rows": 14,
+              "Width": 510
+            },
+            "27": {
+              "View": "Neighbors",
+              "Rows": 3,
+              "Width": 510
+            },
+            "28": {
+              "View": "Newspaper",
+              "Rows": 1,
+              "Width": 510
+            },
+            "29": {
+              "View": "Settings",
+              "Rows": 3,
+              "Width": 510
+            },
+            "30": {
+              "View": "Friends",
+              "Rows": 5,
+              "Width": 510
+            },
+            "31": {
+              "View": "Boutique",
+              "Rows": 13,
+              "Width": 510
+            },
+            "32": {
+              "View": "Shop",
+              "Rows": 10,
+              "Width": 510
+            },
+            "33": {
+              "View": "Pawn",
+              "Rows": 2,
+              "Width": 510
+            },
+            "34": {
+              "View": "Life",
+              "Rows": 8,
+              "Width": 360
+            },
+            "35": {
+              "View": "LifeGarden",
+              "Rows": 20,
+              "Width": 360
+            },
+            "36": {
+              "View": "LifeBusiness",
+              "Rows": 6,
+              "Width": 360
+            },
+            "37": {
+              "View": "LifeProjects",
+              "Rows": 6,
+              "Width": 360
+            },
+            "38": {
+              "View": "LifeMystery",
+              "Rows": 5,
+              "Width": 360
+            },
+            "39": {
+              "View": "LifeTours",
+              "Rows": 8,
+              "Width": 360
+            },
+            "40": {
+              "View": "LifeMastery",
+              "Rows": 9,
+              "Width": 360
+            },
+            "41": {
+              "View": "LifeFestival",
+              "Rows": 18,
+              "Width": 360
+            },
+            "42": {
+              "View": "LifeStop",
+              "Rows": 5,
+              "Width": 360
+            },
+            "43": {
+              "View": "Building",
+              "Rows": 7,
+              "Width": 360
+            },
+            "44": {
+              "View": "Crafting",
+              "Rows": 6,
+              "Width": 360
+            },
+            "45": {
+              "View": "Furnish",
+              "Rows": 5,
+              "Width": 360
+            },
+            "46": {
+              "View": "Layouts",
+              "Rows": 5,
+              "Width": 360
+            },
+            "47": {
+              "View": "Adventures",
+              "Rows": 10,
+              "Width": 360
+            },
+            "48": {
+              "View": "Projects",
+              "Rows": 7,
+              "Width": 360
+            },
+            "49": {
+              "View": "Phone",
+              "Rows": 17,
+              "Width": 360
+            },
+            "50": {
+              "View": "Inventory",
+              "Rows": 2,
+              "Width": 360
+            },
+            "51": {
+              "View": "Cases",
+              "Rows": 1,
+              "Width": 360
+            },
+            "52": {
+              "View": "Progress",
+              "Rows": 15,
+              "Width": 360
+            },
+            "53": {
+              "View": "Home",
+              "Rows": 10,
+              "Width": 360
+            },
+            "54": {
+              "View": "Garage",
+              "Rows": 1,
+              "Width": 360
+            },
+            "55": {
+              "View": "Pets",
+              "Rows": 1,
+              "Width": 360
+            },
+            "56": {
+              "View": "Event",
+              "Rows": 1,
+              "Width": 360
+            },
+            "57": {
+              "View": "Journal",
+              "Rows": 6,
+              "Width": 360
+            },
+            "58": {
+              "View": "Weather",
+              "Rows": 2,
+              "Width": 360
+            },
+            "59": {
+              "View": "Collection",
+              "Rows": 14,
+              "Width": 360
+            },
+            "60": {
+              "View": "Neighbors",
+              "Rows": 3,
+              "Width": 360
+            },
+            "61": {
+              "View": "Newspaper",
+              "Rows": 1,
+              "Width": 360
+            },
+            "62": {
+              "View": "Settings",
+              "Rows": 3,
+              "Width": 360
+            },
+            "63": {
+              "View": "Friends",
+              "Rows": 5,
+              "Width": 360
+            },
+            "64": {
+              "View": "Boutique",
+              "Rows": 13,
+              "Width": 360
+            },
+            "65": {
+              "View": "Shop",
+              "Rows": 10,
+              "Width": 360
+            },
+            "66": {
+              "View": "Pawn",
+              "Rows": 2,
+              "Width": 360
+            },
+            "67": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "BuildReview",
+              "Width": 510
+            },
+            "68": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "69": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "70": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "71": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "BuildReview",
+              "Width": 360
+            },
+            "72": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "73": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "74": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "75": {
+              "Height": 480,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 510
+            },
+            "76": {
+              "Height": 220,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 510
+            },
+            "77": {
+              "Height": 480,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 360
+            },
+            "78": {
+              "Height": 220,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 360
+            },
+            "79": {
+              "Height": 393,
+              "Width": 854,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            },
+            "80": {
+              "Height": 844,
+              "Width": 390,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            },
+            "81": {
+              "Height": 360,
+              "Width": 640,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            }
+          }
+        },
+        "-2": {
+          "Errors": [],
+          "Passed": true,
+          "Checks": {
+            "1": {
+              "View": "Life",
+              "Rows": 8,
+              "Width": 510
+            },
+            "2": {
+              "View": "LifeGarden",
+              "Rows": 20,
+              "Width": 510
+            },
+            "3": {
+              "View": "LifeBusiness",
+              "Rows": 6,
+              "Width": 510
+            },
+            "4": {
+              "View": "LifeProjects",
+              "Rows": 6,
+              "Width": 510
+            },
+            "5": {
+              "View": "LifeMystery",
+              "Rows": 5,
+              "Width": 510
+            },
+            "6": {
+              "View": "LifeTours",
+              "Rows": 8,
+              "Width": 510
+            },
+            "7": {
+              "View": "LifeMastery",
+              "Rows": 9,
+              "Width": 510
+            },
+            "8": {
+              "View": "LifeFestival",
+              "Rows": 18,
+              "Width": 510
+            },
+            "9": {
+              "View": "LifeStop",
+              "Rows": 5,
+              "Width": 510
+            },
+            "10": {
+              "View": "Building",
+              "Rows": 7,
+              "Width": 510
+            },
+            "11": {
+              "View": "Crafting",
+              "Rows": 6,
+              "Width": 510
+            },
+            "12": {
+              "View": "Furnish",
+              "Rows": 5,
+              "Width": 510
+            },
+            "13": {
+              "View": "Layouts",
+              "Rows": 5,
+              "Width": 510
+            },
+            "14": {
+              "View": "Adventures",
+              "Rows": 10,
+              "Width": 510
+            },
+            "15": {
+              "View": "Projects",
+              "Rows": 7,
+              "Width": 510
+            },
+            "16": {
+              "View": "Phone",
+              "Rows": 17,
+              "Width": 510
+            },
+            "17": {
+              "View": "Inventory",
+              "Rows": 2,
+              "Width": 510
+            },
+            "18": {
+              "View": "Cases",
+              "Rows": 1,
+              "Width": 510
+            },
+            "19": {
+              "View": "Progress",
+              "Rows": 15,
+              "Width": 510
+            },
+            "20": {
+              "View": "Home",
+              "Rows": 10,
+              "Width": 510
+            },
+            "21": {
+              "View": "Garage",
+              "Rows": 1,
+              "Width": 510
+            },
+            "22": {
+              "View": "Pets",
+              "Rows": 1,
+              "Width": 510
+            },
+            "23": {
+              "View": "Event",
+              "Rows": 1,
+              "Width": 510
+            },
+            "24": {
+              "View": "Journal",
+              "Rows": 6,
+              "Width": 510
+            },
+            "25": {
+              "View": "Weather",
+              "Rows": 2,
+              "Width": 510
+            },
+            "26": {
+              "View": "Collection",
+              "Rows": 14,
+              "Width": 510
+            },
+            "27": {
+              "View": "Neighbors",
+              "Rows": 3,
+              "Width": 510
+            },
+            "28": {
+              "View": "Newspaper",
+              "Rows": 1,
+              "Width": 510
+            },
+            "29": {
+              "View": "Settings",
+              "Rows": 3,
+              "Width": 510
+            },
+            "30": {
+              "View": "Friends",
+              "Rows": 5,
+              "Width": 510
+            },
+            "31": {
+              "View": "Boutique",
+              "Rows": 13,
+              "Width": 510
+            },
+            "32": {
+              "View": "Shop",
+              "Rows": 10,
+              "Width": 510
+            },
+            "33": {
+              "View": "Pawn",
+              "Rows": 2,
+              "Width": 510
+            },
+            "34": {
+              "View": "Life",
+              "Rows": 8,
+              "Width": 360
+            },
+            "35": {
+              "View": "LifeGarden",
+              "Rows": 20,
+              "Width": 360
+            },
+            "36": {
+              "View": "LifeBusiness",
+              "Rows": 6,
+              "Width": 360
+            },
+            "37": {
+              "View": "LifeProjects",
+              "Rows": 6,
+              "Width": 360
+            },
+            "38": {
+              "View": "LifeMystery",
+              "Rows": 5,
+              "Width": 360
+            },
+            "39": {
+              "View": "LifeTours",
+              "Rows": 8,
+              "Width": 360
+            },
+            "40": {
+              "View": "LifeMastery",
+              "Rows": 9,
+              "Width": 360
+            },
+            "41": {
+              "View": "LifeFestival",
+              "Rows": 18,
+              "Width": 360
+            },
+            "42": {
+              "View": "LifeStop",
+              "Rows": 5,
+              "Width": 360
+            },
+            "43": {
+              "View": "Building",
+              "Rows": 7,
+              "Width": 360
+            },
+            "44": {
+              "View": "Crafting",
+              "Rows": 6,
+              "Width": 360
+            },
+            "45": {
+              "View": "Furnish",
+              "Rows": 5,
+              "Width": 360
+            },
+            "46": {
+              "View": "Layouts",
+              "Rows": 5,
+              "Width": 360
+            },
+            "47": {
+              "View": "Adventures",
+              "Rows": 10,
+              "Width": 360
+            },
+            "48": {
+              "View": "Projects",
+              "Rows": 7,
+              "Width": 360
+            },
+            "49": {
+              "View": "Phone",
+              "Rows": 17,
+              "Width": 360
+            },
+            "50": {
+              "View": "Inventory",
+              "Rows": 2,
+              "Width": 360
+            },
+            "51": {
+              "View": "Cases",
+              "Rows": 1,
+              "Width": 360
+            },
+            "52": {
+              "View": "Progress",
+              "Rows": 15,
+              "Width": 360
+            },
+            "53": {
+              "View": "Home",
+              "Rows": 10,
+              "Width": 360
+            },
+            "54": {
+              "View": "Garage",
+              "Rows": 1,
+              "Width": 360
+            },
+            "55": {
+              "View": "Pets",
+              "Rows": 1,
+              "Width": 360
+            },
+            "56": {
+              "View": "Event",
+              "Rows": 1,
+              "Width": 360
+            },
+            "57": {
+              "View": "Journal",
+              "Rows": 6,
+              "Width": 360
+            },
+            "58": {
+              "View": "Weather",
+              "Rows": 2,
+              "Width": 360
+            },
+            "59": {
+              "View": "Collection",
+              "Rows": 14,
+              "Width": 360
+            },
+            "60": {
+              "View": "Neighbors",
+              "Rows": 3,
+              "Width": 360
+            },
+            "61": {
+              "View": "Newspaper",
+              "Rows": 1,
+              "Width": 360
+            },
+            "62": {
+              "View": "Settings",
+              "Rows": 3,
+              "Width": 360
+            },
+            "63": {
+              "View": "Friends",
+              "Rows": 5,
+              "Width": 360
+            },
+            "64": {
+              "View": "Boutique",
+              "Rows": 13,
+              "Width": 360
+            },
+            "65": {
+              "View": "Shop",
+              "Rows": 10,
+              "Width": 360
+            },
+            "66": {
+              "View": "Pawn",
+              "Rows": 2,
+              "Width": 360
+            },
+            "67": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "BuildReview",
+              "Width": 510
+            },
+            "68": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "69": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "70": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 510
+            },
+            "71": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "BuildReview",
+              "Width": 360
+            },
+            "72": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "73": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "74": {
+              "PendingFailure": true,
+              "ExpansionDetail": true,
+              "View": "Furnish",
+              "Width": 360
+            },
+            "75": {
+              "Height": 480,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 510
+            },
+            "76": {
+              "Height": 220,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 510
+            },
+            "77": {
+              "Height": 480,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 360
+            },
+            "78": {
+              "Height": 220,
+              "NonOverlappingNotice": true,
+              "View": "Building",
+              "Width": 360
+            },
+            "79": {
+              "Height": 393,
+              "Width": 854,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            },
+            "80": {
+              "Height": 844,
+              "Width": 390,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            },
+            "81": {
+              "Height": 360,
+              "Width": 640,
+              "View": "InteractionHUD",
+              "HintHiddenDuringInteraction": true
+            }
+          }
+        }
+      },
+      "Passed": true,
+      "ScreenChecks": 162
+    },
+    "finalSignAudit": {
+      "Rays": 320,
+      "Signs": 64,
+      "Findings": [],
+      "Method": "Oriented bounding boxes; intentionally conservative for cylinders, foliage and wedges. Review screenshots before changing geometry."
+    }
+  }
+}

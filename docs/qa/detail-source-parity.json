@@ -1,0 +1,6 @@
+{
+  "Passed": true,
+  "Sources": 92,
+  "Mismatches": [],
+  "Method": "Adler32 and byte length after CRLF and trailing-whitespace normalization"
+}

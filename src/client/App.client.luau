@@ -22,7 +22,7 @@ local address=UI.Label(plaque,"Finding your home...",UDim2.new(1,-24,0,30),UDim2
 address.TextScaled=true
 UI.New("UITextSizeConstraint",{MinTextSize=14,MaxTextSize=24},address)
 local cash=UI.Label(plaque,"",UDim2.new(1,-24,0,20),UDim2.fromOffset(12,65),Theme.Small,Theme.Surface)
-local hint=UI.Panel(gui,UDim2.new(0.85,0,0,60),UDim2.new(0.5,0,1,-80)); hint.AnchorPoint=Vector2.new(0.5,0)
+local hint=UI.Panel(gui,UDim2.new(0.85,0,0,60),UDim2.new(0.5,0,1,-80)); hint.AnchorPoint=Vector2.new(0.5,0);hint.Name="NavigationHint"
 UI.New("UISizeConstraint",{MaxSize=Vector2.new(480,60)},hint)
 local hintText=UI.Label(hint,"This one's yours. Walk up to your front door.",UDim2.new(1,-24,1,-12),UDim2.fromOffset(12,6),Theme.BodySize)
 local toast=UI.Panel(gui,UDim2.new(0.85,0,0,64),UDim2.new(0.5,0,0,120)); toast.AnchorPoint=Vector2.new(0.5,0); toast.Visible=false
@@ -31,11 +31,12 @@ UI.New("UISizeConstraint",{MaxSize=Vector2.new(440,64)},toast)
 local toastText=UI.Label(toast,"",UDim2.new(1,-24,1,-12),UDim2.fromOffset(12,6),Theme.BodySize)
 local notificationVersion=0
 Screens.Panel:GetPropertyChangedSignal("Visible"):Connect(function()
- hint.Visible=not Screens.Panel.Visible
+ hint.Visible=not Screens.Panel.Visible and not gui:GetAttribute("InteractionActive")
  if Screens.Panel.Visible and toast.Visible then
   Screens:ShowNotice(toastText.Text,toastText.TextColor3==Theme.Text);toast.Visible=false
  end
 end)
+gui:GetAttributeChangedSignal("InteractionActive"):Connect(function()hint.Visible=not Screens.Panel.Visible and not gui:GetAttribute("InteractionActive")end)
 local function updateHint()
  local destination=player:GetAttribute("DeliveryAddress")
  local carrying=player:GetAttribute("Carrying")

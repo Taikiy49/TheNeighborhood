@@ -78,3 +78,9 @@ Authoring owners: expand-map-v3 and raise-cottage-roofs are one-time migrations;
 The neighborhood is enclosed by a persistent valley backdrop: 3,600 × 3,400 total footprint, layered granite ridges and grass foothills. Keep this separate from plot coordinate scaling. Rebuild with tools/build-valley.luau; preserve ModelStreamingMode when exporting.
 
 Furnished cottage pass: use grouped dining/living furniture, restrained sage/oak/linen materials, wall-side storage and repeated stone-edged planting. Higgsfield concept provenance and scope are in docs/FURNISHED-COTTAGES.md. Authoring tool: tools/furnish-cottages.luau. All saved display slots must stay reachable; FurnishingAcceptance covers 48 routes and usable seats.
+
+## Close-up detail standards
+
+Authoring owner: tools/detail-cleanup.luau, run after the earlier world/interior/furnishing rebuilds, then export. Signs use proportional pixels-per-stud canvases, 5% horizontal and 8% vertical margins, restrained copy and supports behind their text planes. Shop lettering sits ahead of the awning; cottage numbers face outward from the porch fascia. Lamp mounts, shades and lenses form connected stacks. Roof halves meet at a ridge cap. Expansion stairs and pendants have visible support, with noncolliding detail parts. Quiet door panels remain attached to the moving door's SurfaceGui.
+
+HUD owner remains App + InteractionController through UI/Theme: NavigationHint is hidden during an active interaction or open panel and restored when both close. InteractionCard sits 32px above the bottom edge, preserving 48px actions. UIAcceptance checks the actual controls at phone-sized layout fixtures. Audit evidence and known limits: docs/VISUAL-DETAIL-AUDIT.md.
