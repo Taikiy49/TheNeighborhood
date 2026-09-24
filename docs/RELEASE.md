@@ -1,5 +1,9 @@
 # Current release
 
+Town street details published as **v102**, confirmed by Studio PublishSuccessful at **18:01:03 UTC on September 24, 2026**. [Features, dusk screenshot and checks](TOWN-STREETS.md).
+
+## Previous release
+
 Town paving published as **v101**, confirmed by Studio PublishSuccessful at **17:55:40 UTC on September 24, 2026**. Market, Uptown and Old Town now have continuous paved blocks; the depot has a paved apron and skyline edges use concrete. Park and residential gardens remain green. Fresh runtime verification passed three block checks, four non-grass walking-surface raycasts and the coplanar surface audit (1,153 → 0 candidates). Market frontage was walked and visually reviewed.
 
 ![Paved market frontage](../assets/screenshots/town-paved-market.png)

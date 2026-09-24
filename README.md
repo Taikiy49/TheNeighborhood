@@ -4,6 +4,8 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Town streets — published as v102.** Dusk streetlights, awnings, usable benches and patios, contained tree beds, street names and corrected crossings. [Screenshot and checks](docs/TOWN-STREETS.md).
+
 **Town paving — published as v101.** Continuous paved commercial blocks, concrete city edges and deliberate green parks. [Release details](docs/RELEASE.md).
 
 ![Continuous market paving](assets/screenshots/town-paved-market.png)
