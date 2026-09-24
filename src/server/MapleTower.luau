@@ -43,7 +43,7 @@ function M.Init(context)
  context.Interactions:Register("TowerLift",function(player,target)
   if player:GetAttribute("Carrying")then return false,"Set down the carried item before using the lift."end
   local c=player.Character;local h=c and c:FindFirstChildOfClass("Humanoid");if not h or h.Sit then return false,"Stand up before using the lift."end
-  c:PivotTo(CFrame.new(278,target:GetAttribute("Roof")and 60 or 5,-160));return true,target:GetAttribute("Roof")and "Maple House rooftop lookout."or "Maple House library."
+  local tower=workspace.Neighborhood.MapleTower;local base=tower.Foundation.CFrame;c:PivotTo(base*CFrame.new(8,target:GetAttribute('Roof')and 59 or 4,5));return true,target:GetAttribute("Roof")and "Maple House rooftop lookout."or "Maple House library."
  end)
 end
 return M

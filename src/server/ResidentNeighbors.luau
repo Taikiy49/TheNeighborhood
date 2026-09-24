@@ -37,7 +37,9 @@ function M.Init(context)
   local home=h.Model.Foundation.Position;local side=home.X<0 and -1 or 1
 
   local inside,outside=M.HomePoints(h)
-  local points={inside,outside,Vector3.new(side*84,0,home.Z),Vector3.new(side*75,0,home.Z),Vector3.new(side*75,0,60),Vector3.new(side*43,0,60),Vector3.new(side*43,0,0),Vector3.new(side*20,0,(id%6-2.5)*6)}
+  local street=require(game.ReplicatedStorage.Neighborhood.Shared.PlotLayout).Street(id)
+  local curb=street+(home.X<street and -23 or 23)
+  local points={inside,outside,Vector3.new(curb,0,home.Z),Vector3.new(curb,0,-72),Vector3.new(street,0,-28)}
 
   model:SetAttribute("HomeId",h.Model.Name);model:SetAttribute("RoutineState","At home")
   model:PivotTo(CFrame.new(points[1]+Vector3.new(0,3,0)))

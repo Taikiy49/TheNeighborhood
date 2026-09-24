@@ -102,7 +102,7 @@ function M.Init(context)
  end)
  context.Interactions:Register('CoveReturn',function(player)
   if player:GetAttribute('Carrying')then return false,'Set down your carried item first.'end
-  player.Character:PivotTo(CFrame.new(0,4,-220));return true,'Back on the sand.'
+  player.Character:PivotTo(CFrame.new(600,4,230));return true,'Back on the sand.'
  end)
  local balls={}
  context.Interactions:Register('BeachBall',function(player)

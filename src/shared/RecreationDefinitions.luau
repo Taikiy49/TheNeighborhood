@@ -26,4 +26,8 @@ end
 D.Version="curated-park-1"
 D.Count=6
 D.Zones={{Id="Green",Name="Maple Green",Position=Vector3.new(0,0,0),Color=Color3.fromRGB(122,154,128)},{Id="Meadow",Name="Meadow sports garden",Position=Vector3.new(268,0,0),Color=Color3.fromRGB(122,154,128)}}
+local newPositions={Activity001=Vector3.new(-340,0,5),Activity002=Vector3.new(-290,0,5),Activity008=Vector3.new(-230,0,5),Activity005=Vector3.new(-365,0,350),Activity006=Vector3.new(-325,0,350),Activity003=Vector3.new(-165,0,5)}
+for id,pos in pairs(newPositions)do D.Activities[id].Position=pos end
+D.Zones[1].Position=Vector3.new(-260,0,5);D.Zones[2].Position=Vector3.new(-345,0,350)
+D.Version='coastal-districts-1'
 return D

@@ -43,6 +43,8 @@ function G:Attributes(player)
  local a={};for _,k in ipairs({'Carrying','DeliveryAddress','CityWorkKind','CityWorkStep','CityWorkReadyAt','CityWorkPosition'})do a[k]=player:GetAttribute(k)end;return a
 end
 function G:Position(task,state,player)
+ local district=workspace:FindFirstChild('Neighborhood')
+ if district and task.Key then local attribute=task.Key=='HousingDesk'and 'HousingDesk'or task.Key:match('^Job:(.+)$');if attribute then local pos=district:GetAttribute(attribute=='HousingDesk'and attribute or 'Job'..attribute);if pos then return pos end end end
  if task.Position then return task.Position end
  local w=workspace:FindFirstChild('Neighborhood');if not w then return end
  local h=w.Houses:FindFirstChild(state.HouseId or '')

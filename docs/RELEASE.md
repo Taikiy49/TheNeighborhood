@@ -1,5 +1,9 @@
 # Current release
 
+Coastal districts published as **v117**, confirmed by Studio `PublishSuccessful` at **19:18:04.425 UTC on September 24, 2026**, place **111572448337932**. The session-only test flag was cleared and no persistence fixture was present in the published Edit datamodel. [District guide and screenshots](COASTAL-WORLD.md), [verification](qa/coastal-results.json).
+
+## Previous release
+
 Compact neighborhood blocks published as **v108**, confirmed at **18:28:39 UTC on September 24, 2026**. [Screenshot, changes and verification](COMPACT-BLOCKS.md).
 
 ## Previous release

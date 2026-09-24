@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-24",
+  "publishedPlaceVersion": 117,
+  "publishedAt": "2026-09-24T19:18:04.425Z",
+  "environment": "Roblox Studio session-only profile, one client",
+  "roadNodes": 45,
+  "roadEdges": 64,
+  "roadGraphConnected": true,
+  "roadLaneObstacles": 0,
+  "houses": 12,
+  "streets": 3,
+  "housesPerStreet": 4,
+  "garageSpawnsPassed": 12,
+  "shuttleDestinationsPassed": 8,
+  "buildingEntranceRaysPassed": 24,
+  "liftFloorSupportsPassed": 56,
+  "oceanSwimming": "Client HumanoidStateType.Swimming observed at approximately (720, -1.4, 350)",
+  "carnivalRides": "Wheel, carousel and swings boarded and moved in bounded checks",
+  "carnivalSkillBooths": "All three green-window requests and $8 rewards passed through InteractionService",
+  "factoryPacking": "Start, 8-second timer and $30 reward passed",
+  "sightseeingPlane": "Full 45-second route, rise, dismount and boarding-area return passed after seat/network ownership fix",
+  "ferry": "Full 35-second cruise and boarding-pier return passed",
+  "npcHomeRoutine": "Door-relative home exit and entry passed after relocation",
+  "limits": [
+    "Not a 12-client load test",
+    "Low-end mobile performance unverified",
+    "Full live save/rejoin migration not rerun for this redesign",
+    "Not an assertion that every legacy master-spec feature is complete"
+  ]
+}

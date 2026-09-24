@@ -109,6 +109,7 @@ Interactions:Register("Doorbell",function(player,target)
     end
     return false,"Nobody has moved in yet."
 end)
+require(script.Parent.CoastalWorld).Init(context)
 require(script.Parent.ResidentNeighbors).Init(context)
 context.Ready=true
 local function characterAdded(player,character)
@@ -154,6 +155,7 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument,request
     if type(id)~="string" or #id>80 then return end
     local ok,message=false,"Unavailable action."
     if action=="IntroDone"then Data:Get(player).Settings.IntroSeen=true;ok=true;message="Welcome to Maple Street."
+    elseif action=="CoastTransit"then ok,message=require(script.Parent.CoastalWorld).Travel(player,id)
     elseif action=="Activities"then ok,message=Activities:Action(player,id,argument)
     elseif action=="Playground"then ok,message=Recreation:Action(player,id)
     elseif action=="Life"then ok,message=Life:Action(player,id,argument)

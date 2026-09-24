@@ -4,6 +4,20 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Coastal districts — published as v117**, confirmed by Studio at **19:18:04 UTC**. Three residential streets with twelve homes and garages now connect to a separate downtown boulevard, commercial strip, school, industrial yard, airport, farms, mountain trails and a real ocean beach with a pier carnival. The pond and ring of towers are superseded.
+
+- [Complete district guide, screenshot gallery and limitations](docs/COASTAL-WORLD.md)
+- [Request checklist](docs/COASTAL-WORLD-PLAN.md)
+- [Recorded verification](docs/qa/coastal-results.json)
+- [Play The Neighborhood](https://www.roblox.com/games/111572448337932/The-Neighborhood)
+
+![Twelve homes on three streets](assets/screenshots/coastal-suburbs.png)
+![Ocean pier and carnival](assets/screenshots/coastal-pier.png)
+
+Verified in a session-only Studio profile: connected 45-node road graph, no road-lane blockers, twelve garage spawns, eight shuttle destinations, building entrances and lift supports, swimming, carnival rides/timing rewards, packing work, NPC home entry/exit, full sightseeing flight and ocean cruise returns. The larger map has not been load-tested with twelve clients or on low-end mobile devices. Join a fresh server to see the update.
+
+## Earlier releases — superseded layouts
+
 **Compact neighborhood — published as v108.** Oversized towers replaced by 37 furnished two- to five-storey blocks, including 14 closer to the houses. All new frontages face the center. [Screenshot and checks](docs/COMPACT-BLOCKS.md).
 
 ![Compact neighborhood blocks](assets/screenshots/compact-neighborhood-blocks.png)

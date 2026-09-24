@@ -1,6 +1,6 @@
 local Players=game:GetService('Players')
 local S={Runs={},Memory={},Paid={}}
-local places={{'West cottages',-75,-90},{'Lakeside junction',-75,60},{'Market crossing',0,194},{'Meadow junction',75,60},{'East cottages',75,-90},{'Beach boardwalk',0,-194}}
+local places={{'Maple Lane',-440,-72},{'Palm Lane',-260,-72},{'Sunset Lane',-80,-72},{'Town square',80,65},{'Market street',-260,95},{'Community park',-400,65}}
 local goals={{Id='Circuit',Name='Finish a neighborhood circuit',Target=1},{Id='Memory',Name='Complete the five-round memory challenge',Target=1},{Id='Work',Name='Finish three jobs or meadow trials',Target=3}}
 function S:Progress(player)
  local p=self.Context.Data:Get(player);if not p then return end

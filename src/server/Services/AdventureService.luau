@@ -6,7 +6,7 @@ local Config=require(Shared.Config)
 local Service={Jobs={},Markers={},Project=1,ProjectProgress=0,Contributors={},LastContribution={}}
 
 local function part(parent,name,size,position,color)
- local p=Instance.new("Part");p.Name=name;p.Size=Space.Point(size);p.Position=Space.Point(position);p.Color=color
+ local p=Instance.new("Part");p.Name=name;p.Size=Space.Point(size);p.Position=Space.Point(position)+(parent.Name:match("^Project")and Vector3.new(-260,0,-65)or Vector3.zero);p.Color=color
  p.Material=Enum.Material.Wood;p.Anchored=true;p.CanCollide=false;p.CanTouch=false;p.Parent=parent;return p
 end
 local function sign(p,text)

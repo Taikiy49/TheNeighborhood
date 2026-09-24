@@ -74,7 +74,10 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Residence"then require(script.Parent.ResidenceScreen).Render(self)
+ if view=="CoastalTransit"then
+  self.Title.Text='Town shuttle'
+  for _,d in ipairs({{'Suburbs','Your home and neighbors'},{'Downtown','Shops, hotels and plazas'},{'Beach','Carnival, fishing and ocean'},{'School','School, library and sports'},{'Commercial','Cars, clothing and cafe'},{'Airport','Sightseeing flights'},{'Farmland','Farm and greenhouse'},{'Mountains','Trails, camping and views'}})do self:Row(d[1],d[2]..' • Free from a shuttle stop','Travel',function()self.Request('CoastTransit',d[1])end)end
+ elseif view=="Residence"then require(script.Parent.ResidenceScreen).Render(self)
  elseif view=="ResidenceReview"then require(script.Parent.ResidenceScreen).Review(self,detail)
  elseif view=="Activities"then require(script.Parent.ActivitiesScreen).Render(self,detail)
  elseif view:sub(1,4)=="Menu"then require(script.Parent.MenuScreen).Render(self,view)
