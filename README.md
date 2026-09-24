@@ -4,6 +4,10 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Urban ground — published as v105.** Broad lawns replaced by asphalt and paved residential blocks; green space is concentrated in the park and planting beds. [Screenshot and checks](docs/URBAN-GROUND.md).
+
+![Urban ground](assets/screenshots/urban-ground-overview.png)
+
 **City skyline — published as v104.** House rows move three studs inward each; four story signs move off asphalt; 42 taller exterior towers frame town. [Screenshot and checks](docs/CITY-DENSITY.md).
 
 **Town streets — published as v102.** Dusk streetlights, awnings, usable benches and patios, contained tree beds, street names and corrected crossings. [Screenshot and checks](docs/TOWN-STREETS.md).

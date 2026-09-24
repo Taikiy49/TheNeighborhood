@@ -1,5 +1,9 @@
 # Current release
 
+Urban ground published as **v105**, confirmed by Studio PublishSuccessful at **18:14:47 UTC on September 24, 2026**. Broad asphalt ground, paved residential blocks and clear back streets. [Screenshot and checks](URBAN-GROUND.md).
+
+## Previous release
+
 Closer house rows, roadside story signs and taller skyline published as **v104**, confirmed by Studio PublishSuccessful at **18:07:48 UTC on September 24, 2026**. [Details, screenshot and checks](CITY-DENSITY.md).
 
 ## Previous release

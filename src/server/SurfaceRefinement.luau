@@ -24,6 +24,7 @@ local function candidates(w)
 end
 function M.Audit(w)return #candidates(w)end
 function M.Apply(w)
+ require(script.Parent.UrbanGround).Apply(w)
  for _,h in ipairs(w.Houses:GetChildren())do
   local lawn=h:FindFirstChild('Lawn');if lawn then lawn.Transparency=1; lawn.CanCollide=false; lawn.CanQuery=false end
   if not h:FindFirstChild('StoneApron')then
