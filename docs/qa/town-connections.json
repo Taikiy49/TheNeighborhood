@@ -1,0 +1,19 @@
+{
+  "Routes": 40,
+  "Passed": true,
+  "GrassGaps": [],
+  "Blocked": [],
+  "Sports": 2,
+  "Samples": 759,
+  "Walked": [
+    "GeneralStore",
+    "CornerCafe",
+    "OrchardStand",
+    "PalmResort",
+    "FuelAndSnacks",
+    "CoastSchool",
+    "HangarOne",
+    "BeachChangingRooms"
+  ],
+  "NonoverlappingPaving": 228
+}

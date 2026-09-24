@@ -4,6 +4,12 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Connected streets and sports grounds — published as v147.** Forty public entrances now connect to sidewalks or the boardwalk. Scattered bowling/toy stations have been removed, with imported basketball and soccer grounds, shared playable balls and match scoring beside the school. Verified 759 route samples, eight walked approaches and both sports. [Sources, scope and test results](docs/CONNECTED-TOWN.md).
+
+![Connected basketball and soccer grounds](assets/screenshots/connected-sports-grounds.png)
+
+## Previous updates
+
 **Sign cleanup and owner home grant — published as v143.** Repeated garden boards and inactive tour signs removed. A one-time roadster, bicycle, dog, furniture and yard setup applies only to taikiyama49 on joining a fresh server. [Details and verification](docs/OWNER-HOME.md).
 
 **Finished venues — published as v142**, confirmed at **22:01:35 UTC**. Fourteen sourced venue buildings, imported furniture in eighteen more public interiors, usable café tea, a paid barista timing job, stocked shops and a furnished farm market. Fourteen service/project checks, eight doorway walks, reward/cup checks and the build passed. [Sources, screenshots, tests and scope](docs/VENUE-RENEWAL.md).

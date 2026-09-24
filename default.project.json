@@ -101,6 +101,7 @@
       "CarnivalArt": {
         "$path": "assets/CarnivalArt.rbxm"
       },
+      "SportsArt": {"$path": "assets/SportsArt.rbxm"},
       "VenueArt": {
         "$path": "assets/VenueArt.rbxm"
       }

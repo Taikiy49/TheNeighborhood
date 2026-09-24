@@ -11,7 +11,7 @@ local function run()
  for _,p in ipairs(players)do repeat task.wait(.1)until Data:Get(p)and Data:Get(p)._Restored and p.Character and p.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline;assert(Data:Get(p)and p.Character);p.Character.HumanoidRootPart:SetNetworkOwner(nil)end
  local p,q=players[1],players[2];local root=p.Character.HumanoidRootPart;local hum=p.Character.Humanoid
  local checked,throws,rides,walks,roadSamples,blocked=0,0,0,0,0,{}
- local world=workspace.Neighborhood;local roads=world.Recreation.RoadNetwork
+ local world=workspace.Neighborhood;local roads=world.CoastalWorld.Roads
  -- Sample the whole drivable width, including turning junctions, not just the centerline.
  local params=RaycastParams.new();params.FilterType=Enum.RaycastFilterType.Exclude;params.FilterDescendantsInstances={p.Character,q.Character};params.RespectCanCollide=true
  for _,road in ipairs(roads:GetChildren())do if road.Material==Enum.Material.Asphalt then
@@ -33,8 +33,8 @@ local function run()
   repeat hum:MoveTo(goal);task.wait(.1)until (Vector3.new(root.Position.X,0,root.Position.Z)-Vector3.new(goal.X,0,goal.Z)).Magnitude<1.5 or os.clock()>finish
   assert((Vector3.new(root.Position.X,0,root.Position.Z)-Vector3.new(goal.X,0,goal.Z)).Magnitude<2.2,"Cannot walk to "..tostring(goal));walks+=1
  end
- for index=1,100 do
-  local id=string.format("Activity%03d",index);local d=assert(D.Activities[id]);local m=assert(S:Model(id))
+ for id,d in pairs(D.Activities)do
+  local m=assert(S:Model(id))
   approach(p,m);use(p,m)
   if d.Kind=="Toss"then
    assert(S.Held[p]and S.Held[p].Tool.Parent==p.Character)
@@ -69,12 +69,12 @@ local function run()
   elseif d.Kind=="Domino"then assert(m.Domino1.CFrame.UpVector.Y>.99)
   elseif d.Kind=="Dig"then assert(m.Treasure.Transparency==1)end
  end
- approach(p,S:Model("Activity001"));local target=S:Model("Activity001").Interact
+ approach(p,S:Model("Activity006"));local target=S:Model("Activity006").Interact
  p.Character:PivotTo(CFrame.new(0,4,0));I.Last[p.UserId]=nil;assert(not I:Request(p,target,"Recreation"),"Remote interaction accepted")
  for i=1,500 do assert(not S:Action(p,i%2==0 and "Bogus"or "Throw"))end
- approach(p,S:Model("Activity001"));use(p,S:Model("Activity001"));S:Release(p);assert(not S.Held[p],"Disconnect cleanup")
+ approach(p,S:Model("Activity006"));use(p,S:Model("Activity006"));S:Release(p);assert(not S.Courses[p],"Disconnect cleanup")
  for _,b in ipairs(S.Projectiles)do b.Expires=0 end;S:Step(.1);assert(#S.Projectiles==0,"Expired toys retained")
  local Physics=game:GetService("PhysicsService");assert(not Physics:CollisionGroupsAreCollidable("RecreationToys","NeighborhoodCharacters"))
- return {Passed=true,Clients=2,ActivitiesExercised=checked,Mechanics=10,PhysicalThrows=throws,RideOccupancyChecks=rides,WalkedCourseLegs=walks,RoadSurfaceSamples=roadSamples,MalformedToyRequests=500,ResetChecks=30,SessionOnly=true,DevicePerformanceCertified=false}
+ return {Passed=true,Clients=2,ActivitiesExercised=checked,Mechanics=2,PhysicalThrows=throws,RideOccupancyChecks=rides,WalkedCourseLegs=walks,RoadSurfaceSamples=roadSamples,MalformedToyRequests=500,ResetChecks=0,SessionOnly=true,DevicePerformanceCertified=false}
 end
 local ok,result=pcall(run);Test:EndTest(ok and result or {Passed=false,Error=tostring(result),Progress=workspace:GetAttribute("RecreationTestProgress")})

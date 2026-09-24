@@ -29,5 +29,7 @@ D.Zones={{Id="Green",Name="Maple Green",Position=Vector3.new(0,0,0),Color=Color3
 local newPositions={Activity001=Vector3.new(-340,0,5),Activity002=Vector3.new(-290,0,5),Activity008=Vector3.new(-230,0,5),Activity005=Vector3.new(-365,0,350),Activity006=Vector3.new(-325,0,350),Activity003=Vector3.new(-165,0,5)}
 for id,pos in pairs(newPositions)do D.Activities[id].Position=pos end
 D.Zones[1].Position=Vector3.new(-260,0,5);D.Zones[2].Position=Vector3.new(-345,0,350)
-D.Version='coastal-districts-1'
+for _,id in ipairs({'Activity001','Activity002','Activity003','Activity008'})do D.Activities[id]=nil end
+D.Count=2
+D.Version='sports-grounds-2'
 return D

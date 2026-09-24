@@ -1,5 +1,8 @@
 # Latest release
 
+Connected streets and sports grounds published as **v147**, confirmed by Studio `PublishSuccessful` at **2026-09-24T23:32:41.101Z**, place **111572448337932**. Forty connected public entrances; retired scattered park stations; imported basketball and soccer grounds with shared balls and scoring. Playtest passed 759 route samples, eight walked approaches, 228 nonoverlapping paving pieces and both sports. Test attributes cleared; VisualAcceptance restored. [Sources, scope and checks](CONNECTED-TOWN.md).
+# Previous release
+
 Sign cleanup and personal owner home grant published as **v143**, confirmed by Studio `PublishSuccessful` at **2026-09-24T22:50:13.000Z**, place **111572448337932**. [Grant scope and verification](OWNER-HOME.md). The one-time gift applies to taikiyama49 on the next join to a fresh server; production save/rejoin remains unobserved. Test flags cleared and VisualAcceptance restored.
 # Previous release
 
