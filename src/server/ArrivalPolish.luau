@@ -5,17 +5,21 @@ function M.Apply(w)
   local old=h:FindFirstChild("EntranceJoinery");if old then old:Destroy()end
   local folder=Instance.new("Folder");folder.Name="EntranceJoinery";folder.Parent=h
   local b=h.Foundation.CFrame;local door=h.Door;local wall=h:FindFirstChild("FrontPost")
+  local r=h.Foundation.Size.X/90;local cozy=r<.75;local width=cozy and 5.8 or 6.4;local height=cozy and 8 or 9.5
+  local wallZ=-37.8*r;local faceZ=wallZ-1.05*r-.11;local edge=10.05*r;local gap=width/2+.05
+  local headerBottom=b:PointToObjectSpace(h.FrontHeader.Position).Y-h.FrontHeader.Size.Y/2
   local function part(name,size,x,y,z,color)
    local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=b*CFrame.new(x,y,z);p.Color=color;p.Material=wall.Material;p.Anchored=true;p.CanTouch=false;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=folder;return p
   end
-  door.Size=Vector3.new(6.4,9.5,.55);door.CFrame=b*CFrame.new(0,5.19,-37.8)
+  door.Size=Vector3.new(width,height,.55);door.CFrame=b*CFrame.new(0,.44+height/2,wallZ)
   for _,s in ipairs({-1,1})do
-   part("FrontWallInfill",Vector3.new(6.8,11.05,2.1),s*6.65,5.965,-37.8,wall.Color)
-   part("DoorFrame",Vector3.new(.22,9.8,.25),s*3.34,5.19,-38.96,Color3.fromRGB(244,245,236))
+   part("FrontWallInfill",Vector3.new(edge-gap,headerBottom-.44,2.1*r),s*(edge+gap)/2,(headerBottom+.44)/2,wallZ,wall.Color)
+   part("DoorFrame",Vector3.new(.22,height+.2,.25),s*(gap+.09),.44+height/2,faceZ,Color3.fromRGB(244,245,236))
   end
-  part("DoorLintel",Vector3.new(6.5,1.55,2.1),0,10.715,-37.8,wall.Color)
-  part("DoorFrameTop",Vector3.new(6.9,.22,.25),0,10,-38.96,Color3.fromRGB(244,245,236))
-  h.Doorbell.CFrame=b*CFrame.new(-4.3,4.1,-39.12);h.Lock.CFrame=b*CFrame.new(4.3,4.1,-39.12)
+  local top=.44+height
+  part("DoorLintel",Vector3.new(gap*2,math.max(.1,headerBottom-top),2.1*r),0,(headerBottom+top)/2,wallZ,wall.Color)
+  part("DoorFrameTop",Vector3.new(width+.5,.22,.25),0,top+.08,faceZ,Color3.fromRGB(244,245,236))
+  h.Doorbell.CFrame=b*CFrame.new(-gap-.6,4.1,faceZ-.18);h.Lock.CFrame=b*CFrame.new(gap+.6,4.1,faceZ-.18)
   for _,v in ipairs(door:GetChildren())do if v.Name=="DoorJoinery"then v:Destroy()end end
   for _,face in ipairs({Enum.NormalId.Front,Enum.NormalId.Back})do
    local g=Instance.new("SurfaceGui");g.Name="DoorJoinery";g.Face=face;g.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;g.PixelsPerStud=40;g.LightInfluence=.65;g.Parent=door
@@ -33,8 +37,9 @@ function M.Apply(w)
    local t=Instance.new("TextLabel");t.Size=UDim2.fromScale(.9,.88);t.Position=UDim2.fromScale(.05,.06);t.BackgroundTransparency=1;t.Text=title.."\n"..body;t.TextScaled=true;t.TextWrapped=true;t.Font=Enum.Font.GothamMedium;t.TextColor3=Color3.fromRGB(244,245,236);t.Parent=g
   end
  end
- post("NorthDirectory",Vector3.new(65,0,-360),"MAPLE GREEN","Park & stories: ahead\nShops: south end of Maple Street")
- post("SouthDirectory",Vector3.new(-65,0,365),"MARKET STREET","Shops: across the crossing\nLake: west · Meadow: east")
+ local ratio=(w:GetAttribute("HorizontalScale")or 3)/3
+ post("NorthDirectory",Vector3.new(65*ratio,0,-345*ratio),"MAPLE GREEN","Park & stories: ahead\nShops: south end of Maple Street")
+ post("SouthDirectory",Vector3.new(-65*ratio,0,345*ratio),"MARKET STREET","Shops: across the crossing\nLake: west · Meadow: east")
  for _,v in ipairs(w.ArtDirection.GardenDistrict:GetDescendants())do
   if v:IsA("BasePart")and v.Name=="DistrictSign"and not v:GetAttribute("RaisedWayfinding")then
    v.Position+=Vector3.new(0,3,0);v:SetAttribute("RaisedWayfinding",true)

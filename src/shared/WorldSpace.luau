@@ -1,6 +1,6 @@
 -- Authored layout coordinates remain stable so saved plot/slot/layout IDs need no migration.
 -- Only horizontal space grows. Avatars, usable props, interaction range and walk speed do not.
-local S={Scale=3}
+local S={Scale=1.4}
 function S.Point(v)return Vector3.new(v.X*S.Scale,v.Y,v.Z*S.Scale)end
 function S.Unpoint(v)return Vector3.new(v.X/S.Scale,v.Y,v.Z/S.Scale)end
 function S.Frame(x,y,z)

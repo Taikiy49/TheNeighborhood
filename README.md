@@ -4,6 +4,12 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Compact town redesign
+
+New Studio work: smaller furnished cottages, conversational neighbors, clearer road ends, working traffic signals, a clock landmark, picnic seating, and a free lake cruise. [Changes and test boundaries](docs/COZY-TOWN.md). The new illustrated icon is saved in Creator Dashboard. The game update is **not verified published**; Studio publishing is disabled in the current session.
+
+![New Neighborhood icon](assets/neighborhood-cover-cozy.png)
+
 ## Current Roblox publication
 
 **New local work:** [Single front doors, clearer signs and a skippable arrival introduction](docs/ARRIVAL-REDESIGN.md). These changes are implemented and tested locally; their Roblox publication is not yet verified.

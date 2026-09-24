@@ -1,0 +1,15 @@
+{
+  "environment": "Roblox Studio session-only fixture",
+  "entranceWalking": {"passed": 8, "total": 8},
+  "signalPhases": ["Green", "Amber", "Red"],
+  "carRecall": true,
+  "ferry": {"boarding": true, "seatedMovement": true, "returnAfter35Seconds": true, "release": true},
+  "stationActivation": {"initialPassed": 99, "total": 100, "failure": "Activity091 approach occluded by orchard bench", "fix": "Moved station 14 studs away", "focusedRetestPassed": true},
+  "intro": {"missingFoundationSafe": true, "replayStarted": true, "cameraRestored": true},
+  "finalConsoleScriptErrors": 0,
+  "coverIconSavedInDashboard": true,
+  "publicationVerified": false,
+  "lastVerifiedPublishedVersion": 62,
+  "allAgesAvailable": false,
+  "limitations": ["No live rejoin test in this pass", "No multiplayer full regression in this pass", "Station activation is not course completion", "Full master specification remains incomplete"]
+}

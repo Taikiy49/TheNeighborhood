@@ -21,6 +21,7 @@ function F.Build(w)
   end
  end
  local corners={Vector3.new(-770,.08,-640),Vector3.new(770,.08,-640),Vector3.new(770,.08,640),Vector3.new(-770,.08,640)}
+ if not w:GetAttribute("CozyLayout")then
  for i=1,4 do road("ValleyCircuit"..i,corners[i],corners[i%4+1])end
  -- Southbound Maple Street joins Cross Street before the shops. Do not extend through them.
  for _,x in ipairs({-126,126})do road("MapleLink",Vector3.new(x,.08,-399),Vector3.new(x,.08,-640))end
@@ -47,19 +48,19 @@ function F.Build(w)
   local glass=F.Part(roads,"Lantern",Vector3.new(1.1,1.3,1.1),post.CFrame*CFrame.new(0,5,0),cream,false)
   local light=Instance.new("PointLight");light.Range=24;light.Brightness=.5;light.Color=Color3.fromRGB(255,228,185);light.Parent=glass
  end end end
- local function walk(a,b,width)local delta=b-a;F.Part(root,"ConnectingPath",Vector3.new(width,.12,delta.Magnitude),CFrame.lookAt((a+b)/2,b),cream)end
+ end
+ local function walk(a,b,width)local delta=b-a;if delta.Magnitude>.1 then F.Part(root,"ConnectingPath",Vector3.new(width,.12,delta.Magnitude),CFrame.lookAt((a+b)/2,b),cream)end end
  for zi,zone in ipairs(D.Zones)do
   local z=Instance.new("Model");z.Name=zone.Id;z.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;z.Parent=root
   local center=zone.Position
-  F.Part(z,"GardenCourt",Vector3.new(166,.1,100),CFrame.new(center+Vector3.new(0,.06,0)),Color3.fromRGB(198,198,167))
+  -- Grass unifies each garden; only usable courts receive paving.
   walk(center+Vector3.new(-80,.2,0),center+Vector3.new(80,.2,0),8)
-  local approach=math.abs(center.Z)==550 and Vector3.new(center.X,.2,center.Z>0 and 640 or -640)or Vector3.new(center.X>0 and 770 or -770,.2,center.Z)
-  walk(Vector3.new(center.X,.2,center.Z),approach,9)
+  local northSouth=math.abs(center.Z)>230
   -- The existing district promenade connects back into each recreation area.
-  local inner=math.abs(center.Z)==550 and Vector3.new(center.X,.2,center.Z>0 and 510 or -510)or Vector3.new(center.X>0 and 462 or -462,.2,center.Z)
+  local inner=northSouth and Vector3.new(center.X,.2,center.Z>0 and 238 or -238)or Vector3.new(center.X>0 and 215.6 or -215.6,.2,center.Z)
   walk(Vector3.new(center.X,.2,center.Z),inner,8)
-  local sign=F.Part(z,"Welcome",Vector3.new(18,3,.35),CFrame.new(center+Vector3.new(0,6,-49)),ink,false);F.Sign(sign,zone.Name.."\n10 things to try")
-  for _,x in ipairs({-7,7})do F.Part(z,"SignPost",Vector3.new(.3,5,.3),sign.CFrame*CFrame.new(x,-3,.4),wood,false)end
+  local approach=(inner-Vector3.new(center.X,.2,center.Z));local facing=approach.Magnitude>.1 and approach.Unit or Vector3.new(0,0,-1);local signPosition=center+facing*12+Vector3.new(12,6,0);local sign=F.Part(z,"Welcome",Vector3.new(12,2.4,.35),CFrame.lookAt(signPosition,signPosition+facing),ink,false);F.Sign(sign,zone.Name.."\nFree play garden")
+  for _,x in ipairs({-4.5,4.5})do F.Part(z,"SignPost",Vector3.new(.3,5,.3),sign.CFrame*CFrame.new(x,-3,.4),wood,false)end
   for _,x in ipairs({-86,86})do for _,zz in ipairs({-48,48})do
    local p=center+Vector3.new(x,0,zz)
    F.Part(z,"TreeTrunk",Vector3.new(1,7,1),CFrame.new(p+Vector3.new(0,3.5,0)),wood)
@@ -77,12 +78,12 @@ function F.Build(w)
   local m=Instance.new("Model");m.Name=id;m:SetAttribute("Kind",d.Kind);m.Parent=root[d.Zone]
   local cf=CFrame.new(d.Position)
   local function p(name,size,x,y,z,color,solid,class)return F.Part(m,name,size,cf*CFrame.new(x,y,z),color,solid,class)end
-  p("ActivityPad",Vector3.new(27,.16,23),0,.2,0,d.Color:Lerp(cream,.5))
+  if d.Kind=="Bowl" or d.Kind=="Sprint" or d.Kind=="Domino" then p("ActivityPad",Vector3.new(13,.12,23),0,.2,0,Color3.fromRGB(185,179,151)) end
   local button=p("Interact",Vector3.new(2,1.4,1.5),-10,1.5,-8,ink)
   button:SetAttribute("Action","Recreation");button:SetAttribute("ActivityId",id)
   local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ObjectText=d.Name;prompt.ActionText=({Toss="Grab toy",Bowl="Roll ball",Ride="Ride",Bounce="Bounce",Balance="Start trail",Sprint="Start sprint",Lantern="Change colors",Water="Water flowers",Dig="Dig",Domino="Topple / reset"})[d.Kind];prompt.RequiresLineOfSight=false;prompt.MaxActivationDistance=10;prompt:SetAttribute("Action","Recreation");prompt.Parent=button
-  local title=p("ActivitySign",Vector3.new(19,2,.2),0,4.8,11,ink,false);F.Sign(title,d.Name)
-  for _,x in ipairs({-8,8})do p("SignSupport",Vector3.new(.22,4,.22),x,2.5,11.2,wood,false)end
+  local title=p("ActivitySign",Vector3.new(6,1.4,.2),-8,3.4,-8,ink,false);F.Sign(title,d.Kind=="Toss"and "Free toys"or d.Name:gsub('^%w+ ',''))
+  p("SignSupport",Vector3.new(.22,3,.22),-8,1.7,-7.7,wood,false)
   if d.Kind=="Toss"then
    p("ToyShelf",Vector3.new(8,.4,3),0,2,0,wood)
    for n=-1,1 do local toy=p("DisplayToy",Vector3.new(1.6,1.6,1.6),n*2.3,3,0,d.Color,false);toy.Shape=d.Variant%3==0 and Enum.PartType.Block or Enum.PartType.Ball end
