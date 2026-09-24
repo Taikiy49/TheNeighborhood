@@ -1,5 +1,9 @@
 # Current release
 
+Curated environment art published as **v129**, confirmed by Studio `PublishSuccessful` at **20:54:06.777 UTC on September 24, 2026**, place **111572448337932**. Workspace test attributes cleared, VisualAcceptance restored to its guarded default, and no injected test scripts in Edit. [Imported assets, screenshots, checks and limits](CURATED-ART.md). Source geometry and reproducible Rojo build included.
+
+## Previous release
+
 Gardens and town life published as **v122**, confirmed by Studio `PublishSuccessful` at **19:51:50.062 UTC on September 24, 2026**, place **111572448337932**. Workspace test attributes cleared; automatic VisualAcceptance restored to its guarded default; no injected test scripts in Edit. [Features and economy](TOWN-LIFE.md), [QA and limits](TOWN-LIFE-QA.md). Source and reproducible Rojo build accompany this release.
 
 ## Previous release

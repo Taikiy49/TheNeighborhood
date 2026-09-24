@@ -4,6 +4,15 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Curated environment art — published as v129**, confirmed by Studio at **20:54:06 UTC**. Imported modular architecture adds four façade styles, proportioned upper floors, awnings, fire escapes and roof details across 31 main buildings and six smaller shops, plus twelve cottage/garage detail groups. The airport now uses imported aircraft models; the pier has an 18-cabin Ferris wheel and animal carousel meshes.
+
+![Updated storefront architecture](assets/screenshots/curated-storefront.png)
+![Imported airport aircraft](assets/screenshots/curated-aircraft.png)
+
+[Art sources, full screenshot gallery, verification and remaining work](docs/CURATED-ART.md). Three ride boarding/movement checks, a complete sightseeing flight, 93 entry-path samples and a clean final startup passed in Studio. The helicopter is a static display. Join a fresh server for the update.
+
+## Gardens and town life
+
 **Gardens and town life — published as v122**, confirmed by Studio at **19:51:50 UTC**. Twelve personal yards with saved decorating, five earnable vehicles and half-price resale, longer-term resident levels/titles, four furnished snack venues, taller trees, additional pedestrians, road traffic and a three-stop coastal tram. Menus have reliable Close/Escape dismissal, the task card has Hide, and the camera tour is optional.
 
 - [Feature guide and economy](docs/TOWN-LIFE.md)

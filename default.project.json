@@ -93,6 +93,10 @@
         "$className": "Sky"
       }
     },
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "CuratedArt": { "$path": "assets/CuratedArt.model.json" }
+    },
     "ReplicatedStorage": {
       "$ignoreUnknownInstances": true,
       "Neighborhood": {

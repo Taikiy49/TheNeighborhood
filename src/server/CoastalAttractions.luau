@@ -8,25 +8,26 @@ function M.Build(W,context)
   local station=p(name..'Boarding',{5,2,2},x,y,z,A.Ink)
   A.Prompt(station,'CoastRide',name,'Board ride');station:SetAttribute('Ride',name);rides[name]=seats;for _,seat in ipairs(seats)do seat:GetPropertyChangedSignal('Occupant'):Connect(function()if not seat.Occupant then seat.Disabled=true end end)end
  end
- local ferris={};local center=Vector3.new(790,39,10);local radius=28
- for _,z in ipairs({3,17})do
-  local a=p('WheelSupport',{3,36,3},790,20,z,A.Cream,Enum.Material.Metal)
-  local axle=p('WheelAxle',{4,4,22},790,39,10,A.Ink,Enum.Material.Metal)
- end
- for i=1,8 do
-  local m=Instance.new('Model');m.Name='FerrisCabin'..i;m.Parent=root
-  local seat=p('PassengerSeat',{4,.5,3},0,0,0,Color3.fromRGB(186,113,99),nil,true,'Seat');seat.Parent=m;seat.Disabled=true;m.PrimaryPart=seat
-  for _,dx in ipairs({-2,2})do local bar=p('CabinSide',{.2,2.5,3},dx,1,0,A.Cream);bar.Parent=m end
-  local roof=p('CabinCanopy',{5,.4,4},0,4,0,A.Cream);roof.Parent=m
-  local back=p('CabinBack',{4,2,.25},0,1,1.5,A.Ink);back.Parent=m
-  local spoke=p('WheelSpoke',{.4,radius,.4},790,39,10,A.Cream,Enum.Material.Metal,false)
-  table.insert(ferris,{Model=m,Seat=seat,Phase=i*math.pi/4,Spoke=spoke})
- end
- local seats={};for _,c in ipairs(ferris)do table.insert(seats,c.Seat)end
- rideStation('Pacific Wheel',790,5,-30,seats)
+ local Art=require(script.Parent.CuratedArchitecture)
+ local ferris,updateFerris=Art.Ferris(root,Vector3.new(790,36,10))
+ rideStation('Pacific Wheel',790,5,-30,ferris)
  local carousel={};p('CarouselPlatform',{34,1,34},855,4,60,Color3.fromRGB(186,134,100),Enum.Material.WoodPlanks)
- p('CarouselMast',{3,19,3},855,14,60,A.Cream);local canopy=p('CarouselCanopy',{39,2,39},855,23,60,Color3.fromRGB(197,121,98));canopy.Shape=Enum.PartType.Cylinder;canopy.CFrame*=CFrame.Angles(0,0,math.pi/2);canopy.Size=Vector3.new(2,39,39)
- for i=1,6 do local seat=p('CarouselSeat',{3,.5,3},855,6,60,Color3.fromHSV(i/6,.35,.85),nil,true,'Seat');seat.Disabled=true;table.insert(carousel,{Seat=seat,Phase=i*math.pi/3})end
+ local mast=p('CarouselMast',{12,3,3},855,10,60,A.Cream);mast.Shape=Enum.PartType.Cylinder;mast.CFrame*=CFrame.Angles(0,0,math.pi/2)
+ local canopy=p('CarouselCanopy',{2,34,34},855,16,60,Color3.fromRGB(197,121,98));canopy.Shape=Enum.PartType.Cylinder;canopy.CFrame*=CFrame.Angles(0,0,math.pi/2)
+ for i=1,24 do
+  local a=i*math.pi/12
+  local bulb=p('CarouselMarquee',{.45,.45,.45},855+math.sin(a)*17,16,60+math.cos(a)*17,Color3.fromRGB(255,227,166),Enum.Material.Neon,false);bulb.Shape=Enum.PartType.Ball
+ end
+ for _,y in ipairs({15,17})do local rim=p('CarouselGoldRim',{.2,34.4,34.4},855,y,60,Color3.fromRGB(193,156,81),Enum.Material.Metal,false);rim.Shape=Enum.PartType.Cylinder;rim.CFrame*=CFrame.Angles(0,0,math.pi/2)end
+ for i=1,6 do
+  local seat=p('CarouselSeat',{2,.3,2},855,7.8,60,A.Ink,nil,true,'Seat');seat.Disabled=true;seat.Transparency=1
+  local key='Carousel'..({'Tiger','Elephant','Giraffe'})[(i-1)%3+1]
+  local _,size=game.ServerStorage.CuratedArt[key]:GetBoundingBox();local scale=math.min(5/math.max(size.X,size.Z),3/size.Y)
+  local rotation=CFrame.Angles(0,size.X>size.Z and math.pi/2 or 0,0)
+  local animal=Art.Place(key,root,seat.CFrame*CFrame.new(0,-1.2,0)*rotation,size*scale)
+  local pole=p('CarouselPole',{.15,10.5,.15},855,10.5,60,Color3.fromRGB(195,162,92),Enum.Material.Metal,false)
+  table.insert(carousel,{Seat=seat,Animal=animal,Pole=pole,Rotation=rotation,Phase=i*math.pi/3})
+ end
  local cs={};for _,c in ipairs(carousel)do table.insert(cs,c.Seat)end;rideStation('Seaside Carousel',835,5,80,cs)
  local swing={};p('SwingCanopy',{26,1,26},740,23,65,Color3.fromRGB(120,163,168));p('SwingMast',{2,20,2},740,13,65,A.Cream)
  for i=1,4 do local seat=p('SwingSeat',{3,.5,3},740,7,65,A.Wood,nil,true,'Seat');seat.Disabled=true;local chain=p('SwingChain',{.15,13,.15},740,14,65,A.Ink,Enum.Material.Metal,false);table.insert(swing,{Seat=seat,Chain=chain,Phase=i*math.pi/2})end
@@ -61,6 +62,10 @@ function M.Build(W,context)
  local seat=plane('PilotSeat',{3,.5,3},0,9,-7,A.Ink);local actual=Instance.new('Seat');actual.Name='FlightSeat';actual.Size=seat.Size;actual.CFrame=seat.CFrame;actual.Anchored=true;actual.Disabled=true;actual.Parent=airplane;seat:Destroy()
  local flight=p('FlightBoard',{7,3,1},195,5,470,A.Ink);A.Sign(flight,'COAST SIGHTSEEING - FREE FLIGHT');A.Prompt(flight,'CoastFlight','Coast sightseeing','Board plane')
  local helicopter=p('HelicopterCabin',{8,7,13},160,6,525,Color3.fromRGB(151,178,157));p('HelicopterTail',{2,2,15},160,7,537,A.Ink);p('Rotor',{28,.3,1},160,11,525,A.Ink)
+ for _,v in ipairs(airplane:GetChildren())do if v:IsA('BasePart')and v~=actual then v.Transparency=1;v.CanCollide=false end end
+ Art.Place('LightPlane',airplane,CFrame.new(210,6,485),Vector3.new(40,9,32))
+ for _,name in ipairs({'HelicopterCabin','HelicopterTail','Rotor'})do local v=root:FindFirstChild(name);if v then v:Destroy()end end
+ Art.Place('Helicopter',root,CFrame.new(160,7,525)*CFrame.Angles(0,math.pi/2,0),Vector3.new(30,9,9))
  local flying;local started;local home=airplane:GetPivot()
  context.Interactions:Register('CoastFlight',function(player)
   if flying then return false,'The plane is on a short sightseeing flight.'end
@@ -71,8 +76,8 @@ function M.Build(W,context)
  local elapsed=0
  game:GetService('RunService').Heartbeat:Connect(function(dt)
   elapsed+=dt
-  for _,c in ipairs(ferris)do local a=elapsed*.1+c.Phase;local pos=center+Vector3.new(math.sin(a)*radius,math.cos(a)*radius,0);c.Model:PivotTo(CFrame.new(pos));c.Spoke.CFrame=CFrame.new(center)*CFrame.Angles(0,0,-a)*CFrame.new(0,radius/2,0)end
-  for _,c in ipairs(carousel)do local a=elapsed*.28+c.Phase;c.Seat.CFrame=CFrame.new(855+math.sin(a)*11,6+math.sin(elapsed*1.2+c.Phase),60+math.cos(a)*11)*CFrame.Angles(0,a,0)end
+  updateFerris(elapsed)
+  for _,c in ipairs(carousel)do local a=elapsed*.28+c.Phase;c.Seat.CFrame=CFrame.new(855+math.sin(a)*11,7.8+math.sin(elapsed*1.2+c.Phase)*.4,60+math.cos(a)*11)*CFrame.Angles(0,a,0);c.Animal:PivotTo(c.Seat.CFrame*CFrame.new(0,-1.2,0)*c.Rotation);c.Pole.Position=Vector3.new(c.Seat.Position.X,10.5,c.Seat.Position.Z)end
   for _,c in ipairs(swing)do local a=elapsed*.3+c.Phase;local x,z=740+math.sin(a)*10,65+math.cos(a)*10;c.Seat.CFrame=CFrame.new(x,7,z)*CFrame.Angles(0,a,0);c.Chain.Position=Vector3.new(x,14,z)end
   for target,d in pairs(games)do local green=(os.clock()+d.Phase)%3.5<d.Window;target.Color=green and Color3.fromRGB(86,204,127)or Color3.fromRGB(184,107,96);target.SurfaceGui.TextLabel.Text=green and 'HIT NOW!'or 'WAIT' end
   if flying then
