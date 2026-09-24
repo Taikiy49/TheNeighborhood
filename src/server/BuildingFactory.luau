@@ -93,7 +93,7 @@ function F.Create(house,b)
   p("LoftRail",Vector3.new(.3,.25,11),0,14.25,24,cream)
   for z=16,25,3 do p("StairSpindle",Vector3.new(.2,2.3,.2),10,2+(z-15)*.5,z,cream)end
  end
- if b.Unlocked.Garage then shell("Garage",-20,-23,16,18,9,false)end
+ -- Every cottage has a BaseGarage; this upgrade unlocks its furnishing spaces.
  if b.Unlocked.Workshop then
   p("BackyardLawn",Vector3.new(53,.2,23),0,-.4,39,Color3.fromRGB(126,155,99),Enum.Material.Grass)
   shell("Workshop",0,40,24,18,10,false)

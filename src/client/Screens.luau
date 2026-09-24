@@ -121,9 +121,9 @@ function Screens:Open(view,detail)
  elseif view=="Garage" then
   self.Title.Text="Your garage"
   local vehicle=self.State.Vehicles or {}
-  if not vehicle.Compact then self:Row("Maple Compact","A cheerful little runabout. Native movement controls steer it; jump to get out.","Buy · $2400",function()self.Request("Vehicle","Buy")end)
+  if not vehicle.Compact then self:Row("Maple Compact","Your garage starts empty. Buy this car with earned cash. Movement controls steer; jump to get out.","Buy · $2400",function()self.Request("Vehicle","Buy")end)
   else
-   self:Row("Maple Compact",vehicle.Plate or "Your car","Recall to driveway",function()self.Request("Vehicle","Recall")end)
+   self:Row("Maple Compact",vehicle.Plate or "Your car","Recall to garage",function()self.Request("Vehicle","Recall")end)
    for _,color in ipairs({"Mint","Peach","Blue","Butter"})do self:Row(color,"Included paint finish","Apply paint",function()self.Request("Vehicle","Color",color)end)end
   end
  elseif view=="Newspaper" then

@@ -1,5 +1,9 @@
 # Current release
 
+Latest: garages and Sunset Cove published as v75, confirmed by Studio at 11:11:22 UTC on September 24, 2026. [Features and tests](GARAGES-AND-COVE.md).
+
+## Previous release
+
 September 24, 2026: side destinations and twelve-home renewal published. Studio reported PublishSuccessful at 11:00:11 UTC and linked notes to v73. [Current features and verification](SIDE-DESTINATIONS.md). Server capacity remains last verified at eight. No audience/age-eligibility change was performed in this release.
 
 # Historical release record
