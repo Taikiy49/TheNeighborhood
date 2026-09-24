@@ -113,7 +113,7 @@ function M.BeginOrFinish(player,target,kind)
   if now<active.Ready then return false,"Too early! Wait for the cue before trying again."end
   if now>active.Ready+2 then return false,"Missed the timing window. Try again."end
   local profile=M.Context.Data:Get(player);if not profile then return false,"Profile unavailable."end
-  local amount=kind=="fish"and 25 or 30;profile.Currency+=amount;M.Cooldown[key]=now
+  local amount=kind=="fish"and 25 or 30;profile.Currency+=amount;M.Cooldown[key]=now;M.Context.Record(player,kind=="fish"and "Fishing"or "Repair")
   return true,kind=="fish"and "Nice catch! Released safely. Earned $25."or "Radio restored! Earned $30."
  end
  if now-(M.Cooldown[key]or -60)<60 then return false,"Next paid activity is available in a minute. Enjoy the neighborhood meanwhile."end

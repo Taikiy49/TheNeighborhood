@@ -7,7 +7,7 @@ local LifeRules=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Trials={Best={},Wins={},XP=0},Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Music=true,Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Activities={XP=0,Day=0,Counts={},Claimed={},BestMs=0,Finishes=0},Trials={Best={},Wins={},XP=0},Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Music=true,Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -22,6 +22,11 @@ function Schema.Migrate(raw,userId)
  assert(integer(raw.Version or 1,1,Schema.Version),"Unsupported profile version")
  assert(integer(raw.Currency,0,1000000000),"Corrupt currency")
  local p=Schema.Default();for key in pairs(p)do if raw[key]~=nil then p[key]=Schema.Copy(raw[key])end end
+ local activity=p.Activities
+ assert(type(activity)=="table" and integer(activity.XP,0,1000000000) and integer(activity.Day,0,1000000) and integer(activity.BestMs,0,600000) and integer(activity.Finishes,0,1000000000),"Corrupt activity progress")
+ assert(type(activity.Counts)=="table" and type(activity.Claimed)=="table","Corrupt activity goals")
+ for key,value in pairs(activity.Counts)do assert((key=="Circuit"or key=="Memory"or key=="Work")and integer(value,0,100),"Corrupt activity count")end
+ for key,value in pairs(activity.Claimed)do assert((key=="Circuit"or key=="Memory"or key=="Work")and type(value)=="boolean","Corrupt activity claim")end
  assert(type(p.Trials)=="table" and type(p.Trials.Best)=="table" and type(p.Trials.Wins)=="table" and integer(p.Trials.XP,0,1000000000),"Corrupt trial progress")
  for id,t in pairs(p.Trials.Best)do assert((id=="Activity005"or id=="Activity006")and integer(t,1,35000),"Corrupt trial record")end
  for id,n in pairs(p.Trials.Wins)do assert((id=="Activity005"or id=="Activity006")and integer(n,0,1000000000),"Corrupt trial count")end

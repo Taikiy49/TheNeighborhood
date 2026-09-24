@@ -1,5 +1,9 @@
 # Current release
 
+Latest: Activities update published as v77, confirmed by Studio at 11:20:06 UTC on September 24, 2026. [Features and tests](ACTIVITIES.md).
+
+## Previous release
+
 Latest: garages and Sunset Cove published as v75, confirmed by Studio at 11:11:22 UTC on September 24, 2026. [Features and tests](GARAGES-AND-COVE.md).
 
 ## Previous release

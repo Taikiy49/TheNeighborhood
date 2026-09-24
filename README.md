@@ -4,8 +4,9 @@ A Roblox social sandbox about settling into Maple Street, collecting unusual pos
 
 ## Current build — September 24, 2026
 
-Published to Roblox as **v75**, confirmed by Studio at 11:11:22 UTC. Includes twelve empty home garages, separately purchased cars, Sunset Cove swimming beach, the twelve-home renewal and four furnished side destinations: Corner Cafe, Willow Bait & Tackle, Maple Repair Workshop and Orchard Farm Stand.
+Published to Roblox as **v77**, confirmed by Studio at 11:20:06 UTC. Includes replayable checkpoint circuits, five-round memory challenges, daily objectives and saved mastery ranks, plus twelve empty home garages, separately purchased cars, Sunset Cove swimming beach, the twelve-home renewal and four furnished side destinations: Corner Cafe, Willow Bait & Tackle, Maple Repair Workshop and Orchard Farm Stand.
 
+- [Activities, progression and test evidence](docs/ACTIVITIES.md)
 - [Garages and Sunset Cove, screenshots and tests](docs/GARAGES-AND-COVE.md)
 - [Side destinations, screenshots and tests](docs/SIDE-DESTINATIONS.md)
 - [Profile fix, housing, water, NPCs, music and test limits](docs/NEIGHBORHOOD-RENEWAL.md)

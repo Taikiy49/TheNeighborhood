@@ -61,6 +61,7 @@ remotes.Notification.OnClientEvent:Connect(function(data)
     task.delay(4,function()if version==notificationVersion then toast.Visible=false;Screens:ClearNotice()end end)
 end)
 remotes.State.OnClientEvent:Connect(function(state)
+    require(script.Parent.ActivitiesScreen).Update(state)
     Screens.State=state
     if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView:sub(1,4)=="Life"or Screens.CurrentView=="Building"or Screens.CurrentView=="Crafting"or Screens.CurrentView=="Furnish"or Screens.CurrentView=="Layouts"or Screens.CurrentView=="Friends"or Screens.CurrentView=="InviteFriends"or Screens.CurrentView=="ChoosePlot")then
         local scroll=Screens.List.CanvasPosition
@@ -70,7 +71,7 @@ remotes.State.OnClientEvent:Connect(function(state)
         local row=rowName and Screens.List:FindFirstChild(rowName)
         if row then game:GetService("GuiService").SelectedObject=row:FindFirstChildWhichIsA("TextButton")end
     end
-    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal" or Screens.CurrentView=="Adventures" or Screens.CurrentView=="Projects")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
+    if Screens.Panel.Visible and not Screens.Pending and (Screens.CurrentView=="Activities" or Screens.CurrentView=="Boutique" or Screens.CurrentView=="Weather" or Screens.CurrentView=="Journal" or Screens.CurrentView=="Adventures" or Screens.CurrentView=="Projects")then Screens:Open(Screens.CurrentView,Screens.CurrentDetail)end
     if state.Settings then player:SetAttribute("MusicEnabled",state.Settings.Music~=false);player:SetAttribute("SoundEnabled",state.Settings.Sound);player:SetAttribute("ReducedMotion",state.Settings.ReducedMotion)end
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"
@@ -81,6 +82,7 @@ end)
 UI.Button(gui,"Inventory",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,16),function()Screens:Open("Inventory")end)
 UI.Button(gui,"Cases",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,72),function()Screens:Open("Cases")end)
 UI.Button(gui,"Phone",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,128),function()Screens:Open("Phone")end)
+UI.Button(gui,"Activities",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,184),function()Screens:Open("Activities")end)
 local drop=UI.Button(gui,"Set down",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,184),function()remotes.Request:FireServer("Drop","")end)
 drop.Visible=player:GetAttribute("Carrying")~=nil
 player:GetAttributeChangedSignal("Carrying"):Connect(function()drop.Visible=player:GetAttribute("Carrying")~=nil end)
