@@ -66,3 +66,11 @@ Garden beds use painted timber, soil, small radial flowers and slate stepping st
 Use quiet sage cabinetry (#779387), oak joinery (#B1916B), pale walls (#E5E9E3), ivory trim (#F7F7EE), linen (#D5D6C5) and ink hardware (#364642). Signature: a fitted sage kitchen with a continuous oak shelf, matched to a window-side sitting nook and two botanical prints above the bed. No generated photographic textures inside the cottage. Thin wall liners separate outside paint from inside finishes. Repeated cabinet modules, level trim and subtle geometric floor joints replace scaled-up grain and busy decoration. Five low-output ceiling fixtures distribute warm light without washing out the walls.
 
 Authoring owner: tools/clean-interiors.luau → assets/Neighborhood.model.json. Two mirrored plans retain the six saved display targets and generous central circulation. Furniture is at avatar scale. The rear lining hides with garden-room expansion and restores when the home is released; expansion connector walls retain the quiet interior finish. CustomizationService owns floor-joint visibility, hiding those details when another flooring style is equipped. UI tokens and interaction owners remain unchanged.
+
+## Garden district expansion
+
+Current world owner: WorldSpace.Scale = 3; authored ground 1440 × 1200, cottage foundations 90 × 78, floors 84 × 72, cottage height factor 1.3. Keep furniture, collectible pads and guides at useful avatar scale. Preserve the saved plot and cell identifiers.
+
+The landscape uses a consistent pale-stone path, dark teal roof/hardware and muted green canopy palette. Connected promenades serve Willow Lake, Picnic Meadow, Maple Orchard and the market. The lake is a shallow ornamental landscape feature, with non-overlapping built-in geometry. Road lanes stay 36 studs wide. Sidewalks, street tree verges and crossings are distinct. Native seats support gathering in the meadow and by the water. No imported tree meshes or generated siding textures remain in the authored district scenery.
+
+Authoring owners: expand-map-v3 and raise-cottage-roofs are one-time migrations; clean-interiors and beautify-district rebuild their own design systems. LightingPolicy and Environment own indoor/day-night/outage behavior, including fixtures created after startup. Indoor fixtures remain on during daytime; outdoor lights follow the evening cycle.

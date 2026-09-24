@@ -29,7 +29,7 @@ function Service:Observe(player,house,item)
   local direction=root.Position-camera.Position
   local params=RaycastParams.new();params.FilterType=Enum.RaycastFilterType.Exclude;params.FilterDescendantsInstances={camera,player.Character,self.Context.Items.Models[item.Id]}
   local hit=workspace:Raycast(camera.Position,direction,params)
-  if direction.Magnitude<70 and direction.Unit:Dot(camera.CFrame.LookVector)>0.25 and not hit then
+  if direction.Magnitude<105 and direction.Unit:Dot(camera.CFrame.LookVector)>0.25 and not hit then
    local torso=player.Character:FindFirstChild("UpperTorso") or player.Character:FindFirstChild("Torso")
    table.insert(evidence,{Kind="Camera observation",Time=os.time(),Description="Clothing: "..(torso and torso.BrickColor.Name or "unclear")..". Carrying: "..(Defs[item.DefinitionId].Weight>30 and "large gold object" or "household object")..".",Quality="Partial view"})
   end

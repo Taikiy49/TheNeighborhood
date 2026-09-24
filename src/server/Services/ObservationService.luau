@@ -22,13 +22,13 @@ end
 function Service:Survey(player,id)
  local house=self.Context.Houses.ById[id]
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
- if not house or not root or (root.Position-house.Model.Foundation.Position).Magnitude>90 then return false,"Walk over to that house before looking around."end
+ if not house or not root or (root.Position-house.Model.Foundation.Position).Magnitude>135 then return false,"Walk over to that house before looking around."end
  if os.clock()-(self.Last[player.UserId] or -10)<3 then return false,"Take a moment to look around."end
  self.Last[player.UserId]=os.clock()
  local lines={};local seen=0
  for itemId,item in pairs(self.Context.Items.Items)do
   local model=self.Context.Items.Models[itemId]
-  if item.HouseId==id and item.State=="Displayed" and model and model.PrimaryPart and self:Visible(player,model.PrimaryPart,70)then
+  if item.HouseId==id and item.State=="Displayed" and model and model.PrimaryPart and self:Visible(player,model.PrimaryPart,105)then
    seen+=1;table.insert(lines,{Definitions[item.DefinitionId].Name,"Visible possession · "..Definitions[item.DefinitionId].Rarity})
   end
  end

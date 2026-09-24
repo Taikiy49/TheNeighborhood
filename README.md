@@ -4,7 +4,27 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
-## Cleaner cottage interiors
+## Expanded garden district
+
+The map is now **1,440 × 1,200 studs**. All eight homes have **90 × 78-stud foundations**, **84 × 72-stud floors** and **30% taller ceilings**. That is another **2.25× increase in floor area** over the previous spacious build, with avatar-scale furniture and saved layout IDs preserved.
+
+Explore the lakeside promenade, picnic pavilion, orchard, planted central green and refreshed market. Houses, activity buildings, paths, planting and lighting share a consistent finish.
+
+[Expansion details and verification](docs/GARDEN-DISTRICT.md) · [Recorded multiplayer tests](docs/qa/district-expansion-regression.json)
+
+Actual Studio play-session views below use a free camera with the HUD hidden. The overview is an Edit viewport capture of the authored map.
+
+| Spacious interior, with avatar for scale | Cottage exterior |
+|---|---|
+| ![Expanded, lit cottage interior](assets/screenshots/district-interior.png) | ![Clean cottage exterior](assets/screenshots/district-street.png) |
+
+| Willow Lake | Picnic Meadow |
+|---|---|
+| ![Lake and promenade](assets/screenshots/district-lake.png) | ![Picnic pavilion](assets/screenshots/district-meadow.png) |
+
+![Expanded garden district overview](assets/screenshots/district-overview.png)
+
+## Earlier cottage interior refresh
 
 All eight cottages have a coordinated oak-and-sage interior: fitted kitchens, a window-side sitting area, softer lighting, clean wall finishes and properly proportioned beds. These are actual Studio edit-viewport screenshots of the authored rooms.
 
@@ -14,9 +34,9 @@ All eight cottages have a coordinated oak-and-sage interior: fitted kitchens, a 
 
 [Interior changes and compatibility](docs/CLEAN-INTERIORS.md)
 
-## A roomier neighborhood
+## Earlier map expansion
 
-The map is now **720 × 700 studs**. Cottages and their expansions are twice as wide and deep, giving homes **four times the floor area** while keeping furniture and characters normal-sized. Streets, gardens, plot choices and activity destinations follow the new layout.
+The previous map expansion created a **720 × 700-stud** neighborhood. Cottages and their expansions are twice as wide and deep, giving homes **four times the floor area** while keeping furniture and characters normal-sized. Streets, gardens, plot choices and activity destinations follow the new layout.
 
 [Layout changes and compatibility](docs/SPACIOUS-NEIGHBORHOOD.md) · [Local regression results](docs/qa/spacious-regression.json)
 

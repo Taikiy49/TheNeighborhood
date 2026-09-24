@@ -1,12 +1,18 @@
 local Lighting=game:GetService("Lighting")
+local Policy=require(script.Parent.LightingPolicy)
 local world=workspace:WaitForChild("Neighborhood")
 local lamps={}
-for _,v in ipairs(world:GetDescendants())do if v:IsA("PointLight")then table.insert(lamps,v)end end
+local hours=15.5
+local function update(lamp)lamp.Enabled=Policy.Enabled(lamp,hours,world:GetAttribute("PowerOutage")==true)end
+local function register(v)if v:IsA("PointLight")then lamps[v]=true;update(v)end end
+for _,v in ipairs(world:GetDescendants())do register(v)end
+world.DescendantAdded:Connect(register)
+world.DescendantRemoving:Connect(function(v)lamps[v]=nil end)
+world:GetAttributeChangedSignal("PowerOutage"):Connect(function()for lamp in pairs(lamps)do if lamp.Parent then update(lamp)end end end)
 local start=os.clock()
 while true do
- local hours=(15.5+(os.clock()-start)/75)%24
+ hours=(15.5+(os.clock()-start)/75)%24
  Lighting.ClockTime=hours
- local night=hours>18 or hours<6
- for _,lamp in ipairs(lamps)do if lamp.Parent then lamp.Enabled=night and not world:GetAttribute("PowerOutage") end end
+ for lamp in pairs(lamps)do if lamp.Parent then update(lamp)else lamps[lamp]=nil end end
  task.wait(2)
 end

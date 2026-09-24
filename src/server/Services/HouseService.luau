@@ -58,7 +58,7 @@ function Service:DoorAction(player, target, action)
 end
 function Service:ContainsInterior(house,position)
  local v=house.Model.Foundation.CFrame:PointToObjectSpace(position);local size=house.Model.Foundation.Size
- return math.abs(v.X)<=size.X/2 and math.abs(v.Z)<=size.Z/2 and v.Y>=-2 and v.Y<=14
+ return math.abs(v.X)<=size.X/2 and math.abs(v.Z)<=size.Z/2 and v.Y>=-2 and v.Y<=house.Model.Ceiling.Position.Y-house.Model.Foundation.Position.Y+1
 end
 function Service:Release(player)
     local house = self.ByPlayer[player.UserId]

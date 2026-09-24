@@ -26,7 +26,7 @@ function Factory.Create(id)
   piece("Base",Vector3.new(2.2,.3,2.2),Vector3.new(0,.2,0))
   for _,x in ipairs({-.8,.8})do for _,z in ipairs({-.8,.8})do piece("Frame",Vector3.new(.15,2.5,.15),Vector3.new(x,1.6,z))end end
   local glow=piece("WarmGlow",Vector3.new(1,1.8,1),Vector3.new(0,1.5,0),cream);glow.Material=Enum.Material.Neon
-  local light=Instance.new("PointLight");light.Color=cream;light.Brightness=.6;light.Range=9;light.Parent=glow
+  local light=Instance.new("PointLight");light.Color=cream;light.Brightness=.6;light.Range=9;light:SetAttribute("LightingRole","Interior");light.Parent=glow
   piece("Top",Vector3.new(2.2,.35,2.2),Vector3.new(0,3,0))
   piece("Handle",Vector3.new(1,.45,.2),Vector3.new(0,3.35,0))
  elseif id=="GoldenToilet" then

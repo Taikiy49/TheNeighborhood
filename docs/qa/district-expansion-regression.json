@@ -1,0 +1,246 @@
+{
+  "SpaciousAcceptance": {
+    "FoundationStuds": [
+      90,
+      78
+    ],
+    "FloorAreaMultiplier": 9,
+    "PhysicalWalkingLegs": 24,
+    "MapStuds": [
+      1440,
+      1200
+    ],
+    "OnlineSaveRejoinTested": false,
+    "Verified": [
+      "All eight plot centers match saved-circle layout",
+      "Beds and NPCs retain normal size",
+      "Two players physically traverse entrance, hall, kitchen and bedroom",
+      "Expansion placement and snapshot migration retain saved IDs",
+      "Greater distance inside the cottage cannot prematurely complete a theft escape"
+    ],
+    "Passed": true,
+    "Homes": 8
+  },
+  "BuildingAcceptance": {
+    "Parts": 5337,
+    "MalformedRequests": 4200,
+    "Clients": 2,
+    "WalkedLegs": 22,
+    "PerformanceCertified": false,
+    "Verified": [
+      "Old profiles gain defaults; six malformed saved profiles rejected",
+      "All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks",
+      "2 homes independently built with 14 collectible spots and 15 crafted furnishings each",
+      "Owner isolation; atomic layout load; copied layouts; invalid cells/rotations; 48-piece cap without debit",
+      "Layouts preserve original collectible GUIDs; expansion snapshot validates; release restores cottage and rebuild retains furniture",
+      "22 physical walking legs: cottage connection, loft up/down, garage and workshop",
+      "Owned car recalls inside garage; actual seated driver physically exits through its doorway",
+      "Fifty pack/reload cycles retain exact geometry counts; owned-copy limits enforced; workshop theft cannot escape indoors"
+    ],
+    "Passed": true,
+    "HeartbeatP95Ms": 17.98073947429657
+  },
+  "DistrictAcceptance": {
+    "Clients": 2,
+    "OnlineSaveRejoinTested": false,
+    "Passed": true,
+    "FoundationStuds": [
+      90,
+      78
+    ],
+    "LightingVerified": true,
+    "MapStuds": [
+      1440,
+      1200
+    ],
+    "Verified": [
+      "Lake promenade and viewing deck reached on foot",
+      "Meadow paths and open pavilion reached on foot",
+      "Southern promenade connects to orchard alleys",
+      "All six district groups exist; scenery centers stay within map bounds",
+      "District art uses built-in geometry with no downloaded meshes or decals"
+    ],
+    "PhysicalWalkingLegs": 16,
+    "SetupTeleports": 3
+  },
+  "LifeWalkAcceptance": {
+    "Clients": 2,
+    "PhysicalWalkingLegs": 34,
+    "OnlineSaveRejoinTested": false,
+    "Verified": [
+      "Four side-yard beds reached, planted and watered on foot",
+      "Side counter reached and style applied",
+      "Guest physically walked porch, living room and garden; tour and compliment recorded",
+      "Three park clues collected after actual walking; deduction and ending claimed",
+      "North plaza crossed and cafe repair completed with real preparation delay"
+    ],
+    "Passed": true,
+    "SetupTeleports": 5
+  },
+  "PlotChoiceAcceptance": {
+    "NearestChoices": 56,
+    "Errors": [],
+    "LiveDirectory": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    },
+    "Verified": [
+      "Nearby defaults follow the founder; own free-plot choice; occupied and malformed choices rejected; readiness reset",
+      "Chosen plots committed with the circle; retries and saved circles cannot silently relocate members",
+      "Reverse-order arrivals use selected plot numbers",
+      "Saved invitations support chosen or nearest plots, atomic conflict rejection, offline reservations and idempotent acceptance",
+      "All eight starting plots and 56 nearest-choice steps match actual map geometry"
+    ],
+    "Passed": true,
+    "Transport": "Injected adapter; no live cross-server teleport claim"
+  },
+  "FoundationAcceptance": {
+    "Players": [
+      {
+        "House": "House01",
+        "Name": "Player1",
+        "UserId": -1
+      },
+      {
+        "House": "House02",
+        "Name": "Player2",
+        "UserId": -2
+      }
+    ],
+    "DataStoreAccess": {
+      "Allowed": false,
+      "Result": "You must publish this place to the web to access DataStore."
+    },
+    "Errors": [],
+    "Verified": [
+      "Two real clients connected",
+      "Distinct houses assigned",
+      "Player1 opened their own door",
+      "Player2 opened their own door",
+      "Visitor lock mutation rejected",
+      "Malformed interaction rejected",
+      "Purchase, placement, storage and sale lifecycle",
+      "Invalid item, insufficient funds, foreign ownership and duplicate sale rejected",
+      "Clean exterior follows purchased paint; independent interior stays unchanged",
+      "Paint purchase is charged once; invalid options rejected; entry, roommate locks and item ownership remain separate",
+      "Car purchase, owner-only input, physical driving and bounded speed; duplicate/NaN/out-of-range requests rejected",
+      "Pet adoption charged once; path following and stay command work; unowned commands rejected",
+      "Event discount, mutual consent, unique pair reward, outage lifecycle and inactive-event rejection",
+      "Three distinct physical mailbox visits pay once; remote and repeat checks rejected",
+      "Physical flamingo prank, owner cleanup, price, opt-out, beginner protection and cooldown",
+      "Nearby house survey respects walls, distance and request cooldown",
+      "Timed lock breach; protection and movement cancellation; owner reset",
+      "Drop and resume preserve original possession, physical carry pose and movement restoration",
+      "Golden Toilet theft, physical weld, weight penalty and owner recovery",
+      "Beginner protection, concurrent theft and premature fence rejection",
+      "Structured incident evidence without culprit user ID",
+      "Heavy-item character walked through the door and escaped",
+      "Fence payout exactly $2900; duplicate fence rejected",
+      "Evidence-backed accusation solves case once; foreign case and self accusations rejected",
+      "Original item reclaimed; foreign, remote, duplicate and repeat-farming requests rejected; four incident transitions retained",
+      "Disconnect cleanup returns carried property and restores movement",
+      "Teleport during carry returns property with no payout",
+      "Actual client disconnect releases plot and returns carried possession"
+    ],
+    "Passed": true,
+    "PersistenceTests": {
+      "Passed": true,
+      "Cycles": 50,
+      "Seed": 88217,
+      "Verified": [
+        "Concurrent profile session rejected",
+        "Transient save failures retry without resetting data",
+        "Lost commit response produces one revision",
+        "Exhausted retries preserve previous durable snapshot",
+        "Release and rejoin retain money, original item identity, placement, lock, progression and adventure album",
+        "Expired lease recovery rejects stale server writes",
+        "Future schema and corrupt money rejected without overwriting storage",
+        "Version-one migration adds defaults while preserving currency",
+        "Duplicate item IDs and foreign ownership rejected",
+        "Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles",
+        "Committed credit survives all retry responses being lost and a later stale-memory save",
+        "50 seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements"
+      ],
+      "Backend": "Injected storage; not proof of Roblox API access",
+      "Requests": 239
+    }
+  },
+  "AdventureAcceptance": {
+    "Verified": [
+      "Existing profiles migrate; six corrupt album shapes rejected",
+      "2,100 malformed actions plus forged/malformed posts rejected without rewards",
+      "Duplicate starts, remote visits and teleport advancement rejected; abandon clears only active run",
+      "Two real clients complete different three-chapter stories on foot; four full walking legs and saved personal bests",
+      "All six stories, 40 checkpoint replays, no duplicate first rewards; paused runs cannot overwrite personal bests; three shared park improvements rendered",
+      "Full inventory defers rewards; three exclusive trophies render and claim once; selling retains collection and receipt",
+      "Closing profiles reject actions; death pauses without losing the saved chapter"
+    ],
+    "MalformedRequests": 2100,
+    "ActualWalkingLegs": 4,
+    "LiveStorage": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    },
+    "CheckpointReplaySimulations": 40,
+    "Passed": true,
+    "Errors": []
+  },
+  "ExplorationAcceptance": {
+    "Errors": [],
+    "MalformedRequests": 18,
+    "Verified": [
+      "Discovery rejects remote, malformed, forged and premature claims",
+      "Five physical markers yield exactly one original collectible; progress and receipt serialize",
+      "Exclusive collectible cannot be bought; historical collection survives sale",
+      "Full inventory defers trail reward without losing progress; claim succeeds once after freeing space",
+      "Weather lifecycle and replicated forecast agree; invalid weather rejected",
+      "Eighteen malformed service requests rejected without mutation or errors",
+      "Physical parcel carried over an actual path; exact reward, pose cleanup and duplicate rejection",
+      "Voluntary parcel cancellation removes prop without paying",
+      "Immediate teleport-to-mailbox request cancels parcel without paying",
+      "Character death cancels parcel and clears its address"
+    ],
+    "Passed": true,
+    "LiveStorageTests": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    }
+  },
+  "BoutiqueRegression": {
+    "TextureChecks": 0,
+    "MalformedRequests": 800,
+    "OwnershipAdapterCalls": 18,
+    "Errors": [],
+    "Scope": "Two actual Studio clients; injected ownership adapter, no purchase or Robux charge",
+    "Verified": [
+      "Cancellation, unrelated IDs and false ownership never grant purchases",
+      "Ownership verification, API outage behavior, revocation and player isolation",
+      "Purchase completion during a blocked ownership lookup queues a fresh check",
+      "600 style equips preserve balances, neighbor appearance, walls, textures and floor materials",
+      "Interior liners retain their finish and floor joints follow all equipped floor materials",
+      "800 malformed requests rejected; travel blocked; ordinary customization and reset remove cosmetic overlay",
+      "Saved selection round-trip and corrupt preference rejection"
+    ],
+    "Passed": true,
+    "StyleEquips": 600
+  },
+  "ArtAcceptance": {
+    "SidingTextures": 0,
+    "SuccessfulNavigationRoutes": 23,
+    "Errors": [],
+    "Passed": true,
+    "Verified": [
+      "Scenery is anchored; visual-only details do not block queries; paths, seats and trunks use physical collision",
+      "Eight delivery routes and eight front-door routes remain navigable",
+      "All five gnome clues and both stores remain reachable",
+      "Six item display slots retained in every house",
+      "Scene stays within the explicit decoration budget",
+      "District scenery has no imported mesh or decal dependencies"
+    ],
+    "DecorativeParts": 1461,
+    "TexturedMeshes": 0
+  }
+}

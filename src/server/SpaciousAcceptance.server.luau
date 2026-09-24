@@ -7,15 +7,15 @@ local function run()
  local deadline=os.clock()+60;repeat task.wait(.2)until #Players:GetPlayers()==2 and workspace:GetAttribute("NeighborhoodReady")or os.clock()>deadline
  local players=Players:GetPlayers();assert(#players==2 and Data.SessionOnly)
  for _,p in ipairs(players)do repeat task.wait(.1)until Data:Get(p)and Data:Get(p)._Restored and p.Character and p.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline;p.Character.HumanoidRootPart:SetNetworkOwner(nil)end
- local world=workspace.Neighborhood;assert(world.Map.VillageGround.Size==Vector3.new(720,4,700));local homes=0
+ local world=workspace.Neighborhood;assert(world.Map.VillageGround.Size==Vector3.new(1440,4,1200));local homes=0
  for _,h in ipairs(world.Houses:GetChildren())do
-  homes+=1;assert(h.Foundation.Size==Vector3.new(60,1,52));assert(h.BuiltInInterior.BedFrame.Size==Vector3.new(7.2,.55,8),"Bed became giant")
+  homes+=1;assert(h.Foundation.Size==Vector3.new(90,1,78));assert(h.BuiltInInterior.BedFrame.Size==Vector3.new(7.2,.55,8),"Bed became giant")
   local expected=Layout.Position(tonumber(h.Name:match("%d+")));assert((Vector2.new(h.Foundation.Position.X,h.Foundation.Position.Z)-expected).Magnitude<.01,"Plot directory disagrees with map")
-  assert(h.BuiltInInterior.HallPartition.Size.Z==22 and math.abs(h.BuiltInInterior.HallPartition.Size.Y-10.65)<.001,"Hall must widen without becoming taller")
+  assert(h.BuiltInInterior.HallPartition.Size.Z==33 and math.abs(h.BuiltInInterior.HallPartition.Size.Y-13.845)<.001,"Hall must widen without becoming taller")
  end
  assert(homes==8);
  for _,h in ipairs(world.Houses:GetChildren())do
-  assert(h:GetAttribute("InteriorDesignVersion")=="clean-cottage-1")
+  assert(h:GetAttribute("InteriorDesignVersion")=="clean-cottage-2")
   assert(h.InteriorBackFinish.Transparency==0 and h.BuiltInInterior.SofaSeat.CanCollide)
   for _,v in ipairs(h.BuiltInInterior:GetDescendants())do assert(not v:IsA("Decal"),"Generated wall texture returned");if v:GetAttribute("FloorSeam")then assert(not v.CanCollide and not v.CanQuery)end end
   for _,slot in ipairs(h.DisplaySlots:GetChildren())do assert(slot.Transparency>=.85 and slot:FindFirstChildOfClass("ProximityPrompt"),"Display target lost")end
@@ -40,6 +40,6 @@ local function run()
  q.Character:PivotTo(house.Model.Foundation.CFrame*Space.Frame(0,3.5,11));local session=Robbery.Sessions[q.UserId];session.Started=os.clock()-100;session.LastPosition=q.Character.HumanoidRootPart.Position;session.LastTime=os.clock()
  assert((session.LastPosition-house.Door.Position).Magnitude>45,"Interior test must exceed old escape distance")
  Robbery:Step();assert(session.State=="Escaping","Thief escaped from inside the larger cottage");Robbery:Return(session,"Interior boundary verified")
- return {Passed=true,Homes=homes,PhysicalWalkingLegs=walked,MapStuds={720,700},FoundationStuds={60,52},FloorAreaMultiplier=4,Verified={"All eight plot centers match saved-circle layout","Beds and NPCs retain normal size","Two players physically traverse entrance, hall, kitchen and bedroom","Expansion placement and snapshot migration retain saved IDs","Greater distance inside the cottage cannot prematurely complete a theft escape"},OnlineSaveRejoinTested=false}
+ return {Passed=true,Homes=homes,PhysicalWalkingLegs=walked,MapStuds={1440,1200},FoundationStuds={90,78},FloorAreaMultiplier=9,Verified={"All eight plot centers match saved-circle layout","Beds and NPCs retain normal size","Two players physically traverse entrance, hall, kitchen and bedroom","Expansion placement and snapshot migration retain saved IDs","Greater distance inside the cottage cannot prematurely complete a theft escape"},OnlineSaveRejoinTested=false}
 end
 local ok,result=pcall(run);Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})

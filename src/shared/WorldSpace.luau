@@ -1,6 +1,6 @@
 -- Authored layout coordinates remain stable so saved plot/slot/layout IDs need no migration.
 -- Only horizontal space grows. Avatars, usable props, interaction range and walk speed do not.
-local S={Scale=2}
+local S={Scale=3}
 function S.Point(v)return Vector3.new(v.X*S.Scale,v.Y,v.Z*S.Scale)end
 function S.Unpoint(v)return Vector3.new(v.X/S.Scale,v.Y,v.Z/S.Scale)end
 function S.Frame(x,y,z)
@@ -10,7 +10,7 @@ end
 function S.Part(part,basis)
  local cf=basis:ToObjectSpace(part.CFrame)
  local x,y,z=S.Point(cf.RightVector),S.Point(cf.UpVector),S.Point(cf.ZVector)
- local right=x.Unit;local back=x:Cross(y).Unit;local up=back:Cross(right)
+ local right=x.Unit;local up=z:Cross(x).Unit;local back=right:Cross(up)
  -- Keep roof planes joined when a sloped beam gets wider without becoming taller.
  local size=part.Size
  part.Size=Vector3.new(size.X*x.Magnitude,size.Y*math.abs(y:Dot(up)),size.Z*math.abs(z:Dot(back)))

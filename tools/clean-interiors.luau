@@ -1,6 +1,7 @@
 -- Deterministic Edit-only refresh; stable gameplay slots and structural footprint.
 assert(not game:GetService("RunService"):IsRunning(),"Edit mode required")
 local world=workspace.Neighborhood
+local R=(world:GetAttribute("HorizontalScale")or 2)/2
 local C={Wall=Color3.fromRGB(229,233,227),Trim=Color3.fromRGB(247,247,238),Oak=Color3.fromRGB(177,145,107),Sage=Color3.fromRGB(119,147,135),Ink=Color3.fromRGB(54,70,66),Linen=Color3.fromRGB(213,214,197),Brass=Color3.fromRGB(155,130,84)}
 local count=0
 local houses=world.Houses:GetChildren();table.sort(houses,function(a,b)return a.Name<b.Name end)
@@ -12,10 +13,14 @@ for index,h in ipairs(houses)do
  -- Remove only former interior decoration. Exterior landscaping stays untouched.
  for _,v in ipairs(world.ArtDirection:GetDescendants())do
   if v:IsA("BasePart")then local p=b:PointToObjectSpace(v.Position)
-   if math.abs(p.X)<28.5 and math.abs(p.Z)<24.6 and p.Y>.5 and p.Y<11 then v:Destroy()end
+   if math.abs(p.X)<28.5*R and math.abs(p.Z)<24.6*R and p.Y>.5 and p.Y<11 then v:Destroy()end
   end
  end
+ local V=h:GetAttribute("InteriorHeightScale")or 1
+ local anchor=nil
  local function p(name,size,x,y,z,color,material,solid)
+  if anchor then x=x+anchor.X*(R-1);z=z+anchor.Z*(R-1) else x*=R;z*=R;y=.7+(y-.7)*V;size=Vector3.new(size.X*R,size.Y*V,size.Z*R)end
+  if name=="CeilingMount"or name=="LinenShade"or name=="Diffuser"then y=.7+(y-.7)*V end
   local v=Instance.new("Part");v.Name=name;v.Size=size;v.CFrame=b*CFrame.new(x,y,z);v.Color=color or C.Wall;v.Material=material or Enum.Material.SmoothPlastic
   v.Anchored=true;v.CanCollide=solid==true;v.CanQuery=solid==true;v.CanTouch=false;v.TopSurface=Enum.SurfaceType.Smooth;v.BottomSurface=Enum.SurfaceType.Smooth;v.Parent=folder;count+=1;return v
  end
@@ -24,10 +29,11 @@ for index,h in ipairs(houses)do
   local v=p(name,Vector3.new(height,r*2,r*2),x,y,z,c,mat);v.CFrame*=CFrame.Angles(0,0,math.pi/2);v.Shape=Enum.PartType.Cylinder;return v
  end
  local function light(x,z)
+  local savedAnchor=anchor;anchor=Vector3.new(x,0,z)
   cylinder("CeilingMount",.65,.12,x,10.85,z,C.Ink)
   cylinder("LinenShade",1.35,.65,x,10.35,z,C.Trim,Enum.Material.SmoothPlastic)
   local lens=cylinder("Diffuser",1.16,.08,x,9.98,z,C.Trim,Enum.Material.Neon)
-  local l=Instance.new("PointLight");l.Color=Color3.fromRGB(255,245,224);l.Brightness=.35;l.Range=20;l.Shadows=false;l.Parent=lens
+  local l=Instance.new("PointLight");l.Color=Color3.fromRGB(255,245,224);l.Brightness=.4;l.Range=28;l.Shadows=false;l.Parent=lens;anchor=savedAnchor
  end
  local function rug(name,x,z,w,d)
   box(name,{w,.035,d},x,.728,z,C.Linen)
@@ -69,6 +75,7 @@ for index,h in ipairs(houses)do
  -- Preserve every slot's identity and position; replace blank raised tiles with quiet markers.
  for _,slot in ipairs(h.DisplaySlots:GetChildren())do if slot:IsA("BasePart")then slot.Transparency=.88;slot.Color=C.Sage;slot.Material=Enum.Material.SmoothPlastic;slot.CanCollide=false end end
  local side=index%2==0 and -1 or 1
+ anchor=Vector3.new(side*18.5,0,24.3)
  -- A coherent fitted kitchen: seven repeated modules, recessed sink and dark cooktop.
  box("KitchenToeKick",{14.6,.3,2.8},side*18.5,.9,22.6,C.Ink,true)
  box("KitchenCabinets",{14.6,2.5,3.2},side*18.5,2.3,22.6,C.Sage,true)
@@ -97,7 +104,9 @@ for index,h in ipairs(houses)do
  box("FridgeHandle",{.1,1.2,.16},side*25.4,3.9,15.5,C.Ink)
  -- Bedroom: correctly proportioned double bed, a matched pair of nightstands and low rug.
  local bx=-side*18
+ anchor=nil
  rug("BedroomRug",bx,17.5,12.5,11.8)
+ anchor=Vector3.new(bx,0,24.3)
  box("BedFrame",{7.2,.55,8},bx,1.12,19.8,C.Oak,true)
  box("Mattress",{6.9,.65,7.8},bx,1.72,19.8,C.Trim,true)
  box("Headboard",{7.4,3.4,.32},bx,2.45,23.9,C.Oak,true)
@@ -124,7 +133,9 @@ for index,h in ipairs(houses)do
  end
  -- Front sitting area lives against the window; possession spaces and central entrance remain clear.
  local sx=-side*18
+ anchor=nil
  rug("LivingRug",sx,-17,13,8)
+ anchor=Vector3.new(sx,0,-24.3)
  box("SofaPlinth",{8.4,.25,3.1},sx,1,-20.4,C.Ink)
  box("SofaSeat",{8.3,.7,3.3},sx,1.55,-20.4,C.Linen,true)
  box("SofaBack",{8.4,1.7,.55},sx,2.5,-21.75,C.Linen,true)
@@ -136,11 +147,13 @@ for index,h in ipairs(houses)do
  box("ClosedBook",{1.2,.13,.85},sx+.9,1.81,-16,C.Sage)
  -- An entry console on the other side balances the room without filling player display areas.
  local cx=side*18
+ anchor=Vector3.new(cx,0,-24.3)
  box("EntryConsole",{8,.2,1.7},cx,3,-22.8,C.Oak,true)
  for _,dx in ipairs({-3.6,3.6})do box("ConsoleLeg",{.2,2.2,1.3},cx+dx,1.8,-22.8,C.Ink,true)end
  cylinder("EntryBowl",.55,.2,cx,3.22,-22.8,C.Trim)
+ anchor=nil
  light(-18,-10);light(18,-10);light(0,12);light(-18,15);light(18,15)
- h:SetAttribute("InteriorDesignVersion","clean-cottage-1")
+ h:SetAttribute("InteriorDesignVersion","clean-cottage-2")
  h:SetAttribute("InteriorLayout",side==1 and "Garden Kitchen"or"Corner Kitchen")
 end
-return {Houses=#houses,AuthoredParts=count,Design="clean-cottage-1"}
+return {Houses=#houses,AuthoredParts=count,Design="clean-cottage-2"}

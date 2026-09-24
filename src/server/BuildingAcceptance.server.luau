@@ -44,10 +44,10 @@ local function run()
   for _,zone in ipairs(D.Order)do for cell=1,#D.Rooms[zone].Cells do act(player,"Place",{Zone=zone,Cell=cell,Kind=D.RecipeOrder[(cell-1)%4+1],Rotation=(cell-1)%4})end end
   assert(R.Valid(pr.Building));act(player,"SaveLayout","1")
   local n=0;for _ in pairs(pr.Building.Placed)do n+=1 end;assert(n==15,"Expected 15 furniture spots")
-  local box,size=home.HomeExpansion:GetBoundingBox();assert(size.Magnitude<240,"Expansion exceeds plot scale")
+  local box,size=home.HomeExpansion:GetBoundingBox();assert(size.Magnitude<360,"Expansion exceeds plot scale")
   for _,part in ipairs(home.HomeExpansion:GetDescendants())do if part:IsA("BasePart")then
    local localPos=home.Foundation.CFrame:PointToObjectSpace(part.Position)
-   assert(math.abs(localPos.X)+part.Size.X/2<=58.2,"Expansion crosses neighboring plot: "..part.Name)
+   assert(math.abs(localPos.X)+part.Size.X/2<=87.3,"Expansion crosses neighboring plot: "..part.Name)
   end end
  end
  table.insert(verified,"All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks")
@@ -117,9 +117,9 @@ local function run()
  assert(car.Seat.Occupant==human,"Garage driver could not sit")
  local drive=game:GetService("RunService").PreSimulation:Connect(function()car.Throttle=.5;car.Steer=0;car.LastInput=os.clock()end)
  local driveDeadline=os.clock()+10
- repeat task.wait(.1)until h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -76 or os.clock()>driveDeadline
+ repeat task.wait(.1)until h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -114 or os.clock()>driveDeadline
  drive:Disconnect();car.Throttle=0
- assert(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -76,"Car could not drive through the garage entrance: "..tostring(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position)))
+ assert(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -114,"Car could not drive through the garage entrance: "..tostring(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position)))
  assert(car.Body.AssemblyLinearVelocity.Magnitude<45,"Garage exit exceeded bounded speed")
  human.Sit=false;human.Jump=true;task.wait(.3);Vehicles:Remove(p)
  table.insert(verified,"Owned car recalls inside garage; actual seated driver physically exits through its doorway")

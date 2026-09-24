@@ -5,7 +5,7 @@ local Service={Markers={}}
 local clues={
  {Id="Gnome1",Title="The park regular",Hint="Look near the middle of Maple Green, where neighbors take a breather.",Position=Vector3.new(18,0.2,-16)},
  {Id="Gnome2",Title="Questionable company",Hint="Someone is lingering behind the Totally Legal Pawn Shop.",Position=Vector3.new(40,0.2,175)},
- {Id="Gnome3",Title="After-hours shopper",Hint="Check the quiet edge beside Maple & Co.",Position=Vector3.new(-42,0.2,169)},
+ {Id="Gnome3",Title="After-hours shopper",Hint="Check the quiet edge beside Maple & Co.",Position=Vector3.new(-50,0.2,169)},
  {Id="Gnome4",Title="Garden enthusiast",Hint="The backyard at 101 Maple Street has a very small visitor.",House="House01"},
  {Id="Gnome5",Title="First on the street",Hint="At the north end of the green, look beyond the community board.",Position=Vector3.new(0,0.2,-120)},
 }

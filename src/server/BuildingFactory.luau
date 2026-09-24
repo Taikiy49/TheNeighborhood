@@ -1,10 +1,10 @@
 local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
 local F={}
-local cream=Color3.fromRGB(238,230,208);local green=Color3.fromRGB(80,119,100);local wood=Color3.fromRGB(141,104,70)
+local cream=Color3.fromRGB(236,233,215);local green=Color3.fromRGB(80,119,100);local wood=Color3.fromRGB(177,145,107)
 local roof=Color3.fromRGB(69,86,88)
 local function part(parent,name,size,cf,color,material)
- local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=cf;p.Anchored=true;p.CanTouch=false;p.Color=color or cream;p.Material=material or Enum.Material.WoodPlanks;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=parent;return p
+ local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=cf;p.Anchored=true;p.CanTouch=false;p.Color=color or cream;p.Material=material or Enum.Material.SmoothPlastic;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=parent;return p
 end
 local function prompt(p,action,text)
  p:SetAttribute("Action",action);local q=Instance.new("ProximityPrompt");q.Style=Enum.ProximityPromptStyle.Custom;q.ActionText=text;q.ObjectText="Your home";q.MaxActivationDistance=10;q.RequiresLineOfSight=false;q:SetAttribute("Action",action);q.Parent=p
@@ -13,7 +13,7 @@ function F.Furniture(parent,cf,kind)
  local m=Instance.new("Model");m.Name=kind;m.Parent=parent
  local function p(name,size,x,y,z,color,mat)return part(m,name,size,cf*CFrame.new(x,y,z),color,mat)end
  if kind=="Planter"then
-  p("Terracotta",Vector3.new(2,1.5,2),0,.75,0,Color3.fromRGB(168,110,84),Enum.Material.Slate)
+  p("Terracotta",Vector3.new(2,1.5,2),0,.75,0,Color3.fromRGB(168,110,84),Enum.Material.SmoothPlastic)
   for i=1,5 do local leaf=p("Fern",Vector3.new(1.3,1.7,1.3),math.sin(i*2)*.65,2.1,math.cos(i*2)*.65,green,Enum.Material.Grass);leaf.Shape=Enum.PartType.Ball;leaf.CanCollide=false end
  elseif kind=="Bookcase"then
   p("Back",Vector3.new(3.2,4,.25),0,2,.6,wood)
@@ -38,7 +38,7 @@ function F.Create(house,b)
   local function q(name,size,xx,yy,zz,c,mat)local v=p(name,size,xx,yy,zz,c,mat);v.Parent=r;return v end
   q("Floor",Vector3.new(w,.4,d),x,.5,z,wood)
   for _,side in ipairs({-1,1})do
-   local wall=q("Wall",Vector3.new(.4,h,d),x+side*w/2,.7+h/2,z,glazed and Color3.fromRGB(185,219,211)or green,glazed and Enum.Material.Glass or Enum.Material.WoodPlanks)
+   local wall=q("Wall",Vector3.new(.4,h,d),x+side*w/2,.7+h/2,z,glazed and Color3.fromRGB(185,219,211)or green,glazed and Enum.Material.Glass or Enum.Material.SmoothPlastic)
    if glazed then wall.Transparency=.65 end
    for _,endZ in ipairs({-1,1})do q("Corner",Vector3.new(.65,h,.65),x+side*w/2,.7+h/2,z+endZ*d/2,cream)end
    q("Sill",Vector3.new(.6,.6,d),x+side*w/2,1.1,z,cream)
@@ -65,10 +65,10 @@ function F.Create(house,b)
   q("Lintel",Vector3.new(7,math.max(.5,h-8),.5),x,8.7+math.max(.5,h-8)/2,z-d/2,cream)
   local rise=w*.18;local half=w/2+.7;local length=math.sqrt(half*half+rise*rise)
   for _,side in ipairs({-1,1})do
-   local v=q("PitchedRoof",Vector3.new(length,.45,d+1.6),x+side*half/2,h+.9+rise/2,z,roof,Enum.Material.Slate)
+   local v=q("PitchedRoof",Vector3.new(length,.45,d+1.6),x+side*half/2,h+.9+rise/2,z,roof,Enum.Material.SmoothPlastic)
    v.CFrame*=CFrame.Angles(0,0,-side*math.atan(rise/half))
   end
-  q("Ridge",Vector3.new(.5,.5,d+1.7),x,h+.9+rise,z,roof,Enum.Material.Slate)
+  q("Ridge",Vector3.new(.5,.5,d+1.7),x,h+.9+rise,z,roof,Enum.Material.SmoothPlastic)
   local light=q("Pendant",Vector3.new(1,.3,1),x,h-.2,z,cream,Enum.Material.Neon);light.CanCollide=false
   local glow=Instance.new("PointLight");glow.Color=Color3.fromRGB(255,231,191);glow.Brightness=.7;glow.Range=18;glow.Parent=light
   return r
@@ -76,8 +76,8 @@ function F.Create(house,b)
  if b.Unlocked.GardenRoom then
   shell("GardenRoom",0,22,24,16,b.Unlocked.Loft and 21 or 10.5,true)
   p("HallThreshold",Vector3.new(7,.4,2),0,.5,13,wood)
-  for _,side in ipairs({-1,1})do p("CottageBack",Vector3.new(11.5,11,.7),side*9.25,6,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)end
-  p("CottageHeader",Vector3.new(7,3,.7),0,10,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)
+  for _,side in ipairs({-1,1})do p("CottageBack",Vector3.new(11.5,14.3,.7),side*9.25,7.59,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)end
+  p("CottageHeader",Vector3.new(7,6.3,.7),0,11.65,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)
  end
  if b.Unlocked.Loft then
   p("LoftFloor",Vector3.new(12,.4,16),-6,11.45,22,wood)

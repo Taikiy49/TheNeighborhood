@@ -2,9 +2,9 @@ local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.LifeDefinitions)
 local R=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
 local F={}
-local cream=Color3.fromRGB(237,228,203);local timber=Color3.fromRGB(132,94,66);local green=Color3.fromRGB(81,122,97)
+local cream=Color3.fromRGB(236,233,215);local timber=Color3.fromRGB(160,128,89);local green=Color3.fromRGB(119,147,135)
 function F.Part(parent,name,size,cf,color,material)
- local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=cf;p.Color=color or cream;p.Material=material or Enum.Material.Wood;p.Anchored=true;p.CanTouch=false;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=parent;return p
+ local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=cf;p.Color=color or cream;p.Material=material or Enum.Material.SmoothPlastic;p.Anchored=true;p.CanTouch=false;p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=parent;return p
 end
 function F.Sign(part,text)
  local gui=Instance.new("SurfaceGui");gui.Face=Enum.NormalId.Front;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=40;gui.Parent=part
@@ -34,7 +34,7 @@ function F.Home(house,life,now)
   end
  end
  anchor=nil
- for z=14,25,3 do part("GardenSteppingStone",Vector3.new(2.2,.12,2),20,.15,z,Color3.fromRGB(183,173,153),Enum.Material.Slate)end
+ for z=14,25,3 do part("GardenSteppingStone",Vector3.new(2.2,.12,2),20,.15,z,Color3.fromRGB(183,173,153),Enum.Material.SmoothPlastic)end
  anchor=Vector3.new(21,0,11)
  local counter=part("LifeCounter",Vector3.new(5,2.5,2),21,1.5,11,timber);F.Prompt(counter,"LifeBusiness")
  for _,x in ipairs({18.5,23.5})do part("AwningPost",Vector3.new(.2,6,.2),x,3.2,11,cream)end
@@ -78,7 +78,7 @@ function F.Project(parent,id,amount)
  local stage=math.floor(amount/d.Goal*3)
  if stage>=1 then p("Back",Vector3.new(width,7,.3),0,3,6.5,green)end
  if stage>=2 then
-  for _,side in ipairs({-1,1})do local r=p("PitchedRoof",Vector3.new(width/2+1,.35,16),side*width/4,7.2,0,Color3.fromRGB(68,89,90),Enum.Material.Slate);r.CFrame*=CFrame.Angles(0,0,side*math.rad(-18))end
+  for _,side in ipairs({-1,1})do local r=p("PitchedRoof",Vector3.new(width/2+1,.35,16),side*width/4,7.2,0,Color3.fromRGB(68,89,90),Enum.Material.SmoothPlastic);r.CFrame*=CFrame.Angles(0,0,side*math.rad(-18))end
  end
  local station=p("Renovation_"..id,Vector3.new(5,2.5,2),0,1,-4,green);F.Prompt(station,"LifeProjects",id)
  local sign=p("Sign",Vector3.new(width-2,1.4,.2),0,5.8,-8.2,green);F.Sign(sign,d.Name.." · "..amount.."/"..d.Goal)
@@ -97,7 +97,7 @@ function F.World(parent,season)
   local stop=F.Part(m,"ParkLantern"..i,Vector3.new(2.4,1.8,.4),CFrame.new(pos+Vector3.new(0,2,0)),D.SeasonColors[season]);F.Sign(stop,tostring(i).." · "..season);F.Prompt(stop,"LifeStop",tostring(i));stops[tostring(i)]=stop
  end
  -- Open plaza paths keep the new north pavilions connected to the cross street.
- for _,x in ipairs({-22,22})do F.Part(m,"PlazaPath",Space.Point(Vector3.new(6,.15,26)),Space.Frame(x,.12,-146),Color3.fromRGB(183,173,153),Enum.Material.Cobblestone)end
+ for _,x in ipairs({-22,22})do F.Part(m,"PlazaPath",Space.Point(Vector3.new(6,.15,26)),Space.Frame(x,.12,-146),Color3.fromRGB(183,173,153),Enum.Material.SmoothPlastic)end
  return m,stops
 end
 return F
