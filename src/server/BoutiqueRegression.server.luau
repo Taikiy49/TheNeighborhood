@@ -46,11 +46,18 @@ local function run()
  table.insert(verified,"Purchase completion during a blocked ownership lookup queues a fresh check")
  B.OwnsPass=function()calls+=1;return true end
  B.LastRefresh[p]=nil;assert(B:Action(p,"Refresh"));before=calls;assert(not B:Action(p,"Refresh"));assert(calls==before,"Throttled refresh called API")
+ local function interiorFinish()
+  assert(house.Model.InteriorBackFinish.Color==Color3.fromRGB(229,233,227),"Exterior finish leaked inside")
+  for _,v in ipairs(house.Model.BuiltInInterior:GetChildren())do if v:GetAttribute("FloorSeam")then
+   assert(v.Transparency==(house.Model.Floor.Material==Enum.Material.SmoothPlastic and 0 or 1),"Floor seams conflict with chosen finish")
+  end end
+ end
+ interiorFinish()
  local styles=0;local textureChecks=0
  for round=1,100 do
   for key,pack in pairs(Catalog)do for id,style in pairs(pack.Styles)do
    assert(B:Action(p,"Equip",key..":"..id));styles+=1
-   assert(house.Model.Floor.Color==style.Floor and house.Model.Floor.Material==style.Material)
+   assert(house.Model.Floor.Color==style.Floor and house.Model.Floor.Material==style.Material);interiorFinish()
    for _,part in ipairs(house.Model:GetChildren())do
     if part:IsA("BasePart")and (part.Name:find("Wall")or part.Name=="FrontSill"or part.Name=="FrontHeader"or part.Name=="Gable")then
      assert(part.Color==style.Wall)
@@ -68,9 +75,11 @@ local function run()
  for _=1,100 do for _,value in ipairs(bad)do assert(not B:Action(p,"Equip",value));invalid+=1 end end
  profile._Travel=true;assert(not B:Action(p,"Reset"));profile._Travel=nil
  assert(B:Action(p,"Reset"));assert(not profile.House.Boutique and house.Model.Floor.Color==originalFloor and house.Model.Floor.Material==originalMaterial)
+ interiorFinish()
  for part,color in pairs(originals)do assert(part.Color==color,"Original exterior not restored")end
  assert(B:Action(p,"Equip","Cottage:Lavender"));assert(C:Change(p,"Color","Mint"));assert(not profile.House.Boutique)
  assert(B:Action(p,"Equip","Coastal:BlueHour"));assert(C:Change(p,"Floor","Tile"));assert(not profile.House.Boutique)
+ interiorFinish();table.insert(verified,"Interior liners retain their finish and floor joints follow all equipped floor materials")
  table.insert(verified,"800 malformed requests rejected; travel blocked; ordinary customization and reset remove cosmetic overlay")
  table.insert(verified,"Saved selection round-trip and corrupt preference rejection")
  B:Action(p,"Reset");B.OwnsPass=actual;B.Owned[p]={};B.Owned[q]={}

@@ -76,8 +76,8 @@ function F.Create(house,b)
  if b.Unlocked.GardenRoom then
   shell("GardenRoom",0,22,24,16,b.Unlocked.Loft and 21 or 10.5,true)
   p("HallThreshold",Vector3.new(7,.4,2),0,.5,13,wood)
-  for _,side in ipairs({-1,1})do p("CottageBack",Vector3.new(11.5,11,.7),side*9.25,6,12.6,house.BackWall.Color)end
-  p("CottageHeader",Vector3.new(7,3,.7),0,10,12.6,house.BackWall.Color)
+  for _,side in ipairs({-1,1})do p("CottageBack",Vector3.new(11.5,11,.7),side*9.25,6,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)end
+  p("CottageHeader",Vector3.new(7,3,.7),0,10,12.6,Color3.fromRGB(229,233,227),Enum.Material.SmoothPlastic)
  end
  if b.Unlocked.Loft then
   p("LoftFloor",Vector3.new(12,.4,16),-6,11.45,22,wood)

@@ -9,11 +9,18 @@ local function run()
  for _,p in ipairs(players)do repeat task.wait(.1)until Data:Get(p)and Data:Get(p)._Restored and p.Character and p.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline;p.Character.HumanoidRootPart:SetNetworkOwner(nil)end
  local world=workspace.Neighborhood;assert(world.Map.VillageGround.Size==Vector3.new(720,4,700));local homes=0
  for _,h in ipairs(world.Houses:GetChildren())do
-  homes+=1;assert(h.Foundation.Size==Vector3.new(60,1,52));assert(h.BuiltInInterior.BedFrame.Size==Vector3.new(7,.8,4),"Bed became giant")
+  homes+=1;assert(h.Foundation.Size==Vector3.new(60,1,52));assert(h.BuiltInInterior.BedFrame.Size==Vector3.new(7.2,.55,8),"Bed became giant")
   local expected=Layout.Position(tonumber(h.Name:match("%d+")));assert((Vector2.new(h.Foundation.Position.X,h.Foundation.Position.Z)-expected).Magnitude<.01,"Plot directory disagrees with map")
-  assert(h.BuiltInInterior.HallPartition.Size.Z==22 and h.BuiltInInterior.HallPartition.Size.Y==10.5,"Hall must widen without becoming taller")
+  assert(h.BuiltInInterior.HallPartition.Size.Z==22 and math.abs(h.BuiltInInterior.HallPartition.Size.Y-10.65)<.001,"Hall must widen without becoming taller")
  end
- assert(homes==8);assert(world.GuideCharacters.Mabel.Torso.Size==Vector3.new(2.2,2.6,1),"Guide was enlarged")
+ assert(homes==8);
+ for _,h in ipairs(world.Houses:GetChildren())do
+  assert(h:GetAttribute("InteriorDesignVersion")=="clean-cottage-1")
+  assert(h.InteriorBackFinish.Transparency==0 and h.BuiltInInterior.SofaSeat.CanCollide)
+  for _,v in ipairs(h.BuiltInInterior:GetDescendants())do assert(not v:IsA("Decal"),"Generated wall texture returned");if v:GetAttribute("FloorSeam")then assert(not v.CanCollide and not v.CanQuery)end end
+  for _,slot in ipairs(h.DisplaySlots:GetChildren())do assert(slot.Transparency>=.85 and slot:FindFirstChildOfClass("ProximityPrompt"),"Display target lost")end
+ end
+ assert(world.GuideCharacters.Mabel.Torso.Size==Vector3.new(2.2,2.6,1),"Guide was enlarged")
  local walked=0
  local function walk(p,xyz)
   local h=H.ByPlayer[p.UserId].Model;local goal=h.Foundation.CFrame:PointToWorldSpace(Space.Point(Vector3.new(table.unpack(xyz))));local root=p.Character.HumanoidRootPart;local humanoid=p.Character.Humanoid
@@ -23,7 +30,7 @@ local function run()
  for _,p in ipairs(players)do
   local house=H.ByPlayer[p.UserId];H:SetDoor(house,true);p.Character:PivotTo(house.Model.Foundation.CFrame*Space.Frame(0,4,-20));task.wait(.3)
   for _,xyz in ipairs({{0,.7,-10},{0,.7,-2},{0,.7,7},{0,.7,-2},{9,.7,-2},{9,.7,6},{9,.7,-2},{-9,.7,-2},{-9,.7,6},{-9,.7,-2},{0,.7,-2},{0,.7,-20}})do walk(p,xyz)end
-  local pr=Data:Get(p);pr.Currency=10000;assert(B:Action(p,"Buy","GardenRoom"));assert(B:Action(p,"Buy","Workshop"))
+  local pr=Data:Get(p);pr.Currency=10000;assert(B:Action(p,"Buy","GardenRoom"));assert(B:Action(p,"Buy","Workshop"));assert(house.Model.InteriorBackFinish.Transparency==1,"New wall liner blocks expansion")
   local pnt=house.Model.Foundation.CFrame*Space.Frame(0,3.5,40);assert(B:ContainsExpansion(house,pnt.Position))
   local snapshot=Data:Snapshot(p);local migrated=require(script.Parent.ProfileSchema).Migrate(snapshot,p.UserId);assert(migrated.Building.Unlocked.Workshop,"Saved room IDs changed")
  end

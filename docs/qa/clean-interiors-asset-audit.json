@@ -1,0 +1,66 @@
+[
+  {
+    "House": "House01",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House02",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House03",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House04",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House05",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House06",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House07",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  },
+  {
+    "House": "House08",
+    "InteriorParts": 270,
+    "CeilingFixtures": 5,
+    "Slots": 6,
+    "FloorJoints": 125,
+    "Version": "clean-cottage-1"
+  }
+]

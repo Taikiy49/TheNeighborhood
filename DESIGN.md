@@ -60,3 +60,9 @@ Garden rooms use glazed walls, cream structural trim, timber flooring and slate 
 ## Neighborhood Life extension
 
 Garden beds use painted timber, soil, small radial flowers and slate stepping stones inside the original side fence. The business counter uses alternating cream/accent awning strips. North-plaza pavilions use timber decks, cream posts and slate pitched roofs; restoration stages visibly add walls and roof. Seasonal signs reuse the four authored palettes. All new screens remain inside the existing phone panel and retain its 48px actions and reserved notification space.
+
+## Clean cottage interiors
+
+Use quiet sage cabinetry (#779387), oak joinery (#B1916B), pale walls (#E5E9E3), ivory trim (#F7F7EE), linen (#D5D6C5) and ink hardware (#364642). Signature: a fitted sage kitchen with a continuous oak shelf, matched to a window-side sitting nook and two botanical prints above the bed. No generated photographic textures inside the cottage. Thin wall liners separate outside paint from inside finishes. Repeated cabinet modules, level trim and subtle geometric floor joints replace scaled-up grain and busy decoration. Five low-output ceiling fixtures distribute warm light without washing out the walls.
+
+Authoring owner: tools/clean-interiors.luau → assets/Neighborhood.model.json. Two mirrored plans retain the six saved display targets and generous central circulation. Furniture is at avatar scale. The rear lining hides with garden-room expansion and restores when the home is released; expansion connector walls retain the quiet interior finish. CustomizationService owns floor-joint visibility, hiding those details when another flooring style is equipped. UI tokens and interaction owners remain unchanged.

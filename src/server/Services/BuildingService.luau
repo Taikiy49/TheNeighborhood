@@ -21,7 +21,7 @@ function Service:Restore(player)
  Factory.Arrange(m,h.Model,p.Building)
  if p.Building.Unlocked.GardenRoom then
   local hidden=self.Hidden[player.UserId]or {};self.Hidden[player.UserId]=hidden
-  for _,v in ipairs(h.Model:GetChildren())do if v:IsA("BasePart")and (v.Name=="BackWall"or v.Name=="RearFence")and not hidden[v]then
+  for _,v in ipairs(h.Model:GetChildren())do if v:IsA("BasePart")and (v.Name=="BackWall"or v.Name=="InteriorBackFinish"or v.Name=="RearFence")and not hidden[v]then
    hidden[v]={v.Transparency,v.CanCollide,v.CanQuery};v.Transparency=1;v.CanCollide=false;v.CanQuery=false
    for _,t in ipairs(v:GetChildren())do if t:IsA("Texture")or t:IsA("Decal")then hidden[t]={t.Transparency};t.Transparency=1 end end
   end end
@@ -46,7 +46,7 @@ end
 function Service:ApplyFinish(player)
  local h=self.Context.Houses.ByPlayer[player.UserId];local m=h and h.Model:FindFirstChild("HomeExpansion");if not m then return end
  for _,v in ipairs(m:GetDescendants())do if v:IsA("BasePart")then
-  if v.Name=="CottageBack"or v.Name=="CottageHeader"or v.Name=="Front"or ((v.Name=="Wall"or v.Name=="Back")and v.Material~=Enum.Material.Glass)then v.Color=h.Model.BackWall.Color end
+  if v.Name=="Front"or ((v.Name=="Wall"or v.Name=="Back")and v.Material~=Enum.Material.Glass)then v.Color=h.Model.BackWall.Color end
   if v.Name=="Floor"or v.Name=="LoftFloor"then v.Color=h.Model.Floor.Color;v.Material=h.Model.Floor.Material end
  end end
 end

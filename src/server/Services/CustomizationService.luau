@@ -1,7 +1,7 @@
 local Service={}
 local Validation=require(game.ReplicatedStorage.Neighborhood.Shared.Validation)
 local colors={Mint=Color3.fromRGB(175,202,185),Peach=Color3.fromRGB(223,178,144),Blue=Color3.fromRGB(154,187,205),Butter=Color3.fromRGB(226,211,157)}
-local floors={Wood={Material=Enum.Material.WoodPlanks,Color=Color3.fromRGB(193,153,104),Price=0},Tile={Material=Enum.Material.Marble,Color=Color3.fromRGB(223,225,210),Price=250},Carpet={Material=Enum.Material.Fabric,Color=Color3.fromRGB(127,153,142),Price=200}}
+local floors={Wood={Material=Enum.Material.SmoothPlastic,Color=Color3.fromRGB(177,145,107),Price=0},Tile={Material=Enum.Material.Marble,Color=Color3.fromRGB(223,225,210),Price=250},Carpet={Material=Enum.Material.Fabric,Color=Color3.fromRGB(127,153,142),Price=200}}
 function Service:Init(context)self.Context=context end
 function Service:Apply(player)
  local profile=self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[player.UserId];if not profile or not house then return end
@@ -19,6 +19,8 @@ function Service:Apply(player)
  end end end
  local floor=floors[settings.Floor or "Wood"];house.Model.Floor.Material=floor.Material;house.Model.Floor.Color=floor.Color
  if self.Context.Boutique then self.Context.Boutique:Apply(player)end
+ local interior=house.Model:FindFirstChild("BuiltInInterior")
+ if interior then for _,detail in ipairs(interior:GetChildren())do if detail:GetAttribute("FloorSeam")then detail.Transparency=house.Model.Floor.Material==Enum.Material.SmoothPlastic and 0 or 1 end end end
  if self.Context.Building then self.Context.Building:ApplyFinish(player)end
  house.Permissions=settings.Permissions;house.Model:SetAttribute("SecurityLevel",settings.SecurityLevel or 0)
 end

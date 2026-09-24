@@ -1,0 +1,61 @@
+{
+  "SpaciousAcceptance": {
+    "FoundationStuds": [
+      60,
+      52
+    ],
+    "FloorAreaMultiplier": 4,
+    "PhysicalWalkingLegs": 24,
+    "MapStuds": [
+      720,
+      700
+    ],
+    "OnlineSaveRejoinTested": false,
+    "Verified": [
+      "All eight plot centers match saved-circle layout",
+      "Beds and NPCs retain normal size",
+      "Two players physically traverse entrance, hall, kitchen and bedroom",
+      "Expansion placement and snapshot migration retain saved IDs",
+      "Greater distance inside the cottage cannot prematurely complete a theft escape"
+    ],
+    "Passed": true,
+    "Homes": 8
+  },
+  "BuildingAcceptance": {
+    "Parts": 6131,
+    "MalformedRequests": 4200,
+    "Clients": 2,
+    "WalkedLegs": 22,
+    "PerformanceCertified": false,
+    "Verified": [
+      "Old profiles gain defaults; six malformed saved profiles rejected",
+      "All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks",
+      "2 homes independently built with 14 collectible spots and 15 crafted furnishings each",
+      "Owner isolation; atomic layout load; copied layouts; invalid cells/rotations; 48-piece cap without debit",
+      "Layouts preserve original collectible GUIDs; expansion snapshot validates; release restores cottage and rebuild retains furniture",
+      "22 physical walking legs: cottage connection, loft up/down, garage and workshop",
+      "Owned car recalls inside garage; actual seated driver physically exits through its doorway",
+      "Fifty pack/reload cycles retain exact geometry counts; owned-copy limits enforced; workshop theft cannot escape indoors"
+    ],
+    "Passed": true,
+    "HeartbeatP95Ms": 18.02307553589344
+  },
+  "BoutiqueRegression": {
+    "TextureChecks": 24000,
+    "MalformedRequests": 800,
+    "OwnershipAdapterCalls": 18,
+    "Errors": [],
+    "Scope": "Two actual Studio clients; injected ownership adapter, no purchase or Robux charge",
+    "Verified": [
+      "Cancellation, unrelated IDs and false ownership never grant purchases",
+      "Ownership verification, API outage behavior, revocation and player isolation",
+      "Purchase completion during a blocked ownership lookup queues a fresh check",
+      "600 style equips preserve balances, neighbor appearance, walls, textures and floor materials",
+      "Interior liners retain their finish and floor joints follow all equipped floor materials",
+      "800 malformed requests rejected; travel blocked; ordinary customization and reset remove cosmetic overlay",
+      "Saved selection round-trip and corrupt preference rejection"
+    ],
+    "Passed": true,
+    "StyleEquips": 600
+  }
+}

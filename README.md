@@ -4,6 +4,16 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Cleaner cottage interiors
+
+All eight cottages have a coordinated oak-and-sage interior: fitted kitchens, a window-side sitting area, softer lighting, clean wall finishes and properly proportioned beds. These are actual Studio edit-viewport screenshots of the authored rooms.
+
+| Sitting area | Bedroom | Kitchen |
+|---|---|---|
+| ![Window-side sitting area](assets/screenshots/clean-living.png) | ![Bed and coordinated nightstands](assets/screenshots/clean-bedroom.png) | ![Fitted sage kitchen](assets/screenshots/clean-kitchen.png) |
+
+[Interior changes and compatibility](docs/CLEAN-INTERIORS.md)
+
 ## A roomier neighborhood
 
 The map is now **720 × 700 studs**. Cottages and their expansions are twice as wide and deep, giving homes **four times the floor area** while keeping furniture and characters normal-sized. Streets, gardens, plot choices and activity destinations follow the new layout.
@@ -12,7 +22,7 @@ The map is now **720 × 700 studs**. Cottages and their expansions are twice as 
 
 ### Updated spacious layout
 
-Actual Studio edit-viewport captures of the enlarged authored map and cottage interior. Runtime activities and player furniture are omitted in these architectural views.
+Earlier Studio edit-viewport captures of the enlarged map before the clean-interior refresh above. Runtime activities and player furniture are omitted in these architectural views.
 
 | Larger neighborhood | Wider cottage interior |
 |---|---|
