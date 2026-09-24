@@ -2,6 +2,14 @@
 
 local M={Actors={}}
 
+-- Door-relative route works on both sides of the street and after layout changes.
+function M.HomePoints(h)
+ local door=h.ClosedCFrame.Position
+ local inward=h.Model.Foundation.Position-door;inward=Vector3.new(inward.X,0,inward.Z).Unit
+ local ground=Vector3.new(door.X,h.Model.Foundation.Position.Y+h.Model.Foundation.Size.Y/2,door.Z)
+ return ground+inward*6,ground-inward*6
+end
+
 local names={"Mabel","Rowan","Juniper","Theo","Hazel","Finn","Olive","Jasper","Poppy","Miles","Cleo","Arthur"}
 
 function M.Init(context)
@@ -28,17 +36,19 @@ function M.Init(context)
 
   local home=h.Model.Foundation.Position;local side=home.X<0 and -1 or 1
 
-  local points={Vector3.new(side*84,0,home.Z),Vector3.new(side*75,0,home.Z),Vector3.new(side*75,0,60),Vector3.new(side*43,0,60),Vector3.new(side*43,0,0),Vector3.new(side*20,0,(id%6-2.5)*6)}
+  local inside,outside=M.HomePoints(h)
+  local points={inside,outside,Vector3.new(side*84,0,home.Z),Vector3.new(side*75,0,home.Z),Vector3.new(side*75,0,60),Vector3.new(side*43,0,60),Vector3.new(side*43,0,0),Vector3.new(side*20,0,(id%6-2.5)*6)}
 
+  model:SetAttribute("HomeId",h.Model.Name);model:SetAttribute("RoutineState","At home")
   model:PivotTo(CFrame.new(points[1]+Vector3.new(0,3,0)))
 
-  M.Actors[h]={Model=model,Points=points,Index=2,Direction=1,Pause=0,Label=text,Name=name}
+  M.Actors[h]={Model=model,Points=points,Index=2,Direction=1,Pause=8+id,Label=text,Name=name,House=h}
 
   h.Model:SetAttribute("NPCResident",name);h.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text=name.."'s House (NPC)\n"..h.Model:GetAttribute("Address")
 
  end
 
- context.Interactions:Register("Resident",function(player,target)context.Record(player,"Visit");return true,target:GetAttribute("ResidentName")..": I'm heading around the green. Try the meadow trials to earn medals and home-upgrade money!"end)
+ context.Interactions:Register("Resident",function(player,target)context.Record(player,"Visit");return true,target:GetAttribute("ResidentName")..": I live here and take walks around town. Try the meadow trials to earn medals and home-upgrade money!"end)
 
  local tick=0
 
@@ -54,17 +64,35 @@ function M.Init(context)
 
   end end
 
-  for _,a in pairs(M.Actors)do
+  for h,a in pairs(M.Actors)do
+   -- Ownership can change between the one-second population updates.
+   if h.Owner then a.Model:Destroy();M.Actors[h]=nil;h.Model:SetAttribute("NPCResident",nil);continue end
+   if a.CloseDoor then
+    local nearby=false
+    for _,player in ipairs(game:GetService("Players"):GetPlayers())do
+     local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+     if root and (root.Position-h.ClosedCFrame.Position).Magnitude<7 then nearby=true;break end
+    end
+    if not nearby then context.Houses:SetDoor(h,false);a.CloseDoor=nil end
+   end
 
    if a.Pause>0 then a.Pause-=dt else
 
+    -- Open the real door before traversing the threshold; allow its tween to finish.
+    local crossing=(a.Direction==1 and a.Index==2)or(a.Direction==-1 and a.Index==1)
+    if crossing and not h.Open then
+     context.Houses:SetDoor(h,true);a.OpenedDoor=true;a.CloseDoor=nil;a.Pause=.6
+     a.Model:SetAttribute("RoutineState",a.Direction==1 and "Leaving home"or "Returning home")
+     continue
+    end
     local cf=a.Model:GetPivot();local target=a.Points[a.Index]+Vector3.new(0,3,0);local delta=target-cf.Position
 
     if delta.Magnitude<.3 then
+     if crossing and a.OpenedDoor then a.CloseDoor=true;a.OpenedDoor=nil end
 
-     if a.Index==#a.Points then a.Direction=-1;a.Pause=12;a.Label.Text=a.Name.." · enjoying the park"
+     if a.Index==#a.Points then a.Direction=-1;a.Pause=12;a.Label.Text=a.Name.." · enjoying the park";a.Model:SetAttribute("RoutineState","At park")
 
-     elseif a.Index==1 then a.Direction=1;a.Pause=18;a.Label.Text=a.Name.." · NPC neighbor"end
+     elseif a.Index==1 then a.Direction=1;a.Pause=18;a.Label.Text=a.Name.." · at home";a.Model:SetAttribute("RoutineState","At home")end
 
      a.Index+=a.Direction
 

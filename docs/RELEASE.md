@@ -1,5 +1,9 @@
 # Current release
 
+NPC home routines published as **v106**, confirmed at **18:19:12 UTC on September 24, 2026**. [Behavior and test evidence](NPC-HOME-ROUTINES.md).
+
+## Previous release
+
 Urban ground published as **v105**, confirmed by Studio PublishSuccessful at **18:14:47 UTC on September 24, 2026**. Broad asphalt ground, paved residential blocks and clear back streets. [Screenshot and checks](URBAN-GROUND.md).
 
 ## Previous release

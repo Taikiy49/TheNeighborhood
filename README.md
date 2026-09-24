@@ -4,6 +4,8 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**NPC home routines — published as v106.** Neighbors enter and leave their own homes through the front door. [Behavior and test evidence](docs/NPC-HOME-ROUTINES.md).
+
 **Urban ground — published as v105.** Broad lawns replaced by asphalt and paved residential blocks; green space is concentrated in the park and planting beds. [Screenshot and checks](docs/URBAN-GROUND.md).
 
 ![Urban ground](assets/screenshots/urban-ground-overview.png)
