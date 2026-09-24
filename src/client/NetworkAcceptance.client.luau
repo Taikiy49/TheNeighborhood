@@ -10,6 +10,7 @@ local function begin()
    for _,value in ipairs(values)do
     table.insert(cases,table.pack("Buy",value,nil))
     for _,action in ipairs({"Buy","Craft","Place","Pack","SaveLayout","LoadLayout"})do table.insert(cases,table.pack("Building",action,value))end
+    for _,action in ipairs({"Plant","Work","FinishRenovation","Ending","Decor","Relay","Visit"})do table.insert(cases,table.pack("Life",action,value))end
     table.insert(cases,table.pack("Boutique","Equip",value))
     table.insert(cases,table.pack("Friends","ChoosePlot",value))
     table.insert(cases,table.pack("Event","HighFive",value))

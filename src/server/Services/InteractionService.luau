@@ -12,7 +12,8 @@ function Service:Validate(player, target)
     local distance = (root.Position-target.Position).Magnitude
     if distance ~= distance or distance > Config.InteractionRange then return false,"Move closer." end
     local ray = RaycastParams.new(); ray.FilterType=Enum.RaycastFilterType.Exclude
-    ray.FilterDescendantsInstances=(target:GetAttribute("ItemId") or target:GetAttribute("VehicleOwner")) and {char,target.Parent} or {char}
+    ray.FilterDescendantsInstances=(target:GetAttribute("ItemId") or target:GetAttribute("VehicleOwner") or target:GetAttribute("Action")=="LifeStation") and {char,target.Parent} or {char}
+    if target:GetAttribute("Action")=="LifeStation"then local exclusions={target.Parent};for _,p in ipairs(Players:GetPlayers())do if p.Character then table.insert(exclusions,p.Character)end end;ray.FilterDescendantsInstances=exclusions end
     local hit = workspace:Raycast(root.Position,target.Position-root.Position,ray)
     if hit and hit.Instance ~= target and not hit.Instance:IsDescendantOf(target) then return false,"There is something in the way." end
     return true

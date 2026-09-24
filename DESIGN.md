@@ -56,3 +56,7 @@ Canonical runtime owner: src/shared/Theme.luau → src/client/UI.luau → HUD, p
 ## Home expansion language
 
 Garden rooms use glazed walls, cream structural trim, timber flooring and slate pitched roofs. A return staircase makes the upstairs a physical destination. The garage and backyard studio share the cottage's warm materials. Small furnishing rugs mark intentional placement areas while leaving circulation routes open. Phone building menus retain the canonical Theme → UI → Screens path and existing typography; no parallel control system or new HUD button wall is introduced.
+
+## Neighborhood Life extension
+
+Garden beds use painted timber, soil, small radial flowers and slate stepping stones inside the original side fence. The business counter uses alternating cream/accent awning strips. North-plaza pavilions use timber decks, cream posts and slate pitched roofs; restoration stages visibly add walls and roof. Seasonal signs reuse the four authored palettes. All new screens remain inside the existing phone panel and retain its 48px actions and reserved notification space.

@@ -38,3 +38,7 @@ BuildingScreen uses the existing Screens.Row, UI buttons, Theme, scrolling panel
 Rug selection replaces dragging: room → rug → quarter-turn rotation → piece → Place here. Every action is reachable through ordinary TextButtons on touch and controller. World rugs open the same canonical workflow. Packing is reversible and retains ownership. Three layout slots expose save/overwrite and load separately. Empty and locked states point to the relevant prerequisite. The collection cap and distinction between crafted furniture and collectible possessions are visible in crafting copy.
 
 Open panels reserve space beneath their header for success/error notifications. Notices never overlap the scrolling actions, including at a 220px panel height. Closing a panel clears its notice; a notice already visible when a panel opens moves into that reserved area. The bottom world hint hides while a panel is open.
+
+## Neighborhood Life
+
+Phone → Neighborhood Life is the single hub for seven activities. World prompts open the same canonical screens. All resource changes wait for server confirmation. Tour opening explicitly says it unlocks the home and retains displayed-item theft rules. Locking immediately closes a tour. Garden timers never imply offline loss. Festival archives keep past cosmetic rewards available. Business labels distinguish NPC customers from player trading. Renovation copy distinguishes shared server construction from saved personal contributions.

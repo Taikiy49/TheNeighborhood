@@ -1,0 +1,823 @@
+{
+  "Scope": "Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input",
+  "ScreenChecks": 156,
+  "Clients": {
+    "-1": {
+      "Errors": [],
+      "Passed": true,
+      "Checks": [
+        {
+          "View": "Life",
+          "Rows": 8,
+          "Width": 510
+        },
+        {
+          "View": "LifeGarden",
+          "Rows": 20,
+          "Width": 510
+        },
+        {
+          "View": "LifeBusiness",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "LifeProjects",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "LifeMystery",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "LifeTours",
+          "Rows": 8,
+          "Width": 510
+        },
+        {
+          "View": "LifeMastery",
+          "Rows": 9,
+          "Width": 510
+        },
+        {
+          "View": "LifeFestival",
+          "Rows": 18,
+          "Width": 510
+        },
+        {
+          "View": "LifeStop",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Building",
+          "Rows": 7,
+          "Width": 510
+        },
+        {
+          "View": "Crafting",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "Furnish",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Layouts",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Adventures",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Projects",
+          "Rows": 7,
+          "Width": 510
+        },
+        {
+          "View": "Phone",
+          "Rows": 17,
+          "Width": 510
+        },
+        {
+          "View": "Inventory",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Cases",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Progress",
+          "Rows": 15,
+          "Width": 510
+        },
+        {
+          "View": "Home",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Garage",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Pets",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Event",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Journal",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "Weather",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Collection",
+          "Rows": 14,
+          "Width": 510
+        },
+        {
+          "View": "Neighbors",
+          "Rows": 3,
+          "Width": 510
+        },
+        {
+          "View": "Newspaper",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Settings",
+          "Rows": 3,
+          "Width": 510
+        },
+        {
+          "View": "Friends",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Boutique",
+          "Rows": 13,
+          "Width": 510
+        },
+        {
+          "View": "Shop",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Pawn",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Life",
+          "Rows": 8,
+          "Width": 360
+        },
+        {
+          "View": "LifeGarden",
+          "Rows": 20,
+          "Width": 360
+        },
+        {
+          "View": "LifeBusiness",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "LifeProjects",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "LifeMystery",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "LifeTours",
+          "Rows": 8,
+          "Width": 360
+        },
+        {
+          "View": "LifeMastery",
+          "Rows": 9,
+          "Width": 360
+        },
+        {
+          "View": "LifeFestival",
+          "Rows": 18,
+          "Width": 360
+        },
+        {
+          "View": "LifeStop",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Building",
+          "Rows": 7,
+          "Width": 360
+        },
+        {
+          "View": "Crafting",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "Furnish",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Layouts",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Adventures",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Projects",
+          "Rows": 7,
+          "Width": 360
+        },
+        {
+          "View": "Phone",
+          "Rows": 17,
+          "Width": 360
+        },
+        {
+          "View": "Inventory",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "View": "Cases",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Progress",
+          "Rows": 15,
+          "Width": 360
+        },
+        {
+          "View": "Home",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Garage",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Pets",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Event",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Journal",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "Weather",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "View": "Collection",
+          "Rows": 14,
+          "Width": 360
+        },
+        {
+          "View": "Neighbors",
+          "Rows": 3,
+          "Width": 360
+        },
+        {
+          "View": "Newspaper",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Settings",
+          "Rows": 3,
+          "Width": 360
+        },
+        {
+          "View": "Friends",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Boutique",
+          "Rows": 13,
+          "Width": 360
+        },
+        {
+          "View": "Shop",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Pawn",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "BuildReview",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "BuildReview",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "Height": 480,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 510
+        },
+        {
+          "Height": 220,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 510
+        },
+        {
+          "Height": 480,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 360
+        },
+        {
+          "Height": 220,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 360
+        }
+      ]
+    },
+    "-2": {
+      "Errors": [],
+      "Passed": true,
+      "Checks": [
+        {
+          "View": "Life",
+          "Rows": 8,
+          "Width": 510
+        },
+        {
+          "View": "LifeGarden",
+          "Rows": 20,
+          "Width": 510
+        },
+        {
+          "View": "LifeBusiness",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "LifeProjects",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "LifeMystery",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "LifeTours",
+          "Rows": 8,
+          "Width": 510
+        },
+        {
+          "View": "LifeMastery",
+          "Rows": 9,
+          "Width": 510
+        },
+        {
+          "View": "LifeFestival",
+          "Rows": 18,
+          "Width": 510
+        },
+        {
+          "View": "LifeStop",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Building",
+          "Rows": 7,
+          "Width": 510
+        },
+        {
+          "View": "Crafting",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "Furnish",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Layouts",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Adventures",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Projects",
+          "Rows": 7,
+          "Width": 510
+        },
+        {
+          "View": "Phone",
+          "Rows": 17,
+          "Width": 510
+        },
+        {
+          "View": "Inventory",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Cases",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Progress",
+          "Rows": 15,
+          "Width": 510
+        },
+        {
+          "View": "Home",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Garage",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Pets",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Event",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Journal",
+          "Rows": 6,
+          "Width": 510
+        },
+        {
+          "View": "Weather",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Collection",
+          "Rows": 14,
+          "Width": 510
+        },
+        {
+          "View": "Neighbors",
+          "Rows": 3,
+          "Width": 510
+        },
+        {
+          "View": "Newspaper",
+          "Rows": 1,
+          "Width": 510
+        },
+        {
+          "View": "Settings",
+          "Rows": 3,
+          "Width": 510
+        },
+        {
+          "View": "Friends",
+          "Rows": 5,
+          "Width": 510
+        },
+        {
+          "View": "Boutique",
+          "Rows": 13,
+          "Width": 510
+        },
+        {
+          "View": "Shop",
+          "Rows": 10,
+          "Width": 510
+        },
+        {
+          "View": "Pawn",
+          "Rows": 2,
+          "Width": 510
+        },
+        {
+          "View": "Life",
+          "Rows": 8,
+          "Width": 360
+        },
+        {
+          "View": "LifeGarden",
+          "Rows": 20,
+          "Width": 360
+        },
+        {
+          "View": "LifeBusiness",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "LifeProjects",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "LifeMystery",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "LifeTours",
+          "Rows": 8,
+          "Width": 360
+        },
+        {
+          "View": "LifeMastery",
+          "Rows": 9,
+          "Width": 360
+        },
+        {
+          "View": "LifeFestival",
+          "Rows": 18,
+          "Width": 360
+        },
+        {
+          "View": "LifeStop",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Building",
+          "Rows": 7,
+          "Width": 360
+        },
+        {
+          "View": "Crafting",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "Furnish",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Layouts",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Adventures",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Projects",
+          "Rows": 7,
+          "Width": 360
+        },
+        {
+          "View": "Phone",
+          "Rows": 17,
+          "Width": 360
+        },
+        {
+          "View": "Inventory",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "View": "Cases",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Progress",
+          "Rows": 15,
+          "Width": 360
+        },
+        {
+          "View": "Home",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Garage",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Pets",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Event",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Journal",
+          "Rows": 6,
+          "Width": 360
+        },
+        {
+          "View": "Weather",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "View": "Collection",
+          "Rows": 14,
+          "Width": 360
+        },
+        {
+          "View": "Neighbors",
+          "Rows": 3,
+          "Width": 360
+        },
+        {
+          "View": "Newspaper",
+          "Rows": 1,
+          "Width": 360
+        },
+        {
+          "View": "Settings",
+          "Rows": 3,
+          "Width": 360
+        },
+        {
+          "View": "Friends",
+          "Rows": 5,
+          "Width": 360
+        },
+        {
+          "View": "Boutique",
+          "Rows": 13,
+          "Width": 360
+        },
+        {
+          "View": "Shop",
+          "Rows": 10,
+          "Width": 360
+        },
+        {
+          "View": "Pawn",
+          "Rows": 2,
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "BuildReview",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 510
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "BuildReview",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "PendingFailure": true,
+          "ExpansionDetail": true,
+          "View": "Furnish",
+          "Width": 360
+        },
+        {
+          "Height": 480,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 510
+        },
+        {
+          "Height": 220,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 510
+        },
+        {
+          "Height": 480,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 360
+        },
+        {
+          "Height": 220,
+          "NonOverlappingNotice": true,
+          "View": "Building",
+          "Width": 360
+        }
+      ]
+    }
+  },
+  "Passed": true
+}

@@ -1,0 +1,1203 @@
+{
+  "LifeAcceptance": {
+    "MalformedRequests": 120,
+    "PerformanceCertified": false,
+    "Clients": 2,
+    "Checks": 41276,
+    "OnlineSaveRejoinTested": false,
+    "Verified": [
+      "200 progression simulations: offline harvest, atomic recipes, all businesses, 18 case variants/endings, four seasons, mastery and schema round trips",
+      "120 malformed pure requests rejected without throwing",
+      "2 independent homes grow flowers, complete orders and install mastery decorations",
+      "Neighbor garden edits rejected; tours require opt-in and invalidate on close; starter-item challenge rewards once",
+      "45 co-op repair steps, preparation/cooldown/replay guards, rejoin merge idempotency, all three usable landmarks",
+      "Real service routes verify stories, seasonal shop and multiplayer relay rewards; fixtures reposition characters and shorten preparation",
+      "Rapid route teleport rejected; 30 redraws retain exact instance count; full profile snapshot migrates without aliasing"
+    ],
+    "Passed": true,
+    "HeartbeatP95Ms": 18.008748069405556
+  },
+  "LifeCapacity": {
+    "MalformedRequests": 120,
+    "PerformanceCertified": false,
+    "Clients": 8,
+    "Checks": 41360,
+    "OnlineSaveRejoinTested": false,
+    "Verified": [
+      "200 progression simulations: offline harvest, atomic recipes, all businesses, 18 case variants/endings, four seasons, mastery and schema round trips",
+      "120 malformed pure requests rejected without throwing",
+      "8 independent homes grow flowers, complete orders and install mastery decorations",
+      "Neighbor garden edits rejected; tours require opt-in and invalidate on close; starter-item challenge rewards once",
+      "45 co-op repair steps, preparation/cooldown/replay guards, rejoin merge idempotency, all three usable landmarks",
+      "Real service routes verify stories, seasonal shop and multiplayer relay rewards; fixtures reposition characters and shorten preparation",
+      "Rapid route teleport rejected; 30 redraws retain exact instance count; full profile snapshot migrates without aliasing"
+    ],
+    "Passed": true,
+    "HeartbeatP95Ms": 229.32325303554535
+  },
+  "BuildingAcceptance": {
+    "Parts": 4331,
+    "MalformedRequests": 4200,
+    "Clients": 2,
+    "WalkedLegs": 22,
+    "PerformanceCertified": false,
+    "Verified": [
+      "Old profiles gain defaults; six malformed saved profiles rejected",
+      "All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks",
+      "2 homes independently built with 14 collectible spots and 15 crafted furnishings each",
+      "Owner isolation; atomic layout load; copied layouts; invalid cells/rotations; 48-piece cap without debit",
+      "Layouts preserve original collectible GUIDs; expansion snapshot validates; release restores cottage and rebuild retains furniture",
+      "22 physical walking legs: cottage connection, loft up/down, garage and workshop",
+      "Owned car recalls inside garage; actual seated driver physically exits through its doorway",
+      "Fifty pack/reload cycles retain exact geometry counts; owned-copy limits enforced; workshop theft cannot escape indoors"
+    ],
+    "Passed": true,
+    "HeartbeatP95Ms": 17.975609749555588
+  },
+  "AdventureAcceptance": {
+    "Verified": [
+      "Existing profiles migrate; six corrupt album shapes rejected",
+      "2,100 malformed actions plus forged/malformed posts rejected without rewards",
+      "Duplicate starts, remote visits and teleport advancement rejected; abandon clears only active run",
+      "Two real clients complete different three-chapter stories on foot; four full walking legs and saved personal bests",
+      "All six stories, 40 checkpoint replays, no duplicate first rewards; paused runs cannot overwrite personal bests; three shared park improvements rendered",
+      "Full inventory defers rewards; three exclusive trophies render and claim once; selling retains collection and receipt",
+      "Closing profiles reject actions; death pauses without losing the saved chapter"
+    ],
+    "MalformedRequests": 2100,
+    "ActualWalkingLegs": 4,
+    "LiveStorage": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    },
+    "CheckpointReplaySimulations": 40,
+    "Passed": true,
+    "Errors": []
+  },
+  "FoundationAcceptance": {
+    "Players": [
+      {
+        "House": "House01",
+        "Name": "Player1",
+        "UserId": -1
+      },
+      {
+        "House": "House02",
+        "Name": "Player2",
+        "UserId": -2
+      }
+    ],
+    "DataStoreAccess": {
+      "Allowed": false,
+      "Result": "You must publish this place to the web to access DataStore."
+    },
+    "Errors": [],
+    "Verified": [
+      "Two real clients connected",
+      "Distinct houses assigned",
+      "Player1 opened their own door",
+      "Player2 opened their own door",
+      "Visitor lock mutation rejected",
+      "Malformed interaction rejected",
+      "Purchase, placement, storage and sale lifecycle",
+      "Invalid item, insufficient funds, foreign ownership and duplicate sale rejected",
+      "Higgsfield siding follows purchased house paint",
+      "Paint purchase is charged once; invalid options rejected; entry, roommate locks and item ownership remain separate",
+      "Car purchase, owner-only input, physical driving and bounded speed; duplicate/NaN/out-of-range requests rejected",
+      "Pet adoption charged once; path following and stay command work; unowned commands rejected",
+      "Event discount, mutual consent, unique pair reward, outage lifecycle and inactive-event rejection",
+      "Three distinct physical mailbox visits pay once; remote and repeat checks rejected",
+      "Physical flamingo prank, owner cleanup, price, opt-out, beginner protection and cooldown",
+      "Nearby house survey respects walls, distance and request cooldown",
+      "Timed lock breach; protection and movement cancellation; owner reset",
+      "Drop and resume preserve original possession, physical carry pose and movement restoration",
+      "Golden Toilet theft, physical weld, weight penalty and owner recovery",
+      "Beginner protection, concurrent theft and premature fence rejection",
+      "Structured incident evidence without culprit user ID",
+      "Heavy-item character walked through the door and escaped",
+      "Fence payout exactly $2900; duplicate fence rejected",
+      "Evidence-backed accusation solves case once; foreign case and self accusations rejected",
+      "Original item reclaimed; foreign, remote, duplicate and repeat-farming requests rejected; four incident transitions retained",
+      "Disconnect cleanup returns carried property and restores movement",
+      "Teleport during carry returns property with no payout",
+      "Actual client disconnect releases plot and returns carried possession"
+    ],
+    "Passed": true,
+    "PersistenceTests": {
+      "Passed": true,
+      "Cycles": 50,
+      "Seed": 88217,
+      "Verified": [
+        "Concurrent profile session rejected",
+        "Transient save failures retry without resetting data",
+        "Lost commit response produces one revision",
+        "Exhausted retries preserve previous durable snapshot",
+        "Release and rejoin retain money, original item identity, placement, lock, progression and adventure album",
+        "Expired lease recovery rejects stale server writes",
+        "Future schema and corrupt money rejected without overwriting storage",
+        "Version-one migration adds defaults while preserving currency",
+        "Duplicate item IDs and foreign ownership rejected",
+        "Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles",
+        "Committed credit survives all retry responses being lost and a later stale-memory save",
+        "50 seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements"
+      ],
+      "Backend": "Injected storage; not proof of Roblox API access",
+      "Requests": 239
+    }
+  },
+  "FriendsAcceptance": {
+    "DirectoryRequests": 101,
+    "Errors": [],
+    "LiveDirectory": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    },
+    "Verified": [
+      "Explicit invitations, party leadership, readiness, membership changes and leave checks",
+      "Saved group, adjacent slots, transport roster, credential privacy, mutation freeze and idempotent retry",
+      "Save failures abort departure; teleport failures recover; nonmembers rejected",
+      "Partial departure preserves destination and transfers party leadership for retry",
+      "Cross-repository invitations, durable member slots, duplicate accept, eight-member cap, expiry and decline",
+      "Reverse-order arrivals retain adjacent saved plots"
+    ],
+    "Passed": true,
+    "Transport": "Injected adapter; real Roblox teleports require published-client testing"
+  },
+  "PlotChoiceAcceptance": {
+    "NearestChoices": 56,
+    "Errors": [],
+    "LiveDirectory": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    },
+    "Verified": [
+      "Nearby defaults follow the founder; own free-plot choice; occupied and malformed choices rejected; readiness reset",
+      "Chosen plots committed with the circle; retries and saved circles cannot silently relocate members",
+      "Reverse-order arrivals use selected plot numbers",
+      "Saved invitations support chosen or nearest plots, atomic conflict rejection, offline reservations and idempotent acceptance",
+      "All eight starting plots and 56 nearest-choice steps match actual map geometry"
+    ],
+    "Passed": true,
+    "Transport": "Injected adapter; no live cross-server teleport claim"
+  },
+  "ExplorationAcceptance": {
+    "Errors": [],
+    "MalformedRequests": 18,
+    "Verified": [
+      "Discovery rejects remote, malformed, forged and premature claims",
+      "Five physical markers yield exactly one original collectible; progress and receipt serialize",
+      "Exclusive collectible cannot be bought; historical collection survives sale",
+      "Full inventory defers trail reward without losing progress; claim succeeds once after freeing space",
+      "Weather lifecycle and replicated forecast agree; invalid weather rejected",
+      "Eighteen malformed service requests rejected without mutation or errors",
+      "Physical parcel carried over an actual path; exact reward, pose cleanup and duplicate rejection",
+      "Voluntary parcel cancellation removes prop without paying",
+      "Immediate teleport-to-mailbox request cancels parcel without paying",
+      "Character death cancels parcel and clears its address"
+    ],
+    "Passed": true,
+    "LiveStorageTests": {
+      "Skipped": true,
+      "Passed": false,
+      "Reason": "Unpublished local place: real Roblox DataStore verification requires an authenticated published place."
+    }
+  },
+  "LifecycleStress": {
+    "WorldInstancesAfter": 133,
+    "Errors": [],
+    "Passed": true,
+    "WorldInstancesBefore": 133,
+    "Definitions": 10,
+    "Cycles": 100,
+    "Verified": [
+      "One hundred complete acquire/display/store/sell cycles across two owners",
+      "All ten store collectibles rendered and exercised",
+      "Six hundred foreign/duplicate/invalid state transitions rejected",
+      "Original GUIDs unique across every acquisition",
+      "Currency and inventory invariants held after every cycle",
+      "No leaked item models or registry entries"
+    ],
+    "Seed": 941,
+    "InvalidTransitionsRejected": 600
+  },
+  "DisconnectRaceAcceptance": {
+    "InjectedSaveDelaySeconds": 4,
+    "Verified": [
+      "Actual owner disconnected while another player carried their item",
+      "Carry returned and movement restored before delayed saving",
+      "Closing profile rejected interactions",
+      "New theft and breach rejected during the save window",
+      "Profile, plot and possession cleaned after save",
+      "Delayed callbacks did not resurrect the theft"
+    ],
+    "Passed": true
+  },
+  "ArtAcceptance": {
+    "SidingTextures": 320,
+    "SuccessfulNavigationRoutes": 23,
+    "Errors": [],
+    "Passed": true,
+    "Verified": [
+      "All decorative geometry is anchored and excluded from gameplay raycasts, touch and collision",
+      "Eight delivery routes and eight front-door routes remain navigable",
+      "All five gnome clues and both stores remain reachable",
+      "Six item display slots retained in every house",
+      "Scene stays within the explicit decoration budget",
+      "Generated siding and tree meshes retained"
+    ],
+    "DecorativeParts": 1812,
+    "TexturedMeshes": 104
+  },
+  "BoutiqueRegression": {
+    "TextureChecks": 24000,
+    "MalformedRequests": 800,
+    "OwnershipAdapterCalls": 18,
+    "Errors": [],
+    "Scope": "Two actual Studio clients; injected ownership adapter, no purchase or Robux charge",
+    "Verified": [
+      "Cancellation, unrelated IDs and false ownership never grant purchases",
+      "Ownership verification, API outage behavior, revocation and player isolation",
+      "Purchase completion during a blocked ownership lookup queues a fresh check",
+      "600 style equips preserve balances, neighbor appearance, walls, textures and floor materials",
+      "800 malformed requests rejected; travel blocked; ordinary customization and reset remove cosmetic overlay",
+      "Saved selection round-trip and corrupt preference rejection"
+    ],
+    "Passed": true,
+    "StyleEquips": 600
+  },
+  "StorageStress": {
+    "Seeds": 20,
+    "Cycles": 5000,
+    "Scope": "Injected UpdateAsync storage: leases, retries, duplicate settlements, lost acknowledgements, later spending, corrupt records and schema migration. Separate live-storage suites verify actual Roblox DataStore.",
+    "StorageRequests": 20800,
+    "Passed": true,
+    "Runs": [
+      {
+        "Seed": 96136,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 104055,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 111974,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 119893,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 127812,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 135731,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 143650,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 151569,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 159488,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 167407,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 175326,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 183245,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 191164,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 199083,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 207002,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 214921,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 222840,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 230759,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 238678,
+        "Requests": 1040,
+        "Cycles": 250
+      },
+      {
+        "Seed": 246597,
+        "Requests": 1040,
+        "Cycles": 250
+      }
+    ]
+  },
+  "UIAcceptance": {
+    "Scope": "Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input",
+    "ScreenChecks": 156,
+    "Clients": {
+      "-1": {
+        "Errors": [],
+        "Passed": true,
+        "Checks": [
+          {
+            "View": "Life",
+            "Rows": 8,
+            "Width": 510
+          },
+          {
+            "View": "LifeGarden",
+            "Rows": 20,
+            "Width": 510
+          },
+          {
+            "View": "LifeBusiness",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "LifeProjects",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "LifeMystery",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "LifeTours",
+            "Rows": 8,
+            "Width": 510
+          },
+          {
+            "View": "LifeMastery",
+            "Rows": 9,
+            "Width": 510
+          },
+          {
+            "View": "LifeFestival",
+            "Rows": 18,
+            "Width": 510
+          },
+          {
+            "View": "LifeStop",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Building",
+            "Rows": 7,
+            "Width": 510
+          },
+          {
+            "View": "Crafting",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "Furnish",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Layouts",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Adventures",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Projects",
+            "Rows": 7,
+            "Width": 510
+          },
+          {
+            "View": "Phone",
+            "Rows": 17,
+            "Width": 510
+          },
+          {
+            "View": "Inventory",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Cases",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Progress",
+            "Rows": 15,
+            "Width": 510
+          },
+          {
+            "View": "Home",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Garage",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Pets",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Event",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Journal",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "Weather",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Collection",
+            "Rows": 14,
+            "Width": 510
+          },
+          {
+            "View": "Neighbors",
+            "Rows": 3,
+            "Width": 510
+          },
+          {
+            "View": "Newspaper",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Settings",
+            "Rows": 3,
+            "Width": 510
+          },
+          {
+            "View": "Friends",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Boutique",
+            "Rows": 13,
+            "Width": 510
+          },
+          {
+            "View": "Shop",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Pawn",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Life",
+            "Rows": 8,
+            "Width": 360
+          },
+          {
+            "View": "LifeGarden",
+            "Rows": 20,
+            "Width": 360
+          },
+          {
+            "View": "LifeBusiness",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "LifeProjects",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "LifeMystery",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "LifeTours",
+            "Rows": 8,
+            "Width": 360
+          },
+          {
+            "View": "LifeMastery",
+            "Rows": 9,
+            "Width": 360
+          },
+          {
+            "View": "LifeFestival",
+            "Rows": 18,
+            "Width": 360
+          },
+          {
+            "View": "LifeStop",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Building",
+            "Rows": 7,
+            "Width": 360
+          },
+          {
+            "View": "Crafting",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "Furnish",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Layouts",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Adventures",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Projects",
+            "Rows": 7,
+            "Width": 360
+          },
+          {
+            "View": "Phone",
+            "Rows": 17,
+            "Width": 360
+          },
+          {
+            "View": "Inventory",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "View": "Cases",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Progress",
+            "Rows": 15,
+            "Width": 360
+          },
+          {
+            "View": "Home",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Garage",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Pets",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Event",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Journal",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "Weather",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "View": "Collection",
+            "Rows": 14,
+            "Width": 360
+          },
+          {
+            "View": "Neighbors",
+            "Rows": 3,
+            "Width": 360
+          },
+          {
+            "View": "Newspaper",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Settings",
+            "Rows": 3,
+            "Width": 360
+          },
+          {
+            "View": "Friends",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Boutique",
+            "Rows": 13,
+            "Width": 360
+          },
+          {
+            "View": "Shop",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Pawn",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "BuildReview",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "BuildReview",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "Height": 480,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 510
+          },
+          {
+            "Height": 220,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 510
+          },
+          {
+            "Height": 480,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 360
+          },
+          {
+            "Height": 220,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 360
+          }
+        ]
+      },
+      "-2": {
+        "Errors": [],
+        "Passed": true,
+        "Checks": [
+          {
+            "View": "Life",
+            "Rows": 8,
+            "Width": 510
+          },
+          {
+            "View": "LifeGarden",
+            "Rows": 20,
+            "Width": 510
+          },
+          {
+            "View": "LifeBusiness",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "LifeProjects",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "LifeMystery",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "LifeTours",
+            "Rows": 8,
+            "Width": 510
+          },
+          {
+            "View": "LifeMastery",
+            "Rows": 9,
+            "Width": 510
+          },
+          {
+            "View": "LifeFestival",
+            "Rows": 18,
+            "Width": 510
+          },
+          {
+            "View": "LifeStop",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Building",
+            "Rows": 7,
+            "Width": 510
+          },
+          {
+            "View": "Crafting",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "Furnish",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Layouts",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Adventures",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Projects",
+            "Rows": 7,
+            "Width": 510
+          },
+          {
+            "View": "Phone",
+            "Rows": 17,
+            "Width": 510
+          },
+          {
+            "View": "Inventory",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Cases",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Progress",
+            "Rows": 15,
+            "Width": 510
+          },
+          {
+            "View": "Home",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Garage",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Pets",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Event",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Journal",
+            "Rows": 6,
+            "Width": 510
+          },
+          {
+            "View": "Weather",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Collection",
+            "Rows": 14,
+            "Width": 510
+          },
+          {
+            "View": "Neighbors",
+            "Rows": 3,
+            "Width": 510
+          },
+          {
+            "View": "Newspaper",
+            "Rows": 1,
+            "Width": 510
+          },
+          {
+            "View": "Settings",
+            "Rows": 3,
+            "Width": 510
+          },
+          {
+            "View": "Friends",
+            "Rows": 5,
+            "Width": 510
+          },
+          {
+            "View": "Boutique",
+            "Rows": 13,
+            "Width": 510
+          },
+          {
+            "View": "Shop",
+            "Rows": 10,
+            "Width": 510
+          },
+          {
+            "View": "Pawn",
+            "Rows": 2,
+            "Width": 510
+          },
+          {
+            "View": "Life",
+            "Rows": 8,
+            "Width": 360
+          },
+          {
+            "View": "LifeGarden",
+            "Rows": 20,
+            "Width": 360
+          },
+          {
+            "View": "LifeBusiness",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "LifeProjects",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "LifeMystery",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "LifeTours",
+            "Rows": 8,
+            "Width": 360
+          },
+          {
+            "View": "LifeMastery",
+            "Rows": 9,
+            "Width": 360
+          },
+          {
+            "View": "LifeFestival",
+            "Rows": 18,
+            "Width": 360
+          },
+          {
+            "View": "LifeStop",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Building",
+            "Rows": 7,
+            "Width": 360
+          },
+          {
+            "View": "Crafting",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "Furnish",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Layouts",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Adventures",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Projects",
+            "Rows": 7,
+            "Width": 360
+          },
+          {
+            "View": "Phone",
+            "Rows": 17,
+            "Width": 360
+          },
+          {
+            "View": "Inventory",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "View": "Cases",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Progress",
+            "Rows": 15,
+            "Width": 360
+          },
+          {
+            "View": "Home",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Garage",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Pets",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Event",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Journal",
+            "Rows": 6,
+            "Width": 360
+          },
+          {
+            "View": "Weather",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "View": "Collection",
+            "Rows": 14,
+            "Width": 360
+          },
+          {
+            "View": "Neighbors",
+            "Rows": 3,
+            "Width": 360
+          },
+          {
+            "View": "Newspaper",
+            "Rows": 1,
+            "Width": 360
+          },
+          {
+            "View": "Settings",
+            "Rows": 3,
+            "Width": 360
+          },
+          {
+            "View": "Friends",
+            "Rows": 5,
+            "Width": 360
+          },
+          {
+            "View": "Boutique",
+            "Rows": 13,
+            "Width": 360
+          },
+          {
+            "View": "Shop",
+            "Rows": 10,
+            "Width": 360
+          },
+          {
+            "View": "Pawn",
+            "Rows": 2,
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "BuildReview",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 510
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "BuildReview",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "PendingFailure": true,
+            "ExpansionDetail": true,
+            "View": "Furnish",
+            "Width": 360
+          },
+          {
+            "Height": 480,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 510
+          },
+          {
+            "Height": 220,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 510
+          },
+          {
+            "Height": 480,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 360
+          },
+          {
+            "Height": 220,
+            "NonOverlappingNotice": true,
+            "View": "Building",
+            "Width": 360
+          }
+        ]
+      }
+    },
+    "Passed": true
+  }
+}

@@ -57,7 +57,7 @@ function Screens:Resolve(success,requestId)
  local pending=self.Pending;self.Pending=nil
  if pending.Button.Parent then pending.Button.Text=pending.Text;pending.Button.Active=true end
  if success and self.CurrentView=="BuildReview"then self:Open("Building");return end
- if success and self.CurrentView~="Building"and self.CurrentView~="Crafting"and self.CurrentView~="Furnish"and self.CurrentView~="Layouts"and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"then self.Panel.Visible=false end
+ if success and self.CurrentView:sub(1,4)~="Life"and self.CurrentView~="Building"and self.CurrentView~="Crafting"and self.CurrentView~="Furnish"and self.CurrentView~="Layouts"and self.CurrentView~="Friends"and self.CurrentView~="InviteFriends"and self.CurrentView~="ChoosePlot"then self.Panel.Visible=false end
 end
 function Screens:Open(view,detail)
  self:Resolve(false)
@@ -67,7 +67,8 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Building"or view=="BuildReview"or view=="Crafting"or view=="Furnish"or view=="Layouts"then require(script.Parent.BuildingScreen).Render(self,view,detail)
+ if view:sub(1,4)=="Life"then require(script.Parent.LifeScreen).Render(self,view,detail)
+ elseif view=="Building"or view=="BuildReview"or view=="Crafting"or view=="Furnish"or view=="Layouts"then require(script.Parent.BuildingScreen).Render(self,view,detail)
  elseif view=="Adventures" or view=="Projects"then require(script.Parent.AdventureScreen).Render(self,view)
  elseif view=="Boutique"then require(script.Parent.BoutiqueScreen).Render(self)
  elseif view=="Friends"or view=="InviteFriends"or view=="ChoosePlot"then
@@ -78,6 +79,7 @@ function Screens:Open(view,detail)
  elseif view=="Phone" then
   self.Title.Text="Your phone"
   self:Row("Room to grow","Expand your cottage, craft furniture and save favorite layouts.","Plan your home",function()self:Open("Building")end)
+  self:Row("Neighborhood Life","Gardening, businesses, shared renovations, mysteries, tours, mastery and festivals.","Explore activities",function()self:Open("Life")end)
   self:Row("Maple Adventures","Six rumors, a story album, earned trophies and shared park projects.","Follow a rumor",function()self:Open("Adventures")end)
   self:Row("Style Boutique","Optional permanent home-style packs for Robux.","Browse styles",function()self:Open("Boutique")end)
   self:Row("Friends","Party up, move together and return to your saved neighborhood.","Open Friends",function()self:Open("Friends")end)

@@ -76,7 +76,7 @@ function Service:Action(player,action,arg)
   b.Unlocked[arg]=true
   local ok,why=pcall(function()self:Restore(player)end)
   if not ok then b.Unlocked[arg]=nil;warn("[BUILDING] "..tostring(why));self:Restore(player);return false,"Construction failed. Your cash was not spent."end
-  p.Currency-=r.Price;self.Context.Record(player,"Customize")
+  p.Currency-=r.Price;if self.Context.Life then self.Context.Life:Earn(player,30)end;self.Context.Record(player,"Customize")
   return true,r.Name.." built. Your expansion follows you to other neighborhoods."
  elseif action=="Craft"then
   local recipe=type(arg)=="string"and D.Recipes[arg]
@@ -86,7 +86,7 @@ function Service:Action(player,action,arg)
   local total=0;for _,n in pairs(b.Owned)do total+=n end
   if total>=D.MaxOwned then return false,"Your furniture collection is full. Rearrange the pieces you own."end
   if p.Currency<recipe.Price then return false,"You need $"..recipe.Price.." in game cash."end
-  p.Currency-=recipe.Price;b.Owned[arg]=(b.Owned[arg]or 0)+1
+  p.Currency-=recipe.Price;if self.Context.Life then self.Context.Life:Earn(player,2)end;b.Owned[arg]=(b.Owned[arg]or 0)+1
   return true,recipe.Name.." crafted. Choose a room and a rug to place it."
  elseif action=="Place"or action=="Pack"then
   if type(arg)~="table"or type(arg.Zone)~="string"then return false,"Choose a room and a rug."end

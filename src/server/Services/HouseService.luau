@@ -1,3 +1,4 @@
+local Players=game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Config = require(game.ReplicatedStorage.Neighborhood.Shared.Config)
 local Service = {ByPlayer = {}, ById = {}}
@@ -45,7 +46,7 @@ function Service:DoorAction(player, target, action)
         if house.Owner ~= player.UserId and permission~="Roommate" then return false,"Only the homeowner or a roommate can change this lock." end
         house.Locked = not house.Locked
         house.CompromisedUntil=nil
-        if house.Locked then self:SetDoor(house,false) end
+        if house.Locked then self:SetDoor(house,false);local owner=Players:GetPlayerByUserId(house.Owner);local profile=owner and self.Context.Data:Get(owner);if profile and profile.Life then profile.Life.TourOpen=false;if self.Context.Life then self.Context.Life:Home(owner)end end end
         house.Model:SetAttribute("Locked",house.Locked)
         if house.Locked then self.Context.Record(player,"Lock")end
         return true, house.Locked and "Front door locked." or "Front door unlocked."

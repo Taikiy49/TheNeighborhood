@@ -27,6 +27,7 @@ local ok,result=pcall(function()
   assert(Data:Save(player,false),"Explicit live save failed")
   -- This change is intentionally after the explicit save: only shutdown saving can retain it.
   profile.Statistics.ShutdownProbe=(profile.Statistics.ShutdownProbe or 0)+1
+  profile.Life.Flowers.Daisy=7;profile.Life.Beds["1"]={Kind="Lavender",Planted=os.time(),Watered=true,Hybrid=true};profile.Life.XP=600;profile.Life.Blueprints.Lantern=true;profile.Life.Style="Coastal";profile.Life.Business="Furniture";profile.Life.OrderStep=2;profile.Life.OrderReady=os.time()+3;profile.Life.Endings["LostLantern:1"]=true;profile.Life.Renovations.Cafe=true;profile.Life.Contributions.Cafe=2;profile.Life.Banners.CozyCorners=true;profile.Life.Decor["Winter:Flag"]=true;profile.Life.Equipped="Winter:Flag";profile.Life.Tokens.Winter=8
   profile.Adventures={Completed={Teaspoon=true},Runs={Teaspoon=2},BestMs={Teaspoon=45000},Rewards={TrailCompass=true},Contributions=12,Active={Id="Moon",Next=2}}
   return {Passed=true,Phase=1,UserId=player.UserId,ItemId=item.Id,Slot=slotNumber,Currency=profile.Currency,ShutdownProbe=profile.Statistics.ShutdownProbe,Locked=house.Locked}
  end
@@ -39,6 +40,7 @@ local ok,result=pcall(function()
  assert(profile.Statistics.ShutdownProbe==expected.ShutdownProbe,"Unsaved change was not flushed during shutdown")
  assert(profile.Adventures.Completed.Teaspoon and profile.Adventures.BestMs.Teaspoon==45000 and profile.Adventures.Rewards.TrailCompass and profile.Adventures.Contributions==12 and profile.Adventures.Active.Id=="Moon" and profile.Adventures.Active.Next==2,"Adventure progress did not survive shutdown/rejoin")
  assert(profile.Building.Unlocked.Workshop and profile.Building.Unlocked.Loft and profile.Building.Owned.Bench==1 and profile.Building.Placed["Loft:1"].Rotation==2 and profile.Building.Layouts["1"]["Loft:1"].Kind=="Bench" and house.Model.HomeExpansion.Furnishings:FindFirstChild("Loft:1"),"Building or furniture did not survive restart")
+ assert(profile.Life.Flowers.Daisy==7 and profile.Life.Beds["1"].Hybrid and profile.Life.XP==600 and profile.Life.Blueprints.Lantern and profile.Life.Style=="Coastal"and profile.Life.OrderStep==2 and profile.Life.Endings["LostLantern:1"]and profile.Life.Renovations.Cafe and profile.Life.Banners.CozyCorners and profile.Life.Equipped=="Winter:Flag"and profile.Life.Tokens.Winter==8,"Life progress did not survive shutdown/rejoin")
  assert(profile._Recap and profile._Recap.LastSeen>0,"Honest recap missing")
  return {Passed=true,Phase=2,Verified={"Normal Studio player rejoined same persistent profile","Currency retained","Original item GUID and display placement restored","House lock restored","Post-save change retained by shutdown save","Recap reflects real previous session","Boutique selection retained across actual server restart","Adventure album and unfinished chapter retained by shutdown save"}}
 end)

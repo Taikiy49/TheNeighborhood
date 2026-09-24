@@ -4,7 +4,7 @@ assert(game:GetService("RunService"):IsStudio(),"Studio only")
 assert(not game:GetService("RunService"):IsRunning(),"Stop Play first")
 local Test=game:GetService("StudioTestService")
 local suites={
- {"BuildingAcceptance",2},{"BuildingCapacity",8},
+ {"LifeAcceptance",2},{"LifeCapacity",8},{"LifeWalkAcceptance",2},{"BuildingAcceptance",2},{"BuildingCapacity",8},
  {"AdventureAcceptance",2},{"FoundationAcceptance",2},{"FriendsAcceptance",3},{"PlotChoiceAcceptance",3},
  {"ExplorationAcceptance",2},{"NetworkAcceptance",2},{"LifecycleStress",2},
  {"DisconnectRaceAcceptance",2},{"ArtAcceptance",2},{"CapacityAcceptance",8},

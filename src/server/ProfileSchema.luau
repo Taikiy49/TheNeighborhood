@@ -3,10 +3,11 @@ local Definitions=require(game.ReplicatedStorage.Neighborhood.Shared.ItemDefinit
 local Adventures=require(game.ReplicatedStorage.Neighborhood.Shared.AdventureDefinitions)
 local BuildingRules=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingRules)
 local BuildingDefs=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
+local LifeRules=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -30,6 +31,7 @@ function Schema.Migrate(raw,userId)
  assert(p.Pets.Dog==nil or type(p.Pets.Dog)=="boolean","Corrupt pet ownership")
  assert(p.Pets.Mode==nil or p.Pets.Mode=="Follow" or p.Pets.Mode=="Stay","Corrupt pet mode")
  assert(type(p.EventClaims)=="table" and #p.EventClaims<=32,"Corrupt event receipts")
+ assert(LifeRules.Valid(p.Life),"Corrupt neighborhood life")
  assert(BuildingRules.Valid(p.Building),"Corrupt home expansion")
  local a=p.Adventures
  assert(type(a)=="table" and type(a.Completed)=="table" and type(a.Runs)=="table" and type(a.BestMs)=="table" and type(a.Rewards)=="table" and integer(a.Contributions,0,1000000),"Corrupt adventure album")

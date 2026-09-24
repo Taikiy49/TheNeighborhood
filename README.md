@@ -36,6 +36,21 @@ Actual 1920 × 1079 captures from a temporary Roblox Studio play session on Sept
 
 ![Maple Style Boutique showing owned cosmetic finishes during the playtest](assets/screenshots/boutique.jpg)
 
+## Neighborhood Life
+
+Actual Studio play-session previews with temporary local progression and daylight staging; these do not change saved accounts.
+
+| Your garden and business counter | The restored Corner Cafe |
+|---|---|
+| ![Four flowering garden beds and the nursery counter](assets/screenshots/life-garden.jpg) | ![Completed Corner Cafe pavilion facing the street](assets/screenshots/life-cafe.jpg) |
+
+![Neighborhood Life phone activities](assets/screenshots/life-phone.jpg)
+
+
+Grow a four-bed garden, serve NPC business orders, restore three community places, solve branching mysteries, host home tours, earn maker blueprints and join seasonal lantern festivals. Open **Phone → Neighborhood Life**. Personal progress uses the existing save system; live save/rejoin verification for this update is still pending.
+
+See the [feature guide](docs/NEIGHBORHOOD-LIFE.md) for exact gameplay, rewards and limits, and the [verification report](docs/QA-NEIGHBORHOOD-LIFE.md) for test methods and release limits.
+
 ## Maple Adventures
 
 Follow six neighborhood rumors, save their endings in a story album, replay walking routes for personal bests, and earn three display trophies. Deliveries, discoveries, events and completed trails also build shared flower beds, a little library and lanterns in Maple Green. Chapters and personal rewards stay saved; the shared park build lasts for the current server.

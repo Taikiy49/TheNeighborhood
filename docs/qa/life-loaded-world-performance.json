@@ -1,0 +1,10 @@
+{
+  "ExpandedHomes": 8,
+  "PerformanceCertified": false,
+  "Clients": 1,
+  "TotalDescendants": 7271,
+  "Scope": "Single local client with eight fully expanded, furnished and Life-decorated homes; no eight-player character or network load",
+  "ServerHeartbeatP95Ms": 17.988642677664757,
+  "Frames": 240,
+  "ServerHeartbeatP50Ms": 16.920559108257294
+}

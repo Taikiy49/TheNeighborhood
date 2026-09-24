@@ -1,0 +1,18 @@
+{
+  "MalformedRequests": 120,
+  "PerformanceCertified": false,
+  "Clients": 8,
+  "Checks": 41359,
+  "OnlineSaveRejoinTested": false,
+  "Verified": [
+    "200 progression simulations: offline harvest, atomic recipes, all businesses, 18 case variants/endings, four seasons, mastery and schema round trips",
+    "120 malformed pure requests rejected without throwing",
+    "8 independent homes grow flowers, complete orders and install mastery decorations",
+    "Neighbor garden edits rejected; tours require opt-in and invalidate on close; starter-item challenge rewards once",
+    "45 co-op repair steps, preparation/cooldown/replay guards, rejoin merge idempotency, all three usable landmarks",
+    "Real service routes verify stories, seasonal shop and multiplayer relay rewards; fixtures reposition characters and shorten preparation",
+    "Rapid route teleport rejected; 30 redraws retain exact instance count; full profile snapshot migrates without aliasing"
+  ],
+  "Passed": true,
+  "HeartbeatP95Ms": 152.3599922657013
+}
