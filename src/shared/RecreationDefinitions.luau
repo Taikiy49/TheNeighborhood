@@ -18,11 +18,12 @@ for z,v in ipairs(zones)do
   D.Activities[d.Id]=d
  end
 end
--- Signature activities belong in the shared green, visible from the residential street.
-D.Activities.Activity001.Position=Vector3.new(20,0,-42)
-D.Activities.Activity001.Name="Maple Green toy shelf"
-D.Activities.Activity002.Position=Vector3.new(-20,0,-42)
-D.Activities.Activity002.Name="Maple Green skittles"
-D.Activities.Activity008.Position=Vector3.new(-20,0,42)
-D.Activities.Activity008.Name="Community flower bed"
+-- A small, intentional park replaces the 100 scattered stations.
+local keep={Activity001=Vector3.new(20,0,-42),Activity002=Vector3.new(-20,0,-42),Activity005=Vector3.new(252,0,-35),Activity006=Vector3.new(284,0,-35),Activity008=Vector3.new(-20,0,42),Activity003=Vector3.new(252,0,25)}
+for id,d in pairs(D.Activities)do
+ if not keep[id]then D.Activities[id]=nil else d.Position=keep[id];d.Zone=(id=="Activity005"or id=="Activity006"or id=="Activity003")and "Meadow"or "Green";d.Name=({Activity001="Park toy shelf",Activity002="Park skittles",Activity005="Balance trial",Activity006="Sprint trial",Activity008="Community flower bed",Activity003="Meadow carousel"})[id]end
+end
+D.Version="curated-park-1"
+D.Count=6
+D.Zones={{Id="Green",Name="Maple Green",Position=Vector3.new(0,0,0),Color=Color3.fromRGB(122,154,128)},{Id="Meadow",Name="Meadow sports garden",Position=Vector3.new(268,0,0),Color=Color3.fromRGB(122,154,128)}}
 return D

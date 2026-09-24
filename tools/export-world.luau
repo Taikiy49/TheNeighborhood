@@ -26,7 +26,7 @@ local function export(instance)
  if instance:IsA("UIPadding")then properties({"PaddingLeft","PaddingRight","PaddingTop","PaddingBottom"})end
  if instance:IsA("UICorner")then properties({"CornerRadius"})end
  local attrs={}
- for k,v in pairs(instance:GetAttributes())do local kind=typeof(v);attrs[k]={[kind=="number" and "Float64" or kind=="boolean" and "Bool" or "String"]=v}end
+ for k,v in pairs(instance:GetAttributes())do local kind=typeof(v);if kind=="Vector3"then attrs[k]={Vector3=value(v)}elseif kind=="Color3"then attrs[k]={Color3=value(v)}else attrs[k]={[kind=="number" and "Float64" or kind=="boolean" and "Bool" or "String"]=v}end end
  if instance:IsA("Model")then properties({"ModelStreamingMode"})end
  if instance:IsA("Model")and instance.PrimaryPart then attrs.ExportPrimaryPart={String=instance.PrimaryPart.Name}end
  if next(attrs)then node.Properties.Attributes={Attributes=attrs}end

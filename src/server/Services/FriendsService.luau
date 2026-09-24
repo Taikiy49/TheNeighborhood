@@ -10,7 +10,7 @@ local function memberIndex(party,uid)return table.find(party.Members,uid)end
 local function usedPlots(slots)local used={};for _,slot in pairs(slots)do used[slot]=true end;return used end
 function Service:PlotOptions(slots,uid)
  local result={};local owners={};for owner,slot in pairs(slots)do owners[slot]=tonumber(owner)end
- for slot=1,8 do
+ for slot=1,Plots.Count do
   local house=self.Context.Houses.ById[string.format('House%02d',slot)]
   table.insert(result,{Slot=slot,Address=house and house.Model:GetAttribute('Address')or 'Home '..slot,Side=Plots.Side(slot),Available=owners[slot]==nil,Yours=owners[slot]==uid})
  end
@@ -146,20 +146,20 @@ function Service:Handle(player,action,arg)
   id=Http:GenerateGUID(false);self.Parties[id]={Leader=uid,Members={uid},Ready={},Plots={[tostring(uid)]=1}};self.ByPlayer[uid]=id;return true,'Party created. Invite neighbors below.'
  elseif action=='Invite'then
   local target=type(arg)=='number'and Players:GetPlayerByUserId(arg)
-  if not party or party.Leader~=uid or party.Busy or not target or target==player or self.ByPlayer[arg]or #party.Members>=8 then return false,'That neighbor cannot be invited right now.'end
+  if not party or party.Leader~=uid or party.Busy or not target or target==player or self.ByPlayer[arg]or #party.Members>=Plots.Count then return false,'That neighbor cannot be invited right now.'end
   self.Invites[arg]=self.Invites[arg]or {};self.Invites[arg][id]=os.time()+120
   self.Context.Notify(target,player.DisplayName..' invited you to a party. Open Phone → Friends.',true);return true,'Party invite sent.'
  elseif action=='AcceptParty'then
   if party or not validId(arg)then return false,'Leave your current party first.'end
   local target=self.Parties[arg]
-  if not target or target.Busy or #target.Members>=8 or ((self.Invites[uid]or {})[arg]or 0)<=os.time()then return false,'That party invite is no longer available.'end
+  if not target or target.Busy or #target.Members>=Plots.Count or ((self.Invites[uid]or {})[arg]or 0)<=os.time()then return false,'That party invite is no longer available.'end
   target.Plots[tostring(uid)]=assert(Plots.Nearest(usedPlots(target.Plots),target.Plots[tostring(target.Leader)]))
   table.insert(target.Members,uid);target.Ready={};target.SavedId=nil;self.ByPlayer[uid]=arg;self.Invites[uid]={};return true,'You joined the party. A nearby home is picked; you can choose another before readying up.'
  elseif action=='DeclineParty'then if type(arg)=='string'and self.Invites[uid]then self.Invites[uid][arg]=nil end;return true,'Invitation dismissed.'
  elseif action=='Leave'then return self:Leave(player)
  elseif action=='ChoosePlot'then
   if not party or party.Busy or party.SavedId then return false,'Choose a plot before your neighborhood is created.'end
-  if not Plots.Valid(arg)then return false,'Choose one of the eight plots.'end
+  if not Plots.Valid(arg)then return false,'Choose one of the twelve plots.'end
   if party.Plots[tostring(uid)]==arg then return true,'That is already your chosen plot.'end
   if usedPlots(party.Plots)[arg]then return false,'That plot belongs to another party member. Choose an available plot.'end
   party.Plots[tostring(uid)]=arg;party.Ready={};return true,'Plot selected. Everyone must ready up again for the new arrangement.'

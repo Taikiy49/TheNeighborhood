@@ -1,20 +1,22 @@
 # The Neighborhood
 
-A Roblox social sandbox about settling into Maple Street, making friends, collecting unusual possessions, and investigating the trouble next door.
+A Roblox social sandbox about settling into Maple Street, collecting unusual possessions, and investigating trouble next door.
 
-**Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
+## Current build — September 24, 2026
 
-## Compact town redesign
+Published to Roblox as **v73**, confirmed by Studio at 11:00:11 UTC. Includes the twelve-home renewal plus four furnished side destinations: Corner Cafe, Willow Bait & Tackle, Maple Repair Workshop and Orchard Farm Stand.
 
-New Studio work: smaller furnished cottages, conversational neighbors, clearer road ends, working traffic signals, a clock landmark, picnic seating, and a free lake cruise. [Changes and test boundaries](docs/COZY-TOWN.md). The new illustrated icon is saved in Creator Dashboard. The game update is **not verified published**; Studio publishing is disabled in the current session.
+- [Side destinations, screenshots and tests](docs/SIDE-DESTINATIONS.md)
+- [Profile fix, housing, water, NPCs, music and test limits](docs/NEIGHBORHOOD-RENEWAL.md)
+- [Play The Neighborhood](https://www.roblox.com/games/111572448337932/The-Neighborhood)
 
-![New Neighborhood icon](assets/neighborhood-cover-cozy.png)
+![Corner Cafe](assets/screenshots/corner-cafe-play.png)
 
-## Current Roblox publication
+**Development build: the complete master specification is not finished.** The platform server limit was last verified at eight; twelve authored plots are implemented but twelve concurrent live users have not been tested. Existing servers need a fresh session for the new build.
 
-**New local work:** [Single front doors, clearer signs and a skippable arrival introduction](docs/ARRIVAL-REDESIGN.md). These changes are implemented and tested locally; their Roblox publication is not yet verified.
+## Historical development record
 
-Published the latest tested build to **The Neighborhood, version 62**, on September 23, 2026 (Hawaii time). Studio confirmed `PublishSuccessful`; the reopened cloud place matched all 92 source scripts and carried `detail-cleanup-1`. The experience remains **Private**. [Publication evidence](docs/qa/publication-v62.json) · [Release status and remaining limits](docs/RELEASE.md)
+The sections below describe earlier milestones and captures; old dimensions, capacities and publication/access statuses are historical, not the current release status.
 
 ## Visual detail cleanup
 

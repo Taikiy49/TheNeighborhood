@@ -78,6 +78,7 @@ function Screens:Open(view,detail)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
   self.Title.Text="Your phone"
+  self:Row("Meadow trials","Earn medals, improve your personal best and fund home upgrades.","View trial records",function()self:Open("Trials")end)
   self:Row("Getting started","A short tour of your home and your first steps.","Replay introduction",function()self:Close();require(script.Parent.ArrivalIntro):Start(self.State)end)
   self:Row("Room to grow","Expand your cottage, craft furniture and save favorite layouts.","Plan your home",function()self:Open("Building")end)
   self:Row("Neighborhood Life","Gardening, businesses, shared renovations, mysteries, tours, mastery and festivals.","Explore activities",function()self:Open("Life")end)
@@ -85,6 +86,14 @@ function Screens:Open(view,detail)
   self:Row("Style Boutique","Optional permanent home-style packs for Robux.","Browse styles",function()self:Open("Boutique")end)
   self:Row("Friends","Party up, move together and return to your saved neighborhood.","Open Friends",function()self:Open("Friends")end)
   for _,entry in ipairs({{"Progress","Settle in and earn achievements"},{"Home","Colors, flooring, security and permissions"},{"Garage","Your keys to Maple Street"},{"Pets","A companion with a nose for visitors"},{"Event","Community activities and rewards"},{"Journal","Five tiny notes. One very unusual gnome."},{"Weather","What's blowing through Maple Street"},{"Collection","Remember every possession you've acquired"},{"Neighbors","See who lives nearby"},{"Newspaper","Read real neighborhood stories"},{"Settings","Audio and motion preferences"},{"Cases","Review evidence and investigate"}})do self:Row(entry[1],entry[2],"Open",function()self:Open(entry[1])end)end
+ elseif view=="Trials" then
+  self.Title.Text="Meadow trials"
+  local trials=self.State.Trials or {Best={},Wins={},XP=0}
+  self:Row("Practice pays","Find the sports garden east of the homes. Gold earns $75, silver $50 and bronze $30, plus 15 XP. Cash and XP rewards have a shared 60-second cooldown.")
+  for _,v in ipairs({{"Activity005","Balance trail",4.5},{"Activity006","Shuttle sprint",3}})do
+   local best=trials.Best[v[1]];self:Row(v[2],(best and string.format("Personal best: %.2fs",best/1000)or "No completed run yet").." | "..(trials.Wins[v[1]]or 0).." finishes. Gold target: "..v[3].."s.")
+  end
+  self:Row("Earned trial XP",tostring(trials.XP).." XP. Records save with your profile.")
  elseif view=="Journal" then
   self.Title.Text="The gnome trail"
   local trail=self.State.Discoveries or {};local found=0
@@ -165,7 +174,7 @@ function Screens:Open(view,detail)
   if count==0 then self:Row("A quiet street","No other neighbors are connected right now.")end
  elseif view=="Settings" then
   self.Title.Text="Your preferences"
-  for _,setting in ipairs({{"Sound","Feedback audio"},{"ReducedMotion","Reduced motion"},{"Pranks","Allow harmless yard pranks"}})do local enabled=self.State.Settings and self.State.Settings[setting[1]];self:Row(setting[2],enabled and "On" or "Off",enabled and "Turn off" or "Turn on",function()self.Request("Setting",setting[1],not enabled)end)end
+  for _,setting in ipairs({{"Music","Background music"},{"Sound","Feedback audio"},{"ReducedMotion","Reduced motion"},{"Pranks","Allow harmless yard pranks"}})do local enabled=self.State.Settings and self.State.Settings[setting[1]];self:Row(setting[2],enabled and "On" or "Off",enabled and "Turn off" or "Turn on",function()self.Request("Setting",setting[1],not enabled)end)end
  elseif view=="Recap" then
   self.Title.Text="Welcome back"
   self:Row("While you were away",detail.Message)

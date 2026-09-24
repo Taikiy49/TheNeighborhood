@@ -7,7 +7,7 @@ local LifeRules=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
 local Schema={Version=2}
 local function integer(v,min,max)return type(v)=="number" and v==v and v%1==0 and v>=min and v<=max end
 function Schema.Default()
- return {Version=2,Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
+ return {Version=2,Trials={Best={},Wins={},XP=0},Life=LifeRules.Default(),Building=BuildingRules.Default(),Currency=Config.StartingCurrency,Inventory={},Items={},Collection={},Discoveries={},DiscoveryRewardClaimed=false,Adventures={Completed={},Runs={},BestMs={},Rewards={},Contributions=0},Incidents={},CaseTruth={},Vehicles={},Pets={},EventClaims={},Outbox={},CreditWatermarks={},CreditTotals={},NextTransfer=0,TutorialState="EnterHouse",XP=0,Reputation=0,Statistics={},Achievements={},Settings={Music=true,Sound=true,ReducedMotion=false,Pranks=true},House={Locked=false,Color="Original"},LastSeen=0,FirstVisit=true}
 end
 function Schema.Copy(value,depth)
  depth=depth or 0;assert(depth<16,"Profile nesting exceeds limit")
@@ -22,6 +22,9 @@ function Schema.Migrate(raw,userId)
  assert(integer(raw.Version or 1,1,Schema.Version),"Unsupported profile version")
  assert(integer(raw.Currency,0,1000000000),"Corrupt currency")
  local p=Schema.Default();for key in pairs(p)do if raw[key]~=nil then p[key]=Schema.Copy(raw[key])end end
+ assert(type(p.Trials)=="table" and type(p.Trials.Best)=="table" and type(p.Trials.Wins)=="table" and integer(p.Trials.XP,0,1000000000),"Corrupt trial progress")
+ for id,t in pairs(p.Trials.Best)do assert((id=="Activity005"or id=="Activity006")and integer(t,1,35000),"Corrupt trial record")end
+ for id,n in pairs(p.Trials.Wins)do assert((id=="Activity005"or id=="Activity006")and integer(n,0,1000000000),"Corrupt trial count")end
  assert(type(p.Items)=="table" and #p.Items<=Config.MaxInventory,"Corrupt inventory")
  assert(type(p.Incidents)=="table" and #p.Incidents<=Config.MaxIncidents,"Corrupt incidents")
  assert(type(p.House)=="table" and type(p.Settings)=="table","Corrupt preferences")
@@ -57,7 +60,7 @@ function Schema.Migrate(raw,userId)
  for key,value in pairs(p.CaseTruth)do assert(type(key)=="string" and integer(value,-100000000000,100000000000),"Corrupt case identity")end
  if p.Settings.IntroSeen==nil then p.Settings.IntroSeen=false end
  assert(type(p.Settings.IntroSeen)=="boolean","Corrupt introduction preference")
- for _,key in ipairs({"Sound","ReducedMotion","Pranks"})do if p.Settings[key]==nil then p.Settings[key]=Schema.Default().Settings[key]end;assert(type(p.Settings[key])=="boolean","Corrupt preference")end
+ for _,key in ipairs({"Music","Sound","ReducedMotion","Pranks"})do if p.Settings[key]==nil then p.Settings[key]=Schema.Default().Settings[key]end;assert(type(p.Settings[key])=="boolean","Corrupt preference")end
  assert(integer(p.LastSeen,0,100000000000),"Corrupt timestamp")
  local seen={};local slots={};p.Inventory={}
  for _,item in ipairs(p.Items)do

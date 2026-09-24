@@ -1,3 +1,9 @@
+# Current release
+
+September 24, 2026: side destinations and twelve-home renewal published. Studio reported PublishSuccessful at 11:00:11 UTC and linked notes to v73. [Current features and verification](SIDE-DESTINATIONS.md). Server capacity remains last verified at eight. No audience/age-eligibility change was performed in this release.
+
+# Historical release record
+
 # Release status
 
 Recorded September 23, 2026. This document distinguishes local/source milestones from Roblox publication.

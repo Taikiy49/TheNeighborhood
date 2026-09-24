@@ -44,10 +44,10 @@ function Intro:Start(state)
  local compact=house.Foundation.Size.X/90
  local function view(v)return basis:PointToWorldSpace(Vector3.new(v.X*compact,v.Y,v.Z*compact))end
  local shots={
-  {Title="This is your home",Text="Follow the path to your single front door. Walk close, then use the interaction button to open it.",From=view(Vector3.new(20,9,-83)),At=house.Door.Position},
+  {Title="This is your home",Text="You start inside your own cottage. The green YOUR HOME marker and your name on the mailbox identify it.",From=view(Vector3.new(20,9,-83)),At=house.Door.Position},
   {Title="Make it yours",Text="Inventory holds your possessions. Inside, approach a display spot to place one. Phone has home upgrades and decorating.",From=view(Vector3.new(-16,7,-66)),At=house.Door.Position+Vector3.new(0,2,0)},
   {Title="Find your next stop",Text="Tall signs at path junctions point to the park, shops, lake and meadow. Phone → Adventures gives you a clear goal.",From=view(Vector3.new(35,22,-105)),At=house.Arrival.Position},
-  {Title="Start with your front door",Text="Open your home first. Then meet a neighbor, take a parcel delivery or explore. You can replay this tour from your Phone.",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
+  {Title="Start with your front door",Text="Decorate your home, then try meadow trials for medals, cash and XP. Meet real players and labelled NPC neighbors.",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
  }
  local nextButton
  local function render()

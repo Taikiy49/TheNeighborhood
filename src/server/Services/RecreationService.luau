@@ -3,7 +3,7 @@ local Run=game:GetService("RunService")
 local Physics=game:GetService("PhysicsService")
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.RecreationDefinitions)
 local F=require(script.Parent.Parent.RecreationFactory)
-local S={Held={},Rides={},Courses={},Cooldown={},Busy={},Completed={},Projectiles={}}
+local S={Held={},Rides={},Courses={},Cooldown={},Busy={},Completed={},Projectiles={},RewardAt={}}
 function S:Model(id)local d=D.Activities[id];return d and self.World[d.Zone]:FindFirstChild(id)end
 function S:Release(player)
  local held=self.Held[player];if held then held.Tool:Destroy();self.Held[player]=nil end
@@ -18,6 +18,20 @@ function S:Complete(player,id)
  local n=0;for _ in pairs(done)do n+=1 end
  player:SetAttribute("RecreationVisited",n)
  return n
+end
+function S:TrialReward(player,id,seconds)
+ local profile=self.Context.Data:Get(player);if not profile or not self.Context.Data:CanAct(player)then return end
+ local ms=math.clamp(math.floor(seconds*1000),1,35000);local progress=profile.Trials
+ local prior=progress.Best[id];progress.Best[id]=math.min(prior or ms,ms);progress.Wins[id]=(progress.Wins[id]or 0)+1
+ local gold=id=="Activity006"and 3.0 or 4.5;local silver=gold+2
+ local medal=seconds<=gold and "Gold"or seconds<=silver and "Silver"or "Bronze"
+ local now=os.clock();local reward=0
+ if now>=(self.RewardAt[player]or 0)then
+  reward=medal=="Gold"and 75 or medal=="Silver"and 50 or 30
+  profile.Currency=math.min(1000000000,profile.Currency+reward);profile.XP+=15;progress.XP+=15;self.RewardAt[player]=now+60
+ end
+ self.Context.Notify(player,string.format("%s · %.2fs · best %.2fs%s",medal,seconds,progress.Best[id]/1000,reward>0 and (" · $"..reward.." +15 XP")or " · reward ready after a short break"),true)
+ self.Context.Sync(player)
 end
 function S:Give(player,d)
  if self.Held[player]then return false,"Throw or put away your current toy first."end
@@ -43,7 +57,7 @@ function S:Action(player,action)
  local ball=F.Part(self.World,"ThrownToy",Vector3.new(1.6,1.6,1.6),CFrame.new(origin+direction*3),d.Color,true);ball.Shape=d.Variant%3==0 and Enum.PartType.Block or Enum.PartType.Ball;ball.Anchored=false;ball.CollisionGroup="RecreationToys";ball.CustomPhysicalProperties=PhysicalProperties.new(.4,.5,.55)
  ball:SetNetworkOwner(nil);ball:ApplyImpulse((direction*d.Speed+Vector3.new(0,23,0))*ball.AssemblyMass)
  table.insert(self.Projectiles,{Part=ball,Expires=os.clock()+14,Origin=origin})
- self:Complete(player,d.Id);return true,"Nice throw! "..player:GetAttribute("RecreationVisited").."/100 activities tried this visit."
+ self:Complete(player,d.Id);return true,"Nice throw! "..player:GetAttribute("RecreationVisited").."/"..D.Count.." park activities tried this visit."
 end
 function S:Use(player,target)
  local d=D.Activities[target:GetAttribute("ActivityId")];if not d or target~=self:Model(d.Id).Interact then return false,"Unknown activity."end
@@ -91,7 +105,7 @@ function S:Use(player,target)
   end)
  end
  self:Complete(player,d.Id)
- return true,d.Name.." — "..player:GetAttribute("RecreationVisited").."/100 tried this visit."
+ return true,d.Name.." — "..player:GetAttribute("RecreationVisited").."/"..D.Count.." tried this visit."
 end
 function S:Step(dt)
  local now=os.clock()
@@ -115,8 +129,8 @@ function S:Step(dt)
    elseif c.Phase=="Out"then
     if math.abs(localPos.X)>7 or math.abs(localPos.Z)>13 then self.Courses[player]=nil;self.Context.Notify(player,"Stay inside the course and try again.",false)
     elseif d.Kind=="Balance"and localPos.Z>-5 and localPos.Z<6 and (human.FloorMaterial==Enum.Material.Air or hrp.Position.Y<3.3)then c.Best+=dt;if c.Best>1 then self.Courses[player]=nil;self.Context.Notify(player,"Step across the raised trail without leaving it.",false)end
-    elseif near(c.Model.Finish.Position)and now-c.Started>1 then if d.Kind=="Sprint"then c.Phase="Return";self.Context.Notify(player,"Now run back to white!",true)else self.Courses[player]=nil;self:Complete(player,c.Id);self.Context.Notify(player,"Balance trail complete!",true)end end
-   elseif c.Phase=="Return"and near(c.Model.Start.Position)then self.Courses[player]=nil;self:Complete(player,c.Id);self.Context.Notify(player,string.format("Shuttle completed in %.1f seconds!",now-c.Started),true)end
+    elseif near(c.Model.Finish.Position)and now-c.Started>1 then if d.Kind=="Sprint"then c.Phase="Return";self.Context.Notify(player,"Now run back to white!",true)else self.Courses[player]=nil;self:Complete(player,c.Id);self:TrialReward(player,c.Id,now-c.Started)end end
+   elseif c.Phase=="Return"and near(c.Model.Start.Position)then self.Courses[player]=nil;self:Complete(player,c.Id);self:TrialReward(player,c.Id,now-c.Started)end
   end
  end
  for i=#self.Projectiles,1,-1 do local b=self.Projectiles[i];if not b.Part.Parent or now>b.Expires or b.Part.Position.Y< -20 or (b.Part.Position-b.Origin).Magnitude>150 then b.Part:Destroy();table.remove(self.Projectiles,i)end end
@@ -129,7 +143,7 @@ function S:Init(context)
  context.Interactions:Register("Recreation",function(player,target)return self:Use(player,target)end)
  local function added(player)player.CharacterRemoving:Connect(function()self:Release(player)end)end
  Players.PlayerAdded:Connect(added);for _,p in ipairs(Players:GetPlayers())do added(p)end
- Players.PlayerRemoving:Connect(function(p)self:Release(p);self.Completed[p]=nil;for k in pairs(self.Cooldown)do if k:sub(1,#tostring(p.UserId)+1)==tostring(p.UserId)..":"then self.Cooldown[k]=nil end end end)
+ Players.PlayerRemoving:Connect(function(p)self:Release(p);self.Completed[p]=nil;self.RewardAt[p]=nil;for k in pairs(self.Cooldown)do if k:sub(1,#tostring(p.UserId)+1)==tostring(p.UserId)..":"then self.Cooldown[k]=nil end end end)
  Run.Heartbeat:Connect(function(dt)self:Step(dt)end)
 end
 return S

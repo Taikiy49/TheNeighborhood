@@ -4,7 +4,7 @@ return table.freeze({
     StartingCurrency = 1200,
     InteractionRange = 12,
     ActionInterval = 0.2,
-    HouseCount = 8,
+    HouseCount = 12,
     WalkSpeed = 16,
     DoorTween = 0.25,
     NewPlayerProtection = 300,

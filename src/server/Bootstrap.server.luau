@@ -1,4 +1,5 @@
 local Players = game:GetService("Players")
+Players.CharacterAutoLoads=false
 if game:GetService("RunService"):IsStudio()then
  local args=game:GetService("StudioTestService"):GetTestArgs()
  workspace:SetAttribute("SkipArrivalIntroTest",type(args)=="table"and args.Name~=nil and args.Name~="ArrivalAcceptance")
@@ -8,6 +9,7 @@ local root=RS:WaitForChild("Neighborhood")
 for _,model in ipairs(workspace.Neighborhood:GetDescendants())do if model:IsA("Model") and model:GetAttribute("ExportPrimaryPart") then model.PrimaryPart=model:FindFirstChild(model:GetAttribute("ExportPrimaryPart"))end end
 local remotes=root:WaitForChild("Remotes")
 require(script.Parent.CozyLayout).Apply(workspace.Neighborhood)
+require(script.Parent.DistrictRenewal).Apply(workspace.Neighborhood)
 require(script.Parent.ArrivalPolish).Apply(workspace.Neighborhood)
 local Data=require(script.Parent.Services.PlayerDataService)
 local Houses=require(script.Parent.Services.HouseService)
@@ -45,9 +47,9 @@ context.Snapshot=function(player)
         table.insert(neighbors,{UserId=p.UserId,Name=p.DisplayName,HouseId=h and h.Model.Name,Address=h and h.Model:GetAttribute("Address") or "Moving in",HouseValue=Observation:HouseValue(p),KnownFor=(stats.Delivery or 0)>=5 and "Helpful neighbor" or (stats.Customize or 0)>0 and "Home decorator" or "Settling in"})
     end end
     local patrol={};for id,h in pairs(Houses.ById)do table.insert(patrol,{Id=id,Address=h.Model:GetAttribute("Address")})end;table.sort(patrol,function(a,b)return a.Id<b.Id end)
-    return {Life=Life:View(player),Building=Building:View(player),Adventures=Adventures:View(player),Boutique=Boutique:View(player),Friends=Friends:View(player),Currency=profile and profile.Currency or 0,Address=house and house.Model:GetAttribute("Address") or "Finding your home",HouseId=house and house.Model.Name,SessionOnly=Data.SessionOnly,Inventory=Items:Owned(player),Collection=profile and profile.Collection or {},Discoveries=Discovery:View(player),Weather=Weather:View(),Incidents=profile and profile.Incidents or {},Recap=profile and profile._Recap,Carrying=player:GetAttribute("Carrying"),Progress=Progression:View(player),Settings=profile and profile.Settings,Neighbors=neighbors,House=profile and profile.House,Feed=Community.Feed,Vehicles=profile and profile.Vehicles,Pets=profile and profile.Pets,CommunityEvent=Events:View(),Patrol=patrol}
+    return {Trials=profile and profile.Trials,Life=Life:View(player),Building=Building:View(player),Adventures=Adventures:View(player),Boutique=Boutique:View(player),Friends=Friends:View(player),Currency=profile and profile.Currency or 0,Address=house and house.Model:GetAttribute("Address") or "Finding your home",HouseId=house and house.Model.Name,SessionOnly=Data.SessionOnly,Inventory=Items:Owned(player),Collection=profile and profile.Collection or {},Discoveries=Discovery:View(player),Weather=Weather:View(),Incidents=profile and profile.Incidents or {},Recap=profile and profile._Recap,Carrying=player:GetAttribute("Carrying"),Progress=Progression:View(player),Settings=profile and profile.Settings,Neighbors=neighbors,House=profile and profile.House,Feed=Community.Feed,Vehicles=profile and profile.Vehicles,Pets=profile and profile.Pets,CommunityEvent=Events:View(),Patrol=patrol}
 end
-context.Sync=function(player) if player.Parent==Players then remotes.State:FireClient(player,context.Snapshot(player)) end end
+context.Sync=function(player) if context.Ready and player.Parent==Players then remotes.State:FireClient(player,context.Snapshot(player)) end end
 context.Customization=Customization;context.Boutique=Boutique
 Boutique:Init(context)
 Progression:Init(context);Investigation:Init(context);Customization:Init(context)
@@ -74,6 +76,8 @@ context.Life=Life;Life:Init(context)
 Recreation:Init(context)
 require(script.Parent.TownPolish).Init(workspace.Neighborhood)
 require(script.Parent.LakeFerry).Init(context)
+require(script.Parent.MapleTower).Init(context)
+require(script.Parent.SideDestinations).Init(context)
 Interactions:Register("Shop",function(player) context.Open(player,"Shop");return true end)
 Interactions:Register("Pawn",function(player) context.Open(player,"Pawn");return true end)
 Interactions:Register("Place",function(player,target)
@@ -97,10 +101,15 @@ Interactions:Register("Doorbell",function(player,target)
     end
     return false,"Nobody has moved in yet."
 end)
+require(script.Parent.ResidentNeighbors).Init(context)
+context.Ready=true
 local function characterAdded(player,character)
-    local rootPart=character:WaitForChild("HumanoidRootPart",10)
-    local house=Houses.ByPlayer[player.UserId]
-    if rootPart and house then character:PivotTo(house.Model.Arrival.CFrame) end
+    local human=character:WaitForChild("Humanoid",10)
+    if human then human.Died:Once(function()
+        task.delay(Players.RespawnTime,function()
+            if player.Parent==Players and Data:CanAct(player)then player:LoadCharacterAsync()end
+        end)
+    end)end
 end
 local function added(player)
     if not Friends:AuthorizeArrival(player)then return end
@@ -115,7 +124,7 @@ local function added(player)
     if profile.Vehicles.Compact then Vehicles:Spawn(player)end
     if profile.Pets.Dog then Pets:Spawn(player)end
     player.CharacterAdded:Connect(function(c) characterAdded(player,c) end)
-    if player.Character then task.spawn(characterAdded,player,player.Character) end
+    if player.Character then task.spawn(characterAdded,player,player.Character)else player:LoadCharacterAsync()end
     context.Sync(player)
     task.spawn(function()Friends:Refresh(player,true);context.Sync(player)end)
     task.spawn(function()Boutique:Refresh(player);context.Sync(player)end)
@@ -162,7 +171,7 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument,request
     elseif action=="ClaimDiscovery" then ok,message=Discovery:Claim(player)
     elseif action=="CancelDelivery" then ok=Delivery:Cancel(player);message=ok and "Parcel returned to the depot." or "You have no active parcel."
     elseif action=="Setting" then
-        if (id=="Sound" or id=="ReducedMotion" or id=="Pranks") and type(argument)=="boolean"then Data:Get(player).Settings[id]=argument;ok=true;message="Preference saved."end
+        if (id=="Music" or id=="Sound" or id=="ReducedMotion" or id=="Pranks") and type(argument)=="boolean"then Data:Get(player).Settings[id]=argument;ok=true;message="Preference saved."end
     elseif action=="Recover" then
         local item=Items.Items[id];local model=Items.Models[id]
         if item and model then

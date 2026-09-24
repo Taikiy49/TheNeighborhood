@@ -18,7 +18,7 @@ function Repo:Bookmark(uid,id)
  end)end)
 end
 function Repo:Create(id,code,owner,members,choices)
- assert(#members>=1 and #members<=8,'A neighborhood holds eight members.')
+ assert(#members>=1 and #members<=Plots.Count,'A neighborhood holds twelve members.')
  local result=self:Call(function()return self.Store:UpdateAsync('group:'..id,function(old)
   if old then assert(old.Owner==owner,'Neighborhood collision');return old end
   local r={Id=id,Code=code,Owner=owner,Created=self.Clock(),Members={},Pending={}}
@@ -41,7 +41,7 @@ function Repo:Invite(id,owner,target)
  local result=self:Call(function()return self.Store:UpdateAsync('group:'..id,function(old)
   assert(old and old.Owner==owner,'Only the founder can invite members.')
   local r=copy(old);assert(not r.Members[tostring(target)],'Already a member.')
-  local count=0;for _ in pairs(r.Members)do count+=1 end;assert(count<8,'This neighborhood has eight members.')
+  local count=0;for _ in pairs(r.Members)do count+=1 end;assert(count<Plots.Count,'This neighborhood has twelve members.')
   local pending=0;for uid,expires in pairs(r.Pending)do if expires<=self.Clock()then r.Pending[uid]=nil else pending+=1 end end
   assert(pending<16 or r.Pending[tostring(target)],'Too many pending invitations.')
   r.Pending[tostring(target)]=self.Clock()+86400;return r

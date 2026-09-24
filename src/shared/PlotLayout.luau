@@ -1,18 +1,15 @@
--- Plot numbers match House01..House08 in the authored neighborhood.
-local Layout={}
-function Layout.Valid(slot)return type(slot)=='number'and slot%1==0 and slot>=1 and slot<=8 end
+local Layout={Count=12}
+function Layout.Valid(slot)return type(slot)=='number'and slot%1==0 and slot>=1 and slot<=Layout.Count end
 function Layout.Position(slot)
  assert(Layout.Valid(slot),'Invalid plot')
- return Vector2.new(slot<=4 and -131.6 or 131.6,-130.2+((slot-1)%4)*86.8)
+ local west=slot<=4 or slot==9 or slot==10
+ local row=slot<=8 and ((slot-1)%4)or (slot<=10 and slot-5 or slot-7)
+ return Vector2.new(west and -112 or 112,-150+row*60)
 end
 function Layout.Nearest(used,anchor)
- anchor=Layout.Valid(anchor)and anchor or 1
- local best,distance=nil,math.huge
- for slot=1,8 do if not used[slot]then
-  local d=(Layout.Position(slot)-Layout.Position(anchor)).Magnitude
-  if d<distance then best,distance=slot,d end
- end end
+ anchor=Layout.Valid(anchor)and anchor or 1;local best,distance=nil,math.huge
+ for slot=1,Layout.Count do if not used[slot]then local d=(Layout.Position(slot)-Layout.Position(anchor)).Magnitude;if d<distance then best,distance=slot,d end end end
  return best
 end
-function Layout.Side(slot)return slot<=4 and 'West side'or 'East side'end
+function Layout.Side(slot)return Layout.Position(slot).X<0 and 'West side'or 'East side'end
 return Layout

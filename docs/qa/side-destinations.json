@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-24",
+  "passed": true,
+  "checks": [
+    "CornerCafe entrance walk PASS",
+    "CornerCafe interaction PASS",
+    "LakesideTackle entrance walk PASS",
+    "LakesideTackle interaction PASS",
+    "RepairWorkshop entrance walk PASS",
+    "RepairWorkshop interaction PASS",
+    "OrchardStand entrance walk PASS",
+    "OrchardStand interaction PASS",
+    "Fishing timing, reward, cooldown and distance PASS"
+  ],
+  "connectorObstacles": 0,
+  "limits": [
+    "Single-client destination playtest",
+    "Twelve simultaneous live users not tested"
+  ]
+}

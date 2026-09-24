@@ -13,13 +13,6 @@ function S:Build(w)
  local homes=w.Houses:GetChildren();table.sort(homes,function(a,b)return a.Name<b.Name end)
  for i,h in ipairs(homes)do
   local d=residents[(i-1)%#residents+1];local b=h.Foundation.CFrame
-  local model=template:Clone();model.Name=d[1]..i;model.Parent=root
-  local origin=b:PointToWorldSpace(Vector3.new(12,0,-31));local oldPos=model.Torso.Position-Vector3.new(0,3.6,0)
-  model:PivotTo(model:GetPivot()+(origin-oldPos));model.Torso.Color=d[3]
-  local sign=model.Head:FindFirstChildWhichIsA("BillboardGui");if sign then sign.MaxDistance=24;sign.Size=UDim2.fromOffset(180,30);sign.TextLabel.Text=d[1].." · "..d[2].." (NPC)"end
-  model.Torso:SetAttribute("Action","NeighborChat");model.Torso:SetAttribute("ResidentIndex",(i-1)%#residents+1)
-  local prompt=model.Torso:FindFirstChildWhichIsA("ProximityPrompt");prompt:SetAttribute("Action","NeighborChat");prompt.ObjectText=d[1].." · "..d[2];prompt.ActionText="Say hello"
-  table.insert(self.Walkers,{Model=model,Home=model:GetPivot(),Direction=b.RightVector,Phase=i*1.2})
   local function p(name,size,pos,color,solid)
    local part=Instance.new(name=="GardenBench" and "Seat" or "Part");part.Name=name;part.Size=size;part.CFrame=b*CFrame.new(pos);part.Anchored=true;part.CanCollide=name=="GardenBench" or solid;part.CanTouch=false;part.Material=Enum.Material.SmoothPlastic;part.Color=color;part.Parent=root;return part
   end

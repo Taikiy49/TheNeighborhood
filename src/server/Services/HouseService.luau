@@ -5,6 +5,14 @@ local Service = {ByPlayer = {}, ById = {}}
 function Service:Init(context)
     self.Context = context
     for _, model in ipairs(workspace.Neighborhood.Houses:GetChildren()) do
+        local spawn=Instance.new("SpawnLocation");spawn.Name="HomeSpawn";spawn.Size=Vector3.new(4,.2,4);spawn.CFrame=model.Foundation.CFrame*CFrame.new(0,.65,-10);spawn.Transparency=1;spawn.CanCollide=false;spawn.CanTouch=false;spawn.CanQuery=false;spawn.Anchored=true;spawn.Neutral=true;spawn.Duration=0;spawn.Parent=model
+        local tag=Instance.new("BillboardGui");tag.Name="HomeOwner";tag.Size=UDim2.fromOffset(190,42);tag.StudsOffset=Vector3.new(0,3,0);tag.MaxDistance=70;tag.Parent=model.AddressPlaque
+        local label=Instance.new("TextLabel");label.Size=UDim2.fromScale(1,1);label.BackgroundTransparency=1;label.TextColor3=Color3.fromRGB(255,246,221);label.TextStrokeTransparency=.25;label.TextSize=14;label.Font=Enum.Font.GothamBold;label.Parent=tag
+        local function refresh()
+         local owner=model:GetAttribute("OwnerName");local npc=model:GetAttribute("NPCResident")
+         label.Text=(owner and (owner.."'s House")or npc and (npc.."'s House · NPC")or "A neighbor's home").."\n"..model:GetAttribute("Address")
+        end
+        model:GetAttributeChangedSignal("OwnerName"):Connect(refresh);model:GetAttributeChangedSignal("NPCResident"):Connect(refresh);refresh()
         self.ById[model.Name] = {Model=model, Owner=nil, Open=false, Locked=false, Door=model.Door, ClosedCFrame=model.Door.CFrame}
     end
 end
@@ -19,8 +27,10 @@ function Service:Assign(player)
             house.Owner = player.UserId
             house.Model:SetAttribute("OwnerUserId", player.UserId)
             house.Model:SetAttribute("ProtectedUntil", os.time()+Config.NewPlayerProtection)
-            house.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text = house.Model:GetAttribute("Address") .. "\nOccupied"
+            house.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text = player.DisplayName .. "'s House\n" .. house.Model:GetAttribute("Address")
+            house.Model:SetAttribute("OwnerName",player.DisplayName)
             self.ByPlayer[player.UserId] = house
+            player.RespawnLocation=house.Model.HomeSpawn
             player:SetAttribute("HouseId", id)
             return house
         end
@@ -40,7 +50,10 @@ end
 function Service:DoorAction(player, target, action)
     local house = self.ById[target:GetAttribute("HouseId")]
     if not house then return false,"This home is unavailable." end
-    if not house.Owner then return false,"This home is waiting for a neighbor." end
+    if not house.Owner then
+        if action=="Lock"then return false,"This is an NPC neighbor's home."end
+        self:SetDoor(house,not house.Open);return true,"Welcome to the neighbor's cottage."
+    end
     local permission=house.Permissions and house.Permissions[tostring(player.UserId)]
     if action == "Lock" then
         if house.Owner ~= player.UserId and permission~="Roommate" then return false,"Only the homeowner or a roommate can change this lock." end
@@ -66,7 +79,7 @@ function Service:Release(player)
     self:SetDoor(house,false); house.Owner=nil; house.Locked=false
     house.CompromisedUntil=nil;house.Model:SetAttribute("ProtectedUntil",0)
     house.Permissions=nil
-    house.Model:SetAttribute("OwnerUserId",0); house.Model:SetAttribute("Locked",false)
+    house.Model:SetAttribute("OwnerName",nil);house.Model:SetAttribute("OwnerUserId",0); house.Model:SetAttribute("Locked",false)
     house.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text = house.Model:GetAttribute("Address") .. "\nAvailable"
     self.ByPlayer[player.UserId]=nil
 end
