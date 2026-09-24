@@ -101,5 +101,6 @@ function M.Build(W,context)
  end)
  game.Players.PlayerRemoving:Connect(function(p)M.Cooldown[p]=nil;M.Rewards[p]=nil end)
  M.Rides=rides;M.Games=games;M.Ferris=ferris
+ require(script.Parent.CarnivalExpansion).Build(W,context)
 end
 return M

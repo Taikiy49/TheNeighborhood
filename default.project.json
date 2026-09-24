@@ -95,7 +95,8 @@
     },
     "ServerStorage": {
       "$className": "ServerStorage",
-      "CuratedArt": { "$path": "assets/CuratedArt.model.json" }
+      "CuratedArt": { "$path": "assets/CuratedArt.model.json" },
+      "CarnivalArt": { "$path": "assets/CarnivalArt.rbxm" }
     },
     "ReplicatedStorage": {
       "$ignoreUnknownInstances": true,

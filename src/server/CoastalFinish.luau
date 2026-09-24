@@ -106,9 +106,8 @@ function M.Build(W,context)
  w:SetAttribute('JobDelivery',w.Map.CommunityBoard.Position)
  -- The pier is a finished promenade, with edge protection, lamps and food stalls.
  local beach=root.Beach
- for _,z in ipairs({-65,115})do p(beach,'PierRail',{180,3,.25},810,5,z,A.Cream,Enum.Material.Metal)end
- p(beach,'PierEndRail',{.25,3,180},900,5,25,A.Cream,Enum.Material.Metal)
- for _,z in ipairs({-44,80})do p(beach,'PierSideRail',{.25,3,42},720,5,z,A.Cream,Enum.Material.Metal)end
+ -- CarnivalMidway supplies the extended side rails and keeps the north join open.
+ p(beach,'PierRail',{180,3,.25},810,5,115,A.Cream,Enum.Material.Metal)
  for _,z in ipairs({-22.5,22.5})do p(beach,'ApproachRail',{125,3,.25},657.5,5,z,A.Cream,Enum.Material.Metal)end
  for x=610,890,35 do for _,z in ipairs({-63,113})do if x>=720 then
   p(beach,'PierLampPost',{.35,10,.35},x,8,z,A.Ink,Enum.Material.Metal)

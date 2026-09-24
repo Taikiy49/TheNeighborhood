@@ -4,6 +4,12 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Carnival midway — published as v136**, confirmed at **21:37:49 UTC**. A new imported eight-car spinner with 32 seats, three detailed game booths, two cotton-candy stalls with free consumable treats, eight balloon clusters, festival lighting and a connected north pier extension. [Sources, screenshots and checks](docs/CARNIVAL-MIDWAY.md).
+
+![Imported carnival ride, booths and candy cart](assets/screenshots/carnival-spinner-candy.png)
+
+## Imported streetscape
+
 **Imported streetscape — published as v133**, confirmed at **21:08:29 UTC**. 29 hanging traffic-light junctions with working opposing phases and NPC traffic stops, 401 imported trees/palms including replacements, and eight picnic-table/planter pockets. [Sources, checks and limits](docs/STREET-ART.md).
 
 ![Hanging signals and palm-lined streets](assets/screenshots/street-hanging-signals.png)

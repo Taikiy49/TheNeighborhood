@@ -1,5 +1,9 @@
 # Current release
 
+Carnival midway published as **v136**, confirmed by Studio `PublishSuccessful` at **21:37:49.160 UTC on September 24, 2026**, place **111572448337932**. Test flags cleared and guarded VisualAcceptance restored. [Imported sources and verification](CARNIVAL-MIDWAY.md). Native CSG model library and reproducible Rojo build included.
+
+## Previous release
+
 Imported streetscape published as **v133**, confirmed by Studio `PublishSuccessful` at **21:08:29.761 UTC on September 24, 2026**, place **111572448337932**. Test attributes cleared and VisualAcceptance restored. [Sources, screenshots and checks](STREET-ART.md). Includes the reproducible Rojo build and curated source assets.
 
 ## Previous release
