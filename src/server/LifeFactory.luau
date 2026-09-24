@@ -71,7 +71,7 @@ function F.Home(house,life,now)
 end
 function F.Project(parent,id,amount)
  local d=D.Projects[id];local old=parent:FindFirstChild(id);if old then old:Destroy()end
- local m=Instance.new("Model");m.Name=id;m.Parent=parent;local cf=CFrame.new(Space.Point(d.Position))*CFrame.Angles(0,id=="Greenhouse"and 0 or math.pi,0);local width=id=="Greenhouse"and 12 or 18
+ local m=Instance.new("Model");m.Name=id;m.Parent=parent;local position=id=="Greenhouse"and Vector3.new(95,1,245)or Space.Point(d.Position);local cf=CFrame.new(position)*CFrame.Angles(0,id=="Greenhouse"and 0 or math.pi,0);local width=id=="Greenhouse"and 12 or 18
  local function p(n,s,x,y,z,c,mat)return F.Part(m,n,s,cf*CFrame.new(x,y,z),c,mat)end
  p("Deck",Vector3.new(width,.4,14),0,-.6,0,timber)
  for _,x in ipairs({-width/2,width/2})do for _,z in ipairs({-6.5,6.5})do p("Pillar",Vector3.new(.5,8,.5),x,3,z,cream)end end

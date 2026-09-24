@@ -1,0 +1,71 @@
+Copy and paste this into the main task:
+
+```text
+Continue working on The Neighborhood in the existing Roblox Studio experience and GitHub project. Finish the work already underway, then implement the city redesign below from beginning to end. Actually build, inspect, test, fix, and publish it—not just describe a plan.
+
+First, read roblox_codex.txt and inspect the current source, live Studio scene, and unfinished work. Preserve existing player progress and working systems. My newer instructions below override conflicting older design requests.
+
+DESIGN DIRECTION
+
+Make this a believable, lively city neighborhood centered on home ownership, social play, progression, and fictional robbery gameplay. Call the surrounding borough Maple Heights.
+
+Keep 12 player-owned homes as the recognizable central neighborhood. Surround them with connected city blocks so they no longer look isolated. Replace the enclosing mountain-wall appearance with a city skyline, neighboring streets, taller buildings, and a waterfront. Keep the playable area compact enough to feel busy.
+
+Use a mix of tidy residential streets, older brick commercial blocks, and wealthier buildings. Give everything consistent architecture, materials, scale, and intentional placement.
+
+BUILD THE DISTRICTS
+
+1. Maple Street:
+Finish all 12 furnished homes, clear owner-name signs, reliable home spawning, sidewalks, gardens, and NPC neighbors for vacant properties.
+
+2. Market Avenue:
+Finish the corner café, general store, pawnshop, deli/pizza shop, laundromat, repair workshop, and a small public plaza. Give accessible businesses furnished interiors and meaningful interactions. Complete the side destinations already being built.
+
+3. Old Town:
+Add a compact brownstone/apartment block with stoops, courtyards, alleys, and fire escapes. Make selected interiors and rooftop routes playable.
+
+4. Uptown:
+Add a small cluster of taller buildings, including the existing library/lookout, an apartment building, and a hotel or office building. Furnish the accessible floors. Clearly distinguish decorative skyline buildings from enterable destinations.
+
+5. Waterfront:
+Finish real swimmable water, fishing, the ferry, a dock, bait-and-tackle shop, and a small warehouse/delivery area.
+
+6. City surroundings:
+Add distant skyline buildings, a bridge, transit details, and believable street continuations. An airport can appear as distant scenery or a future expansion; do not spend this pass building an enormous empty airport.
+
+GAMEPLAY AND CLARITY
+
+Keep the robbery, ownership, evidence, saving, friends, vehicles, and progression systems working. Integrate the new destinations with useful jobs, skill challenges, social activities, and rewards. Avoid adding disconnected filler.
+
+Make the first session understandable: players should immediately know which home is theirs, what they can do, where businesses are, and how to earn progress.
+
+Keep the smaller 12-home/server direction. Verify the actual server-capacity setting rather than assuming it changed. NPC neighbors should have believable scripted routines; do not claim they are autonomous AI unless that is actually implemented.
+
+QUALITY REQUIREMENTS
+
+Every road must connect somewhere or have a deliberate, believable ending. Sidewalks must connect to entrances. Remove duplicate geometry, meaningless road markings, scattered signs, obstructed text, floating objects, and overlapping paths.
+
+Keep entrances clear and furniture appropriately scaled. Add enough detail to feel inhabited without recreating the random clutter I asked you to remove. Use one coherent visual style.
+
+Do not advertise inaccessible buildings as usable. Do not use decorative placeholders as substitutes for promised functionality.
+
+EXECUTION AND TESTING
+
+Create a requirements checklist and track each item as implemented, tested, or blocked. Work through it autonomously.
+
+Inspect each district at pedestrian height and from above. Capture actual screenshots, review them, and fix visible problems.
+
+Test normal joining, profile readiness, saving/rejoining, house assignment, respawning, doors, ownership, purchases, robbery protections, vehicles, swimming, activities, rewards, cooldowns, and new interiors. Run multiplayer tests with the available clients. Clearly distinguish actual multiplayer tests from simulations.
+
+Fix failures and retest affected behavior. Preserve existing saves; use isolated test data where appropriate.
+
+DELIVERY
+
+Save a recoverable build, update the README and documentation with current screenshots and honest test results, and push the changes to my existing GitHub repository.
+
+Publish the tested update to the existing The Neighborhood experience and verify publication succeeded. Do not claim it is live based only on an attempted publish.
+
+Continue until this defined scope is finished or a genuine blocker prevents further progress. Do not expand the scope endlessly. If something is blocked, finish independent work and report exactly what remains.
+
+Your final response should state what was built, what was tested, what was published, and any remaining limitations. Never claim every requirement is complete without checking the checklist.
+```

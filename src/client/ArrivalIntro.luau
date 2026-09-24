@@ -46,8 +46,8 @@ function Intro:Start(state)
  local shots={
   {Title="This is your home",Text="You start inside your own cottage. The green YOUR HOME marker and your name on the mailbox identify it.",From=view(Vector3.new(20,9,-83)),At=house.Door.Position},
   {Title="Make it yours",Text="Inventory holds your possessions. Inside, approach a display spot to place one. Phone has home upgrades and decorating.",From=view(Vector3.new(-16,7,-66)),At=house.Door.Position+Vector3.new(0,2,0)},
-  {Title="Find your next stop",Text="Tall signs at path junctions point to the park, shops, lake and meadow. Phone → Adventures gives you a clear goal.",From=view(Vector3.new(35,22,-105)),At=house.Arrival.Position},
-  {Title="Start with your front door",Text="Decorate your home, then try meadow trials for medals, cash and XP. Meet real players and labelled NPC neighbors.",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
+  {Title="Meet in the neighborhood park",Text="The park is between the homes. Pizza and laundry shifts earn cash at its south end; the hotel is at its north end.",From=view(Vector3.new(35,22,-105)),At=house.Arrival.Position},
+  {Title="Choose your first adventure",Text="Try a delivery at the park board, a paid shop shift, or Activities for daily goals. Shops sell furniture; your garage starts without a car.",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
  }
  local nextButton
  local function render()

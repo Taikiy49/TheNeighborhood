@@ -215,6 +215,11 @@ local function run()
     local again,againReason=Robbery:Begin(thief,toilet.Id);assert(again,againReason);task.wait(3)
     local escaped=Robbery.Sessions[thief.UserId];assert(escaped,"Second carry failed")
     local humanoid=thief.Character.Humanoid
+    -- Move through the central aisle before exiting; MoveTo does not pathfind around the front wall.
+    local aisle=(a.Model.Foundation.CFrame*CFrame.new(0,4,-10)).Position
+    local aisleDeadline=os.clock()+15
+    repeat humanoid:MoveTo(aisle);task.wait(.3)until(thief.Character.HumanoidRootPart.Position-aisle).Magnitude<3 or os.clock()>aisleDeadline
+    assert((thief.Character.HumanoidRootPart.Position-aisle).Magnitude<3,'Carry route could not reach entrance aisle')
     local destination=(a.ClosedCFrame*CFrame.new(0,0,-52)).Position
     local walkingDeadline=os.clock()+25
     repeat

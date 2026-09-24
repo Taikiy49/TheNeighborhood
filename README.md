@@ -4,17 +4,19 @@ A Roblox social sandbox about settling into Maple Street, collecting unusual pos
 
 ## Current build — September 24, 2026
 
-Published to Roblox as **v77**, confirmed by Studio at 11:20:06 UTC. Includes replayable checkpoint circuits, five-round memory challenges, daily objectives and saved mastery ranks, plus twelve empty home garages, separately purchased cars, Sunset Cove swimming beach, the twelve-home renewal and four furnished side destinations: Corner Cafe, Willow Bait & Tackle, Maple Repair Workshop and Orchard Farm Stand.
+**Maple Heights city update — published as v85**, confirmed by Studio at 12:02:58 UTC on September 24, 2026. Twelve homes now surround a defined neighborhood park, with pizza and laundry shops, a hotel, apartment lounges, Old Town brownstones and rooftop routes, a parcel warehouse, a cove bridge and connected city streets. Existing cafe, shops, vehicles, water, fishing, ferry, activities and saved progression remain in place.
 
+- [Maple Heights districts, screenshots and current test evidence](docs/MAPLE-HEIGHTS.md)
+- [City redesign requirements checklist](docs/MAPLE-HEIGHTS-CHECKLIST.md)
 - [Activities, progression and test evidence](docs/ACTIVITIES.md)
 - [Garages and Sunset Cove, screenshots and tests](docs/GARAGES-AND-COVE.md)
 - [Side destinations, screenshots and tests](docs/SIDE-DESTINATIONS.md)
 - [Profile fix, housing, water, NPCs, music and test limits](docs/NEIGHBORHOOD-RENEWAL.md)
 - [Play The Neighborhood](https://www.roblox.com/games/111572448337932/The-Neighborhood)
 
-![Corner Cafe](assets/screenshots/corner-cafe-play.png)
+![Maple Heights in Studio](assets/screenshots/maple-heights-overview.png)
 
-**Development build: the complete master specification is not finished.** The platform server limit was last verified at eight; twelve authored plots are implemented but twelve concurrent live users have not been tested. Existing servers need a fresh session for the new build.
+The actual Roblox server limit is verified at **12**. **Eight simultaneous Studio clients were tested**; twelve concurrent players and low-end mobile performance remain unverified. The bounded city redesign is tracked separately from the much larger, unfinished original master specification. Existing servers need a fresh session for a newly published build.
 
 ## Historical development record
 

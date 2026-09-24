@@ -1,0 +1,210 @@
+{
+  "jobs": {
+    "ok": true,
+    "checks": [
+      "walked MaplePizza",
+      "walked MapleLaundry",
+      "walked ParkApartments",
+      "walked MapleHotel",
+      "walked Brownstone1",
+      "walked Brownstone2",
+      "walked WillowWarehouse",
+      "Pizza: order, timing, reward, duplicate, cooldown, distance passed",
+      "Laundry: order, timing, reward, duplicate, cooldown, distance passed",
+      "Hotel: order, timing, reward, duplicate, cooldown, distance passed",
+      "Rooftops: order, timing, reward, duplicate, cooldown, distance passed",
+      "all city lift destinations passed",
+      "warehouse creates and cancels physical existing delivery"
+    ]
+  },
+  "traversal": {
+    "ok": true,
+    "result": [
+      "Actual humanoid climbed fire escape",
+      "Walked both roofs and connecting bridge",
+      "Walked up, across and down cove bridge",
+      "Roof teleport rejection"
+    ]
+  },
+  "persistencePhase1": {
+    "Locked": true,
+    "Currency": 14710,
+    "ShutdownProbe": 1,
+    "Slot": 10,
+    "Phase": 1,
+    "UserId": 2868186764,
+    "Passed": true,
+    "ItemId": "3218931f-8dbb-4c31-a77e-9fa1fc165008"
+  },
+  "persistencePhase2": {
+    "Phase": 2,
+    "Verified": [
+      "Normal Studio player rejoined same persistent profile",
+      "Currency retained",
+      "Original item GUID and display placement restored",
+      "House lock restored",
+      "Post-save change retained by shutdown save",
+      "Recap reflects real previous session",
+      "Boutique selection retained across actual server restart",
+      "Adventure album and unfinished chapter retained by shutdown save"
+    ],
+    "Passed": true
+  },
+  "multiplayerRenewal": {
+    "Houses": [
+      "House01",
+      "House02",
+      "House03",
+      "House04",
+      "House05",
+      "House06",
+      "House07",
+      "House08"
+    ],
+    "Verified": [
+      "8 real clients with ready profiles and distinct named homes",
+      "All 12 housing slots assignable",
+      "Four vacancy NPCs at eight players",
+      "Interior arrival",
+      "Swimming in terrain water",
+      "Library lift both directions",
+      "Gold reward and cooldown",
+      "Trial records and music preference survive repository rejoin",
+      "Real humanoid sprint completion",
+      "Teleport shortcut rejected"
+    ],
+    "Passed": true,
+    "Errors": []
+  },
+  "sidewalkScan": {
+    "paths": 38,
+    "blockers": []
+  },
+  "capacity": {
+    "dashboardSavedAndReloaded": 12,
+    "actualSimultaneousTestClients": 8
+  },
+  "foundation": {
+    "Players": [
+      {
+        "House": "House01",
+        "Name": "Player1",
+        "UserId": -1
+      },
+      {
+        "House": "House02",
+        "Name": "Player2",
+        "UserId": -2
+      }
+    ],
+    "DataStoreAccess": {
+      "Allowed": true,
+      "Result": "nil"
+    },
+    "Errors": [],
+    "PersistenceTests": {
+      "Passed": true,
+      "Cycles": 50,
+      "Seed": 88217,
+      "Verified": [
+        "Concurrent profile session rejected",
+        "Transient save failures retry without resetting data",
+        "Lost commit response produces one revision",
+        "Exhausted retries preserve previous durable snapshot",
+        "Release and rejoin retain money, original item identity, placement, lock, progression and adventure album",
+        "Expired lease recovery rejects stale server writes",
+        "Future schema and corrupt money rejected without overwriting storage",
+        "Version-one migration adds defaults while preserving currency",
+        "Duplicate item IDs and foreign ownership rejected",
+        "Durable credit inbox rejects duplicate/replayed settlements across active and offline profiles",
+        "Committed credit survives all retry responses being lost and a later stale-memory save",
+        "50 seeded settlement/spending cycles across two sources survive duplicate delivery and repeated lost acknowledgements"
+      ],
+      "Backend": "Injected storage; not proof of Roblox API access",
+      "Requests": 239
+    },
+    "Verified": [
+      "Two real clients connected",
+      "Distinct houses assigned",
+      "Player1 opened their own door",
+      "Player2 opened their own door",
+      "Visitor lock mutation rejected",
+      "Malformed interaction rejected",
+      "Purchase, placement, storage and sale lifecycle",
+      "Invalid item, insufficient funds, foreign ownership and duplicate sale rejected",
+      "Clean exterior follows purchased paint; independent interior stays unchanged",
+      "Paint purchase is charged once; invalid options rejected; entry, roommate locks and item ownership remain separate",
+      "Car purchase, owner-only input, physical driving and bounded speed; duplicate/NaN/out-of-range requests rejected",
+      "Pet adoption charged once; path following and stay command work; unowned commands rejected",
+      "Event discount, mutual consent, unique pair reward, outage lifecycle and inactive-event rejection",
+      "Three distinct physical mailbox visits pay once; remote and repeat checks rejected",
+      "Physical flamingo prank, owner cleanup, price, opt-out, beginner protection and cooldown",
+      "Nearby house survey respects walls, distance and request cooldown",
+      "Timed lock breach; protection and movement cancellation; owner reset",
+      "Drop and resume preserve original possession, physical carry pose and movement restoration",
+      "Golden Toilet theft, physical weld, weight penalty and owner recovery",
+      "Beginner protection, concurrent theft and premature fence rejection",
+      "Structured incident evidence without culprit user ID",
+      "Heavy-item character walked through the door and escaped",
+      "Fence payout exactly $2900; duplicate fence rejected",
+      "Evidence-backed accusation solves case once; foreign case and self accusations rejected",
+      "Original item reclaimed; foreign, remote, duplicate and repeat-farming requests rejected; four incident transitions retained",
+      "Disconnect cleanup returns carried property and restores movement",
+      "Teleport during carry returns property with no payout",
+      "Actual client disconnect releases plot and returns carried possession"
+    ],
+    "Passed": true,
+    "LiveStorageTests": {
+      "Passed": true,
+      "Verified": [
+        "Actual UpdateAsync profile creation",
+        "Cross-session lock rejection",
+        "Save/reload of currency, XP, original item ID, display slot and lock",
+        "Discovery progress, reward receipt and historical collection survive reload",
+        "Duplicate queued settlement pays once",
+        "Session release",
+        "Boutique selection survives live DataStore release/reload",
+        "Adventure stamps, best time, trophy receipt, contribution count and unfinished chapter survive live reload"
+      ],
+      "Backend": "Roblox DataStore: isolated GUID-prefixed fixtures",
+      "FixtureRemoved": true
+    }
+  },
+  "regressionNotes": [
+    "Initial straight-line carry harness hit the front wall. Added an entrance-aisle waypoint; complete two-client suite then passed.",
+    "Initial cove traversal exceeded Humanoid MoveTo timeout. Harness now refreshes MoveTo while walking; full physical route passed."
+  ],
+  "network": {
+    "ClientErrors": [],
+    "CharacterReloads": 4,
+    "ServerErrors": [],
+    "Verified": [
+      "Two real clients sent malformed and burst requests through production remotes",
+      "Malformed requests leave money, inventory, preferences, permissions and building data unchanged",
+      "Two clients each bought a garden room through production remotes; 100 duplicate requests per client never double-charge",
+      "Oversized and nonfinite user IDs safely rejected",
+      "Both clients rendered forty outdoor raindrops",
+      "Roofs suppressed rain on both clients",
+      "Reduced-motion suppressed rain on both clients",
+      "Clear weather hid rain without allocating extra drops",
+      "Four real character reloads retained money, original inventory ID, home, forty rain parts and one HUD",
+      "No server or client application errors"
+    ],
+    "Passed": true,
+    "ActualRemoteRequests": 830
+  },
+  "publication": {
+    "placeId": 111572448337932,
+    "version": 85,
+    "utc": "2026-09-24T12:02:58.539Z",
+    "evidence": [
+      "PublishSessionStateController: Go to PublishSuccessful",
+      "CreatorOutput: Add publish notes to v85"
+    ]
+  },
+  "finalVisualFixes": [
+    "Supported pizza boxes and laundry work station",
+    "Upper-floor furniture no longer protrudes through ceiling",
+    "Repeated city entrance, job and lift suite passed after work-station adjustment"
+  ]
+}

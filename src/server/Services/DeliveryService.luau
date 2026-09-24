@@ -8,10 +8,14 @@ function Service:Cancel(player)
  if player.Character and not player:GetAttribute("Carrying")then player.Character:SetAttribute("CarryPose",false)end
  return job~=nil
 end
-function Service:Start(player)
+function Service:Start(player,depot)
  if self.Jobs[player.UserId]then return false,"Deliver or cancel your current parcel first."end
  if player:GetAttribute("Carrying") or self.Context.Robbery.Preparing[player.UserId]then return false,"Finish carrying that possession first."end
- local valid,why=self.Context.Interactions:Validate(player,workspace.Neighborhood.Map.CommunityBoard)
+ local target=workspace.Neighborhood.Map.CommunityBoard
+ local city=workspace.Neighborhood:FindFirstChild('MapleHeights')
+ local warehouse=city and city:FindFirstChild('Waterfront')and city.Waterfront:FindFirstChild('WillowWarehouse')
+ if depot and warehouse and depot==warehouse:FindFirstChild('Dispatch')then target=depot end
+ local valid,why=self.Context.Interactions:Validate(player,target)
  if not valid then return false,why end
  if os.clock()-(self.Last[player.UserId] or -60)<Config.DeliveryCooldown then return false,"The next parcel is being sorted. Explore a little first."end
  local houses=workspace.Neighborhood.Houses:GetChildren();table.sort(houses,function(a,b)return a.Name<b.Name end)

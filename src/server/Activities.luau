@@ -10,7 +10,7 @@ function S:Progress(player)
 end
 function S:Record(player,event)
  local a=self:Progress(player);if not a then return end
- local key=event=='Delivery'or event=='Trial'or event=='Fishing'or event=='Repair'
+ local key=event=='Delivery'or event=='Trial'or event=='Fishing'or event=='Repair'or event=='CityWork'
  key=key and 'Work'or event
  if key=='Circuit'or key=='Memory'or key=='Work'then a.Counts[key]=math.min(100,(a.Counts[key]or 0)+1)end
 end
