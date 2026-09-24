@@ -4,6 +4,10 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Compact neighborhood — published as v108.** Oversized towers replaced by 37 furnished two- to five-storey blocks, including 14 closer to the houses. All new frontages face the center. [Screenshot and checks](docs/COMPACT-BLOCKS.md).
+
+![Compact neighborhood blocks](assets/screenshots/compact-neighborhood-blocks.png)
+
 **NPC home routines — published as v106.** Neighbors enter and leave their own homes through the front door. [Behavior and test evidence](docs/NPC-HOME-ROUTINES.md).
 
 **Urban ground — published as v105.** Broad lawns replaced by asphalt and paved residential blocks; green space is concentrated in the park and planting beds. [Screenshot and checks](docs/URBAN-GROUND.md).

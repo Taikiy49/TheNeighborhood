@@ -1,5 +1,9 @@
 # Current release
 
+Compact neighborhood blocks published as **v108**, confirmed at **18:28:39 UTC on September 24, 2026**. [Screenshot, changes and verification](COMPACT-BLOCKS.md).
+
+## Previous release
+
 NPC home routines published as **v106**, confirmed at **18:19:12 UTC on September 24, 2026**. [Behavior and test evidence](NPC-HOME-ROUTINES.md).
 
 ## Previous release

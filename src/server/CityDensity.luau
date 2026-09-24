@@ -20,33 +20,47 @@ function M.Houses(w)
 end
 function M.Skyline(root)
  local old=root:FindFirstChild('Skyline');if old then old:Destroy()end
- local f=Instance.new('Folder');f.Name='Skyline';f:SetAttribute('Decorative',true);f.Parent=root
- local function tower(x,z,height,index)
-  local m=Instance.new('Model');m.Name='CityTower'..index;m.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;m:SetAttribute('Enterable',false);m:SetAttribute('Role','Skyline architecture');m.Parent=f
-  local stone=index%2==0 and Color3.fromRGB(141,137,127)or Color3.fromRGB(114,123,128)
-  local function p(n,s,dx,y,dz,c,mat)return A.Part(m,n,s,Vector3.new(x+dx,y,z+dz),c or stone,mat or Enum.Material.Concrete)end
-  p('Podium',{46,16,32},0,8,0,A.Brick,Enum.Material.Brick)
-  p('LowerTower',{28,height*.62,26},0,16+height*.31,0)
-  local upperBase=16+height*.62
-  p('SetbackTerrace',{30,.8,28},0,upperBase+.4,0,A.Cream)
-  p('UpperTower',{22,height*.38,21},0,upperBase+height*.19+.8,0)
-  for y=22,height+10,9 do
-   local upper=y>upperBase;local width=upper and 22 or 28;local depth=upper and 21 or 26
-   for _,side in ipairs({-1,1})do
-    p('WindowBand',{width-3,4,.12},0,y,side*(depth/2+.1),Color3.fromRGB(87,117,132),Enum.Material.Glass)
-    p('SideWindowBand',{.12,4,depth-3},side*(width/2+.1),y,0,Color3.fromRGB(87,117,132),Enum.Material.Glass)
+ local f=Instance.new('Folder');f.Name='Skyline';f.Parent=root
+ local palette={A.Brick,Color3.fromRGB(178,159,131),Color3.fromRGB(132,146,144),Color3.fromRGB(184,174,157)}
+ local n=0;local rejected=0
+ local function block(x,z)
+  local decor={}
+  -- A conservative square includes rotated cornices, stoops and entrance paving.
+  local params=OverlapParams.new();params.FilterType=Enum.RaycastFilterType.Exclude;params.FilterDescendantsInstances={f}
+  for _,v in ipairs(workspace:GetPartBoundsInBox(CFrame.new(x,7,z),Vector3.new(48,12,48),params))do
+   if v.CanCollide and v.Position.Y>1 then
+    local tree=v:FindFirstAncestor('ParkTree')
+    if tree and tree:IsDescendantOf(root.Parent.ArtDirection)then decor[tree]=true
+    elseif v:IsDescendantOf(root.Parent.GardenDetails)and v.Name:find('PathLamp')then
+     for _,lamp in ipairs(root.Parent.GardenDetails:GetChildren())do if lamp:IsA('BasePart')and lamp.Name:find('PathLamp')and(Vector3.new(lamp.Position.X,0,lamp.Position.Z)-Vector3.new(v.Position.X,0,v.Position.Z)).Magnitude<3 then decor[lamp]=true end end
+    else rejected+=1;return end
    end
   end
-  for _,dx in ipairs({-8,0,8})do p('VerticalPier',{.5,height*.62,.3},dx,16+height*.31,-13.3,A.Cream)end
-  p('Crown',{24,1.2,23},0,height+17.3,0,A.Cream)
-  p('RoofPlant',{8,4,8},0,height+20,0,A.Ink,Enum.Material.Metal)
-  if index%5==0 then p('Spire',{.6,17,.6},0,height+30,0,A.Ink,Enum.Material.Metal)end
+  -- Do not build on either body of terrain water.
+  local region=Region3.new(Vector3.new(x-24,-4,z-24),Vector3.new(x+24,4,z+24)):ExpandToGrid(4)
+  local materials=workspace.Terrain:ReadVoxels(region,4)
+  for _,ys in ipairs(materials)do for _,zs in ipairs(ys)do for _,mat in ipairs(zs)do if mat==Enum.Material.Water then rejected+=1;return end end end end
+  for item in pairs(decor)do item:Destroy()end
+  n+=1
+  local floors=({2,3,2,4,3,5})[(n-1)%6+1];local width=({28,32,30})[(n-1)%3+1]
+  local center=Vector3.new(x,0,z)
+  local building,p=A.Building(f,'NeighborhoodBlock'..n,center,width,24,floors,palette[(n-1)%#palette+1],'NEIGHBORHOOD LOUNGE')
+  local levels={};for level=0,floors-1 do local y=level*12;table.insert(levels,y);A.Lounge(p,y);A.Table(p,5,y,-6)end
+  A.Lifts(p,levels,'Neighborhood lounge')
+  local toward=Vector3.new(-x,0,-z).Unit
+  local rotation=CFrame.lookAt(center,center+toward)*CFrame.new(-center)
+  building:PivotTo(rotation*building:GetPivot())
+  building:SetAttribute('Entry',rotation*building:GetAttribute('Entry'))
+  for _,v in ipairs(building:GetDescendants())do local destination=v:GetAttribute('Destination');if typeof(destination)=='Vector3'then v:SetAttribute('Destination',rotation*destination)end end
+  building:SetAttribute('Floors',floors);building:SetAttribute('FacingCenter',true);building:SetAttribute('BlockCenter',center)
+  building:SetAttribute('Role','Furnished neighborhood lounge')
  end
- for _,z in ipairs({-333,334})do A.Part(f,'CityBlockPaving',{730,.18,44},Vector3.new(0,.09,z),Color3.fromRGB(161,159,149),Enum.Material.Pavement)end
- local n=0
- for _,side in ipairs({-1,1})do for i=-5,5 do n+=1;tower(side*382,i*53,90+(n%5)*19,n)end end
- for i=-5,5 do n+=1;tower(i*61,334,95+(n%4)*24,n)end
- for _,x in ipairs({-270,-205,-140,-70,0,70,140,205,270})do n+=1;tower(x,-333,90+(n%5)*20,n)end
- f:SetAttribute('TowerCount',n)
+ -- Inner infill is considered first; occupied sites remain open for existing activities.
+ for _,side in ipairs({-1,1})do for _,z in ipairs({-180,-120,-60,0,60,120,180})do block(side*172,z)end end
+ for _,side in ipairs({-1,1})do for _,z in ipairs({-210,-126,-42,42,126,210})do block(side*238,z)end end
+ for _,side in ipairs({-1,1})do for _,z in ipairs({-240,-180,-120,-60,0,60,120,180,240})do block(side*306,z)end end
+ for _,z in ipairs({-310,258})do for _,x in ipairs({-240,-180,-120,-60,0,60,120,180,240})do block(x,z)end end
+ f:SetAttribute('TowerCount',n);f:SetAttribute('RejectedOccupiedLots',rejected)
+ f:SetAttribute('Design','Closer two-to-five-storey blocks facing the town center')
 end
 return M

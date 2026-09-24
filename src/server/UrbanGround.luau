@@ -25,13 +25,13 @@ function M.Apply(w)
  for _,tree in ipairs(trees:GetChildren())do
   local trunk=tree:IsA('Model')and tree:FindFirstChild('Trunk')
   if trunk and math.abs(math.abs(trunk.Position.X)-207.6667)<1 then
-   local target=trunk.Position.X<0 and -180 or 180
+   local target=trunk.Position.X<0 and -140 or 140
    tree:PivotTo(tree:GetPivot()+Vector3.new(target-trunk.Position.X,0,0))
   end
  end
  for _,lamp in ipairs(w.GardenDetails:GetChildren())do
   if lamp:IsA('BasePart')and lamp.Name:find('PathLamp')and math.abs(math.abs(lamp.Position.X)-207.6667)<2 then
-   lamp.Position+=Vector3.new(lamp.Position.X<0 and 27.6667 or -27.6667,0,0)
+   lamp.Position+=Vector3.new(lamp.Position.X<0 and 67.6667 or -67.6667,0,0)
   end
  end
  folder:SetAttribute('ConvertedGroundParts',converted)
