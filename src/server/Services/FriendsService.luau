@@ -148,7 +148,7 @@ function Service:Handle(player,action,arg)
   local target=type(arg)=='number'and Players:GetPlayerByUserId(arg)
   if not party or party.Leader~=uid or party.Busy or not target or target==player or self.ByPlayer[arg]or #party.Members>=Plots.Count then return false,'That neighbor cannot be invited right now.'end
   self.Invites[arg]=self.Invites[arg]or {};self.Invites[arg][id]=os.time()+120
-  self.Context.Notify(target,player.DisplayName..' invited you to a party. Open Phone → Friends.',true);return true,'Party invite sent.'
+  self.Context.Notify(target,player.DisplayName..' invited you to a party. Open Menu → Friends & neighbors.',true);return true,'Party invite sent.'
  elseif action=='AcceptParty'then
   if party or not validId(arg)then return false,'Leave your current party first.'end
   local target=self.Parties[arg]

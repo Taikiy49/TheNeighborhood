@@ -79,7 +79,7 @@ function Service:Action(player,action,argument)
   if profile.Vehicles.Compact then return false,"You already own a Maple Compact."end
   if profile.Currency<2400 then return false,"A Maple Compact costs $2400."end
   profile.Currency-=2400;profile.Vehicles.Compact=true;profile.Vehicles.Color="Mint";profile.Vehicles.Plate="MAP-"..game:GetService("HttpService"):GenerateGUID(false):sub(1,5):upper()
-  self.Context.Record(player,"Vehicle");local spawned,message=self:Spawn(player);return true,spawned and message or "Purchased. Clear the driveway, then recall it from your phone."
+  self.Context.Record(player,"Vehicle");local spawned,message=self:Spawn(player);return true,spawned and message or "Purchased. Clear the driveway, then recall it from Menu."
  elseif action=="Recall"then return self:Spawn(player)
  elseif action=="Color"then
   if not profile.Vehicles.Compact or not colors[argument]then return false,"Choose an available car color."end

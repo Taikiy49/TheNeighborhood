@@ -44,10 +44,10 @@ function Intro:Start(state)
  local compact=house.Foundation.Size.X/90
  local function view(v)return basis:PointToWorldSpace(Vector3.new(v.X*compact,v.Y,v.Z*compact))end
  local shots={
-  {Title="This is your home",Text="You start inside your own cottage. The green YOUR HOME marker and your name on the mailbox identify it.",From=view(Vector3.new(20,9,-83)),At=house.Door.Position},
-  {Title="Make it yours",Text="Inventory holds your possessions. Inside, approach a display spot to place one. Phone has home upgrades and decorating.",From=view(Vector3.new(-16,7,-66)),At=house.Door.Position+Vector3.new(0,2,0)},
-  {Title="Meet in the neighborhood park",Text="The park is between the homes. Pizza and laundry shifts earn cash at its south end; the hotel is at its north end.",From=view(Vector3.new(35,22,-105)),At=house.Arrival.Position},
-  {Title="Choose your first adventure",Text="Try a delivery at the park board, a paid shop shift, or Activities for daily goals. Shops sell furniture; your garage starts without a car.",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
+  {Title="This is your home",Text="This house is yours! Look for your name on the mailbox.",From=view(Vector3.new(20,9,-83)),At=house.Door.Position},
+  {Title="Make it yours",Text="Walk to a display spot inside. Pick an item to put there.",From=view(Vector3.new(-16,7,-66)),At=house.Door.Position+Vector3.new(0,2,0)},
+  {Title="Meet in the neighborhood park",Text="Meet in the park. Try a job nearby to earn cash.",From=view(Vector3.new(35,22,-105)),At=house.Arrival.Position},
+  {Title="Choose your first adventure",Text="Tap Goals. Pick a game or job. Tap Show me to find it!",From=view(Vector3.new(0,8,-72)),At=house.Door.Position},
  }
  local nextButton
  local function render()
@@ -68,7 +68,7 @@ function Intro:Start(state)
   elapsed+=dt;local shot=shots[index];local camera=workspace.CurrentCamera;camera.CameraType=Enum.CameraType.Scriptable;camera.FieldOfView=60
   local offset=still and Vector3.zero or basis.RightVector*(math.min(elapsed/6,1)*2-1)
   camera.CFrame=CFrame.lookAt(shot.From+offset,shot.At)
-  if elapsed>=7 then if index==#shots then self:Finish(true)else index+=1;render()end end
+  -- Advance only when the player is ready to read the next step.
  end)
  return true
 end

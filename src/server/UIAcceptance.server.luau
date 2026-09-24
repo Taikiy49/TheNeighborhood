@@ -16,6 +16,7 @@ local function run()
   for _,id in ipairs({"Bench","Bookcase","Planter","Desk"})do assert(Building:Action(player,"Craft",id))end
   assert(Building:Action(player,"Place",{Zone="Loft",Cell=1,Kind="Bench",Rotation=2}));assert(Building:Action(player,"SaveLayout","1"));Data.Context.Sync(player)
  end
+ local guidance=require(script.Parent.GoalServerTests)(Players:GetPlayers()[1])
  deadline=os.clock()+60
  local probe=Instance.new("RemoteEvent");probe.Name="UIProbe";probe.Parent=game.ReplicatedStorage.Neighborhood
  local reports={};probe.OnServerEvent:Connect(function(player,result)reports[tostring(player.UserId)]=result end)
@@ -25,6 +26,6 @@ local function run()
  assert(received==2,"UI client reports timed out")
  local count=0;for _,report in pairs(reports)do assert(report.Passed,report.Error);count+=#report.Checks end
  workspace:SetAttribute("UIAcceptance",nil);probe:Destroy()
- return {Passed=true,ScreenChecks=count,Clients=reports,Scope="Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input"}
+ return {Passed=true,ScreenChecks=count,Clients=reports,Guidance=guidance,Scope="Actual client rendering at 510px and 360px panel widths; not physical mobile/controller input"}
 end
 local ok,result=pcall(run);Test:EndTest(ok and result or {Passed=false,Error=tostring(result)})

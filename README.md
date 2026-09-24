@@ -4,7 +4,11 @@ A Roblox social sandbox about settling into Maple Street, collecting unusual pos
 
 ## Current build — September 24, 2026
 
-**Maple Heights city update — published as v85**, confirmed by Studio at 12:02:58 UTC on September 24, 2026. Twelve homes now surround a defined neighborhood park, with pizza and laundry shops, a hotel, apartment lounges, Old Town brownstones and rooftop routes, a parcel warehouse, a cove bridge and connected city streets. Existing cafe, shops, vehicles, water, fishing, ferry, activities and saved progression remain in place.
+**Goals UI update — published as v89**, confirmed at 12:28:51 UTC on September 24, 2026. Simpler Goals/Bag/Menu navigation, one next task, progress bars, job waypoints and player-paced introduction. [Screenshots and test evidence](docs/GOALS-UI.md).
+
+![New Goals interface](assets/screenshots/ui-goals.png)
+
+**Previous Maple Heights city update — published as v85**, confirmed by Studio at 12:02:58 UTC on September 24, 2026. Twelve homes now surround a defined neighborhood park, with pizza and laundry shops, a hotel, apartment lounges, Old Town brownstones and rooftop routes, a parcel warehouse, a cove bridge and connected city streets. Existing cafe, shops, vehicles, water, fishing, ferry, activities and saved progression remain in place.
 
 - [Maple Heights districts, screenshots and current test evidence](docs/MAPLE-HEIGHTS.md)
 - [City redesign requirements checklist](docs/MAPLE-HEIGHTS-CHECKLIST.md)

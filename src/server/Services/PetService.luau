@@ -38,7 +38,7 @@ function Service:Action(player,action)
   if profile.Pets.Dog then return false,"Biscuit already lives with you."end
   if profile.Currency<600 then return false,"Adoption supplies cost $600."end
   profile.Currency-=600;profile.Pets.Dog=true;profile.Pets.Mode="Follow";self:Spawn(player);self.Context.Record(player,"Pet")
-  return true,"Biscuit is your neighbor now. Your phone switches between follow and stay."
+  return true,"Biscuit is your neighbor now. Menu → Home & belongings → Pets switches between follow and stay."
  elseif action=="Follow" or action=="Stay"then
   if not profile.Pets.Dog then return false,"Adopt a companion first."end
   profile.Pets.Mode=action;local pet=self.Pets[player.UserId];if pet then pet.NextPath=0 end

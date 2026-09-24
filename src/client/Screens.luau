@@ -32,14 +32,15 @@ function Screens:Close()
  self:Resolve(false);self.Panel.Visible=false
  local navigation=game:GetService("GuiService")
  if navigation.SelectedObject and navigation.SelectedObject:IsDescendantOf(self.Panel) then navigation.SelectedObject=nil end
+ if self.ReturnFocus and self.ReturnFocus.Parent and game:GetService('UserInputService'):GetLastInputType()==Enum.UserInputType.Gamepad1 then navigation.SelectedObject=self.ReturnFocus end
 end
 function Screens:Row(title,subtitle,action,callback)
  local row=UI.Panel(self.List,UDim2.new(1,-10,0,0),UDim2.new());row.AutomaticSize=Enum.AutomaticSize.Y
  self.RowIndex=(self.RowIndex or 0)+1;row.Name="Row"..self.RowIndex;row.LayoutOrder=self.RowIndex
  UI.New("UIPadding",{PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,8),PaddingTop=UDim.new(0,8),PaddingBottom=UDim.new(0,8)},row)
  UI.New("UIListLayout",{Padding=UDim.new(0,8),SortOrder=Enum.SortOrder.LayoutOrder},row)
- local heading=UI.Label(row,title,UDim2.new(1,0,0,0),UDim2.new(),18);heading.AutomaticSize=Enum.AutomaticSize.Y;heading.LayoutOrder=1
- local body=UI.Label(row,subtitle,UDim2.new(1,0,0,0),UDim2.new(),14,UI.Theme.Muted);body.AutomaticSize=Enum.AutomaticSize.Y;body.LayoutOrder=2
+ local heading=UI.Label(row,title,UDim2.new(1,0,0,0),UDim2.new(),18);heading.Font=Enum.Font.GothamBold;heading.AutomaticSize=Enum.AutomaticSize.Y;heading.LayoutOrder=1
+ local body=UI.Label(row,subtitle,UDim2.new(1,0,0,0),UDim2.new(),16,UI.Theme.Muted);body.AutomaticSize=Enum.AutomaticSize.Y;body.LayoutOrder=2
  if action then
   local button
   button=UI.Button(row,action,UDim2.new(1,0,0,48),UDim2.new(),function()
@@ -48,8 +49,14 @@ function Screens:Row(title,subtitle,action,callback)
    callback()
    task.delay(5,function()if self.Pending and self.Pending.Button==button then self:Resolve(false) end end)
   end)
-  button.LayoutOrder=3
+  button.LayoutOrder=4
  end
+ return row
+end
+function Screens:ProgressRow(title,subtitle,value,total,action,callback)
+ local row=self:Row(title,subtitle,action,callback)
+ local bar=UI.Progress(row,UDim2.new(1,0,0,40),UDim2.new());bar.Frame.LayoutOrder=3;bar:Set(value,total)
+ return row
 end
 function Screens:Resolve(success,requestId)
  if not self.Pending then return end
@@ -67,7 +74,8 @@ function Screens:Open(view,detail)
  for _,child in ipairs(self.List:GetChildren()) do if child:IsA("GuiObject") then child:Destroy() end end
  self.Title.Text=view=="Shop" and "Maple & Co." or view=="Pawn" and "Make a deal" or view=="Place" and "Make it yours" or view=="Item" and "A closer look" or view=="Cases" and "Your case files" or "Your inventory"
  local count=0
- if view=="Activities"then require(script.Parent.ActivitiesScreen).Render(self)
+ if view=="Activities"then require(script.Parent.ActivitiesScreen).Render(self,detail)
+ elseif view:sub(1,4)=="Menu"then require(script.Parent.MenuScreen).Render(self,view)
  elseif view:sub(1,4)=="Life"then require(script.Parent.LifeScreen).Render(self,view,detail)
  elseif view=="Building"or view=="BuildReview"or view=="Crafting"or view=="Furnish"or view=="Layouts"then require(script.Parent.BuildingScreen).Render(self,view,detail)
  elseif view=="Adventures" or view=="Projects"then require(script.Parent.AdventureScreen).Render(self,view)
@@ -78,16 +86,7 @@ function Screens:Open(view,detail)
   local ids={};for id,def in pairs(Defs) do if not def.DiscoverOnly then table.insert(ids,id)end end;table.sort(ids,function(a,b)return Defs[a].Value<Defs[b].Value end)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
-  self.Title.Text="Your phone"
-  self:Row("What should I do next?","Daily goals, mastery ranks, checkpoint runs and a memory challenge.","Open Activities",function()self:Open("Activities")end)
-  self:Row("Meadow trials","Earn medals, improve your personal best and fund home upgrades.","View trial records",function()self:Open("Trials")end)
-  self:Row("Getting started","A short tour of your home and your first steps.","Replay introduction",function()self:Close();require(script.Parent.ArrivalIntro):Start(self.State)end)
-  self:Row("Room to grow","Expand your cottage, craft furniture and save favorite layouts.","Plan your home",function()self:Open("Building")end)
-  self:Row("Neighborhood Life","Gardening, businesses, shared renovations, mysteries, tours, mastery and festivals.","Explore activities",function()self:Open("Life")end)
-  self:Row("Maple Adventures","Six rumors, a story album, earned trophies and shared park projects.","Follow a rumor",function()self:Open("Adventures")end)
-  self:Row("Style Boutique","Optional permanent home-style packs for Robux.","Browse styles",function()self:Open("Boutique")end)
-  self:Row("Friends","Party up, move together and return to your saved neighborhood.","Open Friends",function()self:Open("Friends")end)
-  for _,entry in ipairs({{"Progress","Settle in and earn achievements"},{"Home","Colors, flooring, security and permissions"},{"Garage","Your keys to Maple Street"},{"Pets","A companion with a nose for visitors"},{"Event","Community activities and rewards"},{"Journal","Five tiny notes. One very unusual gnome."},{"Weather","What's blowing through Maple Street"},{"Collection","Remember every possession you've acquired"},{"Neighbors","See who lives nearby"},{"Newspaper","Read real neighborhood stories"},{"Settings","Audio and motion preferences"},{"Cases","Review evidence and investigate"}})do self:Row(entry[1],entry[2],"Open",function()self:Open(entry[1])end)end
+  require(script.Parent.MenuScreen).Render(self,'Menu')
  elseif view=="Trials" then
   self.Title.Text="Meadow trials"
   local trials=self.State.Trials or {Best={},Wins={},XP=0}
@@ -138,7 +137,7 @@ function Screens:Open(view,detail)
  elseif view=="Guide" then
   self.Title.Text=detail.Name
   for _,line in ipairs(detail.Lines)do self:Row(line[1],line[2])end
-  self:Row("Your next steps","Your phone keeps a checklist, collection book and case files.","Open progress",function()self:Open("Progress")end)
+  self:Row("Your next steps","Goals shows your next task. Menu has your collection and case files.","Open progress",function()self:Open("Progress")end)
  elseif view=="Home" then
   self.Title.Text="Your home"
   self:Row("Room to grow","Garden room, upstairs loft, garage and backyard workshop.","View expansion plans",function()self:Open("Building")end)
@@ -160,9 +159,9 @@ function Screens:Open(view,detail)
   local delivery=game.Players.LocalPlayer:GetAttribute("DeliveryAddress")
   if delivery then self:Row("Parcel for "..delivery,"Carry the box to the matching mailbox. Cancelling returns it to the depot without a reward.","Cancel delivery",function()self.Request("CancelDelivery","")end)end
   local progress=self.State.Progress or {}
-  self:Row("Level "..(progress.Level or 1),(progress.XP or 0).." XP · Reputation "..(progress.Reputation or 0))
+  self:ProgressRow("Level "..(progress.Level or 1),'Earn XP by exploring and completing tasks.',(progress.XP or 0)%100,100)
   for _,step in ipairs(progress.Checklist or {})do self:Row(step.Done and "Complete" or "Next to try",step.Text)end
-  for _,badge in ipairs(progress.Achievements or {})do self:Row(badge.Title,badge.Earned and "Achievement earned" or badge.Progress.." / "..badge.Target)end
+  for _,badge in ipairs(progress.Achievements or {})do self:ProgressRow(badge.Title,badge.Earned and "Achievement earned!"or 'Keep going!',badge.Progress,badge.Target)end
  elseif view=="Collection" then
   self.Title.Text="Collection book"
   local owned={};for _,item in ipairs(self.State.Inventory or {})do owned[item.DefinitionId]=true end

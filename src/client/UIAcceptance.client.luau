@@ -11,7 +11,7 @@ local function begin()
   local oldSize=screens.Panel.Size;local checks={}
   for _,width in ipairs({510,360})do
    screens.Panel.Size=UDim2.fromOffset(width,480)
-   for _,view in ipairs({"Life","LifeGarden","LifeBusiness","LifeProjects","LifeMystery","LifeTours","LifeMastery","LifeFestival","LifeStop","Building","Crafting","Furnish","Layouts","Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
+   for _,view in ipairs({"Activities","MenuHome","MenuExplore","MenuSocial","MenuHelp","Life","LifeGarden","LifeBusiness","LifeProjects","LifeMystery","LifeTours","LifeMastery","LifeFestival","LifeStop","Building","Crafting","Furnish","Layouts","Adventures","Projects","Phone","Inventory","Cases","Progress","Home","Garage","Pets","Event","Journal","Weather","Collection","Neighbors","Newspaper","Settings","Friends","Boutique","Shop","Pawn"})do
     screens:Open(view);task.wait(.15)
     assert(screens.Panel.Visible and screens.Title.Text~="","Screen failed to open: "..view)
     local rows=0
@@ -63,6 +63,7 @@ local function begin()
   end
   card.Parent=gui;hint.Parent=gui;host:Destroy()
   screens.Panel.Size=oldSize
+  for _,check in ipairs(require(script.Parent.GoalUITests)(screens))do table.insert(checks,{GoalUI=check})end
   local errors={};for _,entry in ipairs(game:GetService("LogService"):GetLogHistory())do if entry.messageType==Enum.MessageType.MessageError then table.insert(errors,entry.message)end end
   assert(#errors==0,table.concat(errors,";"))
   return {Passed=true,Checks=checks,Errors=errors}

@@ -92,12 +92,12 @@ function Service:Start(player,id,resume)
  a.Active=a.Active or {Id=id,Next=1}
  self.Jobs[player.UserId]={Started=os.clock(),LastTime=os.clock(),LastPosition=root.Position,Timed=not resume,Next=a.Active.Next}
  player:SetAttribute("AdventureHint",Defs.Landmarks[route.Stops[a.Active.Next]].Hint)
- return true,"Follow the clue in Phone → Adventures. Take as long as you like."
+ return true,"Follow the clue in Menu → Explore & play → Story adventures. Take as long as you like."
 end
 function Service:CheckTravel(player,job)
  local root,why=self:Ready(player);if not root then self:Pause(player);return false,why end
  local now=os.clock();local distance=(root.Position-job.LastPosition).Magnitude
- if distance~=distance or distance>26*math.min(now-job.LastTime,2)+10 then self:Pause(player);return false,"Story paused after an interrupted route. Resume from your phone."end
+ if distance~=distance or distance>26*math.min(now-job.LastTime,2)+10 then self:Pause(player);return false,"Story paused after an interrupted route. Resume from Menu."end
  job.LastPosition=root.Position;job.LastTime=now;return true
 end
 function Service:Step()

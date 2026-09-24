@@ -23,7 +23,7 @@ function Service:Init(context)
  end)
 end
 function Service:View()
- if not self.Current then return {Title="A quiet moment",Description="The next community event will appear on this board and your phone."}end
+ if not self.Current then return {Title="A quiet moment",Description="The next community event will appear on this board and Menu → Explore & play."}end
  return {Id=self.Current.Id,Kind=self.Current.Kind,Title=definitions[self.Current.Kind].Title,Description=definitions[self.Current.Kind].Description,EndsAt=self.Current.EndsAt}
 end
 function Service:Start(kind)
@@ -31,7 +31,7 @@ function Service:Start(kind)
  self:Finish();self.Current={Id=game:GetService("HttpService"):GenerateGUID(false),Kind=kind,EndsAt=os.time()+120};self.Participation={};self.Offers={}
  workspace.Neighborhood:SetAttribute("SaleMultiplier",kind=="GarageSale" and 0.8 or 1)
  workspace.Neighborhood:SetAttribute("PowerOutage",kind=="PowerOutage")
- for _,p in ipairs(Players:GetPlayers())do self.Context.Notify(p,definitions[kind].Title.." has started. Open Phone → Event.",true);self.Context.Sync(p)end
+ for _,p in ipairs(Players:GetPlayers())do self.Context.Notify(p,definitions[kind].Title.." has started. Open Menu → Explore & play → Town events.",true);self.Context.Sync(p)end
 end
 function Service:Finish()
  self.Current=nil;self.Offers={}
@@ -71,7 +71,7 @@ function Service:Action(player,action,argument)
    if paid or otherPaid then self.Context.Notify(target,"High-five! You each earned $20.",true);self.Context.Sync(target);return true,"High-five! You earned $20."end
    return false,"You already celebrated with this neighbor during this party."
   end
-  self.Offers[player.UserId]={Target=target.UserId,Time=os.clock()};self.Context.Notify(target,"A nearby neighbor offered a high-five. Open Phone → Event to return it.",true)
+  self.Offers[player.UserId]={Target=target.UserId,Time=os.clock()};self.Context.Notify(target,"A nearby neighbor offered a high-five. Open Menu → Explore & play → Town events to return it.",true)
   return true,"High-five offered. They have 15 seconds to return it."
  end
  return false,"That activity is not part of the current event."

@@ -1,5 +1,5 @@
 local Service={Last={}}
-local steps={{Key="EnterHouse",Text="Open your front door"},{Key="Place",Text="Place one possession at home"},{Key="Visit",Text="Ring a neighbor's doorbell"},{Key="Delivery",Text="Complete a parcel delivery from the community board"},{Key="Buy",Text="Buy something at Maple & Co."},{Key="Lock",Text="Lock your front door"}}
+local steps={{Key="EnterHouse",Text="Open your front door"},{Key="Place",Text="Place one possession at home"},{Key="Visit",Text="Say hello to a neighbor"},{Key="Delivery",Text="Complete a parcel delivery from the community board"},{Key="Buy",Text="Buy something at Maple & Co."},{Key="Lock",Text="Lock your front door"}}
 local achievements={
  {Id="WelcomeHome",Event="Place",Count=1,Title="This one's mine"},
  {Id="HonestWork",Event="Delivery",Count=5,Title="Honest work"},
@@ -23,7 +23,7 @@ function Service:Record(player,event)
 end
 function Service:View(player)
  local p=self.Context.Data:Get(player);if not p then return {}end
- local checklist={};for _,step in ipairs(steps)do table.insert(checklist,{Text=step.Text,Done=(p.Statistics[step.Key] or 0)>0})end
+ local checklist={};for _,step in ipairs(steps)do table.insert(checklist,{Key=step.Key,Text=step.Text,Done=(p.Statistics[step.Key] or 0)>0})end
  local badges={};for _,a in ipairs(achievements)do table.insert(badges,{Title=a.Title,Earned=p.Achievements[a.Id]~=nil,Progress=math.min(p.Statistics[a.Event] or 0,a.Count),Target=a.Count})end
  return {XP=p.XP,Level=1+math.floor(p.XP/100),Reputation=p.Reputation,Checklist=checklist,Achievements=badges}
 end

@@ -1,5 +1,20 @@
 # UI behavior
 
+## Goals and guidance contract
+
+Source: the September 24 request for a more straightforward UI for younger readers; server progress authority remains ProgressionService, Activities and CityJobs. NPC greetings now satisfy the existing Visit first step, once, so solo players can finish it.
+
+| Capability | Canonical owner | Source of truth | Verification |
+|---|---|---|---|
+| Progress meters | UI.Progress through Screens.ProgressRow | Server counts and explicit totals; clamp fill to 0–1 | GoalUITests |
+| Next task | TaskGuide and GoalHUD | Active carrying/delivery/job/game takes priority over selected job or first-step checklist | GoalUITests and GoalServerTests |
+| Waypoints | TaskGuide | Real station/house position; presentation only, no teleport or completion authority | Live Studio interaction |
+| Navigation | Screens and MenuScreen | Goals / Bag / Menu; Tasks / Play / Jobs | Two-client UIAcceptance |
+| Job timer | CityJobs.Publish | Replicated server deadline; completion and expiry clear attributes | GoalServerTests |
+| Focus and actions | UI.Button and Screens | 48px actions, named text, selection outline, disabled guards, return to HUD on controller close | UIAcceptance; physical controller unverified |
+
+Menu groups existing features instead of removing them. Robux cosmetics remain optional under Home & belongings, not in the main task flow. Returning players do not receive an automatic recap popup; it remains available under Help & settings. Task bars never invent loading percentages or award progress locally. Normal server snapshots refresh open Goals while preserving scroll. Interaction prompts hide behind open panels. The tour advances only on the player's Next action.
+
 Canonical owners: Theme (visual tokens), UI (labels/buttons/panels/toast), InteractionController (context prompts), App (screens). Roblox GUI replaces browser semantics; no HTML forms/tables are in scope.
 
 Server requests retain the existing screen during processing; success updates from the server snapshot, failures produce useful text. No optimistic currency or ownership. Buttons remain the same size while pending. Empty inventory/case views explain the next physical action. A close action restores gameplay; controller buttons use Roblox selection. No user-entered public text.

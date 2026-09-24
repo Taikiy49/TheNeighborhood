@@ -9,6 +9,8 @@ colors:
   muted: '#586962'
   warning: '#C18B28'
   danger: '#B5473C'
+  track: '#D7E3DD'
+  accent: '#F8CC5B'
 typography:
   display:
     fontFamily: 'Fredoka One'
@@ -33,7 +35,7 @@ Product game HUD for Roblox players on desktop, touch and controller; English se
 Dark teal signs, off-white UI surfaces, dark readable text. Amber indicates risk and red denotes incidents. Labels accompany color.
 
 ## Typography
-FredokaOne is reserved for titles; Gotham for readable body/actions. 14/18/24 sizes in the shared runtime theme. No long all-caps paragraphs.
+FredokaOne is reserved for titles; Gotham for readable body/actions, with bold row headings. 16/18/24 sizes in the shared runtime theme. No long all-caps paragraphs.
 
 ## Layout
 8px rhythm, 48px minimum action targets; respect Roblox safe insets. Panels adapt to narrow viewports. Normal HUD remains compact. Scrollable content owns its scroll.
@@ -48,7 +50,7 @@ Solid panels and a restrained outline. No backdrop blur. Houses have deep porche
 Canonical runtime owner: src/shared/Theme.luau → src/client/UI.luau → HUD, prompts, panels and notifications. This document mirrors runtime values (Model B); update both for durable decisions. Actions use TextButton.Activated, selection focus, hover tint and disabled state. Prompts use Roblox input handling with authored presentation. Notifications replace repeated status, no dead buttons. Motion is a short state transition, not perpetual bouncing.
 
 ## Do's and Don'ts
-- Keep palette coherent across eight varied homes.
+- Keep palette coherent across twelve varied homes.
 - Make ownership and risk readable in world space.
 - Never put implementation jargon in ordinary player UI.
 - Never imply unsaved data is persisted.
@@ -86,3 +88,11 @@ Arrival revision: one 6.4-stud front door per cottage, two vertically stacked pa
 Authoring owner: tools/detail-cleanup.luau, run after the earlier world/interior/furnishing rebuilds, then export. Signs use proportional pixels-per-stud canvases, 5% horizontal and 8% vertical margins, restrained copy and supports behind their text planes. Shop lettering sits ahead of the awning; cottage numbers face outward from the porch fascia. Lamp mounts, shades and lenses form connected stacks. Roof halves meet at a ridge cap. Expansion stairs and pendants have visible support, with noncolliding detail parts. Quiet door panels remain attached to the moving door's SurfaceGui.
 
 HUD owner remains App + InteractionController through UI/Theme: NavigationHint is hidden during an active interaction or open panel and restored when both close. InteractionCard sits 32px above the bottom edge, preserving 48px actions. UIAcceptance checks the actual controls at phone-sized layout fixtures. Audit evidence and known limits: docs/VISUAL-DETAIL-AUDIT.md.
+
+## Goals and readable play
+
+The current UI is for younger readers as well as older players. Preserve the street-sign identity, but show one next action instead of a list of systems. Signature: the NEXT UP card connects a short instruction to a visible destination marker. Goals, Bag and Menu are the three main HUD buttons. A warm yellow Goals button makes the starting point distinct without a screen full of competing colors.
+
+Theme remains the runtime token owner (Model B). Theme.Track (#D7E3DD) and Theme.Primary form every shared UI.Progress meter; Theme.Accent (#F8CC5B) marks the active Goals tab and controller focus. Bars always pair with numbers or completion words. UI.Button owns the selection outline and disabled-handler guard. Screens.Row owns 16px body copy, bold headings and 48px actions. GoalHUD owns responsive task placement; TaskGuide owns task selection and local waypoint markers. Memory uses named shapes, so recognizing a symbol does not require reading a long word.
+
+The introductory tour uses short sentences and waits for Next; Skip and reduced-motion still views remain available. This supersedes the historical auto-advance behavior above. Current world geometry is the Maple Heights release documented in docs/MAPLE-HEIGHTS.md; older expansion/valley sections above are historical design records.

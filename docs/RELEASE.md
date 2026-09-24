@@ -1,5 +1,9 @@
 # Current release
 
+Goals UI update published as **v89**, confirmed by Studio PublishSuccessful at **12:28:51 UTC on September 24, 2026**, followed by Add publish notes to v89. Place 111572448337932. [Features, screenshots, evidence and limits](GOALS-UI.md).
+
+## Previous release
+
 Latest: Maple Heights city redesign published as **v85**, confirmed by Studio `PublishSuccessful` at **12:02:58 UTC on September 24, 2026**, followed by `Add publish notes to v85`. Existing place: `111572448337932`. [Districts, screenshots and verification](MAPLE-HEIGHTS.md). Creator Dashboard capacity saved and reloaded as 12; eight actual simultaneous Studio clients tested. No audience/age-eligibility change was made in this release.
 
 ## Previous release
