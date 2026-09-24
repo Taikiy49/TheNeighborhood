@@ -28,3 +28,8 @@ The generated Rojo build applies CozyLayout at runtime to the stored scale-3 bas
 Publication remains blocked after restarting Studio on September 23, 2026. Publish to Roblox As returns Fetch failed; fresh logs show 401 Unauthorized for the experience search and creator groups endpoints. A restart alone did not refresh Studio authentication. The last verified published place remains version 62. Creator Dashboard previously confirmed Publish to all ages and all three verification checks Done; eligibility is separate from the Studio authentication failure.
 
 The reopened latest local build passed a session-only smoke test of relocated Activity001 (toy shelf), Activity002 (skittles), and Activity008 (community flower bed). All returned successful interaction responses. The runtime console contained only the ready message. Test flags were removed in Edit mode afterward. This does not certify live persistence or multiplayer behavior.
+
+### Successful publication
+
+After the user refreshed Studio authentication, the latest local build was published over the existing start place. Reopening the cloud place through Studio MCP confirmed PlaceId 111572448337932, UniverseId 10767699101, PlaceVersion 64, recreation-cozy-4, and no workspace test flags. Public access remains blocked by the required content maturity questionnaire (currently 0 of 17 sections completed, Unknown label); the public audience change was not saved. No questionnaire answers were guessed or submitted.
+
