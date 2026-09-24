@@ -4,7 +4,7 @@ local M={}
 local function folder(p,name)local f=Instance.new('Folder');f.Name=name;f.Parent=p;return f end
 function M.Build(w)
  local prior=w:FindFirstChild('MapleHeights');if prior then prior:Destroy()end
- local root=folder(w,'MapleHeights');root:SetAttribute('Version',1)
+ local root=folder(w,'MapleHeights');root:SetAttribute('Version',2)
  local function part(parent,name,s,x,y,z,c,mat,solid)return A.Part(parent,name,s,Vector3.new(x,y,z),c,mat,solid)end
  local paths=folder(root,'Paths');local paving=Color3.fromRGB(190,183,165)
  local function path(name,x,z,sx,sz)return part(paths,name,{sx,.18,sz},x,.22,z,paving,Enum.Material.Pavement)end
@@ -59,6 +59,8 @@ function M.Build(w)
  local rules=l('ShiftRules',{19,3,.2},0,9,13.5,A.Ink,nil,false);A.Sign(rules,'LAUNDRY SHIFT • $45\nSort → Wash → Fold\nWait for the next station cue')
  path('MarketPlaza',0,88,78,10);path('MarketLane',0,141,78,6)
  for _,x in ipairs({-39,39})do path('ShopSidewalk',x,116,6,50)end
+ -- Continuous commercial paving fills gaps between entrances and the street.
+ part(paths,'MarketBlockPaving',{84,.16,61},0,.17,113.5,Color3.fromRGB(172,169,158),Enum.Material.Pavement)
  -- Northern frontages frame the park; all three apartment floors are usable.
  local uptown=folder(root,'Uptown')
  local apartment,a=A.Building(uptown,'ParkApartments',Vector3.new(-21,0,-120),30,28,3,Color3.fromRGB(181,155,129),'PARK APARTMENTS • SOCIAL LOUNGE')
@@ -82,6 +84,7 @@ function M.Build(w)
  end
  path('UptownFront',0,-141,78,6);path('UptownCourt',0,-94,78,10)
  for _,x in ipairs({-39,39})do path('UptownWalk',x,-119,6,50)end
+ part(paths,'UptownBlockPaving',{84,.16,55},0,.17,-116.5,Color3.fromRGB(172,169,158),Enum.Material.Pavement)
  -- A small older block links the cafe to the lake promenade without swallowing the waterfront.
  local old=folder(root,'OldTown')
  for i=1,2 do
@@ -97,6 +100,7 @@ function M.Build(w)
   local t=b('RoofSurvey',{1.5,1,1.5},7,26,2,A.Cream);t:SetAttribute('CityJob','Rooftops');t:SetAttribute('Step',i+1);A.Prompt(t,'CityWork','Old Town rooftop route','Check rooftop '..i)
   brown:SetAttribute('FireEscape',truss.Position)
  end
+ part(paths,'OldTownBlockPaving',{80,.16,56},-270,.17,-83,Color3.fromRGB(172,169,158),Enum.Material.Pavement)
  path('OldTownCourt',-270,-105,80,12);path('OldTownLink',-225,-105,10,12)
  part(old,'RooftopBridge',{10,.4,5},-271,24.8,-72,A.Ink,Enum.Material.Metal)
  local route=part(old,'RouteStart',{2,3,1},-232,2,-96,A.Ink);route:SetAttribute('CityJob','Rooftops');route:SetAttribute('Step',1);A.Prompt(route,'CityWork','Old Town roof route','Start survey • $65')
@@ -133,7 +137,7 @@ function M.Build(w)
  -- Street continuations terminate at a deliberate bus turning court, not a grass stub.
  local streets=folder(root,'StreetEdges')
  for _,side in ipairs({-1,1})do
-  part(streets,'CityVerge',{54,4,590},side*363,-2,0,Color3.fromRGB(128,145,113),Enum.Material.Grass)
+  part(streets,'CityVerge',{54,4,590},side*363,-2,0,Color3.fromRGB(157,159,153),Enum.Material.Concrete)
   part(streets,'ServiceStreet',{18,.18,569},side*339,.08,9.5,Color3.fromRGB(68,76,76),Enum.Material.Asphalt)
   for _,z in ipairs({-266})do
    part(streets,'TurningCourt',{32,.18,24},side*339,.08,z,Color3.fromRGB(68,76,76),Enum.Material.Asphalt)
@@ -149,7 +153,7 @@ function M.Build(w)
   for _,z in ipairs({-205,-199})do part(streets,'BusSeatLeg',{1.5,1.4,.4},side*329,.7,z,A.Ink)end
   local stop=part(streets,'TransitMap',{.3,4,5},side*328,5,-202,A.Ink,nil,false);stop.CFrame*=CFrame.Angles(0,side*math.pi/2,0);A.Sign(stop,'MAPLE HEIGHTS\nBus turning court\nCity backdrop')
  end
- part(streets,'SouthCityGround',{730,4,55},0,-2,292,Color3.fromRGB(128,145,113),Enum.Material.Grass)
+ part(streets,'SouthCityGround',{730,4,55},0,-2,292,Color3.fromRGB(157,159,153),Enum.Material.Concrete)
  part(streets,'ConnectedBoulevard',{696,.18,18},0,.08,294,Color3.fromRGB(68,76,76),Enum.Material.Asphalt)
  part(streets,'MarketAccessLane',{12,.18,107},0,.08,240.5,Color3.fromRGB(68,76,76),Enum.Material.Asphalt)
  for _,x in ipairs({-8,8})do path('MarketAlleyFootway',x,243,3,96)end

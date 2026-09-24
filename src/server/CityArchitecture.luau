@@ -14,6 +14,7 @@ function A.Building(parent,name,center,width,depth,floors,color,title)
  local m=Instance.new('Model');m.Name=name;m.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;m.Parent=parent;m:SetAttribute('Enterable',true)
  local function p(n,s,x,y,z,c,mat,solid,class)return A.Part(m,n,s,center+Vector3.new(x,y,z),c,mat,solid,class)end
  local h=floors*12;local w=width/2;local d=depth/2
+ if not table.find({'MarketAvenue','Uptown','OldTown'},parent.Name)then p('BuildingApron',{width+6,.16,depth+6},0,.17,0,Color3.fromRGB(172,169,158),Enum.Material.Pavement)end
  p('Floor',{width,.4,depth},0,.2,0,A.Wood,Enum.Material.WoodPlanks)
  p('RearWall',{width,h,.6},0,h/2+.4,d,color,Enum.Material.Brick)
  for _,x in ipairs({-w,w})do p('SideWall',{.6,h,depth},x,h/2+.4,0,color,Enum.Material.Brick)end

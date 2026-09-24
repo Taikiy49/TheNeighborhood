@@ -4,6 +4,10 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Town paving — published as v101.** Continuous paved commercial blocks, concrete city edges and deliberate green parks. [Release details](docs/RELEASE.md).
+
+![Continuous market paving](assets/screenshots/town-paved-market.png)
+
 **Growing homes and surface cleanup — published as v100.** Four housing tiers, furnished upper floors, a housing agent, saved renovation projects and stone foundations. [Features, prices, screenshots and test limits](docs/RESIDENCES.md).
 
 ![Grow from cottage to skyline](assets/screenshots/residence-townhouse.png)
