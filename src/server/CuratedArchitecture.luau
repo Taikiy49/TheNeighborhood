@@ -7,6 +7,7 @@ function M.Place(name,parent,target,size)
  for _,p in ipairs(m:GetDescendants())do if p:IsA('BasePart')then
   local relative=box:ToObjectSpace(p.CFrame)
   p.Size*=scale;p.CFrame=target*CFrame.new(relative.Position*scale)*relative.Rotation
+  local mesh=p:FindFirstChildOfClass('SpecialMesh');if mesh then mesh.Scale*=scale;mesh.Offset*=scale end
   p.Anchored=true;p.CanCollide=false;p.CanTouch=false;p.CanQuery=false
   if p:IsA('Seat')or p:IsA('VehicleSeat')then p.Disabled=true end
  end end

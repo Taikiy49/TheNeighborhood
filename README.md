@@ -4,6 +4,13 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Imported streetscape — published as v133**, confirmed at **21:08:29 UTC**. 29 hanging traffic-light junctions with working opposing phases and NPC traffic stops, 401 imported trees/palms including replacements, and eight picnic-table/planter pockets. [Sources, checks and limits](docs/STREET-ART.md).
+
+![Hanging signals and palm-lined streets](assets/screenshots/street-hanging-signals.png)
+![Residential tree coverage](assets/screenshots/street-residential-trees.png)
+
+## Architecture and attractions
+
 **Curated environment art — published as v129**, confirmed by Studio at **20:54:06 UTC**. Imported modular architecture adds four façade styles, proportioned upper floors, awnings, fire escapes and roof details across 31 main buildings and six smaller shops, plus twelve cottage/garage detail groups. The airport now uses imported aircraft models; the pier has an 18-cabin Ferris wheel and animal carousel meshes.
 
 ![Updated storefront architecture](assets/screenshots/curated-storefront.png)

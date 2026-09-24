@@ -77,7 +77,7 @@ function M.Init(context)
   for _,v in ipairs(M.Traffic)do local d=route[v.Next]-v.Position;if d.Magnitude<2 then v.Next=v.Next%4+1;d=route[v.Next]-v.Position end
    query.FilterDescendantsInstances={v.Model};local look=CFrame.lookAt(v.Position+d.Unit*9,route[v.Next]);local blocked=false
    for _,hit in ipairs(workspace:GetPartBoundsInBox(look,Vector3.new(6,3,9),query))do if hit.Position.Y>1 and not hit:IsDescendantOf(rail)then blocked=true;break end end
-   if not blocked then v.Position+=d.Unit*math.min(d.Magnitude,dt*18);v.Model:PivotTo(CFrame.lookAt(v.Position,route[v.Next]))end
+   if not blocked and not require(script.Parent.StreetDressing).ShouldStop(v.Position,d.Unit)then v.Position+=d.Unit*math.min(d.Magnitude,dt*18);v.Model:PivotTo(CFrame.lookAt(v.Position,route[v.Next]))end
   end
   if dwell>0 then dwell-=dt else
    local target=stations[station+direction];z+=math.sign(target-z)*math.min(math.abs(target-z),dt*40)

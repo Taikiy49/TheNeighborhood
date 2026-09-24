@@ -114,6 +114,7 @@ require(script.Parent.ResidentNeighbors).Init(context)
 local Yards=require(script.Parent.YardService);Yards:Init(context)
 require(script.Parent.TownLifeExpansion).Init(context)
 require(script.Parent.CuratedArchitecture).Init()
+require(script.Parent.StreetDressing).Init()
 context.Ready=true
 local function characterAdded(player,character)
     local human=character:WaitForChild("Humanoid",10)
