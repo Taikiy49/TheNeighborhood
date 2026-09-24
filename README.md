@@ -4,9 +4,13 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## Current Roblox publication
+
+Published the latest tested build to **The Neighborhood, version 62**, on September 23, 2026 (Hawaii time). Studio confirmed `PublishSuccessful`; the reopened cloud place matched all 92 source scripts and carried `detail-cleanup-1`. The experience remains **Private**. [Publication evidence](docs/qa/publication-v62.json) · [Release status and remaining limits](docs/RELEASE.md)
+
 ## Visual detail cleanup
 
-Corrected obscured shop signs, overlapping community boards, hidden house numbers, floating fixture joints, roof seams and the hint/interaction-card collision. The audit includes 25 screenshots, all eight house fronts, 56 physical walking legs and 162 rendered UI checks. **These changes are in the local development build, not yet published to Roblox.**
+Corrected obscured shop signs, overlapping community boards, hidden house numbers, floating fixture joints, roof seams and the hint/interaction-card collision. The audit includes 25 screenshots, all eight house fronts, 56 physical walking legs and 162 rendered UI checks. **Published to Roblox in place version 62.**
 
 | Before | After |
 |---|---|
@@ -16,7 +20,7 @@ Corrected obscured shop signs, overlapping community boards, hidden house number
 
 ## Furnished cottages and coordinated planting
 
-The expanded homes now have dining groups, kitchen islands, reading seats, bookcases and bedroom storage. Matching stone-edged flower beds extend through the neighborhood. Higgsfield supplied the visual reference; the images below are actual Studio play-session captures. **This update is not yet published to the live Roblox game.**
+The expanded homes now have dining groups, kitchen islands, reading seats, bookcases and bedroom storage. Matching stone-edged flower beds extend through the neighborhood. Higgsfield supplied the visual reference; the images below are actual Studio play-session captures. **Published to Roblox in place version 62.**
 
 | Dining area | Kitchen island |
 |---|---|

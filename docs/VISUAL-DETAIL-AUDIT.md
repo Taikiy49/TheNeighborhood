@@ -1,6 +1,6 @@
 # Visual detail cleanup — September 23, 2026
 
-This pass inspected the **local Studio development build**, corrected visible overlaps and unsupported details, and saved actual screenshots. It is **not published to the live experience**. The most recent publish attempt failed with Roblox authentication error 401; no successful publication has been verified.
+This pass inspected the **local Studio development build**, corrected visible overlaps and unsupported details, and saved actual screenshots. The earlier authentication failure was resolved, and this build was **published as version 62**. [Publication evidence](qa/publication-v62.json). The experience remains Private.
 
 The existing Higgsfield cottage-and-garden concept informed the restrained sage, linen, oak and dark hardware palette. No new generated image was substituted for game evidence. [Concept provenance](FURNISHED-COTTAGES.md).
 

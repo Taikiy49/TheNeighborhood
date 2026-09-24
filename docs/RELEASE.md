@@ -6,20 +6,26 @@ Recorded September 23, 2026. This document distinguishes local/source milestones
 |---|---|
 | Place | `111572448337932` |
 | Universe | `10767699101` |
-| Last verified published version | 37 |
-| Later environment redesign | In source, Studio edit state and included build; not published |
-| Friends and plot choices | In source, Studio edit state and included build; not published |
+| Last verified published version | **62** — September 23, 2026 Hawaii time |
+| Later environment redesign | Published in version 62 |
+| Friends and plot choices | Published in version 62 |
 | Public access | Age check Done; publishing eligibility Ages 16+ and trusted friends; experience Private and Unrated (September 23 dashboard check) |
-| Style boutique | Two real passes registered; off sale, code not published, live purchase test pending |
+| Style boutique | Two real passes registered; off sale, code published in version 62, live purchase test pending |
 | GitHub upload | Source delivery, not a Roblox publication |
 
 Earlier dashboard work saved an icon, Higgsfield cover, description, genre and eight-player limit. The recorded audience was Private. Camera age check, identity verification and two-factor requirements were reported by Roblox at that time; platform requirements/status may change. Do not infer current eligibility from this historical note.
 
-## Latest account and local build check
+## Verified publication
 
-The Creator Dashboard shows the age check complete. Identity verification and two-step verification still show Start. The experience remains Private and Unrated; its maturity/compliance questionnaire is outstanding. This does not mean the experience was published or made public.
+Studio authentication recovered after restarting and signing in. `Publish to Roblox As` overwrote the existing place; the Studio publication state reached `PublishSuccessful` at 2026-09-24 08:15:40 UTC. The reopened cloud place reports version 62, place 111572448337932 and universe 10767699101. All 92 scripts matched source commit `15b41d6`, with `detail-cleanup-1` present. [Recorded verification](qa/publication-v62.json).
 
-Studio then disconnected with Access Denied (RCC-273), with logs reporting 401 User is not authenticated. Home expansions are implemented and tested in an unpublished local Studio build. Their real DataStore restart, live synchronization and publication remain unverified until Studio is authenticated again. Older live persistence evidence does not establish that the new Building fields survive a real restart.
+This includes expanded and furnished cottages, the garden district and mountain valley, sign/fixture/roof cleanup and the interaction-hint fix. Publication did not change the Private audience. Actual Roblox-client rejoin and multiplayer persistence of new Building fields still require live verification; prior Studio results are not that verification.
+
+## Earlier account and local build check (historical)
+
+The Creator Dashboard shows the age check complete. Identity verification and two-step verification still show Start. The experience remains Private and Unrated; its maturity/compliance questionnaire is outstanding. Those checks predated the successful version 62 publication above; public access has not been enabled.
+
+Studio then disconnected with Access Denied (RCC-273), with logs reporting 401 User is not authenticated. At that point, home expansions were implemented and tested only in the local Studio build. Publication and authentication are now verified above; real DataStore restart and live synchronization remain unverified for the new fields. Older live persistence evidence does not establish that the new Building fields survive a real restart.
 
 ## Release sequence
 

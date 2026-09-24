@@ -1,0 +1,17 @@
+{
+  "UniverseId": 10767699101,
+  "Version": 62,
+  "PlaceId": 111572448337932,
+  "DetailAuditVersion": "detail-cleanup-1",
+  "PublishedAtUTC": "2026-09-24T08:15:40.776Z",
+  "SourceCommit": "15b41d6",
+  "StudioPublishState": "PublishSuccessful",
+  "Method": "Studio File > Publish to Roblox As > existing The Neighborhood place > Overwrite",
+  "VerifiedSources": 92,
+  "SourceParityPassed": true,
+  "SourceParityMethod": "Adler32 and byte length after CRLF and trailing-whitespace normalization",
+  "SourceMismatches": [],
+  "AudienceAtPublish": "Private",
+  "AudienceChanged": false,
+  "Scope": "Publication verified; not a full specification completion or live gameplay certification"
+}

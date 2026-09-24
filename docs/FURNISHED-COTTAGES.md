@@ -10,4 +10,4 @@ Run tools/furnish-cottages.luau in Edit after clean-interiors to rebuild its Fur
 
 [Regression evidence](qa/furnishing-regression.json): 24 physical walking legs, 48 item-display navigation routes across eight homes, two actual players seated, and 23 home/shop/clue paths all passed. The final chair/sideboard revision reran all 48 display routes and seating checks. Public planting changes reran the outdoor navigation suite. These are local Studio tests, not live persistence or mobile-performance proof.
 
-The README includes actual play-session screenshots with a free camera and HUD hidden. Publishing remains blocked by Studio authentication; none of these changes are live on Roblox.
+The README includes actual play-session screenshots with a free camera and HUD hidden. The authentication blocker was resolved and these changes were published in version 62. The experience remains Private. [Publication evidence](qa/publication-v62.json).
