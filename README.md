@@ -6,6 +6,8 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 ## Current Roblox publication
 
+**New local work:** [Single front doors, clearer signs and a skippable arrival introduction](docs/ARRIVAL-REDESIGN.md). These changes are implemented and tested locally; their Roblox publication is not yet verified.
+
 Published the latest tested build to **The Neighborhood, version 62**, on September 23, 2026 (Hawaii time). Studio confirmed `PublishSuccessful`; the reopened cloud place matched all 92 source scripts and carried `detail-cleanup-1`. The experience remains **Private**. [Publication evidence](docs/qa/publication-v62.json) · [Release status and remaining limits](docs/RELEASE.md)
 
 ## Visual detail cleanup

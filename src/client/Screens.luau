@@ -78,6 +78,7 @@ function Screens:Open(view,detail)
   for _,id in ipairs(ids) do local def=Defs[id];local price=math.floor(def.Value*(workspace.Neighborhood:GetAttribute("SaleMultiplier") or 1));self:Row(def.Name,def.Rarity.." • "..def.Description,"Buy · $"..price,function()self.Request("Buy",id)end) end
  elseif view=="Phone" then
   self.Title.Text="Your phone"
+  self:Row("Getting started","A short tour of your home and your first steps.","Replay introduction",function()self:Close();require(script.Parent.ArrivalIntro):Start(self.State)end)
   self:Row("Room to grow","Expand your cottage, craft furniture and save favorite layouts.","Plan your home",function()self:Open("Building")end)
   self:Row("Neighborhood Life","Gardening, businesses, shared renovations, mysteries, tours, mastery and festivals.","Explore activities",function()self:Open("Life")end)
   self:Row("Maple Adventures","Six rumors, a story album, earned trophies and shared park projects.","Follow a rumor",function()self:Open("Adventures")end)

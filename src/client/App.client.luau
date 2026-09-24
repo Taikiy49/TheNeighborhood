@@ -8,6 +8,7 @@ local Theme=UI.Theme
 local remotes=game.ReplicatedStorage:WaitForChild("Neighborhood"):WaitForChild("Remotes")
 local gui=UI.New("ScreenGui",{Name="NeighborhoodApp",ResetOnSpawn=false,ZIndexBehavior=Enum.ZIndexBehavior.Sibling},player:WaitForChild("PlayerGui"))
 local Screens=require(script.Parent.Screens)
+local Intro=require(script.Parent.ArrivalIntro).Init(gui)
 local requestSequence=0
 Screens:Init(gui,function(action,id,argument)
  requestSequence+=1
@@ -41,7 +42,9 @@ local function updateHint()
  local destination=player:GetAttribute("DeliveryAddress")
  local carrying=player:GetAttribute("Carrying")
  local adventure=player:GetAttribute("AdventureHint")
- hintText.Text=carrying and ("Carrying "..carrying.." · Reach the street, then the pawn shop.") or destination and ("Parcel delivery → "..destination.." mailbox") or adventure and ("Story clue → "..adventure) or "Phone → Adventures: follow a rumor or help the park bloom."
+ local nextStep
+ for _,step in ipairs(Screens.State.Progress and Screens.State.Progress.Checklist or {})do if not step.Done then nextStep=step.Text;break end end
+ hintText.Text=carrying and ("Carrying "..carrying.." · Reach the street, then the pawn shop.") or destination and ("Parcel delivery → "..destination.." mailbox") or adventure and ("Story clue → "..adventure) or nextStep or "Phone → Adventures: follow a rumor or help the park bloom."
 end
 local playtest=UI.Label(gui,"PLAYTEST · Progress resets when the server stops",UDim2.new(0.8,0,0,24),UDim2.new(0.1,0,1,-26),12,Theme.Surface)
 local recapShown=false
@@ -72,7 +75,8 @@ remotes.State.OnClientEvent:Connect(function(state)
     playtest.Text=state.SessionOnly and "PLAYTEST · Progress resets when the server stops" or "Progress · "..(player:GetAttribute("SaveStatus") or "Loading")
     address.Text=state.Address; cash.Text="$"..tostring(state.Currency).."  •  Your home"
     updateHint()
-    if state.Recap and not recapShown then recapShown=true;Screens:Open("Recap",state.Recap)end
+    Intro:Consider(state)
+    if state.Recap and not recapShown and not Intro.Active then recapShown=true;Screens:Open("Recap",state.Recap)end
 end)
 UI.Button(gui,"Inventory",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,16),function()Screens:Open("Inventory")end)
 UI.Button(gui,"Cases",UDim2.fromOffset(110,48),UDim2.new(1,-126,0,72),function()Screens:Open("Cases")end)

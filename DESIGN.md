@@ -81,6 +81,8 @@ Furnished cottage pass: use grouped dining/living furniture, restrained sage/oak
 
 ## Close-up detail standards
 
+Arrival revision: one 6.4-stud front door per cottage, two vertically stacked panels, wall infill and one handle per face. Enlarging rooms must not enlarge doors, furniture or interaction controls. Destination signage is upright, supported, and concentrated at junctions; nearby activity plaques are secondary. ArrivalIntro reuses Theme → UI primitives in a 184px bottom dialogue panel with 48px Skip/Still views/Next actions. Four seven-second RPG camera views introduce the home and first objective; ReducedMotion uses still shots. Skip, finish and respawn restore camera, prompts and controls. Settings.IntroSeen persists dismissal; Phone can replay the introduction.
+
 Authoring owner: tools/detail-cleanup.luau, run after the earlier world/interior/furnishing rebuilds, then export. Signs use proportional pixels-per-stud canvases, 5% horizontal and 8% vertical margins, restrained copy and supports behind their text planes. Shop lettering sits ahead of the awning; cottage numbers face outward from the porch fascia. Lamp mounts, shades and lenses form connected stacks. Roof halves meet at a ridge cap. Expansion stairs and pendants have visible support, with noncolliding detail parts. Quiet door panels remain attached to the moving door's SurfaceGui.
 
 HUD owner remains App + InteractionController through UI/Theme: NavigationHint is hidden during an active interaction or open panel and restored when both close. InteractionCard sits 32px above the bottom edge, preserving 48px actions. UIAcceptance checks the actual controls at phone-sized layout fixtures. Audit evidence and known limits: docs/VISUAL-DETAIL-AUDIT.md.

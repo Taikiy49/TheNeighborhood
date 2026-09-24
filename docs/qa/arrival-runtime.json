@@ -1,0 +1,10 @@
+{
+  "Published": false,
+  "SessionOnly": true,
+  "DoorCollisionChecks": 8,
+  "DoorWalking": {"Passed": true, "WalkedLegs": 16},
+  "Introduction": {"PhoneButtons": 3, "MinimumButtonHeight": 48, "PhoneFixtureWidth": 360, "Replay": true, "ExitCleanup": true, "ReducedMotion": true, "AutomaticCompletion": true},
+  "Signs": {"RaisedStoryAndTrailSigns": 10, "LowSignFailures": 0, "TallDirectories": 2},
+  "Preference": {"ServerReceivedIntroDone": true, "SerializationRoundTrip": true, "NewProfilesUnseen": true, "LiveRejoinTested": false},
+  "Limitations": ["No physical mobile-device test", "No production DataStore rejoin test", "Earlier recreation multiplayer verification remains incomplete"]
+}

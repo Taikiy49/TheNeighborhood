@@ -1,8 +1,13 @@
 local Players = game:GetService("Players")
+if game:GetService("RunService"):IsStudio()then
+ local args=game:GetService("StudioTestService"):GetTestArgs()
+ workspace:SetAttribute("SkipArrivalIntroTest",type(args)=="table"and args.Name~=nil and args.Name~="ArrivalAcceptance")
+end
 local RS = game:GetService("ReplicatedStorage")
 local root=RS:WaitForChild("Neighborhood")
 for _,model in ipairs(workspace.Neighborhood:GetDescendants())do if model:IsA("Model") and model:GetAttribute("ExportPrimaryPart") then model.PrimaryPart=model:FindFirstChild(model:GetAttribute("ExportPrimaryPart"))end end
 local remotes=root:WaitForChild("Remotes")
+require(script.Parent.ArrivalPolish).Apply(workspace.Neighborhood)
 local Data=require(script.Parent.Services.PlayerDataService)
 local Houses=require(script.Parent.Services.HouseService)
 local Interactions=require(script.Parent.Services.InteractionService)
@@ -27,6 +32,7 @@ local Boutique=require(script.Parent.Services.BoutiqueService)
 local Building=require(script.Parent.Services.BuildingService)
 local Life=require(script.Parent.Services.LifeService)
 local Adventures=require(script.Parent.Services.AdventureService)
+local Recreation=require(script.Parent.Services.RecreationService)
 local context={Data=Data,Houses=Houses,Interactions=Interactions,Items=Items,Economy=Economy,Evidence=Evidence,Robbery=Robbery}
 context.Notify=function(player,message,ok)
     if player.Parent==Players and message then remotes.Notification:FireClient(player,{Text=message,Success=ok}) end
@@ -63,6 +69,7 @@ Discovery:Init(context)
 Weather:Init(context)
 Adventures:Init(context)
 context.Life=Life;Life:Init(context)
+Recreation:Init(context)
 Interactions:Register("Shop",function(player) context.Open(player,"Shop");return true end)
 Interactions:Register("Pawn",function(player) context.Open(player,"Pawn");return true end)
 Interactions:Register("Place",function(player,target)
@@ -124,7 +131,9 @@ remotes.Request.OnServerEvent:Connect(function(player,action,id,argument,request
     if not Data:CanAct(player) then respond("Your profile is loading or closing. Please wait.",false);return end
     if type(id)~="string" or #id>80 then return end
     local ok,message=false,"Unavailable action."
-    if action=="Life"then ok,message=Life:Action(player,id,argument)
+    if action=="IntroDone"then Data:Get(player).Settings.IntroSeen=true;ok=true;message="Welcome to Maple Street."
+    elseif action=="Playground"then ok,message=Recreation:Action(player,id)
+    elseif action=="Life"then ok,message=Life:Action(player,id,argument)
     elseif action=="Building"then ok,message=Building:Action(player,id,argument)
     elseif action=="Adventure"then ok,message=Adventures:Action(player,id,argument)
     elseif action=="Boutique"then ok,message=Boutique:Action(player,id,argument)

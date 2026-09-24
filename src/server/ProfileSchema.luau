@@ -55,6 +55,8 @@ function Schema.Migrate(raw,userId)
  for _,entry in ipairs(p.Outbox)do assert(type(entry)=="table" and integer(entry.Recipient,-100000000000,100000000000) and integer(entry.Sequence,1,p.NextTransfer) and integer(entry.Amount,1,1000000000),"Corrupt outgoing settlement")end
  for source,sequence in pairs(p.CreditWatermarks)do assert(type(source)=="string" and integer(sequence,1,1000000000),"Corrupt settlement receipt")end
  for key,value in pairs(p.CaseTruth)do assert(type(key)=="string" and integer(value,-100000000000,100000000000),"Corrupt case identity")end
+ if p.Settings.IntroSeen==nil then p.Settings.IntroSeen=false end
+ assert(type(p.Settings.IntroSeen)=="boolean","Corrupt introduction preference")
  for _,key in ipairs({"Sound","ReducedMotion","Pranks"})do if p.Settings[key]==nil then p.Settings[key]=Schema.Default().Settings[key]end;assert(type(p.Settings[key])=="boolean","Corrupt preference")end
  assert(integer(p.LastSeen,0,100000000000),"Corrupt timestamp")
  local seen={};local slots={};p.Inventory={}

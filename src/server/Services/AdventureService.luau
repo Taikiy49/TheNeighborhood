@@ -20,9 +20,9 @@ end
 function Service:Build()
  local folder=Instance.new("Folder");folder.Name="MapleAdventures";folder.Parent=workspace.Neighborhood.Runtime;self.World=folder
  for id,landmark in pairs(Defs.Landmarks)do
-  local post=part(folder,landmark.Name,Vector3.new(2.8,1.8,.35),landmark.Position+Vector3.new(0,1,0),Color3.fromRGB(45,83,72))
+  local post=part(folder,landmark.Name,Vector3.new(2.8,1.8,.15),Vector3.new(landmark.Position.X,5.5,landmark.Position.Z),Color3.fromRGB(45,83,72))
   post:SetAttribute("Landmark",id);sign(post,"MAPLE STORIES\n"..landmark.Name);prompt(post,"ReadRumor","Read rumor")
-  local stem=part(folder,id.."Post",Vector3.new(.3,2,.3),landmark.Position-Vector3.new(0,.6,0),Color3.fromRGB(135,103,68));stem.CanQuery=false
+  local stem=part(folder,id.."Post",Vector3.new(.15,5.5,.15),Vector3.new(landmark.Position.X,2.75,landmark.Position.Z+.14),Color3.fromRGB(135,103,68));stem.CanQuery=false
   self.Markers[id]=post
  end
  self.Board=part(folder,"Maple Adventures",Vector3.new(5,3,.5),Vector3.new(18,3,-110),Color3.fromRGB(45,83,72))

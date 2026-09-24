@@ -19,6 +19,8 @@ function Service:Apply(player)
  end end end
  local floor=floors[settings.Floor or "Wood"];house.Model.Floor.Material=floor.Material;house.Model.Floor.Color=floor.Color
  if self.Context.Boutique then self.Context.Boutique:Apply(player)end
+ local entry=house.Model:FindFirstChild("EntranceJoinery")
+ if entry then for _,v in ipairs(entry:GetChildren())do if v.Name=="FrontWallInfill"or v.Name=="DoorLintel"then v.Color=house.Model.FrontHeader.Color end end end
  local interior=house.Model:FindFirstChild("BuiltInInterior")
  if interior then for _,detail in ipairs(interior:GetChildren())do if detail:GetAttribute("FloorSeam")then detail.Transparency=house.Model.Floor.Material==Enum.Material.SmoothPlastic and 0 or 1 end end end
  if self.Context.Building then self.Context.Building:ApplyFinish(player)end

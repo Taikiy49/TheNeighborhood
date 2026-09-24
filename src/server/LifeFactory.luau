@@ -93,8 +93,8 @@ function F.World(parent,season)
  local old=parent:FindFirstChild("NeighborhoodLife");if old then old:Destroy()end
  local m=Instance.new("Folder");m.Name="NeighborhoodLife";m.Parent=parent
  local stops={};for i,authoredPos in ipairs(D.Stops)do local pos=Space.Point(authoredPos)
-  F.Part(m,"LanternPost",Vector3.new(.3,5,.3),CFrame.new(pos+Vector3.new(0,.5,0)),timber)
-  local stop=F.Part(m,"ParkLantern"..i,Vector3.new(2.4,1.8,.4),CFrame.new(pos+Vector3.new(0,2,0)),D.SeasonColors[season]);F.Sign(stop,tostring(i).." · "..season);F.Prompt(stop,"LifeStop",tostring(i));stops[tostring(i)]=stop
+  F.Part(m,"LanternPost",Vector3.new(.3,5.5,.3),CFrame.new(pos.X,2.75,pos.Z+.3),timber)
+  local stop=F.Part(m,"ParkLantern"..i,Vector3.new(3.6,1.8,.4),CFrame.new(pos.X,5.5,pos.Z),D.SeasonColors[season]);F.Sign(stop,"Festival trail\nStop "..i);F.Prompt(stop,"LifeStop",tostring(i));stops[tostring(i)]=stop
  end
  -- Open plaza paths keep the new north pavilions connected to the cross street.
  for _,x in ipairs({-22,22})do F.Part(m,"PlazaPath",Space.Point(Vector3.new(6,.15,26)),Space.Frame(x,.12,-146),Color3.fromRGB(183,173,153),Enum.Material.SmoothPlastic)end
