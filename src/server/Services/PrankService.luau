@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Players=game:GetService("Players")
 local Factory=require(script.Parent.Parent.ItemFactory)
 local Service={Active={},Cooldowns={}}
@@ -24,8 +25,8 @@ function Service:Place(player,id)
  profile.Currency-=50;self.Cooldowns[house.Owner]=os.time()+300;self:Clear(id)
  local flock=Instance.new("Model");flock.Name="HarmlessFlamingoPrank";flock.Parent=workspace.Neighborhood.Runtime;self.Active[id]=flock
  local base=house.Model.Foundation.CFrame*CFrame.new(0,-0.5,0)
- for _,x in ipairs({-10,-5,5,10})do local model=Factory.Create("LawnFlamingo");model:PivotTo(base*CFrame.new(x,0.3,-21));model.Parent=flock end
- local tidy=Instance.new("Part");tidy.Name="TidySign";tidy.Size=Vector3.new(3,2,0.3);tidy.CFrame=base*CFrame.new(6,2.5,-23);tidy.Color=Color3.fromRGB(35,79,70);tidy.Anchored=true;tidy.CanCollide=false;tidy:SetAttribute("Action","CleanPrank");tidy:SetAttribute("PrankHouse",id);tidy.Parent=flock
+ for _,x in ipairs({-10,-5,5,10})do local model=Factory.Create("LawnFlamingo");model:PivotTo(base*Space.Frame(x,0.3,-21));model.Parent=flock end
+ local tidy=Instance.new("Part");tidy.Name="TidySign";tidy.Size=Vector3.new(3,2,0.3);tidy.CFrame=base*Space.Frame(6,2.5,-23);tidy.Color=Color3.fromRGB(35,79,70);tidy.Anchored=true;tidy.CanCollide=false;tidy:SetAttribute("Action","CleanPrank");tidy:SetAttribute("PrankHouse",id);tidy.Parent=flock
  local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ActionText="Tidy yard";prompt.ObjectText="The flamingos have unionized";prompt.MaxActivationDistance=10;prompt:SetAttribute("Action","CleanPrank");prompt.Parent=tidy
  local owner=Players:GetPlayerByUserId(house.Owner);if owner then self.Context.Notify(owner,"Your lawn has acquired a temporary flamingo committee. Tidy it or let them leave in a minute.",true)end
  self.Context.Record(player,"Prank")

@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
 local Rules=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingRules)
 local Schema=require(script.Parent.Parent.ProfileSchema)
@@ -38,7 +39,7 @@ function Service:SetDoor(house,open)
 end
 function Service:ContainsExpansion(house,position)
  local profile=self.Context.Data.Profiles[house.Owner];if not profile then return false end
- local v=house.Model.Foundation.CFrame:PointToObjectSpace(position)
+ local v=Space.Unpoint(house.Model.Foundation.CFrame:PointToObjectSpace(position))
  for id in pairs(profile.Building.Unlocked)do local b=D.Bounds[id];if v.X>=b[1]and v.X<=b[2]and v.Z>=b[3]and v.Z<=b[4]and v.Y>=b[5]and v.Y<=b[6]then return true end end
  return false
 end
@@ -62,7 +63,7 @@ function Service:Action(player,action,arg)
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
  local human=player.Character and player.Character:FindFirstChildOfClass("Humanoid")
  if not p or not h or h.Owner~=player.UserId or not root or not human or human.Health<=0 then return false,"Your home is not ready."end
- local position=h.Model.Foundation.CFrame:PointToObjectSpace(root.Position)
+ local position=Space.Unpoint(h.Model.Foundation.CFrame:PointToObjectSpace(root.Position))
  if math.abs(position.X)>29 or position.Z< -36 or position.Z>51 or position.Y< -2 or position.Y>29 then return false,"Return to your own home to build."end
  if player:GetAttribute("Carrying")then return false,"Set down the possession before building."end
  local b=p.Building

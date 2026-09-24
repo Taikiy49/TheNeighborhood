@@ -4,9 +4,23 @@ A Roblox social sandbox about settling into Maple Street, making friends, collec
 
 **Development build — the complete master specification is not finished.** This repository contains the editable game, authored world, generated artwork, Studio build, and recorded test evidence. Passing Studio tests is not a production-release certification.
 
+## A roomier neighborhood
+
+The map is now **720 × 700 studs**. Cottages and their expansions are twice as wide and deep, giving homes **four times the floor area** while keeping furniture and characters normal-sized. Streets, gardens, plot choices and activity destinations follow the new layout.
+
+[Layout changes and compatibility](docs/SPACIOUS-NEIGHBORHOOD.md) · [Local regression results](docs/qa/spacious-regression.json)
+
+### Updated spacious layout
+
+Actual Studio edit-viewport captures of the enlarged authored map and cottage interior. Runtime activities and player furniture are omitted in these architectural views.
+
+| Larger neighborhood | Wider cottage interior |
+|---|---|
+| ![Expanded 720 by 700 stud neighborhood](assets/screenshots/spacious-overview.png) | ![Wide cottage floor and hallway](assets/screenshots/spacious-interior.png) |
+
 ## Screenshots
 
-Actual 1920 × 1079 captures from a temporary Roblox Studio play session on September 23, 2026. Scenic views use a free camera with the HUD hidden. The preview fixture supplies the car, pet and test balance without changing saved player progress. These show the current development build.
+Actual 1920 × 1079 captures from a temporary Roblox Studio play session on September 23, 2026. Scenic views use a free camera with the HUD hidden. The preview fixture supplies the car, pet and test balance without changing saved player progress. The gallery below records the earlier compact layout; updated spacious-layout captures appear separately.
 
 **A walk down Maple Street**
 

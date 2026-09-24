@@ -34,7 +34,7 @@ function Service:SetDoor(house, open)
     house.Door.CanCollide = not open
     house.Door.CanQuery = not open
     local target = house.ClosedCFrame
-    if open then target = target * CFrame.new(-2.5,0,0)*CFrame.Angles(0,math.rad(-100),0)*CFrame.new(2.5,0,0) end
+    if open then target = target * CFrame.new(-house.Door.Size.X/2,0,0)*CFrame.Angles(0,math.rad(-100),0)*CFrame.new(house.Door.Size.X/2,0,0) end
     TweenService:Create(house.Door,TweenInfo.new(Config.DoorTween),{CFrame=target}):Play()
 end
 function Service:DoorAction(player, target, action)
@@ -55,6 +55,10 @@ function Service:DoorAction(player, target, action)
     self:SetDoor(house,not house.Open)
     if house.Owner==player.UserId and house.Open then self.Context.Record(player,"EnterHouse")end
     return true, house.Open and "Door opened." or "Door closed."
+end
+function Service:ContainsInterior(house,position)
+ local v=house.Model.Foundation.CFrame:PointToObjectSpace(position);local size=house.Model.Foundation.Size
+ return math.abs(v.X)<=size.X/2 and math.abs(v.Z)<=size.Z/2 and v.Y>=-2 and v.Y<=14
 end
 function Service:Release(player)
     local house = self.ByPlayer[player.UserId]

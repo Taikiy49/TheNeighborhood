@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 if not game:GetService("RunService"):IsStudio()then return end
 local phase=workspace:GetAttribute("PersistenceCycle")
 if phase~=1 and phase~=2 then return end
@@ -15,7 +16,7 @@ local ok,result=pcall(function()
   local Building=require(script.Parent.Services.BuildingService)
   profile.Currency=20000;player.Character:PivotTo(house.Model.Arrival.CFrame)
   for _,id in ipairs({"GardenRoom","Loft","Garage","Workshop"})do assert(Building:Action(player,"Buy",id))end
-  player.Character:PivotTo(house.Model.Foundation.CFrame*CFrame.new(0,4,42))
+  player.Character:PivotTo(house.Model.Foundation.CFrame*Space.Frame(0,4,42))
   assert(Building:Action(player,"Craft","Bench"))
   assert(Building:Action(player,"Place",{Zone="Loft",Cell=1,Kind="Bench",Rotation=2}))
   assert(Building:Action(player,"SaveLayout","1"))

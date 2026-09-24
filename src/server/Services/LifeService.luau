@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Players=game:GetService("Players")
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.LifeDefinitions)
 local R=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
@@ -105,7 +106,7 @@ function S:Action(player,action,arg)
   local root=player.Character.HumanoidRootPart;local v=house.Model.Foundation.CFrame:PointToObjectSpace(root.Position)
   local positions={Vector3.new(0,3,-19),Vector3.new(0,3,0),Vector3.new(18,3,22)}
   if action=="VisitStop"then
-   if visit.Step>3 or arg~=tostring(visit.Step)or (v-positions[visit.Step]).Magnitude>9 then return false,"Walk to your next tour stop: porch, living room, then side garden."end
+   if visit.Step>3 or arg~=tostring(visit.Step)or (v-Space.Point(positions[visit.Step])).Magnitude>9 then return false,"Walk to your next tour stop: porch, living room, then side garden."end
    local target=visit.Step==1 and house.Model.NeighborhoodLife.TourSign or visit.Step==2 and house.Model.Foundation or house.Model.NeighborhoodLife.GardenBed1
    if not self:Walked(player,target)then return false,"Enjoy the walk between tour stops."end
    visit.Step+=1;if visit.Step==4 then l.Tours=math.min(1000000000,l.Tours+1)end;return true,visit.Step==4 and "Home tour complete! Leave a preset compliment."or "Tour highlight visited."

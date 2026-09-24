@@ -137,7 +137,7 @@ local function run()
     table.insert(verified,"Three distinct physical mailbox visits pay once; remote and repeat checks rejected")
     local Pranks=require(script.Parent.Services.PrankService)
     local prankBalance=Data:Get(player).Currency
-    player.Character:PivotTo(b.ClosedCFrame*CFrame.new(0,0,-5))
+    player.Character:PivotTo(b.Door.CFrame*CFrame.new(0,0,-5))
     assert(not Pranks:Place(player,a.Model.Name),"Self prank accepted")
     assert(not Pranks:Place(player,b.Model.Name),"Protected home pranked")
     b.Model:SetAttribute("ProtectedUntil",0);Data:Get(players[2]).Settings.Pranks=false
@@ -161,7 +161,7 @@ local function run()
     table.insert(verified,"Nearby house survey respects walls, distance and request cooldown")
     local Robbery=require(script.Parent.Services.RobberyService)
     local thief=players[2]
-    assert(Houses:DoorAction(player,a.Model.Lock,"Lock"))
+    assert(Houses:DoorAction(player,a.Model.Lock,"Lock"));task.wait(.5)
     player.Character:PivotTo(a.Model.DisplaySlots.Slot3.CFrame*CFrame.new(0,3,0))
     thief.Character:PivotTo(a.ClosedCFrame*CFrame.new(0,0,-5));thief.Character.HumanoidRootPart:SetNetworkOwner(nil)
     assert(not Robbery:Breach(thief,a.Model.Name),"Protected door breach allowed")

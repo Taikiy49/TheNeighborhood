@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Players=game:GetService("Players")
 local Pathfinding=game:GetService("PathfindingService")
 local Service={Pets={}}
@@ -10,7 +11,7 @@ function Service:Spawn(player)
  if self.Pets[player.UserId]then return end
  local house=self.Context.Houses.ByPlayer[player.UserId];if not house then return end
  local model=Instance.new("Model");model.Name="Biscuit_"..player.UserId;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic
- local base=house.Model.Foundation.CFrame*CFrame.new(-9,0,-19)
+ local base=house.Model.Foundation.CFrame*Space.Frame(-9,0,-19)
  local function part(name,size,position,color,round)
   local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=CFrame.new(position);p.Color=color;p.Anchored=true;p.CanCollide=false;p.CanQuery=false;p.CanTouch=false;if round then p.Shape=Enum.PartType.Ball end;p.Parent=model;return p
  end
@@ -50,7 +51,7 @@ function Service:Step(dt)
   local player=Players:GetPlayerByUserId(id);local profile=player and self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[id]
   local root=player and player.Character and player.Character:FindFirstChild("HumanoidRootPart")
   if profile and house and root then
-   local goal=profile.Pets.Mode=="Stay" and (house.Model.Foundation.CFrame*CFrame.new(-9,1,-19)).Position or (root.CFrame*CFrame.new(3,-1,4)).Position
+   local goal=profile.Pets.Mode=="Stay" and (house.Model.Foundation.CFrame*Space.Frame(-9,1,-19)).Position or (root.CFrame*CFrame.new(3,-1,4)).Position
    if os.clock()>pet.NextPath and not pet.Computing and (goal-pet.Root.Position).Magnitude>3 then
     pet.NextPath=os.clock()+2;pet.Computing=true
     task.spawn(function()

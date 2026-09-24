@@ -62,7 +62,7 @@ function Service:Action(player,action,argument)
  elseif action=="HighFive" and self.Current.Kind=="BlockParty"then
   local target=Validation.UserId(argument) and Players:GetPlayerByUserId(argument)
   local targetRoot=target and target.Character and target.Character:FindFirstChild("HumanoidRootPart")
-  if not target or target==player or not targetRoot or (root.Position-targetRoot.Position).Magnitude>10 or Vector3.new(root.Position.X,0,root.Position.Z).Magnitude>30 then return false,"Meet that neighbor in Maple Green first."end
+  if not target or target==player or not targetRoot or (root.Position-targetRoot.Position).Magnitude>10 or Vector3.new(root.Position.X,0,root.Position.Z).Magnitude>60 then return false,"Meet that neighbor in Maple Green first."end
   local offered=self.Offers[target.UserId]
   if offered and offered.Target==player.UserId and os.clock()-offered.Time<15 then
    self.Offers[target.UserId]=nil;self.Offers[player.UserId]=nil

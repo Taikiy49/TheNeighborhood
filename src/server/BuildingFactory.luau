@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.BuildingDefinitions)
 local F={}
 local cream=Color3.fromRGB(238,230,208);local green=Color3.fromRGB(80,119,100);local wood=Color3.fromRGB(141,104,70)
@@ -105,17 +106,18 @@ function F.Create(house,b)
   end
  end end
  local furnishings=Instance.new("Folder");furnishings.Name="Furnishings";furnishings.Parent=model
+ Space.Stretch(model,basis)
  return model
 end
 function F.Arrange(model,house,b)
  local folder=model.Furnishings;folder:ClearAllChildren()
- for key,v in pairs(b.Placed)do local xyz=D.Rooms[v.Zone].Cells[v.Cell];local m=F.Furniture(folder,house.Foundation.CFrame*CFrame.new(table.unpack(xyz))*CFrame.Angles(0,math.rad(v.Rotation*90),0),v.Kind);m.Name=key end
+ for key,v in pairs(b.Placed)do local xyz=D.Rooms[v.Zone].Cells[v.Cell];local m=F.Furniture(folder,house.Foundation.CFrame*Space.Frame(table.unpack(xyz))*CFrame.Angles(0,math.rad(v.Rotation*90),0),v.Kind);m.Name=key end
 end
 function F.AddDisplays(house,b)
  for index,zone in ipairs(D.Order)do if b.Unlocked[zone]then for i,xyz in ipairs(D.Rooms[zone].Displays)do
   local n=6+(index-1)*2+i
   if not house.DisplaySlots:FindFirstChild("Slot"..n)then
-   local pad=part(house.DisplaySlots,"Slot"..n,Vector3.new(3,.1,3),house.Foundation.CFrame*CFrame.new(table.unpack(xyz)),cream,Enum.Material.Concrete)
+   local pad=part(house.DisplaySlots,"Slot"..n,Vector3.new(3,.1,3),house.Foundation.CFrame*Space.Frame(table.unpack(xyz)),cream,Enum.Material.Concrete)
    pad.CanCollide=false;pad:SetAttribute("HouseId",house.Name);pad:SetAttribute("Slot",n);pad:SetAttribute("Expansion",true);prompt(pad,"Place","Display a possession")
   end
  end end end

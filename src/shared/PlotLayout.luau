@@ -3,7 +3,7 @@ local Layout={}
 function Layout.Valid(slot)return type(slot)=='number'and slot%1==0 and slot>=1 and slot<=8 end
 function Layout.Position(slot)
  assert(Layout.Valid(slot),'Invalid plot')
- return Vector2.new(slot<=4 and -94 or 94,-93+((slot-1)%4)*62)
+ return Vector2.new(slot<=4 and -188 or 188,-186+((slot-1)%4)*124)
 end
 function Layout.Nearest(used,anchor)
  anchor=Layout.Valid(anchor)and anchor or 1

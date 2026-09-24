@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Players=game:GetService("Players")
 local Run=game:GetService("RunService")
 local Physics=game:GetService("PhysicsService")
@@ -41,7 +42,7 @@ function Service:Spawn(player)
  local profile=self.Context.Data:Get(player);local house=self.Context.Houses.ByPlayer[player.UserId]
  if not profile or not profile.Vehicles.Compact or not house then return false,"Buy a Maple Compact first."end
  local previous=self.Cars[player.UserId];if previous and previous.Seat.Occupant then return false,"Get out before recalling the car."end
- local cf=house.Model.Foundation.CFrame*(profile.Building.Unlocked.Garage and CFrame.new(-20,3.5,-23)or CFrame.new(-12,3.5,-25))
+ local cf=house.Model.Foundation.CFrame*(profile.Building.Unlocked.Garage and Space.Frame(-20,3.5,-23)or Space.Frame(-12,3.5,-25))
  local query=OverlapParams.new();query.FilterType=Enum.RaycastFilterType.Exclude;query.FilterDescendantsInstances={player.Character,previous and previous.Model or house.Model};query.RespectCanCollide=true
  if #workspace:GetPartBoundsInBox(cf,Vector3.new(7,4,10),query)>0 then return false,"Clear the driveway before recalling your car."end
  self:Remove(player)

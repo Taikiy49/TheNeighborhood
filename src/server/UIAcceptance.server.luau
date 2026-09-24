@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 if not game:GetService("RunService"):IsStudio()then return end
 local Test=game:GetService("StudioTestService");local args=Test:GetTestArgs()
 if type(args)~="table"or args.Name~="UIAcceptance"then return end
@@ -11,7 +12,7 @@ local function run()
   repeat task.wait(.1)until Data:Get(player)and Data:Get(player)._Restored and player.Character and player.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline
   Data:Get(player).Currency=20000;local home=Houses.ByPlayer[player.UserId].Model;player.Character:PivotTo(home.Arrival.CFrame)
   for _,id in ipairs({"GardenRoom","Loft","Garage","Workshop"})do assert(Building:Action(player,"Buy",id))end
-  player.Character:PivotTo(home.Foundation.CFrame*CFrame.new(0,4,42))
+  player.Character:PivotTo(home.Foundation.CFrame*Space.Frame(0,4,42))
   for _,id in ipairs({"Bench","Bookcase","Planter","Desk"})do assert(Building:Action(player,"Craft",id))end
   assert(Building:Action(player,"Place",{Zone="Loft",Cell=1,Kind="Bench",Rotation=2}));assert(Building:Action(player,"SaveLayout","1"));Data.Context.Sync(player)
  end

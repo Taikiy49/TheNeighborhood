@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 if not game:GetService("RunService"):IsStudio()then return end
 local Test=game:GetService("StudioTestService");local args=Test:GetTestArgs()
 if type(args)~="table"or (args.Name~="BuildingAcceptance"and args.Name~="BuildingCapacity")then return end
@@ -12,7 +13,7 @@ local function run()
  local players=Players:GetPlayers();assert(#players==expected and Data.SessionOnly,"Expected isolated clients: count="..#players..", sessionOnly="..tostring(Data.SessionOnly)..", ready="..tostring(workspace:GetAttribute("NeighborhoodReady")))
  for _,p in ipairs(players)do repeat task.wait(.1)until Data:Get(p)and Data:Get(p)._Restored and p.Character and p.Character:FindFirstChild("HumanoidRootPart")or os.clock()>deadline;assert(Data:Get(p)and Data:Get(p)._Restored,"Profile missing");p.Character.HumanoidRootPart:SetNetworkOwner(nil)end
  local p,q=players[expected==8 and 5 or 1],players[2];local profile=Data:Get(p);local h=Houses.ByPlayer[p.UserId].Model;local verified={}
- local function at(player,x,y,z)local house=Houses.ByPlayer[player.UserId].Model;player.Character:PivotTo(house.Foundation.CFrame*CFrame.new(x,y,z))end
+ local function at(player,x,y,z)local house=Houses.ByPlayer[player.UserId].Model;player.Character:PivotTo(house.Foundation.CFrame*Space.Frame(x,y,z))end
  local function act(player,action,arg)local ok,why=B:Action(player,action,arg);assert(ok,action..": "..tostring(why))end
  local old=Schema.Default();old.Building=nil;assert(R.Valid(Schema.Migrate(old,p.UserId).Building))
  for _,mutate in ipairs({
@@ -43,10 +44,10 @@ local function run()
   for _,zone in ipairs(D.Order)do for cell=1,#D.Rooms[zone].Cells do act(player,"Place",{Zone=zone,Cell=cell,Kind=D.RecipeOrder[(cell-1)%4+1],Rotation=(cell-1)%4})end end
   assert(R.Valid(pr.Building));act(player,"SaveLayout","1")
   local n=0;for _ in pairs(pr.Building.Placed)do n+=1 end;assert(n==15,"Expected 15 furniture spots")
-  local box,size=home.HomeExpansion:GetBoundingBox();assert(size.Magnitude<120,"Expansion exceeds plot scale")
+  local box,size=home.HomeExpansion:GetBoundingBox();assert(size.Magnitude<240,"Expansion exceeds plot scale")
   for _,part in ipairs(home.HomeExpansion:GetDescendants())do if part:IsA("BasePart")then
    local localPos=home.Foundation.CFrame:PointToObjectSpace(part.Position)
-   assert(math.abs(localPos.X)+part.Size.X/2<=29.1,"Expansion crosses neighboring plot: "..part.Name)
+   assert(math.abs(localPos.X)+part.Size.X/2<=58.2,"Expansion crosses neighboring plot: "..part.Name)
   end end
  end
  table.insert(verified,"All expansions purchased once per owner; prerequisite, cash and 4,200 malformed request checks")
@@ -54,7 +55,7 @@ local function run()
  at(q,0,4,42);local qmoney=Data:Get(q).Currency
  local target=h.HomeExpansion:FindFirstChild("Cell_GardenRoom_1")
  assert(not B.Context.Interactions.Handlers.FurnishHome(q,target),"Neighbor gained furnishing access")
- q.Character:PivotTo(h.Foundation.CFrame*CFrame.new(0,4,42))
+ q.Character:PivotTo(h.Foundation.CFrame*Space.Frame(0,4,42))
  assert(not B:Action(q,"Pack",{Zone="GardenRoom",Cell=1}),"Neighbor edited from another plot")
  assert(Data:Get(q).Currency==qmoney)
  at(p,0,4,42);local saved=game:GetService("HttpService"):JSONEncode(profile.Building.Placed)
@@ -82,7 +83,7 @@ local function run()
  act(p,"LoadLayout","1");assert(Items.Items[item.Id].State=="Displayed"and Items.Models[item.Id])
  local giant=require(script.Parent.ItemFactory).Create("GoldenToilet");local box,size=giant:GetBoundingBox();giant:Destroy()
  for slot=7,14 do local zone=D.SlotRoom(slot);local limits=D.Bounds[zone];local base=h.DisplaySlots["Slot"..slot].CFrame*CFrame.new(0,.15,0)*box
-  for _,x in ipairs({-1,1})do for _,z in ipairs({-1,1})do local v=h.Foundation.CFrame:PointToObjectSpace(base:PointToWorldSpace(Vector3.new(x*size.X/2,0,z*size.Z/2)));assert(v.X>limits[1]+.4 and v.X<limits[2]-.4 and v.Z>limits[3]+.4 and v.Z<limits[4]-.4,"Large collectible clips room: "..slot)end end
+  for _,x in ipairs({-1,1})do for _,z in ipairs({-1,1})do local v=Space.Unpoint(h.Foundation.CFrame:PointToObjectSpace(base:PointToWorldSpace(Vector3.new(x*size.X/2,0,z*size.Z/2))));assert(v.X>limits[1]+.4 and v.X<limits[2]-.4 and v.Z>limits[3]+.4 and v.Z<limits[4]-.4,"Large collectible clips room: "..slot)end end
  end
  local snapshot=Schema.Migrate(Data:Snapshot(p),p.UserId);assert(snapshot.Building.Unlocked.Loft and snapshot.Building.Layouts["1"])
  local back=h.BackWall;B:Release(p);assert(back.CanCollide and back.Transparency<1 and #h.DisplaySlots:GetChildren()==6 and not h:FindFirstChild("HomeExpansion"))
@@ -92,7 +93,7 @@ local function run()
  local walked=0
  local function walk(points)
   local human=p.Character.Humanoid;human.WalkSpeed=12
-  for _,xyz in ipairs(points)do local world=h.Foundation.CFrame:PointToWorldSpace(Vector3.new(table.unpack(xyz)));human:MoveTo(world);local timeout=os.clock()+9
+  for _,xyz in ipairs(points)do local world=h.Foundation.CFrame:PointToWorldSpace(Space.Point(Vector3.new(table.unpack(xyz))));human:MoveTo(world);local timeout=os.clock()+9
    repeat task.wait(.05)until (Vector3.new(p.Character.HumanoidRootPart.Position.X,world.Y,p.Character.HumanoidRootPart.Position.Z)-world).Magnitude<1.2 or os.clock()>timeout
    assert(os.clock()<timeout,"Blocked walk after "..walked.." legs at "..table.concat(xyz,",").."; actual="..tostring(h.Foundation.CFrame:PointToObjectSpace(p.Character.HumanoidRootPart.Position)).."; state="..human:GetState().Name);walked+=1
   end
@@ -110,23 +111,23 @@ local function run()
  at(p,0,4,18);task.wait(.3);walk({{0,.7,29},{0,.7,33},{0,.7,39},{0,.7,33},{0,.7,29},{0,.7,18}})
  table.insert(verified,walked.." physical walking legs: cottage connection, loft up/down, garage and workshop")
  at(p,0,4,-20);profile.Vehicles={Compact=true,Color="Mint",Plate="BUILD-QA"};local ok,why=Vehicles:Spawn(p);assert(ok,why)
- assert((Vehicles.Cars[p.UserId].Body.Position-(h.Foundation.CFrame*CFrame.new(-20,3.5,-23)).Position).Magnitude<1)
+ assert((Vehicles.Cars[p.UserId].Body.Position-(h.Foundation.CFrame*Space.Frame(-20,3.5,-23)).Position).Magnitude<1)
  local car=Vehicles.Cars[p.UserId];local human=p.Character.Humanoid
  p.Character:PivotTo(car.Seat.CFrame*CFrame.new(0,2,0));car.Seat:Sit(human);task.wait(.5);car.Body:SetNetworkOwner(nil)
  assert(car.Seat.Occupant==human,"Garage driver could not sit")
  local drive=game:GetService("RunService").PreSimulation:Connect(function()car.Throttle=.5;car.Steer=0;car.LastInput=os.clock()end)
  local driveDeadline=os.clock()+10
- repeat task.wait(.1)until h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -38 or os.clock()>driveDeadline
+ repeat task.wait(.1)until h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -76 or os.clock()>driveDeadline
  drive:Disconnect();car.Throttle=0
- assert(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -38,"Car could not drive through the garage entrance: "..tostring(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position)))
+ assert(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position).Z< -76,"Car could not drive through the garage entrance: "..tostring(h.Foundation.CFrame:PointToObjectSpace(car.Body.Position)))
  assert(car.Body.AssemblyLinearVelocity.Magnitude<45,"Garage exit exceeded bounded speed")
  human.Sit=false;human.Jump=true;task.wait(.3);Vehicles:Remove(p)
  table.insert(verified,"Owned car recalls inside garage; actual seated driver physically exits through its doorway")
- for _,zone in ipairs(D.Order)do local xyz=D.Rooms[zone].Displays[1];assert(B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Vector3.new(table.unpack(xyz)))),"New room is outside robbery boundary")end
- assert(not B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Vector3.new(0,3,-50))),"Street is inside expansion")
+ for _,zone in ipairs(D.Order)do local xyz=D.Rooms[zone].Displays[1];assert(B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Space.Point(Vector3.new(table.unpack(xyz))))),"New room is outside robbery boundary")end
+ assert(not B:ContainsExpansion(Houses.ByPlayer[p.UserId],h.Foundation.CFrame:PointToWorldSpace(Space.Point(Vector3.new(0,3,-50)))),"Street is inside expansion")
  local Robbery=require(script.Parent.Services.RobberyService)
  local lamp=Items:Create(p,"Lamp");p.Character:PivotTo(h.DisplaySlots.Slot14.CFrame*CFrame.new(0,3,0));assert(Items:Place(p,lamp.Id,14))
- q.Character:PivotTo(h.Foundation.CFrame*CFrame.new(7,3.7,43));assert(Robbery:Carry(q,lamp,Houses.ByPlayer[p.UserId]))
+ q.Character:PivotTo(h.Foundation.CFrame*Space.Frame(7,3.7,43));assert(Robbery:Carry(q,lamp,Houses.ByPlayer[p.UserId]))
  local carry=Robbery.Sessions[q.UserId];carry.Started=os.clock()-100;Robbery:Step();assert(carry.State=="Escaping","Theft escaped while still inside workshop")
  Robbery:Return(carry,"Boundary test complete");assert(lamp.State=="Displayed"and lamp.Slot==14)
  at(p,0,4,-20);act(p,"LoadLayout","1")

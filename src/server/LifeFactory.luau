@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local D=require(game.ReplicatedStorage.Neighborhood.Shared.LifeDefinitions)
 local R=require(game.ReplicatedStorage.Neighborhood.Shared.LifeRules)
 local F={}
@@ -22,16 +23,19 @@ function F.Home(house,life,now)
  local old=house:FindFirstChild("NeighborhoodLife");if old then old:Destroy()end
  local m=Instance.new("Model");m.Name="NeighborhoodLife";m.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;m.Parent=house
  local basis=house.Foundation.CFrame;local accent=D.Styles[life.Style].Color
- local function part(name,size,x,y,z,color,mat)return F.Part(m,name,size,basis*CFrame.new(x,y,z),color,mat)end
+ local anchor
+ local function part(name,size,x,y,z,color,mat)local pos=Vector3.new(x,y,z);pos=anchor and Space.Point(anchor)+(pos-anchor)or Space.Point(pos);return F.Part(m,name,size,basis*CFrame.new(pos),color,mat)end
  for i=1,4 do
-  local x,z=table.unpack(D.Beds[i]);local bed=part("GardenBed"..i,Vector3.new(2.4,.8,3),x,1,z,accent);F.Prompt(bed,"LifeGarden",tostring(i))
+  local x,z=table.unpack(D.Beds[i]);anchor=Vector3.new(x,0,z);local bed=part("GardenBed"..i,Vector3.new(2.4,.8,3),x,1,z,accent);F.Prompt(bed,"LifeGarden",tostring(i))
   part("Soil",Vector3.new(2.1,.15,2.7),x,1.47,z,Color3.fromRGB(72,55,41),Enum.Material.Ground)
   local b=life.Beds[tostring(i)];if b then
-   if R.Ready(b,now)then for j=1,3 do F.Flower(m,basis*CFrame.new(x+(j-2)*.6,1.6,z),D.Flowers[b.Kind].Color,b.Hybrid)end
+   if R.Ready(b,now)then for j=1,3 do F.Flower(m,basis*CFrame.new(Space.Point(Vector3.new(x,1.6,z))+Vector3.new((j-2)*.6,0,0)),D.Flowers[b.Kind].Color,b.Hybrid)end
    else local sprout=part("Sprout",Vector3.new(.4,.5,.4),x,1.8,z,green);sprout.Shape=Enum.PartType.Ball;sprout.CanCollide=false end
   end
  end
+ anchor=nil
  for z=14,25,3 do part("GardenSteppingStone",Vector3.new(2.2,.12,2),20,.15,z,Color3.fromRGB(183,173,153),Enum.Material.Slate)end
+ anchor=Vector3.new(21,0,11)
  local counter=part("LifeCounter",Vector3.new(5,2.5,2),21,1.5,11,timber);F.Prompt(counter,"LifeBusiness")
  for _,x in ipairs({18.5,23.5})do part("AwningPost",Vector3.new(.2,6,.2),x,3.2,11,cream)end
  for i=1,6 do part("Awning",Vector3.new(.9,.18,3.5),18.3+i*.85,6.3,11,i%2==0 and cream or accent)end
@@ -41,10 +45,11 @@ function F.Home(house,life,now)
   local head=part("CustomerHead",Vector3.new(1.2,1.2,1.2),21,4.1,7.8,Color3.fromRGB(190,144,109));head.Shape=Enum.PartType.Ball;head.CanCollide=false
   for _,x in ipairs({20.5,21.5})do local leg=part("CustomerLeg",Vector3.new(.5,1.4,.6),x,1,7.8,green);leg.CanCollide=false end
  end
+ anchor=nil
  local tour=part("TourSign",Vector3.new(4,2,.2),8,3,-21,green);F.Sign(tour,life.TourOpen and "WELCOME\nHome tour"or "Home gallery");F.Prompt(tour,"LifeTours")
  if life.Banners[life.Theme]then local banner=part("ChallengeBanner",Vector3.new(2,3,.12),11,4,-14,accent);F.Sign(banner,life.Theme)end
  for i,id in ipairs(D.BlueprintOrder)do if life.Blueprints[id]then
-  local x=14;local z=18+i*6
+  local x=14;local z=18+i*6;anchor=Vector3.new(x,0,z)
   if id=="WindChime"then
    part(id,Vector3.new(2,.2,.5),x,4,z,timber);for j=1,4 do part("Chime",Vector3.new(.15,1+j*.25,.15),x-1+j*.4,3,z,cream,Enum.Material.Metal)end
   elseif id=="Birdhouse"then
@@ -56,6 +61,7 @@ function F.Home(house,life,now)
   else part("LanternPost",Vector3.new(.25,4,.25),x,2.5,z,timber);part(id,Vector3.new(1,1.2,1),x,4.7,z,Color3.fromRGB(242,203,119),Enum.Material.Neon)end
  end end
  if life.Equipped~=""then
+  anchor=Vector3.new(6,0,-14)
   local season,kind=life.Equipped:match("^(%a+):(%a+)$");local color=D.SeasonColors[season]
   if kind=="Wreath"then for i=1,10 do local a=i*math.pi/5;local leaf=part("FestivalWreath",Vector3.new(.6,.6,.25),6+math.cos(a),5+math.sin(a),-14,color);leaf.Shape=Enum.PartType.Ball;leaf.CanCollide=false end
   elseif kind=="Flag"then local flag=part("FestivalFlag",Vector3.new(2.5,2,.12),6,5,-14,color);F.Sign(flag,season)
@@ -65,7 +71,7 @@ function F.Home(house,life,now)
 end
 function F.Project(parent,id,amount)
  local d=D.Projects[id];local old=parent:FindFirstChild(id);if old then old:Destroy()end
- local m=Instance.new("Model");m.Name=id;m.Parent=parent;local cf=CFrame.new(d.Position)*CFrame.Angles(0,id=="Greenhouse"and 0 or math.pi,0);local width=id=="Greenhouse"and 12 or 18
+ local m=Instance.new("Model");m.Name=id;m.Parent=parent;local cf=CFrame.new(Space.Point(d.Position))*CFrame.Angles(0,id=="Greenhouse"and 0 or math.pi,0);local width=id=="Greenhouse"and 12 or 18
  local function p(n,s,x,y,z,c,mat)return F.Part(m,n,s,cf*CFrame.new(x,y,z),c,mat)end
  p("Deck",Vector3.new(width,.4,14),0,-.6,0,timber)
  for _,x in ipairs({-width/2,width/2})do for _,z in ipairs({-6.5,6.5})do p("Pillar",Vector3.new(.5,8,.5),x,3,z,cream)end end
@@ -80,17 +86,18 @@ function F.Project(parent,id,amount)
   for _,x in ipairs({-3,3})do p("Bench",Vector3.new(3,.5,2),x,.9,2,timber);for _,z in ipairs({1.3,2.7})do p("BenchLeg",Vector3.new(.25,1,.25),x,.3,z,cream)end end
   for i=1,3 do F.Flower(m,cf*CFrame.new(-3+i*1.5,2.3,-4),D.Flowers.Daisy.Color,false)end
  end
+ Space.Stretch(m,cf)
  return station
 end
 function F.World(parent,season)
  local old=parent:FindFirstChild("NeighborhoodLife");if old then old:Destroy()end
  local m=Instance.new("Folder");m.Name="NeighborhoodLife";m.Parent=parent
- local stops={};for i,pos in ipairs(D.Stops)do
+ local stops={};for i,authoredPos in ipairs(D.Stops)do local pos=Space.Point(authoredPos)
   F.Part(m,"LanternPost",Vector3.new(.3,5,.3),CFrame.new(pos+Vector3.new(0,.5,0)),timber)
   local stop=F.Part(m,"ParkLantern"..i,Vector3.new(2.4,1.8,.4),CFrame.new(pos+Vector3.new(0,2,0)),D.SeasonColors[season]);F.Sign(stop,tostring(i).." · "..season);F.Prompt(stop,"LifeStop",tostring(i));stops[tostring(i)]=stop
  end
  -- Open plaza paths keep the new north pavilions connected to the cross street.
- for _,x in ipairs({-22,22})do F.Part(m,"PlazaPath",Vector3.new(6,.15,26),CFrame.new(x,.12,-146),Color3.fromRGB(183,173,153),Enum.Material.Cobblestone)end
+ for _,x in ipairs({-22,22})do F.Part(m,"PlazaPath",Space.Point(Vector3.new(6,.15,26)),Space.Frame(x,.12,-146),Color3.fromRGB(183,173,153),Enum.Material.Cobblestone)end
  return m,stops
 end
 return F

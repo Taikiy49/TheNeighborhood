@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Guide={}
 local definitions={
  Mabel={Name="Mabel · Neighborhood guide (NPC)",Position=Vector3.new(8,0,-95),Color=Color3.fromRGB(212,168,95),Lines={{"Welcome to Maple Street","The address at the top of your screen is your home. Open the door and place your starter furniture on the marked spots."},{"Honest work pays","The community board gives parcel deliveries. Deliver to the correct mailbox, then spend your earnings at Maple & Co."},{"Keep it yours","Stored items are protected. Displayed items may tempt a visitor. Locks slow thieves down; cameras provide clues."}}},
@@ -10,7 +11,7 @@ function Guide.Install()
  for id,definition in pairs(definitions)do if not folder:FindFirstChild(id)then
   local model=Instance.new("Model");model.Name=id;model.Parent=folder
   local function part(name,size,offset,color)
-   local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=CFrame.new(definition.Position+offset);p.Color=color;p.Anchored=true;p.CanCollide=false;p.Parent=model;return p
+   local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=CFrame.new(Space.Point(definition.Position)+offset);p.Color=color;p.Anchored=true;p.CanCollide=false;p.Parent=model;return p
   end
   local torso=part("Torso",Vector3.new(2.2,2.6,1),Vector3.new(0,3.6,0),definition.Color)
   local head=part("Head",Vector3.new(1.6,1.6,1.6),Vector3.new(0,5.7,0),Color3.fromRGB(207,162,124));head.Shape=Enum.PartType.Ball

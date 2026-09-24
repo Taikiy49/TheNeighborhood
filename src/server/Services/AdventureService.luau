@@ -1,3 +1,4 @@
+local Space=require(game.ReplicatedStorage.Neighborhood.Shared.WorldSpace)
 local Players=game:GetService("Players")
 local Shared=game.ReplicatedStorage.Neighborhood.Shared
 local Defs=require(Shared.AdventureDefinitions)
@@ -5,7 +6,7 @@ local Config=require(Shared.Config)
 local Service={Jobs={},Markers={},Project=1,ProjectProgress=0,Contributors={},LastContribution={}}
 
 local function part(parent,name,size,position,color)
- local p=Instance.new("Part");p.Name=name;p.Size=size;p.Position=position;p.Color=color
+ local p=Instance.new("Part");p.Name=name;p.Size=Space.Point(size);p.Position=Space.Point(position);p.Color=color
  p.Material=Enum.Material.Wood;p.Anchored=true;p.CanCollide=false;p.CanTouch=false;p.Parent=parent;return p
 end
 local function sign(p,text)
