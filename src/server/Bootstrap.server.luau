@@ -133,6 +133,7 @@ local function added(player)
     if not house then player:Kick("This neighborhood is full. Please join another server."); return end
     Building:Restore(player)
     Residence:Restore(player)
+    require(script.Parent.OwnerHome).Apply(player.UserId,profile,house.Model)
     Items:Restore(player,profile,house)
     Customization:Apply(player)
     Life:Restore(player)

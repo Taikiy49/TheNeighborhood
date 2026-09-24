@@ -14,7 +14,7 @@ function S:Init(context)
   for _,z in ipairs({-24,40})do p('FenceRail',{18,2,.3},34,1,z,A.Cream)end
   p('FenceRail',{.3,2,64},43,1,8,A.Cream)
   for _,z in ipairs({-24,-8,8,24,40})do p('FencePost',{.5,3,.5},43,1.2,z,A.Wood)end
-  local board=p('YardBoard',{5,2,.3},22,4,-20,A.Ink);A.Sign(board,'GARDEN');A.Prompt(board,'YardOpen','Garden','Decorate yard');board:SetAttribute('HouseId',h.Name)
+  local board=p('YardBoard',{1,1,1},22,2,-20,A.Ink);board.Transparency=1;board.CanCollide=false;A.Prompt(board,'YardOpen','Garden','Decorate yard');board:SetAttribute('HouseId',h.Name)
  end
  context.Interactions:Register('YardOpen',function(player,target)if player:GetAttribute('HouseId')~=target:GetAttribute('HouseId')then return false,'This garden belongs to your neighbor.'end;context.Open(player,'Yard');return true end)
  local last={};context.Interactions:Register('YardBounce',function(player)

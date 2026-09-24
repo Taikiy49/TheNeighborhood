@@ -35,7 +35,7 @@ function M.Build(W)
  local pavilion=p('GardenPavilionRoof',{28,1,24},405,15,125,A.Ink,Enum.Material.Slate)
  for _,x in ipairs({393,417})do for _,z in ipairs({115,135})do p('PavilionColumn',{.7,15,.7},x,7.5,z,A.Cream)end end
  bench(405,125)
- W.Sign(root,'GardenSign','COAST GARDENS',380,245,0)
+ -- Garden planting is self-explanatory; no freestanding advertising board.
  -- Retail promenade: storefront-to-storefront paths and orderly outdoor tables.
  path(-295,175,460,9)
  for _,x in ipairs({-460,-375,-265,-140})do path(x,165,6,20)end

@@ -39,14 +39,14 @@ function F.Home(house,life,now)
  local counter=part("LifeCounter",Vector3.new(5,2.5,2),21,1.5,11,timber);F.Prompt(counter,"LifeBusiness")
  for _,x in ipairs({18.5,23.5})do part("AwningPost",Vector3.new(.2,6,.2),x,3.2,11,cream)end
  for i=1,6 do part("Awning",Vector3.new(.82,.18,3.5),18.3+i*.85,6.3,11,i%2==0 and cream or accent)end
- local sign=part("BusinessSign",Vector3.new(5,1.4,.2),21,4.8,10.6,green);F.Sign(sign,D.Businesses[life.Business]and D.Businesses[life.Business].Name or "Garden workshop")
+ if D.Businesses[life.Business]then local sign=part("BusinessSign",Vector3.new(5,1.4,.2),21,4.8,10.6,green);F.Sign(sign,D.Businesses[life.Business].Name)end
  if life.OrderStep>0 then
   local torso=part("Customer",Vector3.new(1.6,2,1),21,2.5,7.8,accent);torso.CanCollide=false
   local head=part("CustomerHead",Vector3.new(1.2,1.2,1.2),21,4.1,7.8,Color3.fromRGB(190,144,109));head.Shape=Enum.PartType.Ball;head.CanCollide=false
   for _,x in ipairs({20.5,21.5})do local leg=part("CustomerLeg",Vector3.new(.5,1.4,.6),x,1,7.8,green);leg.CanCollide=false end
  end
  anchor=nil
- local tour=part("TourSign",Vector3.new(4,2,.2),8,3,-21,green);F.Sign(tour,life.TourOpen and "WELCOME\nHome tour"or "Home gallery");F.Prompt(tour,"LifeTours");anchor=Vector3.new(8,0,-21);local post=part("TourSignPost",Vector3.new(.3,3,.3),8,1,-20.7,green);post.CanCollide=false;post.CanQuery=false;anchor=nil
+ local tour=part("TourSign",Vector3.new(4,2,.2),8,3,-21,green);if life.TourOpen then F.Sign(tour,"WELCOME\nHome tour")else tour.Transparency=1;tour.CanCollide=false end;F.Prompt(tour,"LifeTours");anchor=Vector3.new(8,0,-21);local post=part("TourSignPost",Vector3.new(.3,3,.3),8,1,-20.7,green);post.CanCollide=false;post.CanQuery=false;post.Transparency=life.TourOpen and 0 or 1;anchor=nil
  if life.Banners[life.Theme]then local banner=part("ChallengeBanner",Vector3.new(2,3,.12),11,4,-14,accent);F.Sign(banner,life.Theme)end
  for i,id in ipairs(D.BlueprintOrder)do if life.Blueprints[id]then
   local x=14;local z=18+i*6;anchor=Vector3.new(x,0,z)

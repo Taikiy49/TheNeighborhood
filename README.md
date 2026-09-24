@@ -4,6 +4,8 @@ A Roblox neighborhood about earning your way from a cottage to a skyline home, d
 
 ## Current build — September 24, 2026
 
+**Sign cleanup and owner home grant — published as v143.** Repeated garden boards and inactive tour signs removed. A one-time roadster, bicycle, dog, furniture and yard setup applies only to taikiyama49 on joining a fresh server. [Details and verification](docs/OWNER-HOME.md).
+
 **Finished venues — published as v142**, confirmed at **22:01:35 UTC**. Fourteen sourced venue buildings, imported furniture in eighteen more public interiors, usable café tea, a paid barista timing job, stocked shops and a furnished farm market. Fourteen service/project checks, eight doorway walks, reward/cup checks and the build passed. [Sources, screenshots, tests and scope](docs/VENUE-RENEWAL.md).
 
 ![Finished café interior](assets/screenshots/venue-cafe-interior.png)

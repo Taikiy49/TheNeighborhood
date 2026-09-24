@@ -1,5 +1,8 @@
 # Latest release
 
+Sign cleanup and personal owner home grant published as **v143**, confirmed by Studio `PublishSuccessful` at **2026-09-24T22:50:13.000Z**, place **111572448337932**. [Grant scope and verification](OWNER-HOME.md). The one-time gift applies to taikiyama49 on the next join to a fresh server; production save/rejoin remains unobserved. Test flags cleared and VisualAcceptance restored.
+# Previous release
+
 Venue renewal published as **v142**, confirmed by Studio `PublishSuccessful` at **2026-09-24T22:01:35.667Z**, place **111572448337932**. Test attributes cleared; VisualAcceptance restored; only the Neighborhood root remains in ServerScriptService. [Imported sources, checks and limits](VENUE-RENEWAL.md). Includes native source geometry and a reproducible Rojo build.
 # Current release
 
