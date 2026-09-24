@@ -87,8 +87,6 @@ function M.Init(context)
  replace(side.CornerCafe,'Cafe',CFrame.new(-465,.15,130),.95)
  identify(side.CornerCafe,'CORNER CAFÉ',CFrame.new(-465,14,107.2),22)
  replace(w.Shops.GeneralStore,'Market',CFrame.new(-375,.15,147),.85)
- replace(side.RepairWorkshop,'Bakery',CFrame.new(-140,.15,130),1)
- M.Place('Workbench',side.RepairWorkshop,CFrame.new(-140,.4,134),.9)
  M.Place('Workbench',root.Industrial.CoastalWorks,root.Industrial.CoastalWorks.Floor.CFrame*CFrame.new(14,.2,8),.8)
  replace(side.OrchardStand,'Greenhouse',CFrame.new(-470,.15,-450),1.1)
  for _,x in ipairs({-478,-462})do M.Place('FruitStand',side.OrchardStand,CFrame.new(x,.4,-447),.8)end
@@ -100,7 +98,6 @@ function M.Init(context)
  M.Place('ServiceCounter',w.Shops.PawnShop,CFrame.new(-265,.4,147),.8)
  M.Place('StockedShelf',w.Shops.PawnShop,CFrame.new(-270,.4,152),.7)
  identify(w.Shops.PawnShop,'SECOND CHANCE • PAWN',CFrame.new(-265,12,133.5),17)
- identify(side.RepairWorkshop,'MAPLE REPAIRS',CFrame.new(-140,12,118.5),17)
  -- Café-sized restaurants retain distinct existing locations and service targets.
  local town=root.TownLife
  replace(town.PalmDiner,'Cafe',CFrame.new(150,.15,-185)*CFrame.Angles(0,math.pi/2,0),.9)

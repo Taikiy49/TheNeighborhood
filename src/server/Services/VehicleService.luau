@@ -49,7 +49,7 @@ function Service:Spawn(player)
  if not garage then return false,"Your garage is being prepared."end
  local cf=garage.CarSpawn.CFrame
  local query=OverlapParams.new();query.FilterType=Enum.RaycastFilterType.Exclude;query.FilterDescendantsInstances={player.Character,previous and previous.Model or house.Model};query.RespectCanCollide=true
- if #workspace:GetPartBoundsInBox(cf,Vector3.new(7,4,10),query)>0 then return false,"Clear the driveway before recalling your car."end
+ if #workspace:GetPartBoundsInBox(cf,Vector3.new(8,5,16),query)>0 then return false,"Clear the driveway before recalling your car."end
  self:Remove(player)
  local model=Instance.new("Model");model.Name="MapleCompact_"..player.UserId;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;model:SetAttribute("OwnerUserId",player.UserId)
  model:SetAttribute('VehicleId',id)
@@ -58,24 +58,13 @@ function Service:Spawn(player)
   local p=Instance.new(class or "Part");p.Name=name;p.Size=size;p.CFrame=cf*CFrame.new(offset);p.Color=tint;p.Anchored=false;p.CanTouch=false;p.CollisionGroup="NeighborhoodCars";p.CustomPhysicalProperties=PhysicalProperties.new(0.7,0.1,0.1,1,1);p.TopSurface=Enum.SurfaceType.Smooth;p.BottomSurface=Enum.SurfaceType.Smooth;p.Parent=model;return p
  end
  local bike=definition.Kind=='Bike'
- local body=part('Body',bike and Vector3.new(1.4,.5,6)or Vector3.new(6,1.4,9),Vector3.zero,color);model.PrimaryPart=body
- local seat=part("DriverSeat",Vector3.new(2,0.7,2),Vector3.new(0,1.05,0),Color3.fromRGB(50,65,60),"VehicleSeat");seat.HeadsUpDisplay=false;seat.MaxSpeed=28;seat.CanCollide=false
- if not bike then
- part("Hood",Vector3.new(5.8,1,2.7),Vector3.new(0,1,-3),color)
- part("Rear",Vector3.new(5.8,1,1.8),Vector3.new(0,1,3.3),color)
- for _,x in ipairs({-3.2,3.2})do for _,z in ipairs({-2.8,2.8})do local wheel=part("Wheel",Vector3.new(0.8,2.2,2.2),Vector3.new(x,-0.8,z),Color3.fromRGB(40,46,44));wheel.Shape=Enum.PartType.Cylinder;wheel.CanCollide=false end end
- for _,x in ipairs({-2,2})do part("Headlight",Vector3.new(1,0.5,0.15),Vector3.new(x,0.5,-4.55),Color3.fromRGB(255,231,172)).Material=Enum.Material.Neon end
- else
-  for _,z in ipairs({-2.2,2.2})do local wheel=part('Wheel',Vector3.new(.5,2.4,2.4),Vector3.new(0,-.7,z),Color3.fromRGB(40,46,44));wheel.Shape=Enum.PartType.Cylinder;wheel.CanCollide=false end
-  part('Handlebars',Vector3.new(3,.2,.2),Vector3.new(0,2,-2),colors.Butter)
-  part('HandleStem',Vector3.new(.2,2,.2),Vector3.new(0,1,-2),colors.Butter)
- end
- if definition.Kind=='Wagon'then part('Roof',Vector3.new(5.8,.3,6),Vector3.new(0,3,1),color);for _,x in ipairs({-2.7,2.7})do part('Pillar',Vector3.new(.3,2,5),Vector3.new(x,2,1),color)end;part('Luggage',Vector3.new(3,1,3),Vector3.new(0,3.7,1),Color3.fromRGB(147,111,75))end
- if definition.Kind=='GT'then part('RearWing',Vector3.new(7,.3,1),Vector3.new(0,2.3,3.5),colors.Butter);for _,x in ipairs({-3,3})do part('GoldTrim',Vector3.new(.15,.25,8),Vector3.new(x,.5,0),colors.Butter)end end
- local plate=part("Plate",Vector3.new(2.4,0.7,0.1),Vector3.new(0,-0.1,4.6),Color3.fromRGB(244,235,204));plate.CanCollide=false
+ local body=part('Body',bike and Vector3.new(1.4,.5,6)or Vector3.new(5,1.2,13),Vector3.zero,color);body.Transparency=1;model.PrimaryPart=body
+ local seat=part("DriverSeat",Vector3.new(1.4,.5,1.4),bike and Vector3.new(0,.1,0)or Vector3.new(-.9,.05,.2),Color3.fromRGB(50,65,60),"VehicleSeat");seat.Transparency=1;seat.HeadsUpDisplay=false;seat.MaxSpeed=definition.Speed;seat.CanCollide=false
+ require(script.Parent.Parent.VehicleArt).Place(id,model,cf*CFrame.new(0,-1.9,0),true,color)
+ local plate=part("Plate",Vector3.new(2.4,0.7,0.1),Vector3.new(0,-.35,bike and 3.7 or 7.55),Color3.fromRGB(244,235,204));plate.CanCollide=false
  local sign=Instance.new("SurfaceGui");sign.Face=Enum.NormalId.Back;sign.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;sign.PixelsPerStud=50;sign.LightInfluence=.15;sign.Parent=plate
  local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(.9,.84);text.Position=UDim2.fromScale(.05,.08);text.BackgroundTransparency=1;text.Font=Enum.Font.GothamBold;text.TextSize=30;text.TextScaled=true;text.TextColor3=Color3.fromRGB(35,79,70);text.Text=profile.Vehicles.Plate or "COAST";text.Parent=sign
- for _,p in ipairs(model:GetChildren())do if p:IsA("BasePart") and p~=body then p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=body;weld.Part1=p;weld.Parent=p end end
+ for _,p in ipairs(model:GetDescendants())do if p:IsA("BasePart") and p~=body then p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=body;weld.Part1=p;weld.Parent=p end end
  local attachment=Instance.new("Attachment");attachment.Parent=body
  local force=Instance.new("VectorForce");force.Attachment0=attachment;force.RelativeTo=Enum.ActuatorRelativeTo.World;force.ApplyAtCenterOfMass=true;force.Parent=body
  local turn=Instance.new("AlignOrientation");turn.Attachment0=attachment;turn.Mode=Enum.OrientationAlignmentMode.OneAttachment;turn.MaxTorque=100000;turn.Responsiveness=12;turn.Parent=body
@@ -115,7 +104,7 @@ function Service:Action(player,action,argument)
  elseif action=='Recall'then return self:Spawn(player)
  elseif action=="Color"then
   if not Catalog.Owned(v,v.Selected) or not colors[argument]then return false,"Choose an available car color."end
-  profile.Vehicles.Color=argument;local car=self.Cars[player.UserId];if car then for _,part in ipairs(car.Model:GetChildren())do if part.Name=="Body" or part.Name=="Hood" or part.Name=="Rear"then part.Color=colors[argument]end end end
+  profile.Vehicles.Color=argument;local car=self.Cars[player.UserId];if car then for _,part in ipairs(car.Model:GetDescendants())do if part:GetAttribute("VehiclePaint")then part.Color=colors[argument]end end end
   return true,"Car repainted."
  end
  return false,"Unknown garage action."

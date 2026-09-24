@@ -19,11 +19,6 @@ function M.Build(W,context)
  for _,y in ipairs({0,12})do for _,z in ipairs({-8,-2,4})do for _,x in ipairs({-13,-7,7,13})do localPart(cinema,'CinemaSeat',{3,.5,3},x,y+1.7,z,Color3.fromRGB(135,87,83),nil,true,'Seat');localPart(cinema,'CinemaSeatBack',{3,3,.3},x,y+3,z-1.6,A.Ink)end end end
  local upstairs=localPart(cinema,'UpperScreen',{30,8,.2},0,18,13,A.Ink);A.Sign(upstairs,'COMMUNITY SCREENING ROOM')
  local showroom=root.CommercialStrip.CarShowroom;clear(showroom)
- for _,x in ipairs({-12,12})do
-  localPart(showroom,'DisplayCarBody',{6,2,10},x,2,0,Color3.fromRGB(137,174,159),Enum.Material.Metal)
-  localPart(showroom,'DisplayCarRoof',{5,2,5},x,4,0,A.Cream,Enum.Material.Metal)
-  for _,dx in ipairs({-3,3})do for _,z in ipairs({-3,3})do local wheel=localPart(showroom,'DisplayWheel',{1,2,2},x+dx,1,z,A.Ink);wheel.Shape=Enum.PartType.Cylinder end end
- end
  local keys=localPart(showroom,'CarSalesDesk',{8,3,3},0,2,9,A.Wood);A.Prompt(keys,'CoastalCarSales','Coast Motors','Browse cars')
  context.Interactions:Register('CoastalCarSales',function(player)context.Open(player,'Garage');return true end)
  local clothing=root.CommercialStrip.CoastalClothing
@@ -63,10 +58,6 @@ function M.Build(W,context)
   work[player]=nil;profile.Currency=math.min(1000000000,profile.Currency+20);context.Record(player,'CityWork');context.Sync(player);return true,'Shipment packed! Earned $20.'
  end)
  game.Players.PlayerRemoving:Connect(function(player)work[player]=nil end)
- for _,x in ipairs({-200,-140})do
-  p(root.Industrial,'TruckChassis',{8,3,21},x,2,565,A.Ink,Enum.Material.Metal);p(root.Industrial,'TruckCab',{8,7,7},x,6,556,Color3.fromRGB(158,174,155));p(root.Industrial,'TruckBox',{8,9,14},x,7,568,A.Cream)
-  for _,dx in ipairs({-4,4})do for _,z in ipairs({558,573})do local wheel=p(root.Industrial,'TruckWheel',{1,3,3},x+dx,1.5,z,A.Ink);wheel.Shape=Enum.PartType.Cylinder end end
- end
  -- Replace solid campsite blocks with roofed tents that have actual entrances.
  local nature=root.Mountains
  for _,v in ipairs(nature:GetChildren())do if v.Name=='Tent'then v:Destroy()end end

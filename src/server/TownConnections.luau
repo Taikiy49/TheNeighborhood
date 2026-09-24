@@ -2,7 +2,7 @@
 local A=require(script.Parent.CityArchitecture)
 local M={Routes={}}
 local routes={
- GeneralStore={{-364.8,98}},PawnShop={{-258,98}},CornerCafe={{-465,98}},RepairWorkshop={{-133,98}},
+ GeneralStore={{-364.8,98}},PawnShop={{-258,98}},CornerCafe={{-465,98}},RepairWorkshop={{-147.4,98}},
  LakesideTackle={{560,123}},OrchardStand={{-470,-550},{-542,-550}},
  MaplePizza={{282,-90}},MapleLaundry={{282,-155}},ParkApartments={{318,-90}},MapleHotel={{318,-170}},
  SunburstHotel={{282,-260}},CivicHall={{160,62}},CoastBank={{225,62}},SunsetHospital={{395,62}},

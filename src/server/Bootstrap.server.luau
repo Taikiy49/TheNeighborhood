@@ -117,6 +117,7 @@ require(script.Parent.CuratedArchitecture).Init()
 require(script.Parent.StreetDressing).Init()
 require(script.Parent.VenueRenewal).Init(context)
 require(script.Parent.SportsGrounds).Init(context)
+require(script.Parent.VehicleArt).Init()
 require(script.Parent.TownConnections).Init()
 context.Ready=true
 local function characterAdded(player,character)

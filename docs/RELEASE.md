@@ -1,5 +1,9 @@
 # Latest release
 
+Imported vehicles and auto shops published as **v152**, confirmed by Studio `PublishSuccessful` at **2026-09-24T23:52:45.617Z**, place **111572448337932**. Replaced all five catalog vehicle visuals, six traffic cars, two depot trucks, showroom cars and both auto premises with sourced art. Driving, steering, paint, garage spawning, buy/resale, 173 client asset loads, ten entrance walks and both shop counters passed. Test flags cleared; VisualAcceptance restored; unused candidate imports removed. [Sources, checks and limitations](IMPORTED-VEHICLES.md).
+
+# Previous release
+
 Connected streets and sports grounds published as **v147**, confirmed by Studio `PublishSuccessful` at **2026-09-24T23:32:41.101Z**, place **111572448337932**. Forty connected public entrances; retired scattered park stations; imported basketball and soccer grounds with shared balls and scoring. Playtest passed 759 route samples, eight walked approaches, 228 nonoverlapping paving pieces and both sports. Test attributes cleared; VisualAcceptance restored. [Sources, scope and checks](CONNECTED-TOWN.md).
 # Previous release
 

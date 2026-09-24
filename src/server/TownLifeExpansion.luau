@@ -30,8 +30,9 @@ function M.Init(context)
  for i=1,6 do
   local model=Instance.new('Model');model.Name='NeighborhoodTraffic'..i;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;model.Parent=root
   local body=p(model,'Body',{6,2,10},0,2,0,Color3.fromHSV(i/7,.25,.7));model.PrimaryPart=body
-  p(model,'Cabin',{5,2,5},0,4,1,A.Cream);for _,x in ipairs({-3,3})do for _,z in ipairs({-3,3})do local wheel=p(model,'Wheel',{.7,2,2},x,1,z,A.Ink);wheel.Shape=Enum.PartType.Cylinder end end
-  for _,v in ipairs(model:GetChildren())do if v:IsA('BasePart')then v.CollisionGroup='NeighborhoodCars'end end
+  body.Transparency=1
+  require(script.Parent.VehicleArt).Place(({'Compact','Trail','Roadster','CoastGT'})[(i-1)%4+1],model,CFrame.new(0,.1,0),false,Color3.fromHSV(i/7,.4,.8))
+  for _,v in ipairs(model:GetDescendants())do if v:IsA('BasePart')then v.CollisionGroup='NeighborhoodCars'end end
   local start=(i-1)%4+1;local nextIndex=start%4+1;local position=route[start]:Lerp(route[nextIndex],i>4 and .55 or .15)
   model:PivotTo(CFrame.lookAt(position,route[nextIndex]));table.insert(M.Traffic,{Model=model,Next=nextIndex,Position=position})
  end

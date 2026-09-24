@@ -13,13 +13,15 @@ local exclusions={}
 for _,player in ipairs(game.Players:GetPlayers())do table.insert(exclusions,player.Character)end
 q.FilterDescendantsInstances=exclusions
 local ray=RaycastParams.new();ray.RespectCanCollide=true;ray.FilterType=Enum.RaycastFilterType.Exclude;ray.FilterDescendantsInstances=exclusions
+local probe=Instance.new("Part");probe.Name="PathCollisionProbe";probe.Anchored=true;probe.Transparency=1;probe.CanCollide=false;probe.CanTouch=false;probe.CanQuery=false;probe.Parent=workspace
+local function preciseBox(cf,size)probe.Size=size;probe.CFrame=cf;return workspace:GetPartsInPart(probe,q)end
 local seen={}
 for _,route in ipairs(C.Routes)do
  for i=1,#route.Points-1 do
   local a,b=route.Points[i],route.Points[i+1];local length=(b-a).Magnitude
   if length>.01 then for t=0,length,3 do
    local pos=a:Lerp(b,t/length);report.Samples+=1
-   for _,part in ipairs(workspace:GetPartBoundsInBox(CFrame.new(pos+Vector3.new(0,3.4,0)),Vector3.new(3,4.2,3),q))do
+   for _,part in ipairs(preciseBox(CFrame.new(pos+Vector3.new(0,3.4,0)),Vector3.new(3,4.2,3)))do
     local key=route.Model.Name..part:GetFullName()
     if not seen[key]then seen[key]=true;table.insert(report.Blocked,{Route=route.Model.Name,Part=part:GetFullName()})end
    end
@@ -46,7 +48,7 @@ for _,v in ipairs(game.ServerStorage.SportsArt:GetDescendants())do
  assert(not v:IsA('LuaSourceContainer')and not v:IsA('RemoteEvent')and not v:IsA('RemoteFunction'),'External executable code')
 end
 report.NonoverlappingPaving=#paving
-local walks={CornerCafe=true,GeneralStore=true,OrchardStand=true,CoastSchool=true,PalmResort=true,HangarOne=true,BeachChangingRooms=true,FuelAndSnacks=true}
+local walks={CarShowroom=true,RepairWorkshop=true,CornerCafe=true,GeneralStore=true,OrchardStand=true,CoastSchool=true,PalmResort=true,HangarOne=true,BeachChangingRooms=true,FuelAndSnacks=true}
 for _,route in ipairs(C.Routes)do if walks[route.Model.Name]then
  p.Character:PivotTo(CFrame.new(route.Points[#route.Points]+Vector3.new(0,3,0)));hrp.AssemblyLinearVelocity=Vector3.zero;task.wait(.2)
  for i=#route.Points-1,1,-1 do
@@ -77,6 +79,7 @@ for ball,state in pairs(Sports.Balls)do
 end
 for _,id in ipairs({'Activity001','Activity002','Activity003','Activity008'})do assert(not workspace.Neighborhood.Recreation:FindFirstChild(id,true))end
 for _,v in ipairs(workspace.Neighborhood.Recreation:GetDescendants())do assert(v.Name~='ActivitySign'and v.Name~='SignSupport')end
+probe:Destroy()
 report.Passed=true
 workspace:SetAttribute('TownConnectionQA',game:GetService('HttpService'):JSONEncode(report))
 print('TOWN CONNECTIONS AND SPORTS PASS',report.Routes,report.Samples,#report.Walked,report.Sports)
