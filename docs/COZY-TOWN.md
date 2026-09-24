@@ -33,3 +33,8 @@ The reopened latest local build passed a session-only smoke test of relocated Ac
 
 After the user refreshed Studio authentication, the latest local build was published over the existing start place. Reopening the cloud place through Studio MCP confirmed PlaceId 111572448337932, UniverseId 10767699101, PlaceVersion 64, recreation-cozy-4, and no workspace test flags. Public access remains blocked by the required content maturity questionnaire (currently 0 of 17 sections completed, Unknown label); the public audience change was not saved. No questionnaire answers were guessed or submitted.
 
+
+### Public access enabled
+
+Completed and submitted all 17 content questionnaire sections after reviewing current gameplay and Roblox definitions. Roblox confirmed Questionnaire Completed, Minimal rating, descriptors None, and no non-compliant regions. Saved audience Public; dashboard confirmed Changes saved. Audience reach still reports Ages 16+ and trusted friends, while account publishing reach is All ages. The experience reach page lists a refundable publishing fee not submitted, highly engaged players not eligible (0/250), and optional expedited review for 50,000 Robux. No payment was initiated. Public does not yet mean unrestricted access for younger accounts.
+
