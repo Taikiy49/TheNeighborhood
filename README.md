@@ -1,8 +1,16 @@
 # The Neighborhood
 
-A Roblox neighborhood about earning your way from a cottage to a skyline home, decorating, meeting neighbors and exploring town. Mischief and investigations are optional.
+A Roblox neighborhood about earning your way from a cottage to a skyline home, decorating, meeting neighbors and exploring town. The main loop is jobs and skill activities → cash → home, yard and vehicle upgrades. Theft is disabled.
 
-## Current build — September 24, 2026
+## Continue on another computer
+
+**Start with [HANDOFF.md](HANDOFF.md).** It records the live place, tested changes, remaining work, build instructions and Studio safety settings. All source and imported asset libraries are in this repository; `builds/TheNeighborhood.rbxl` is the current portable build.
+
+## Current build — September 24, 2026 (Hawaii)
+
+**Peaceful progression, bedrooms, garages and neighborhood traffic — published as v158**, verified at 2026-09-25 08:38:05 UTC. Clear earnings/savings goals, theft disabled, twelve defined bedrooms and wider garages, stable bicycle/car exits, four vacancy-dependent dog walkers, and a pedestrian signal phase. [Verification and limits](docs/qa/home-traffic.json).
+
+## Previous street update
 
 **Connected streets and sports grounds — published as v147.** Forty public entrances now connect to sidewalks or the boardwalk. Scattered bowling/toy stations have been removed, with imported basketball and soccer grounds, shared playable balls and match scoring beside the school. Verified 759 route samples, eight walked approaches and both sports. [Sources, scope and test results](docs/CONNECTED-TOWN.md).
 

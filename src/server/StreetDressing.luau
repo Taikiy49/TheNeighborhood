@@ -2,9 +2,16 @@
 local Art=require(script.Parent.CuratedArchitecture)
 local M={Signals={}}
 function M.Phase(t,axis)
- local p=t%28
+ local p=t%40
  if axis=='X'then return p<10 and 'Green'or p<13 and 'Yellow'or 'Red'end
  return p>=14 and p<24 and 'Green'or p>=24 and p<27 and 'Yellow'or 'Red'
+end
+-- A dedicated all-red pedestrian interval leaves time to cross the full street.
+function M.CanCross(junction,t)
+ for _,signal in ipairs(M.Signals)do
+  if (signal.Position-junction).Magnitude<2 then local phase=((t or os.clock())+signal.Offset)%40;return phase>=28 and phase<=32 end
+ end
+ return false
 end
 function M.ShouldStop(position,direction)
  local axis=math.abs(direction.X)>math.abs(direction.Z)and 'X'or 'Z'
@@ -37,6 +44,7 @@ function M.Init()
     local on=M.Phase(os.clock()+s.Offset,axis)==v.Name
     v.Material=on and Enum.Material.Neon or Enum.Material.SmoothPlastic;v.Color=on and colors[v.Name]or colors[v.Name]:Lerp(Color3.new(),.82)
    end end
+   s.Model:SetAttribute('Walk',M.CanCross(s.Position))
    s.Model:SetAttribute('EastWest',M.Phase(os.clock()+s.Offset,'X'));s.Model:SetAttribute('NorthSouth',M.Phase(os.clock()+s.Offset,'Z'))
   end
  end

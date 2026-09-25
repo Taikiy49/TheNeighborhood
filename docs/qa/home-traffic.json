@@ -1,0 +1,32 @@
+{
+  "Room": {
+    "SignalSamples": 400,
+    "Garages": 12,
+    "DoorWalkThrough": true,
+    "DogWalkers": 4,
+    "Passed": true,
+    "Bedrooms": 12
+  },
+  "Drive": [
+    {
+      "Id": "Bicycle",
+      "Distance": 51.93361282348633,
+      "Highest": 1.8134832382202148,
+      "Lowest": 1.1423218250274658
+    },
+    {
+      "Id": "Compact",
+      "Distance": 67.67529296875,
+      "Highest": 2.4061334133148193,
+      "Lowest": 1.9411300420761108
+    },
+    {
+      "Id": "CoastGT",
+      "Distance": 69.37801361083984,
+      "Highest": 2.4017703533172607,
+      "Lowest": 1.8829792737960815
+    }
+  ],
+  "DrivePassed": true,
+  "Limits": "One player in isolated Studio; three vehicles at assigned home. Not a full-server or physical-mobile certification."
+}

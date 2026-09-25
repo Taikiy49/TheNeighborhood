@@ -1,5 +1,13 @@
 # Latest release
 
+**v158**, place **111572448337932**, universe **10767699101**. Studio logged `PublishSuccessful` at **2026-09-25T08:38:05.160Z**, followed by “Add publish notes to v158”.
+
+Clear peaceful progression; server theft guards; actual-price savings; starter paid shift; twelve defined bedrooms and wider garages; solver-based vehicle suspension and driveway bicycle recall; four vacancy-dependent dog walkers; dedicated all-red pedestrian phase; traffic yielding to players. Test attributes were removed and VisualAcceptance restored before publishing. Unused candidate assets were removed.
+
+Evidence: [home and traffic](qa/home-traffic.json), [goals, earnings and paths](qa/peaceful-progression.json). Scope and remaining tasks: [handoff](../HANDOFF.md). Existing running servers may retain the older version until they end; no forced player shutdown was performed.
+
+# Previous release
+
 Imported vehicles and auto shops published as **v152**, confirmed by Studio `PublishSuccessful` at **2026-09-24T23:52:45.617Z**, place **111572448337932**. Replaced all five catalog vehicle visuals, six traffic cars, two depot trucks, showroom cars and both auto premises with sourced art. Driving, steering, paint, garage spawning, buy/resale, 173 client asset loads, ten entrance walks and both shop counters passed. Test flags cleared; VisualAcceptance restored; unused candidate imports removed. [Sources, checks and limitations](IMPORTED-VEHICLES.md).
 
 # Previous release

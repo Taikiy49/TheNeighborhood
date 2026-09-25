@@ -44,7 +44,7 @@ function H:Update()
  local player=game.Players.LocalPlayer;local task=Guide:Pick(self.Screens.State,Guide:Attributes(player));self.Task=task
  self.Title.Text=task.Title;self.Hint.Text=task.Hint;self.Action.Text=task.Button or 'Show me';self.Action.Active=not task.Loading
  self.Bar.Frame.Visible=task.Total~=nil
- if task.Total then self.Bar:Set(task.Count or 0,task.Total,(task.Count or 0)..' / '..task.Total..' complete')end
+ if task.Total then self.Bar:Set(task.Count or 0,task.Total,task.ProgressLabel or (task.Count or 0)..' / '..task.Total..' complete')end
  if Guide.Marker then
   local position=Guide:Position(task,self.Screens.State,player)
   if not position then Guide:ClearMarker()

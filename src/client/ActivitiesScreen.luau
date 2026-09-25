@@ -13,6 +13,10 @@ function M.Render(s,tab)
  end
  local a=s.State.Activities;if not a then s:Row('Getting ready…','Your goals will appear when your home is ready.');return end
  if tab=='Tasks'then
+  s:Row('Build a life here','Do jobs → earn cash → upgrade your home, yard and rides. Games and friends are always optional.','Find a paid job',function()s:Open('Activities','Jobs')end)
+  local target=Guide:Savings(s.State)
+  s:ProgressRow(target.Title,target.ProgressLabel..' saved. '..target.Hint,target.Count,target.Total,target.Button,function()s:Open(target.View,target.Detail)end)
+
   local xp=a.XP or 0;local maximum=xp>=800
   local steps=s.State.Progress and s.State.Progress.Checklist or {};local done=0
   for _,step in ipairs(steps)do if step.Done then done+=1 end end
@@ -57,6 +61,7 @@ function M.Render(s,tab)
   if a.Run then s:ProgressRow('Checkpoint run','Next stop: '..a.Run.Name,a.Run.Step-1,a.Run.Total,'Keep running',function()s:Close()end)
   else s:Row('Checkpoint run • $120','Follow 6 markers on foot. Beat your best time!','Start running',function()s.Request('Activities','Circuit');s:Close()end)end
   if a.Run or a.Memory then s:Row('Want a break?','You can try again anytime.','Stop challenge',function()s.Request('Activities','Cancel')end)end
+  s:Row('Neighborhood playground','Swings, a slide and climbing steps in the park.','Show me',function()Guide:Show({Key='Playground',Title='Neighborhood playground',Position=Vector3.new(-90,3,10)},s.State,game.Players.LocalPlayer);s:Close()end)
   s:Row('More adventures','Grow flowers, solve a mystery or explore town.','Explore more',function()s:Open('MenuExplore')end)
  end
 end

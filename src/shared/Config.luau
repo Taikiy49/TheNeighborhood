@@ -1,6 +1,7 @@
 --!strict
 return table.freeze({
     SchemaVersion = 2,
+    RobberyEnabled = false,
     StartingCurrency = 250,
     InteractionRange = 12,
     ActionInterval = 0.2,

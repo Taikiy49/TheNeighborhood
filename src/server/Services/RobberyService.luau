@@ -9,6 +9,7 @@ function Service:Init(context)
  end)
 end
 function Service:Eligible(player,item)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  if player:GetAttribute("DeliveryAddress") then return false,"Deliver or cancel your parcel before lifting a possession."end
  if not item or item.State~="Displayed" or item.OwnerUserId==player.UserId then return false,"Choose a neighbor's displayed possession." end
  if item.RecoveryProtected then return false,"Recovered property is protected for the rest of this playtest." end
@@ -28,6 +29,7 @@ function Service:Eligible(player,item)
  return true,house
 end
 function Service:Breach(player,id)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  local house=self.Context.Houses.ById[id]
  if not house or not house.Owner or house.Owner==player.UserId or not house.Locked then return false,"Choose a neighbor's locked front door." end
  local activeOwner=Players:GetPlayerByUserId(house.Owner)
@@ -52,6 +54,7 @@ function Service:Breach(player,id)
  return true,"Working on the lock… stay beside the door for "..duration.." seconds."
 end
 function Service:Begin(player,id)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  local item=self.Context.Items.Items[id]
  local ok,house=self:Eligible(player,item);if not ok then return false,house end
  self.Preparing[player.UserId]={ItemId=id,Started=os.clock(),Origin=player.Character.HumanoidRootPart.Position}
@@ -68,6 +71,7 @@ function Service:Begin(player,id)
  return true,"Lifting…"
 end
 function Service:Carry(player,item,house)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  local character=player.Character;local root=character and character:FindFirstChild("HumanoidRootPart");local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if not root or not humanoid or humanoid.Health<=0 then return false end
  -- The no-yield transition ensures two simultaneous thieves cannot acquire the same item.
@@ -119,6 +123,7 @@ function Service:Drop(player)
  return true,"Set down. Pick it up within 30 seconds or it returns home."
 end
 function Service:Resume(player,id)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  local session=self.Sessions[player.UserId]
  if not session or session.Item.Id~=id or session.State~="Dropped"then return false,"That isn't your current carry."end
  local model=self.Context.Items.Models[id];local valid,why=self.Context.Interactions:Validate(player,model and model.PrimaryPart)
@@ -180,6 +185,7 @@ function Service:Step()
  end
 end
 function Service:Fence(player)
+ if not Config.RobberyEnabled then return false,"This is a peaceful neighborhood. Earn cash from jobs and games." end
  local session=self.Sessions[player.UserId]
  if not session or session.State~="Escaped" then return false,"Escape the property before making a deal." end
  if not self.Context.Economy:Near(player,"PawnShop") then return false,"Visit the pawn counter." end

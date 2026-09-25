@@ -2,7 +2,8 @@
 local UI=require(script.Parent.UI)
 local G={Selected=nil}
 G.Steps={
- EnterHouse={'Open your front door','Walk to your door. Tap Open / close.','Door'},
+ CityWork={'Earn your first paycheck','Follow the marker. Order, prepare, then box a pizza.','Job:Pizza'},
+ EnterHouse={'Open your front door','Your home is your starting point. Jobs earn cash for upgrades.','Door'},
  Place={'Decorate your home','Walk to a display spot. Choose an item.','Place'},
  Visit={'Say hello to a neighbor','Greet an NPC or ring a player’s doorbell.','Visit'},
  Delivery={'Deliver a parcel','Get a box from the park board.','Delivery'},
@@ -18,9 +19,25 @@ G.Jobs={
 }
 local stationNames={Pizza={'Read the order','Prepare the pizza','Box the pizza'},Laundry={'Sort the clothes','Use the washer','Fold the clothes'},Hotel={'Visit reception','Tidy room 201','Tidy room 301'},Rooftops={'Start in the courtyard','Check the first roof','Check the second roof'}}
 function G:Track(id)self.Selected=id;self.MarkerKey=nil end
+-- Targets use the same price definitions as server purchases; no new currency or rewards.
+function G:Savings(state)
+ local shared=game.ReplicatedStorage.Neighborhood.Shared
+ local catalog=require(shared.VehicleCatalog);local homes=require(shared.ResidenceDefinitions)
+ local cash=math.max(0,state.Currency or 0)
+ if not catalog.Owned(state.Vehicles or {},'Bicycle')then
+  local price=catalog.Items.Bicycle.Price
+  return {Title='Your first bicycle',Hint=cash>=price and 'You have enough! Visit Coast Motors.'or 'Finish paid jobs to buy your own ride.',Count=math.min(cash,price),Total=price,ProgressLabel='$'..cash..' / $'..price,View=cash>=price and 'Garage'or 'Activities',Detail='Jobs',Button=cash>=price and 'See bicycle'or 'Find a paid job'}
+ end
+ local residence=state.Residence or {Tier=1,Renovations=0,Work=0,ProjectWork=0}
+ local nextHome=homes.Tiers[residence.Tier+1];local project=nextHome or homes.Project(residence)
+ local work=nextHome and (residence.Work or 0)or (residence.ProjectWork or 0)
+ return {Title=nextHome and nextHome.Name or 'Your next renovation',Hint=math.min(work,project.Work)..' / '..project.Work..' jobs finished. Earn, save, then upgrade.',Count=math.min(cash,project.Price),Total=project.Price,ProgressLabel='$'..cash..' / $'..project.Price,View='Residence',Button='See home plans'}
+end
 function G:Pick(state,attributes)
  local a=state.Activities or {};local p=state.Progress
- if attributes.Carrying then return {Title='Carry it to the pawnshop',Hint='Get outside first. Heavy items slow you down.',Key='Pawn',Button='Show me'}end
+ if self.PreviousJob and not attributes.CityWorkKind then self.Selected=nil end
+ self.PreviousJob=attributes.CityWorkKind
+
  if attributes.DeliveryAddress then return {Title='Deliver this box',Hint=attributes.DeliveryAddress..' • use the mailbox',Key='Mailbox',Button='Show me'}end
  if attributes.CityWorkKind then
   local names=stationNames[attributes.CityWorkKind];local step=attributes.CityWorkStep or 2
@@ -36,7 +53,7 @@ function G:Pick(state,attributes)
  for _,step in ipairs(p.Checklist or {})do if step.Done then complete+=1 elseif not nextStep then nextStep=step end end
  if nextStep then local guide=self.Steps[nextStep.Key];return {Title=guide and guide[1]or nextStep.Text,Hint=guide and guide[2]or 'Open Goals for help.',Key=guide and guide[3],Count=complete,Total=#p.Checklist,Button='Show me'}end
  for _,goal in ipairs(a.Goals or {})do if not goal.Claimed and goal.Count>=goal.Target then return {Title='Your reward is ready!',Hint='Open Goals to collect it.',Count=goal.Target,Total=goal.Target,View='Activities',Detail='Tasks',Button='Collect reward'}end end
- if state.Residence then return {Title='Grow your home',Hint='Earn cash, finish town jobs and visit the housing agent.',View='Residence',Button='See home plans'}end
+ if state.Residence then return self:Savings(state)end
  return {Title='Pick something fun',Hint='Try a game, a job or a daily task.',View='Activities',Detail='Play',Button='Choose a game'}
 end
 function G:Attributes(player)

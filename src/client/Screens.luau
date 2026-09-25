@@ -156,7 +156,6 @@ function Screens:Open(view,detail)
   for _,color in ipairs({"Mint","Peach","Blue","Butter"})do local unlocked=house.UnlockedColors and house.UnlockedColors[color];self:Row(color.." exterior",house.Color==color and "Currently selected" or "A fresh look for your house",unlocked and "Apply paint" or "Unlock · $150",function()self.Request("Customize","Color",color)end)end
   for _,floor in ipairs({{"Wood",0},{"Tile",250},{"Carpet",200}})do local unlocked=house.UnlockedFloors and house.UnlockedFloors[floor[1]];self:Row(floor[1].." floor","Unlocked finishes can be reused.",unlocked and "Apply flooring" or "Unlock · $"..floor[2],function()self.Request("Customize","Floor",floor[1])end)end
   local level=house.SecurityLevel or 0
-  self:Row("Front-door security","Level "..level.." · Each upgrade adds two seconds to lock tampering.",level<2 and "Upgrade · $"..((level+1)*350) or nil,function()self.Request("Customize","Security","")end)
   self:Row("House access","Friends may open the locked door. Roommates may also change the lock. Neither owns your possessions.","Manage permissions",function()self:Open("Permissions")end)
  elseif view=="Permissions" then
   self.Title.Text="House permissions"
@@ -182,7 +181,6 @@ function Screens:Open(view,detail)
   self.Title.Text=view=="Accuse" and "Compare the evidence" or "Your neighbors"
   for _,neighbor in ipairs(self.State.Neighbors or {})do count+=1;self:Row(neighbor.Name,neighbor.Address.." · "..(neighbor.KnownFor or "Settling in").." · Display and security value $"..(neighbor.HouseValue or 0),view=="Accuse" and "Submit accusation" or nil,function()self.Request("Accuse",detail,neighbor.UserId)end)end
   if view=="Neighbors"then for _,neighbor in ipairs(self.State.Neighbors or {})do if neighbor.HouseId then self:Row("Visit "..neighbor.Name,"Stand at their front door to leave temporary flamingos. New neighbors and opted-out homes are protected.","Harmless prank · $50",function()self.Request("Prank",neighbor.HouseId)end)end end end
-  if view=="Neighbors" then for _,neighbor in ipairs(self.State.Neighbors or {})do if neighbor.HouseId then self:Row("Look around "..neighbor.Address,"Observe from nearby. Only possessions and security in your line of sight are revealed.","Survey from here",function()self.Request("Survey",neighbor.HouseId)end)end end end
   if count==0 then self:Row("A quiet street","No other neighbors are connected right now.")end
  elseif view=="Settings" then
   self.Title.Text="Your preferences"
@@ -193,15 +191,13 @@ function Screens:Open(view,detail)
   for _,incident in ipairs(detail.Incidents or {})do if incident.Status~="Recovered" then self:Row("Existing case: "..incident.ItemName,incident.Status.." · Open Cases to continue investigating.")end end
  elseif view=="Breach" then
   self.Title.Text="A locked door"
-  self:Row("The lock will take time","Stay beside the door for 4–8 seconds, depending on its security. The homeowner will be warned.","Tamper with lock",function()self.Request("Breach",detail)end)
-  self:Row("Prefer a friendly visit?","Close this panel and ring the doorbell. Moving-in protection prevents break-ins.")
+  self:Row("Private home","Ring the doorbell and wait for your neighbor to invite you in.")
  elseif view=="Item" then
   local def=Defs[detail.DefinitionId]
   local recover=detail.State=="Carried" or detail.State=="Escaped" or detail.State=="Dropped"
-  local resume=detail.HeldByYou and detail.State=="Dropped"
-  local action=detail.Owned and (recover and "Recover your possession" or "Put in protected inventory") or "Steal · triggers display alarm"
-  self:Row(def.Name,def.Rarity.." • "..def.Weight.." kg • $"..def.Value,resume and "Pick it back up" or action,function()self.Request(resume and "Resume" or detail.Owned and (recover and "Recover" or "Store") or "Steal",detail.Id)end)
-  if not detail.Owned then self:Row("Know the risk","Stay beside it to lift. Cameras may see you. Heavy items slow you down.") end
+  if detail.Owned then
+   self:Row(def.Name,def.Rarity.." • $"..def.Value,recover and "Recover your possession" or "Put in inventory",function()self.Request(recover and "Recover" or "Store",detail.Id)end)
+  else self:Row(def.Name,"Your neighbor's decoration. Earn cash at jobs to furnish your own home.")end
  elseif view=="Cases" then
   for _,incident in ipairs(self.State.Incidents or {}) do
    count+=1

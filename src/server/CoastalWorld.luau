@@ -81,7 +81,7 @@ function W.Init(context)
   local b=h.Foundation.CFrame;local id=tonumber(h.Name:match('%d+'))
   local f=h:FindFirstChild('Lawn');if f then f.Material=Enum.Material.Grass;f.Color=grass end
   local walk=W.Part(residential,'HomeWalk',{6,.2,17},0,0,0,pavement,Enum.Material.Pavement);walk.CFrame=b*CFrame.new(0,-.35,-26)
-  local garage=h.BaseGarage;garage.Driveway.Size=Vector3.new(11,.2,24);garage.Driveway.CFrame=b*CFrame.new(-29,-.35,-23)
+  local garage=h.BaseGarage;garage.Driveway.Size=Vector3.new(18,.2,21);garage.Driveway.CFrame=b*CFrame.new(-32,-.35,-24.5)
   h.Mailbox.Sign.SurfaceGui.TextLabel.Text=h:GetAttribute('Address')
   local lot=W.Part(residential,'GardenBed',{7,.8,4},0,0,0,A.Cream,Enum.Material.Concrete);lot.CFrame=b*CFrame.new(13,0,-23)
   local at=b*Vector3.new(13,0,-23);W.Tree(residential,at.X,at.Z,false)

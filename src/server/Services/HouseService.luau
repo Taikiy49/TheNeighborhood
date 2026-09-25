@@ -64,7 +64,7 @@ function Service:DoorAction(player, target, action)
         if house.Locked then self.Context.Record(player,"Lock")end
         return true, house.Locked and "Front door locked." or "Front door unlocked."
     end
-    if house.Locked and house.Owner ~= player.UserId and permission~="Friend" and permission~="Roommate" and (house.CompromisedUntil or 0)<os.clock() then self.Context.Open(player,"Breach",house.Model.Name);return true end
+    if house.Locked and house.Owner ~= player.UserId and permission~="Friend" and permission~="Roommate" and (house.CompromisedUntil or 0)<os.clock() then return false,"This home is private. Ring the doorbell to visit." end
     self:SetDoor(house,not house.Open)
     if house.Owner==player.UserId and house.Open then self.Context.Record(player,"EnterHouse")end
     return true, house.Open and "Door opened." or "Door closed."

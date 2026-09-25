@@ -7,11 +7,8 @@ function Service:Init(context)
  Players.PlayerRemoving:Connect(function(player)local pet=self.Pets[player.UserId];if pet then pet.Model:Destroy();self.Pets[player.UserId]=nil end end)
  task.spawn(function()while true do task.wait(0.1);self:Step(0.1)end end)
 end
-function Service:Spawn(player)
- if self.Pets[player.UserId]then return end
- local house=self.Context.Houses.ByPlayer[player.UserId];if not house then return end
- local model=Instance.new("Model");model.Name="Biscuit_"..player.UserId;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic
- local base=house.Model.Foundation.CFrame*Space.Frame(-9,0,-19)
+function Service.CreateModel(base,name,parent)
+ local model=Instance.new("Model");model.Name=name;model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic
  local function part(name,size,position,color,round)
   local p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=CFrame.new(position);p.Color=color;p.Anchored=true;p.CanCollide=false;p.CanQuery=false;p.CanTouch=false;if round then p.Shape=Enum.PartType.Ball end;p.Parent=model;return p
  end
@@ -27,9 +24,15 @@ function Service:Spawn(player)
  for _,p in ipairs(model:GetChildren())do if p:IsA("BasePart") and p~=root then
   p.Anchored=false;p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=root;weld.Part1=p;weld.Parent=p
  end end
- model:PivotTo(base*CFrame.new(0,1.35,0));model.Parent=workspace.Neighborhood.Runtime
+ model:PivotTo(base*CFrame.new(0,1.35,0));model.Parent=parent
  local label=Instance.new("BillboardGui");label.Size=UDim2.fromOffset(100,24);label.StudsOffset=Vector3.new(0,2.5,0);label.MaxDistance=40;label.Parent=root
- local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(1,1);text.BackgroundTransparency=1;text.TextColor3=Color3.fromRGB(244,245,236);text.TextStrokeTransparency=0.5;text.Text="Biscuit";text.Font=Enum.Font.GothamBold;text.TextSize=14;text.Parent=label
+ local text=Instance.new("TextLabel");text.Size=UDim2.fromScale(1,1);text.BackgroundTransparency=1;text.TextColor3=Color3.fromRGB(244,245,236);text.TextStrokeTransparency=0.5;text.Text=name:match("^Biscuit_")and "Biscuit"or name;text.Font=Enum.Font.GothamBold;text.TextSize=14;text.Parent=label
+ return model,root
+end
+function Service:Spawn(player)
+ if self.Pets[player.UserId]then return end
+ local house=self.Context.Houses.ByPlayer[player.UserId];if not house then return end
+ local model,root=Service.CreateModel(house.Model.Foundation.CFrame*Space.Frame(-9,0,-19),"Biscuit_"..player.UserId,workspace.Neighborhood.Runtime)
  self.Pets[player.UserId]={Model=model,Root=root,NextPath=0,Path={},Waypoint=1,LastAlert=0,Computing=false}
 end
 function Service:Action(player,action)

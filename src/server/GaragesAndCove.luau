@@ -11,25 +11,24 @@ function M.Garages(w)
  for _,h in ipairs(w.Houses:GetChildren())do
   local old=h:FindFirstChild('BaseGarage');if old then old:Destroy()end
   local m=Instance.new('Model');m.Name='BaseGarage';m.ModelStreamingMode=Enum.ModelStreamingMode.Atomic;m.Parent=h
-  local basis=h.Foundation.CFrame*CFrame.new(-29,-.5,0)
+  local basis=h.Foundation.CFrame*CFrame.new(-32,-.5,0)
   for _,v in ipairs(w.GardenDetails:GetChildren())do if v:IsA('BasePart')then local at=basis:PointToObjectSpace(v.Position);if math.abs(at.X)<9 and at.Z> -45 and at.Z<13 then v:Destroy()end end end
   local function p(n,s,x,y,z,c,solid)return F.Part(m,n,Vector3.new(table.unpack(s)),basis*CFrame.new(x,y,z),c,solid)end
-  p('Floor',{14,.6,22},0,.3,0,Color3.fromRGB(163,163,151)).Material=Enum.Material.Concrete
-  for _,x in ipairs({-7,7})do p('SideWall',{.4,10,22},x,5,0,cream)end
-  p('RearWall',{14,10,.4},0,5,11,cream)
-  p('Roof',{15,.6,23},0,10.3,0,green).Material=Enum.Material.Slate
-  for _,x in ipairs({-6.4,6.4})do p('FrontPier',{1,10,.6},x,5,-11,cream)end
-  p('Header',{12,1,.6},0,9.5,-11,cream)
-  local door=p('RollerDoor',{11.5,8.5,.3},0,5,-10.7,green,false);door.Transparency=.15
+  p('Floor',{20,.6,28},0,.3,0,Color3.fromRGB(163,163,151)).Material=Enum.Material.Concrete
+  for _,x in ipairs({-10,10})do p('SideWall',{.4,12,28},x,6,0,cream)end
+  p('RearWall',{20,12,.4},0,6,14,cream)
+  p('Roof',{21,.6,29},0,12.3,0,green).Material=Enum.Material.Slate
+  for _,x in ipairs({-9.4,9.4})do p('FrontPier',{1,12,.6},x,6,-14,cream)end
+  p('Header',{18,1,.6},0,11.5,-14,cream)
+  local door=p('RollerDoor',{17.5,10.5,.3},0,6,-13.7,green,false);door.Transparency=.15
   -- Roller door is parked overhead; the car entrance always remains clear.
-  door.Size=Vector3.new(11.5,.3,8.5);door.CFrame=basis*CFrame.new(0,9,-6.5)
-  for z=-10,-3,1 do p('DoorSlat',{11.5,.12,.12},0,8.8,z,cream,false)end
-  p('RearShelf',{12,.3,2},0,6,9.5,wood)
-  local lamp=p('GarageLight',{3,.15,1},0,8.5,2,cream,false);lamp.Material=Enum.Material.Neon
+  door.Size=Vector3.new(17.5,.3,10.5);door.CFrame=basis*CFrame.new(0,11,-8.5)
+  for z=-13,-4,1 do p('DoorSlat',{17.5,.12,.12},0,10.8,z,cream,false)end
+  p('RearShelf',{12,.3,2},0,6,12.5,wood)
+  local lamp=p('GarageLight',{3,.15,1},0,10.5,2,cream,false);lamp.Material=Enum.Material.Neon
   local light=Instance.new('PointLight');light.Range=16;light.Brightness=.5;light.Parent=lamp
-  local panel=p('GaragePanel',{1.2,2,.3},-5,3,-11.4,green,false);panel:SetAttribute('HouseId',h.Name);prompt(panel,'HomeGarage','Open garage menu','Your garage')
-  local sign=p('GarageSign',{9,1,.2},0,10,-11.5,green,false);F.Sign(sign,'GARAGE - YOUR OWN PARKING BAY')
-  p('Driveway',{11,.6,33},0,.3,-27.5,Color3.fromRGB(171,168,157)).Material=Enum.Material.Concrete
+  local panel=p('GaragePanel',{1.2,2,.3},-8,3,-14.4,green,false);panel:SetAttribute('HouseId',h.Name);prompt(panel,'HomeGarage','Open garage menu','Your garage')
+  p('Driveway',{18,.2,21},0,.15,-24.5,Color3.fromRGB(171,168,157)).Material=Enum.Material.Concrete
   local spawn=p('CarSpawn',{1,.1,1},0,3.5,0,cream,false);spawn.Transparency=1;spawn.CanQuery=false;spawn.CanTouch=false
  end
 end

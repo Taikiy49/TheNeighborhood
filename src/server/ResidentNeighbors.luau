@@ -39,12 +39,21 @@ function M.Init(context)
   local inside,outside=M.HomePoints(h)
   local street=require(game.ReplicatedStorage.Neighborhood.Shared.PlotLayout).Street(id)
   local curb=street+(home.X<street and -23 or 23)
-  local points={inside,outside,Vector3.new(curb,0,home.Z),Vector3.new(curb,0,-72),Vector3.new(street,0,-28)}
+  local points={inside,outside,Vector3.new(curb,0,home.Z),Vector3.new(curb,0,-82),Vector3.new(curb,0,-38),Vector3.new(street,0,-28)}
 
   model:SetAttribute("HomeId",h.Model.Name);model:SetAttribute("RoutineState","At home")
   model:PivotTo(CFrame.new(points[1]+Vector3.new(0,3,0)))
 
-  M.Actors[h]={Model=model,Points=points,Index=2,Direction=1,Pause=8+id,Label=text,Name=name,House=h}
+  local dog
+  if id%3==0 then
+   dog=require(script.Parent.Services.PetService).CreateModel(CFrame.new(points[1]),name.."'s dog",model)
+   for _,v in ipairs(dog:GetDescendants())do if v:IsA('BillboardGui')then v:Destroy()end end
+   local hand=Instance.new('Attachment');hand.Position=Vector3.new(1,-.4,0);hand.Parent=torso
+   local collar=Instance.new('Attachment');collar.Position=Vector3.new(0,.2,-1);collar.Parent=dog.PrimaryPart
+   local leash=Instance.new('Beam');leash.Attachment0=hand;leash.Attachment1=collar;leash.Width0=.045;leash.Width1=.045;leash.FaceCamera=true;leash.Color=ColorSequence.new(Color3.fromRGB(94,70,47));leash.Parent=torso
+   model:SetAttribute('DogWalker',true)
+  end
+  M.Actors[h]={Model=model,Dog=dog,Points=points,Index=2,Direction=1,Pause=8+id,Label=text,Name=name,House=h,Junction=Vector3.new(street,.12,-60)}
 
   h.Model:SetAttribute("NPCResident",name);h.Model.Mailbox.Sign.SurfaceGui.TextLabel.Text=name.."'s House (NPC)\n"..h.Model:GetAttribute("Address")
 
@@ -78,7 +87,16 @@ function M.Init(context)
     if not nearby then context.Houses:SetDoor(h,false);a.CloseDoor=nil end
    end
 
+   if a.Dog then
+    local cf=a.Model.Torso.CFrame
+    a.Dog:PivotTo(cf*CFrame.new(2,-1.65,2.5))
+   end
    if a.Pause>0 then a.Pause-=dt else
+    local streetCrossing=(a.Direction==1 and a.Index==5)or(a.Direction==-1 and a.Index==4)
+    if streetCrossing and not a.Crossing then
+     if not require(script.Parent.StreetDressing).CanCross(a.Junction)then a.Model:SetAttribute('RoutineState','Waiting at crossing');continue end
+     a.Crossing=true;a.Model:SetAttribute('RoutineState','Crossing on walk signal')
+    end
 
     -- Open the real door before traversing the threshold; allow its tween to finish.
     local crossing=(a.Direction==1 and a.Index==2)or(a.Direction==-1 and a.Index==1)
@@ -90,6 +108,7 @@ function M.Init(context)
     local cf=a.Model:GetPivot();local target=a.Points[a.Index]+Vector3.new(0,3,0);local delta=target-cf.Position
 
     if delta.Magnitude<.3 then
+     if streetCrossing then a.Crossing=nil end
      if crossing and a.OpenedDoor then a.CloseDoor=true;a.OpenedDoor=nil end
 
      if a.Index==#a.Points then a.Direction=-1;a.Pause=12;a.Label.Text=a.Name.." · enjoying the park";a.Model:SetAttribute("RoutineState","At park")

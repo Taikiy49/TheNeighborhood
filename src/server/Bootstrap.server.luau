@@ -110,6 +110,7 @@ Interactions:Register("Doorbell",function(player,target)
     return false,"Nobody has moved in yet."
 end)
 require(script.Parent.CoastalWorld).Init(context)
+require(script.Parent.HomeComfort).Init(context)
 require(script.Parent.ResidentNeighbors).Init(context)
 local Yards=require(script.Parent.YardService);Yards:Init(context)
 require(script.Parent.TownLifeExpansion).Init(context)

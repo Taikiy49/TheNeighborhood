@@ -1,0 +1,40 @@
+{
+  "Theft": {
+    "FirstJob": "Finish your first paid shift",
+    "Passed": true,
+    "TheftGuards": 6
+  },
+  "PaidJob": {
+    "DuplicateRejected": true,
+    "Passed": true,
+    "ProgressRecorded": true,
+    "Paid": 45
+  },
+  "Paths": {
+    "Routes": 40,
+    "Passed": true,
+    "GrassGaps": [],
+    "Blocked": [],
+    "Sports": 2,
+    "Samples": 758,
+    "Walked": [
+      "GeneralStore",
+      "CornerCafe",
+      "RepairWorkshop",
+      "OrchardStand",
+      "PalmResort",
+      "CarShowroom",
+      "FuelAndSnacks",
+      "CoastSchool",
+      "HangarOne",
+      "BeachChangingRooms"
+    ],
+    "NonoverlappingPaving": 228
+  },
+  "GoalSelectionCases": 6,
+  "PanelOpenClose": true,
+  "StaticAudit": {
+    "Errors": 0,
+    "Warnings": 0
+  }
+}

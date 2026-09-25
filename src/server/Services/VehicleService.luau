@@ -48,6 +48,7 @@ function Service:Spawn(player)
  local garage=house.Model:FindFirstChild("BaseGarage")
  if not garage then return false,"Your garage is being prepared."end
  local cf=garage.CarSpawn.CFrame
+ if definition.Kind=='Bike'then cf=cf*CFrame.new(0,0,-20)end
  local query=OverlapParams.new();query.FilterType=Enum.RaycastFilterType.Exclude;query.FilterDescendantsInstances={player.Character,previous and previous.Model or house.Model};query.RespectCanCollide=true
  if #workspace:GetPartBoundsInBox(cf,Vector3.new(8,5,16),query)>0 then return false,"Clear the driveway before recalling your car."end
  self:Remove(player)
@@ -67,13 +68,14 @@ function Service:Spawn(player)
  for _,p in ipairs(model:GetDescendants())do if p:IsA("BasePart") and p~=body then p.Massless=true;local weld=Instance.new("WeldConstraint");weld.Part0=body;weld.Part1=p;weld.Parent=p end end
  local attachment=Instance.new("Attachment");attachment.Parent=body
  local force=Instance.new("VectorForce");force.Attachment0=attachment;force.RelativeTo=Enum.ActuatorRelativeTo.World;force.ApplyAtCenterOfMass=true;force.Parent=body
+ local suspension=Instance.new("AlignPosition");suspension.Name="GroundSuspension";suspension.Attachment0=attachment;suspension.Mode=Enum.PositionAlignmentMode.OneAttachment;suspension.ApplyAtCenterOfMass=true;suspension.ForceLimitMode=Enum.ForceLimitMode.PerAxis;suspension.ForceRelativeTo=Enum.ActuatorRelativeTo.World;suspension.MaxAxesForce=Vector3.new(0,100000,0);suspension.MaxVelocity=8;suspension.Responsiveness=12;suspension.Position=cf.Position;suspension.Parent=body
  local turn=Instance.new("AlignOrientation");turn.Attachment0=attachment;turn.Mode=Enum.OrientationAlignmentMode.OneAttachment;turn.MaxTorque=100000;turn.Responsiveness=12;turn.Parent=body
  local _,yaw=cf:ToOrientation()
  model.Parent=workspace.Neighborhood.Runtime;body:SetNetworkOwner(nil)
- self.Cars[player.UserId]={Model=model,Body=body,Seat=seat,Force=force,Turn=turn,Yaw=yaw,Throttle=0,Steer=0,LastInput=0,Speed=definition.Speed}
+ self.Cars[player.UserId]={Model=model,Body=body,Seat=seat,Force=force,Suspension=suspension,Bike=bike,Turn=turn,Yaw=yaw,Throttle=0,Steer=0,LastInput=0,Speed=definition.Speed}
  seat:SetAttribute("Action","DriveCar");seat:SetAttribute("VehicleOwner",player.UserId)
  local prompt=Instance.new("ProximityPrompt");prompt.Style=Enum.ProximityPromptStyle.Custom;prompt.ActionText="Drive";prompt.ObjectText=definition.Name;prompt.MaxActivationDistance=10;prompt.RequiresLineOfSight=false;prompt:SetAttribute("Action","DriveCar");prompt.Parent=seat
- return true,definition.Name.." is parked in your garage."
+ return true,definition.Name..(bike and " is ready on your driveway."or " is parked in your garage.")
 end
 function Service:Action(player,action,argument)
  local profile=self.Context.Data:Get(player);if not profile then return false,"Profile unavailable."end
@@ -120,14 +122,19 @@ function Service:Step(dt)
   -- Four ground samples provide arcade suspension; decorative rigid wheels cannot snag curbs.
   local query=RaycastParams.new();query.FilterType=Enum.RaycastFilterType.Exclude;query.FilterDescendantsInstances={car.Model};query.CollisionGroup="NeighborhoodCars";query.RespectCanCollide=true
   local ground=0;local samples=0
-  for _,x in ipairs({-2.3,2.3})do for _,z in ipairs({-2.8,2.8})do
+  local track=car.Bike and .5 or 2.3
+  for _,x in ipairs({-track,track})do for _,z in ipairs({-2.8,2.8})do
    local origin=car.Body.CFrame:PointToWorldSpace(Vector3.new(x,0.5,z))
    local hit=workspace:Raycast(origin,Vector3.new(0,-4,0),query)
    if hit and hit.Normal.Y>0.65 then ground+=hit.Position.Y;samples+=1 end
   end end
-  local lift=0
-  if samples>=2 then lift=math.clamp(workspace.Gravity+(ground/samples+1.9-car.Body.Position.Y)*65-velocity.Y*12,0,workspace.Gravity*3)end
-  car.Force.Force=((target-flat)*5+Vector3.new(0,lift,0))*car.Body.AssemblyMass
+  -- Solve vertical support inside the physics solver, not a frame-delayed spring.
+  car.Suspension.Enabled=samples>=2
+  if samples>=2 then
+   car.Suspension.Position=Vector3.new(car.Body.Position.X,ground/samples+1.9,car.Body.Position.Z)
+   car.Suspension.MaxAxesForce=Vector3.new(0,car.Body.AssemblyMass*workspace.Gravity*3,0)
+  end
+  car.Force.Force=(target-flat)*5*car.Body.AssemblyMass
   if car.Body.Position.Y<-20 then car.Force.Force=Vector3.zero end
  end
 end

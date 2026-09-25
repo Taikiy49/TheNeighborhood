@@ -1,13 +1,10 @@
 local Service={Last={}}
 local Levels=require(game.ReplicatedStorage.Neighborhood.Shared.VehicleCatalog)
-local steps={{Key="EnterHouse",Text="Open your front door"},{Key="Place",Text="Place one possession at home"},{Key="Visit",Text="Say hello to a neighbor"},{Key="Delivery",Text="Complete a parcel delivery from the community board"},{Key="Buy",Text="Buy something at Maple & Co."},{Key="Lock",Text="Lock your front door"}}
+local steps={{Key="EnterHouse",Text="Open your front door"},{Key="CityWork",Text="Finish your first paid shift"},{Key="Buy",Text="Buy furniture with your earnings"},{Key="Place",Text="Decorate your home"},{Key="Visit",Text="Say hello to a neighbor"}}
 local achievements={
  {Id="WelcomeHome",Event="Place",Count=1,Title="This one's mine"},
  {Id="HonestWork",Event="Delivery",Count=5,Title="Honest work"},
  {Id="Collector",Event="Buy",Count=10,Title="Shelf space problem"},
- {Id="Detective",Event="Solved",Count=1,Title="Case closed"},
- {Id="Recovery",Event="Recovery",Count=1,Title="Back where it belongs"},
- {Id="GoldenGetaway",Event="GoldenEscape",Count=1,Title="Royal relocation"},
  {Id="GnomeTrail",Event="TrailComplete",Count=1,Title="Gnome where to look"},
  {Id="CommunitySpirit",Event="CommunityEvent",Count=3,Title="Part of the neighborhood"},
 }
