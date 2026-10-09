@@ -1,3 +1,14 @@
+<div align="center">
+  <h1>The Neighborhood</h1>
+  <p><strong>Build a home, meet neighbors, and grow into a town of your own.</strong></p>
+  <p><img alt="Roblox" src="https://img.shields.io/badge/Roblox-303840?style=flat-square" /> <img alt="Luau" src="https://img.shields.io/badge/Luau-303840?style=flat-square" /> <img alt="Rojo" src="https://img.shields.io/badge/Rojo-303840?style=flat-square" /></p>
+  <p><a href="./HANDOFF.md">Developer handoff</a> · <a href="./docs/CONNECTED-TOWN.md">Connected town</a></p>
+</div>
+
+![The Neighborhood cover](./assets/neighborhood-cover-cozy.png)
+
+---
+
 # The Neighborhood
 
 A Roblox neighborhood about earning your way from a cottage to a skyline home, decorating, meeting neighbors and exploring town. The main loop is jobs and skill activities → cash → home, yard and vehicle upgrades. Theft is disabled.
